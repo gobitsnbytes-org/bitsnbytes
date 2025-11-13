@@ -64,7 +64,7 @@ export default function Contact() {
                 <Mail size={32} />
               </div>
               <h3 className="font-display font-bold text-xl mb-2">Email</h3>
-              <p className="text-white/80">hello@bitsbytes.dev</p>
+              <p className="text-white/80">hello@lucknow.codes</p>
             </div>
 
             {/* Location */}
@@ -76,7 +76,7 @@ export default function Contact() {
                 <MapPin size={32} />
               </div>
               <h3 className="font-display font-bold text-xl mb-2">Location</h3>
-              <p className="text-[#3e1e68]/80">Tech Hub, Innovation District</p>
+              <p className="text-[#3e1e68]/80">Based in Lucknow</p>
             </div>
 
             {/* Hours */}
@@ -87,8 +87,8 @@ export default function Contact() {
               <div className="flex justify-center mb-4">
                 <Clock size={32} />
               </div>
-              <h3 className="font-display font-bold text-xl mb-2">Hours</h3>
-              <p className="text-white/80">Mon - Fri, 4:00 PM - 8:00 PM</p>
+              <h3 className="font-display font-bold text-xl mb-2">From</h3>
+              <p className="text-white/80">2025</p>
             </div>
           </div>
         </div>

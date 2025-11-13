@@ -25,7 +25,6 @@ const jetBrainsMono = JetBrains_Mono({
 export const metadata: Metadata = {
   title: "Bits&Bytes - Teen Led Code Club",
   description: "Innovate. Collaborate. Hack. Join the most creative code club for teens.",
-  generator: "v0.app",
 }
 
 export default function RootLayout({

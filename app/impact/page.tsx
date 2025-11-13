@@ -40,8 +40,7 @@ export default function Impact() {
                   <p className="text-[#656565] mt-2 text-lg">Projects Built by Our Community</p>
                 </div>
                 <div>
-                  <p className="font-display font-bold text-[#e45a92] text-4xl">15</p>
-                  <p className="text-[#656565] mt-2 text-lg">Competitions & Hackathons Won</p>
+                  <p className="font-display font-bold text-[#e45a92] text-4xl">Hosted first high schooler led hackathon in Lucknow</p>
                 </div>
               </div>
             </div>
