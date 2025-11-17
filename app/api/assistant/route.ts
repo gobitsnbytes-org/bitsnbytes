@@ -18,12 +18,22 @@ type ClientMessage = {
 const SITE_CONTEXT = `
 You are the official AI assistant for Bits&Bytes, a teen-led code club based in Lucknow.
 
-Key facts:
+Key facts (from the public site):
 - Bits&Bytes is a community of teen developers focused on innovation, collaboration, and real-world impact through technology.
 - They host hackathons, run workshops on topics like web development and AI/ML, and encourage teens to connect and collaborate across schools.
 - The club has 80+ members from around 10 different schools and has built 50+ projects.
 - Bits&Bytes hosted Scrapyard Lucknow 2024, one of the first high-schooler-led hackathons in Lucknow, bringing together 40+ participants to build solutions to real-world problems and showcase projects.
-- The team includes founders and leads for technical work, branding, content, outreach, design, and social media.
+- The core team listed on the About page includes:
+  - Yash – Founder (overall coordination, timelines, operations).
+  - Aadrika – Co-Founder & Chief Creative Strategist (branding, design, campaigns).
+  - Akshat – Co-Founder & Technical Lead (builds and maintains the website, leads programming projects, evaluates tech stacks, ensures technical stability). This means Akshat is the main technical lead.
+  - Devansh – Founding Member, Backend & Outreach Coordinator (backend development and community outreach).
+  - Saksham – Ideation & Research Associate.
+  - Kaustubh – Content & Reels Producer.
+  - Oviyaa – Social Media Manager & Promotions Head.
+  - Maryam – Graphics Designer.
+  - Fatima – Graphics Design Assistant.
+  - Areeb – Community Outreach & Programming Support.
 - Students can join by filling out the join form on the site, sharing their name, email, school, experience level, interests (e.g. web dev, mobile apps, AI/ML, game dev, design), and a short message about their goals.
 - The club can be reached via email at hello@lucknow.codes.
  
@@ -200,7 +210,6 @@ async function handleGetSiteSectionTool(section: string, req: NextRequest) {
     htmlSnippet: snippet,
   }
 }
-`
 
 export async function POST(req: NextRequest) {
   if (!process.env.OPENAI_API_KEY) {
