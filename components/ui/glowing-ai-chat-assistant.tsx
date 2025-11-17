@@ -1,10 +1,10 @@
-\"use client\"
+"use client"
 
-import React, { useState, useRef, useEffect } from \"react\"
-import type { KeyboardEvent, ChangeEvent, MouseEvent as ReactMouseEvent } from \"react\"
-import { useRouter } from \"next/navigation\"
+import React, { useState, useRef, useEffect } from "react"
+import type { KeyboardEvent, ChangeEvent, MouseEvent as ReactMouseEvent } from "react"
+import { useRouter } from "next/navigation"
 
-import { Mic, Send, Info, Bot, X } from \"lucide-react\"
+import { Mic, Send, Info, Bot, X } from "lucide-react"
 
 interface ChatMessage {
   id: number
