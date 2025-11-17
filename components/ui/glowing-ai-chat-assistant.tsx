@@ -171,11 +171,15 @@ const FloatingAiAssistant: React.FC = () => {
             body: formData,
           })
 
-          if (!res.ok) {
-            throw new Error("Failed to transcribe audio")
+          const data = (await res.json()) as { text?: string; error?: string }
+
+          if (!res.ok || data.error) {
+            const message =
+              data.error ?? "Failed to transcribe audio. Voice transcription may not be enabled for this project."
+            setVoiceError(message)
+            return
           }
 
-          const data = (await res.json()) as { text?: string; error?: string }
           const text = data.text ?? ""
 
           if (text) {
