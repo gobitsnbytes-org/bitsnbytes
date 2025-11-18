@@ -35,22 +35,22 @@ export default function Navigation() {
   }, [pathname])
 
   return (
-    <header className="sticky top-0 z-50 flex w-full justify-center px-3 pt-4 sm:px-6">
+    <header className="sticky top-0 z-50 flex w-full justify-center">
       <div
         className={cn(
-          "w-full max-w-6xl rounded-[28px] border border-white/10 bg-gradient-to-br from-white/70 to-white/40 px-4 py-3 shadow-[var(--shadow-card)] backdrop-blur-2xl transition-all dark:from-white/10 dark:to-white/[0.03]",
-          isScrolled && "border-white/20 bg-white/90 shadow-[var(--glow-soft)] dark:bg-white/[0.08]",
+          "w-full max-w-full border-b border-white/10 bg-white/90 px-4 py-3 shadow-[var(--shadow-card)] backdrop-blur-2xl transition-all dark:border-white/10 dark:bg-white/5",
+          isScrolled && "border-white/20 bg-white shadow-[var(--glow-soft)] dark:bg-white/10",
         )}
       >
-        <div className="flex items-center justify-between gap-4">
+        <div className="mx-auto flex max-w-6xl items-center justify-between gap-4">
           <Link href="/" className="group inline-flex items-center gap-3">
-            <div className="relative grid h-12 w-12 place-items-center rounded-2xl bg-gradient-to-br from-[var(--brand-pink)] to-[var(--brand-purple)] text-white shadow-[var(--glow-soft)] transition-transform group-hover:scale-105">
+            <div className="relative grid h-12 w-12 place-items-center rounded-2xl bg-[var(--brand-purple)] text-white shadow-[var(--glow-soft)] transition-transform group-hover:scale-105">
               <Image
                 src={logo}
                 alt="Bits&Bytes logo"
-                width={36}
-                height={36}
-                className="h-8 w-8 object-contain transition-transform duration-200 group-hover:scale-105"
+                width={32}
+                height={32}
+                className="h-8 w-8 object-contain"
                 priority
               />
               <div className="absolute inset-0 rounded-2xl border border-white/30" />
@@ -61,7 +61,7 @@ export default function Navigation() {
             </div>
           </Link>
 
-          <nav className="relative hidden items-center gap-1 rounded-full border border-white/30 bg-white/40 px-1 py-1 text-sm font-medium shadow-[inset_0_1px_0_rgba(255,255,255,0.6)] backdrop-blur-md dark:border-white/10 dark:bg-white/10 md:flex">
+          <nav className="relative hidden items-center gap-1 rounded-full border border-white/30 bg-white/80 px-1 py-1 text-sm font-medium shadow-[inset_0_1px_0_rgba(255,255,255,0.6)] backdrop-blur-md dark:border-white/10 dark:bg-white/10 md:flex">
             {NAV_LINKS.map((item) => {
               const isActive = pathname === item.href
               return (
@@ -71,8 +71,8 @@ export default function Navigation() {
                   className={cn(
                     "relative rounded-full px-4 py-1.5 transition-all",
                     isActive
-                      ? "bg-gradient-to-r from-[var(--brand-pink)] to-[var(--brand-purple)] text-white shadow-[var(--glow-soft)]"
-                      : "text-muted-foreground hover:text-foreground",
+                    ? "rounded-full bg-[var(--brand-pink)] text-white shadow-[var(--glow-soft)]"
+                    : "text-muted-foreground hover:text-foreground",
                   )}
                 >
                   {item.label}
@@ -87,7 +87,7 @@ export default function Navigation() {
               href="/join"
               className={cn(
                 buttonVariants({ variant: "default", size: "sm" }),
-                "hidden items-center gap-1 rounded-full bg-gradient-to-r from-[var(--brand-pink)] to-[var(--brand-purple)] text-white shadow-[var(--glow-strong)] hover:shadow-[var(--glow-strong)] md:inline-flex",
+                "hidden items-center gap-1 rounded-full bg-[var(--brand-pink)] text-white shadow-[var(--glow-strong)] md:inline-flex",
               )}
             >
               Join Now
@@ -105,7 +105,7 @@ export default function Navigation() {
         </div>
 
         {mobileOpen && (
-          <div className="mt-4 space-y-3 rounded-2xl border border-white/10 bg-background/95 p-4 shadow-[var(--shadow-card)] md:hidden">
+          <div className="mt-4 space-y-3 rounded-2xl border border-white/10 bg-white/95 p-4 shadow-[var(--shadow-card)] dark:bg-[var(--background)] md:hidden">
             {NAV_LINKS.map((item) => {
               const isActive = pathname === item.href
               return (
@@ -115,8 +115,8 @@ export default function Navigation() {
                   className={cn(
                     "flex items-center justify-between rounded-2xl px-4 py-3 text-base transition-all",
                     isActive
-                      ? "bg-gradient-to-r from-[var(--brand-pink)]/90 to-[var(--brand-purple)]/90 text-white"
-                      : "border border-white/10 text-muted-foreground hover:border-white/30 hover:text-foreground",
+                    ? "rounded-2xl bg-[var(--brand-pink)] text-white"
+                    : "border border-white/10 text-muted-foreground hover:border-white/30 hover:text-foreground",
                   )}
                 >
                   {item.label}
@@ -126,7 +126,7 @@ export default function Navigation() {
             })}
             <Button
               asChild
-              className="w-full rounded-2xl bg-gradient-to-r from-[var(--brand-pink)] to-[var(--brand-purple)] text-white"
+              className="w-full rounded-2xl bg-[var(--brand-pink)] text-white"
             >
               <Link href="/join" className="flex items-center justify-center gap-2">
                 Join the Club <ArrowUpRight className="h-4 w-4" />

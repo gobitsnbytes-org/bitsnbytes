@@ -7,7 +7,7 @@ import { ShaderAnimation } from "@/components/ui/shader-animation"
 
 export default function Hero() {
   return (
-    <section className="pt-32 pb-20 px-4 sm:px-6 lg:px-8 bg-white">
+    <section className="pt-32 pb-20 px-4 sm:px-6 lg:px-8 bg-[var(--brand-purple)] text-white">
       <div className="max-w-7xl mx-auto">
         <div className="grid md:grid-cols-2 gap-12 items-center">
           {/* Left Content */}
@@ -16,14 +16,14 @@ export default function Hero() {
               <span className="text-sm font-medium text-[#e45a92]">Welcome to Bits&Bytes</span>
             </div>
             <div className="mb-6">
-              <TextGlitch 
-                text="INNOVATE" 
-                hoverText="BUILD THE FUTURE" 
-                className="!text-[4rem] sm:!text-[5rem] lg:!text-[6rem] !bg-gradient-to-r !from-[#3e1e68] !to-[#5d2f77] !border-b-[#e45a92]/30"
+              <TextGlitch
+                text="INNOVATE"
+                hoverText="BUILD THE FUTURE"
+                className="!text-[4rem] sm:!text-[5rem] lg:!text-[6rem]"
                 delay={0}
               />
             </div>
-            <p className="text-lg text-[#656565] mb-8 max-w-lg leading-relaxed">
+            <p className="text-lg text-white/80 mb-8 max-w-lg leading-relaxed">
               Join a vibrant community of teen developers building the future. Learn, create, and transform ideas into
               reality through code.
             </p>
@@ -59,7 +59,7 @@ export default function Hero() {
           </div>
 
           {/* Right Visual: Shader animation + overlayed stats */}
-          <div className="relative h-full min-h-[500px] animate-fade-in rounded-3xl overflow-hidden border border-[#e45a92]/30 bg-black">
+          <div className="relative h-full min-h-[500px] animate-fade-in rounded-3xl overflow-hidden border border-[var(--brand-coral)]/40 bg-[var(--brand-ink)]">
             <ShaderAnimation />
 
             {/* Overlay content */}
@@ -72,7 +72,7 @@ export default function Hero() {
 
               {/* Bottom stats card */}
               <div className="self-end w-full max-w-xs sm:max-w-sm">
-                <div className="rounded-2xl bg-black/60 border border-white/10 px-4 py-3 sm:px-5 sm:py-4 backdrop-blur-md text-white pointer-events-auto">
+                <div className="rounded-2xl bg-[var(--brand-ink)]/60 border border-white/10 px-4 py-3 sm:px-5 sm:py-4 backdrop-blur-md text-white pointer-events-auto">
                   <p className="text-xs sm:text-sm font-medium text-white/70 mb-2">
                     Bits&Bytes in numbers
                   </p>

@@ -6,6 +6,10 @@ import { useState, FormEvent } from "react"
 
 import { PageSection } from "@/components/page-section"
 import { Button } from "@/components/ui/button"
+import { Input } from "@/components/ui/input"
+import { Label } from "@/components/ui/label"
+import { Textarea } from "@/components/ui/textarea"
+import { ContactCard } from "@/components/ui/contact-card"
 import { cn } from "@/lib/utils"
 import { LiquidGlassBackdrop } from "@/components/ui/liquid-glass-effect"
 
@@ -76,36 +80,73 @@ export default function Contact() {
           align="center"
           eyebrow="Contact"
           title="Reach the team"
-          description="We love partnering with schools, sponsors, mentors, and students. Drop a note and we’ll get back within a couple days."
+          description="We love partnering with schools, sponsors, mentors, and students. Drop a note and we'll get back within a couple days."
         >
-          <div className="mx-auto flex w-full max-w-4xl flex-col gap-8">
-            <form
-              onSubmit={handleSubmit}
-              className="relative isolate rounded-[40px] border border-white/30 bg-white/50 p-8 text-foreground shadow-2xl backdrop-blur-3xl dark:border-white/10 dark:bg-white/5 dark:text-white sm:p-12"
+          <div className="mx-auto w-full max-w-6xl">
+            <ContactCard
+              title="Get in Touch"
+              description="Have questions about our hackathons, workshops, or programs? We'd love to hear from you! Fill out the form and we'll respond within 1-2 business days."
+              contactInfo={[
+                {
+                  icon: Mail,
+                  label: 'Email',
+                  value: 'hello@lucknow.codes',
+                },
+                {
+                  icon: MapPin,
+                  label: 'Location',
+                  value: 'Lucknow, India',
+                },
+                {
+                  icon: Clock,
+                  label: 'Established',
+                  value: 'Teen-led since 2025',
+                  className: 'col-span-2',
+                }
+              ]}
+              className="rounded-[40px] border-white/30 bg-white/50 shadow-2xl backdrop-blur-3xl dark:border-white/10 dark:bg-white/5 overflow-hidden"
             >
-              <LiquidGlassBackdrop radiusClassName="rounded-[inherit]" />
-              <div className="relative z-10 space-y-6">
-                <div className="grid gap-6 sm:grid-cols-2">
-                  <div className="space-y-2 text-left">
-                    <label className="text-sm font-medium text-foreground dark:text-white">Your Name</label>
-                    <input name="name" placeholder="Your name" className={fieldClass} required />
-                  </div>
-                  <div className="space-y-2 text-left">
-                    <label className="text-sm font-medium text-foreground dark:text-white">Email</label>
-                    <input type="email" name="email" placeholder="you@email.com" className={fieldClass} required />
-                  </div>
+              <form onSubmit={handleSubmit} className="w-full space-y-4">
+                <div className="flex flex-col gap-2">
+                  <Label htmlFor="name" className="text-foreground dark:text-white">Name</Label>
+                  <Input 
+                    id="name"
+                    name="name" 
+                    type="text" 
+                    placeholder="Your name"
+                    className={fieldClass}
+                    required 
+                  />
                 </div>
-                <div className="space-y-2 text-left">
-                  <label className="text-sm font-medium text-foreground dark:text-white">Subject</label>
-                  <input name="subject" placeholder="Reason for reaching out" className={fieldClass} />
+                <div className="flex flex-col gap-2">
+                  <Label htmlFor="email" className="text-foreground dark:text-white">Email</Label>
+                  <Input 
+                    id="email"
+                    name="email" 
+                    type="email" 
+                    placeholder="you@email.com"
+                    className={fieldClass}
+                    required 
+                  />
                 </div>
-                <div className="space-y-2 text-left">
-                  <label className="text-sm font-medium text-foreground dark:text-white">Message</label>
-                  <textarea
+                <div className="flex flex-col gap-2">
+                  <Label htmlFor="subject" className="text-foreground dark:text-white">Subject</Label>
+                  <Input 
+                    id="subject"
+                    name="subject" 
+                    type="text" 
+                    placeholder="Reason for reaching out"
+                    className={fieldClass}
+                  />
+                </div>
+                <div className="flex flex-col gap-2">
+                  <Label htmlFor="message" className="text-foreground dark:text-white">Message</Label>
+                  <Textarea 
+                    id="message"
                     name="message"
                     rows={5}
                     placeholder="Tell us what you're thinking…"
-                    className={cn(fieldClass, "min-h-[160px] resize-none")}
+                    className={cn(fieldClass, "min-h-[120px] resize-none")}
                     required
                   />
                 </div>
@@ -126,51 +167,15 @@ export default function Contact() {
                 {status && (
                   <p
                     className={cn(
-                      "text-sm",
+                      "text-sm text-center",
                       status.type === "success" ? "text-emerald-600 dark:text-emerald-300" : "text-red-600 dark:text-red-300",
                     )}
                   >
                     {status.message}
                   </p>
                 )}
-              </div>
-            </form>
-
-            <div className="relative isolate rounded-[40px] border border-white/30 bg-white/50 p-8 text-foreground shadow-2xl backdrop-blur-3xl dark:border-white/10 dark:bg-white/5 dark:text-white sm:p-10">
-              <LiquidGlassBackdrop radiusClassName="rounded-[inherit]" />
-              <div className="relative z-10 grid gap-6 md:grid-cols-3">
-                {[
-                  {
-                    icon: Mail,
-                    title: "Email",
-                    copy: "hello@lucknow.codes",
-                  },
-                  {
-                    icon: MapPin,
-                    title: "Based in",
-                    copy: "Lucknow, India",
-                  },
-                  {
-                    icon: Clock,
-                    title: "From",
-                    copy: "Teen-led since 2025",
-                  },
-                ].map((item, index) => (
-                  <div
-                    key={item.title}
-                    className="flex flex-col items-center gap-3 text-center"
-                  >
-                    <div className="grid h-14 w-14 place-items-center rounded-full border border-white/30 bg-white/40 text-[var(--brand-purple)] shadow-lg backdrop-blur-sm dark:border-white/10 dark:bg-white/10 dark:text-white">
-                      <item.icon className="h-6 w-6" />
-                    </div>
-                    <div>
-                      <p className="text-sm font-semibold uppercase tracking-[0.1em] text-foreground/70 dark:text-white/70">{item.title}</p>
-                      <p className="mt-1 text-base font-medium text-foreground dark:text-white">{item.copy}</p>
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </div>
+              </form>
+            </ContactCard>
           </div>
         </PageSection>
       </main>

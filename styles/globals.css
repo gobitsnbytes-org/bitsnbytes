@@ -167,7 +167,7 @@
   }
 
   .card-surface {
-    @apply rounded-3xl border border-white/10 bg-card/80 p-6 shadow-[var(--shadow-card)] transition-transform duration-300 hover:-translate-y-1 hover:shadow-[var(--glow-soft)];
+    @apply rounded-3xl border border-white/20 bg-white/70 p-6 shadow-lg backdrop-blur-xl transition-transform duration-300 hover:-translate-y-1 hover:shadow-[var(--glow-soft)] dark:border-white/10 dark:bg-white/5;
   }
 
   .tag-chip {
@@ -378,6 +378,19 @@
     -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
     -webkit-mask-composite: xor;
     mask-composite: exclude;
+  }
+
+  .animate-scroll {
+    animation: scroll var(--animation-duration, 40s) var(--animation-direction, forwards) linear infinite;
+  }
+}
+
+@keyframes scroll {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(calc(-50%));
   }
 }
 

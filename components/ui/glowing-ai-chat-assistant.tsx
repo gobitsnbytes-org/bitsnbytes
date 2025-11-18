@@ -3,6 +3,8 @@
 import React, { useState, useRef, useEffect, useCallback } from "react"
 import type { KeyboardEvent, ChangeEvent, MouseEvent as ReactMouseEvent } from "react"
 import { useRouter } from "next/navigation"
+import ReactMarkdown from "react-markdown"
+import remarkGfm from "remark-gfm"
 
 import { Mic, Send, Info, Bot, X } from "lucide-react"
 
@@ -44,7 +46,7 @@ const FloatingAiAssistant: React.FC = () => {
   const [error, setError] = useState<string | null>(null)
   const [voiceError, setVoiceError] = useState<string | null>(null)
   const [isRecording, setIsRecording] = useState(false)
-  const [modelName, setModelName] = useState("gpt-4o-mini")
+  const [modelName, setModelName] = useState("gpt-5-mini-2025-08-07")
   const [hasHydrated, setHasHydrated] = useState(false)
 
   const chatRef = useRef<HTMLDivElement | null>(null)
@@ -473,10 +475,31 @@ const FloatingAiAssistant: React.FC = () => {
                       className={`max-w-[85%] rounded-2xl px-3 py-2 text-[0.75rem] leading-relaxed sm:max-w-[80%] ${
                         m.role === "user"
                           ? "bg-[#e45a92] text-white"
-                          : "border border-zinc-700/70 bg-zinc-900/80 text-zinc-100"
+                          : "border border-zinc-700/70 bg-zinc-900/80 text-zinc-100 prose prose-invert prose-p:my-1 prose-headings:my-2 prose-ul:my-1 prose-li:my-0.5 max-w-none"
                       }`}
                     >
-                      {m.content || (m.role === "assistant" ? "..." : "")}
+                      {m.role === "user" ? (
+                        m.content
+                      ) : (
+                        <ReactMarkdown
+                          remarkPlugins={[remarkGfm]}
+                          components={{
+                            p: ({ children }) => <p className="my-1 text-[0.75rem]">{children}</p>,
+                            h1: ({ children }) => <h1 className="my-2 text-sm font-bold">{children}</h1>,
+                            h2: ({ children }) => <h2 className="my-2 text-sm font-semibold">{children}</h2>,
+                            h3: ({ children }) => <h3 className="my-1.5 text-xs font-semibold">{children}</h3>,
+                            ul: ({ children }) => <ul className="my-1 list-disc pl-4">{children}</ul>,
+                            ol: ({ children }) => <ol className="my-1 list-decimal pl-4">{children}</ol>,
+                            li: ({ children }) => <li className="my-0.5 text-[0.75rem]">{children}</li>,
+                            strong: ({ children }) => <strong className="font-semibold">{children}</strong>,
+                            code: ({ children }) => (
+                              <code className="rounded bg-zinc-800 px-1 py-0.5 text-[0.7rem]">{children}</code>
+                            ),
+                          }}
+                        >
+                          {m.content || "..."}
+                        </ReactMarkdown>
+                      )}
                     </div>
                   </div>
                 ))}

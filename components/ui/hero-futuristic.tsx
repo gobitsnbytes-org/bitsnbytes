@@ -16,11 +16,11 @@ const stats = [
 
 export const HeroFuturistic = () => {
   return (
-    <section className="relative overflow-hidden rounded-b-[3.5rem] bg-gradient-to-b from-white/95 via-[#fdf6ff] to-[#120524] text-foreground dark:from-[#05020a] dark:via-[#16072b] dark:to-[#080312]">
+    <section className="relative overflow-hidden rounded-b-[3.5rem] bg-[var(--brand-purple)] text-white dark:bg-[var(--brand-plum)]">
       <div className="absolute inset-0 opacity-50 dark:opacity-80">
         <ShaderAnimation />
       </div>
-      <div className="absolute inset-0 bg-gradient-to-b from-white/80 via-white/50 to-transparent dark:from-[#05020a]/90 dark:via-[#16072b]/85 dark:to-[#080312]" />
+      <div className="absolute inset-0 bg-[var(--brand-pink)]/10 dark:bg-[var(--brand-plum)]/40" />
 
       <div className="relative z-10 mx-auto flex max-w-6xl flex-col gap-12 px-4 pb-20 pt-28 sm:px-6 lg:flex-row lg:items-stretch lg:gap-16">
         <div className="flex-1">
@@ -28,7 +28,7 @@ export const HeroFuturistic = () => {
             <LiquidGlassBackdrop radiusClassName="rounded-[inherit]" />
             <span className="relative z-10 inline-flex w-fit items-center gap-2 rounded-full border border-white/30 px-4 py-1 text-[0.65rem] font-semibold uppercase tracking-[0.35em] text-foreground/70 dark:text-white/80">
               <Sparkles className="h-3 w-3" />
-              Teen-Led
+              TEEN-LED
             </span>
             <div className="relative z-10 space-y-6">
               <h1 className="font-display text-4xl leading-tight text-foreground dark:text-white md:text-6xl">
@@ -43,7 +43,7 @@ export const HeroFuturistic = () => {
             <div className="relative z-10 flex flex-col gap-3 sm:flex-row">
               <Button
                 asChild
-                className="h-12 rounded-full bg-gradient-to-r from-[var(--brand-pink)] to-[var(--brand-purple)] text-base font-semibold text-white shadow-[var(--glow-strong)]"
+                className="h-12 rounded-full bg-[var(--brand-pink)] text-base font-semibold text-white shadow-[var(--glow-strong)]"
               >
                 <Link href="/join">
                   Join the crew
@@ -71,27 +71,20 @@ export const HeroFuturistic = () => {
         </div>
 
         <div className="relative flex-1">
-          <div className="relative isolate overflow-hidden rounded-[32px] border border-white/20 bg-white/50 shadow-[var(--glow-soft)] backdrop-blur-2xl dark:border-white/10 dark:bg-white/5">
-            <LiquidGlassBackdrop radiusClassName="rounded-[inherit]" />
+          <div className="relative isolate overflow-hidden rounded-[32px] border border-white/30 shadow-xl backdrop-blur-2xl dark:border-white/20">
             <Image
-              src="/images/hero-img.jpeg"
-              alt="Teens building together"
+              src="/images/432a787b-bfde-4dd0-8c2a-cb994146a3b9-1-105-c.jpeg"
+              alt="Scrapyard Lucknow teens building together"
               width={900}
               height={1000}
               className="h-[420px] w-full object-cover"
               priority
             />
-            <div className="absolute inset-0 bg-gradient-to-t from-[#05020a]/80 via-transparent to-transparent dark:from-[#05020a]" />
-            <div className="relative z-10">
-            <div className="absolute bottom-4 left-4 right-4 flex items-center justify-between gap-4 rounded-2xl border border-white/30 bg-white/20 px-5 py-4 text-sm text-foreground shadow-lg backdrop-blur-xl dark:border-white/10 dark:bg-white/10 dark:text-white">
-                <LiquidGlassBackdrop radiusClassName="rounded-[inherit]" />
-                <div className="relative z-10">
-                  <p className="text-xs uppercase tracking-[0.32em] text-foreground/70 dark:text-white/70">Archive highlight</p>
-                  <p className="font-semibold text-foreground dark:text-white">Scrapyard Lucknow · 2024</p>
-                </div>
-                <span className="relative z-10 rounded-full border border-white/30 px-3 py-1 text-xs uppercase tracking-[0.3em] text-foreground/80 dark:text-white/80">
-                  Legacy
-                </span>
+            <div className="absolute inset-0 bg-gradient-to-t from-[var(--brand-purple)]/60 via-transparent to-transparent" />
+            <div className="absolute bottom-4 left-4 right-4 z-20 rounded-2xl border border-white/40 bg-white/80 px-5 py-4 shadow-2xl backdrop-blur-2xl dark:border-white/30 dark:bg-white/20">
+              <div>
+                <p className="text-[0.65rem] font-semibold uppercase tracking-[0.35em] text-[var(--brand-purple)] dark:text-white">Archive highlight</p>
+                <p className="font-display text-base font-bold text-foreground dark:text-white">Scrapyard Lucknow · 2024</p>
               </div>
             </div>
           </div>

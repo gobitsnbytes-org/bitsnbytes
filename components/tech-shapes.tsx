@@ -8,7 +8,7 @@ const cards = [
   {
     title: "Learn",
     copy: "Master web dev, mobile, and cutting-edge makerspace tech.",
-    bg: "from-[var(--brand-plum)] to-[#2b123c]",
+    bg: "bg-[var(--brand-plum)]",
     text: "text-white",
     graphic: (
       <svg viewBox="0 0 100 100" className="w-full h-full">
@@ -19,7 +19,7 @@ const cards = [
   {
     title: "Collaborate",
     copy: "Build ambitious projects with passionate peers across schools.",
-    bg: "from-[var(--brand-coral)] to-[#ffd1d1]",
+    bg: "bg-[var(--brand-coral)]",
     text: "text-[var(--brand-purple)]",
     graphic: (
       <svg viewBox="0 0 100 100" className="w-full h-full">
@@ -31,7 +31,7 @@ const cards = [
   {
     title: "Hack",
     copy: "Turn creativity into prototypes, MVPs, and real-world impact.",
-    bg: "from-[var(--brand-pink)] to-[#711845]",
+    bg: "bg-[var(--brand-pink)]",
     text: "text-white",
     graphic: (
       <svg viewBox="0 0 100 100" className="w-full h-full">
@@ -49,7 +49,7 @@ export default function TechShapes({ className }: TechShapesProps) {
         <div key={card.title} className="group relative cursor-pointer rounded-3xl p-1">
           <div
             className={cn(
-              "relative h-64 overflow-hidden rounded-[26px] bg-gradient-to-br p-8 shadow-[var(--glow-soft)] transition-all duration-300 group-hover:-translate-y-1 group-hover:shadow-[var(--glow-strong)]",
+              "relative h-64 overflow-hidden rounded-[26px] p-8 shadow-lg backdrop-blur-xl transition-all duration-300 group-hover:-translate-y-1 group-hover:shadow-[var(--glow-strong)]",
               card.bg,
             )}
           >

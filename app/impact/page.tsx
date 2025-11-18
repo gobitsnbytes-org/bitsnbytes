@@ -6,6 +6,8 @@ import ImpactVisualization from "@/components/impact-visualization"
 import { PageSection } from "@/components/page-section"
 import { LiquidButton } from "@/components/ui/liquid-glass-button"
 import { LiquidGlassBackdrop } from "@/components/ui/liquid-glass-effect"
+import { CardContainer, CardBody, CardItem } from "@/components/ui/3d-card"
+import TeamGlobe from "@/components/team-globe"
 
 const highlightStats = [
   { value: "80+", label: "Students active", description: "From across Lucknow" },
@@ -67,7 +69,10 @@ export default function Impact() {
         >
           <div className="grid grid-cols-1 gap-10 lg:grid-cols-2">
             <div className="order-2 w-full justify-self-center lg:order-1">
-              <ImpactVisualization />
+              <div className="relative h-[500px] w-full overflow-hidden rounded-3xl border border-white/20 bg-white/70 shadow-2xl backdrop-blur-3xl dark:border-white/10 dark:bg-white/5">
+                <LiquidGlassBackdrop radiusClassName="rounded-[inherit]" />
+                <TeamGlobe />
+              </div>
             </div>
             <div className="relative order-1 space-y-6 rounded-3xl border border-white/20 bg-white/70 p-8 text-foreground shadow-2xl backdrop-blur-3xl dark:border-white/10 dark:bg-white/5 dark:text-white lg:order-2">
               <LiquidGlassBackdrop radiusClassName="rounded-[inherit]" />
@@ -92,9 +97,14 @@ export default function Impact() {
           align="center"
           eyebrow="Event highlight"
           title="Scrapyard Lucknow 2024"
-          description="Our debut hackathon united 40+ coders, designers, filmmakers, and builders to tackle civic, education, and sustainability problems."
+          description={
+            <span className="mx-auto block max-w-2xl">
+              Our debut hackathon united 40+ coders, designers, filmmakers, and builders to tackle
+              civic, education, and sustainability problems.
+            </span>
+          }
         >
-          <div className="grid grid-cols-1 gap-6 md:grid-cols-3">
+          <div className="grid grid-cols-1 gap-6 lg:grid-cols-3">
             {[
               {
                 image: "/images/b653f79c-fcc9-49bb-a92a-4fc454659b3a-1-105-c.jpeg",
@@ -102,7 +112,7 @@ export default function Impact() {
                 copy: "40+ talented developers united for innovation",
               },
               {
-                image: "/images/432a787b-bfde-4dd0-8c2a-cb994146a3b9-1-105-c.jpeg",
+                image: "/images/hero-img.jpeg",
                 title: "Creative Ideation",
                 copy: "Brainstorming solutions to real-world problems",
               },
@@ -111,23 +121,33 @@ export default function Impact() {
                 title: "Project Showcase",
                 copy: "Presenting prototypes to judges and community",
               },
-            ].map((card, idx) => (
-              <div
-                key={card.title}
-                className="card-surface relative overflow-hidden rounded-3xl border border-white/20 bg-white/70 p-0 text-foreground shadow-2xl backdrop-blur-3xl dark:border-white/10 dark:bg-white/5 dark:text-white"
-                style={{ animationDelay: `${idx * 0.1}s` }}
-              >
-                <LiquidGlassBackdrop radiusClassName="rounded-[inherit]" />
-                <div className="relative z-10">
-                  <div className="relative h-60 w-full overflow-hidden rounded-t-3xl">
-                    <Image src={card.image} alt={card.title} fill className="object-cover" />
-                  </div>
-                  <div className="p-6">
-                    <p className="font-display text-xl text-foreground dark:text-white">{card.title}</p>
-                    <p className="text-sm text-muted-foreground dark:text-white/70">{card.copy}</p>
-                  </div>
-                </div>
-              </div>
+            ].map((card) => (
+              <CardContainer key={card.title} className="inter-var" containerClassName="py-4">
+                <CardBody className="group/card relative h-auto w-full rounded-3xl border border-white/20 bg-white/70 p-6 shadow-2xl backdrop-blur-3xl transition-all hover:shadow-[var(--glow-strong)] dark:border-white/10 dark:bg-white/5">
+                  <CardItem
+                    translateZ="50"
+                    className="font-display text-2xl font-bold text-foreground dark:text-white"
+                  >
+                    {card.title}
+                  </CardItem>
+                  <CardItem
+                    as="p"
+                    translateZ="60"
+                    className="mt-2 text-sm text-muted-foreground dark:text-white/70"
+                  >
+                    {card.copy}
+                  </CardItem>
+                  <CardItem translateZ="100" className="mt-4 w-full">
+                    <Image
+                      src={card.image}
+                      height={1000}
+                      width={1000}
+                      className="h-60 w-full rounded-xl object-cover shadow-xl group-hover/card:shadow-2xl"
+                      alt={card.title}
+                    />
+                  </CardItem>
+                </CardBody>
+              </CardContainer>
             ))}
           </div>
         </PageSection>

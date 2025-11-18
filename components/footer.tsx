@@ -18,11 +18,11 @@ const quickLinks = [
 
 export function Footer() {
   return (
-    <footer className="mt-16 border-t border-white/10 bg-card/80 text-sm text-muted-foreground backdrop-blur-2xl">
+    <footer className="mt-16 border-t border-white/20 bg-white/70 text-sm text-muted-foreground backdrop-blur-xl dark:border-white/10 dark:bg-white/5">
       <div className="section-shell grid gap-10 md:grid-cols-4">
         <div className="space-y-3">
           <div className="inline-flex items-center gap-3 text-foreground">
-            <div className="grid h-11 w-11 place-items-center rounded-2xl bg-gradient-to-br from-[var(--brand-pink)]/80 to-[var(--brand-purple)]/80 text-white shadow-[var(--glow-soft)]">
+            <div className="grid h-11 w-11 place-items-center rounded-2xl bg-[var(--brand-purple)] text-white shadow-[var(--glow-soft)]">
               <Image
                 src={logo}
                 alt="Bits&Bytes logo"
@@ -78,7 +78,7 @@ export function Footer() {
                 href={href}
                 target="_blank"
                 rel="noreferrer"
-                className="inline-flex items-center gap-2 rounded-full border border-white/10 px-4 py-2 transition-colors hover:border-white/30 hover:text-foreground"
+                className="inline-flex items-center gap-2 rounded-full border border-white/30 bg-white/50 px-4 py-2 backdrop-blur-md transition-colors hover:border-white/50 hover:text-foreground dark:bg-white/10"
               >
                 <Icon className="h-4 w-4" />
                 {label}

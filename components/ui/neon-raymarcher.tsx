@@ -140,8 +140,11 @@ vec3 calcNormal(vec3 p) {
 vec3 getHolographicMaterial(vec3 normal, vec3 viewDir, float time) {
   float fresnel = pow(1.0 - max(dot(normal, viewDir), 0.0), 2.0);
   float hue = dot(normal, viewDir) * 3.14159 + time * 0.5;
-  vec3 greenShades = vec3(0.0, sin(hue) * 0.3 + 0.7, sin(hue + 1.0) * 0.2 + 0.3);
-  return greenShades * fresnel * 1.2;
+  // Bits&Bytes brand colors: Deep Purple #3e1e68 and Vibrant Pink #e45a92
+  vec3 purple = vec3(0.243, 0.118, 0.408);
+  vec3 pink = vec3(0.894, 0.353, 0.573);
+  vec3 brandShades = mix(purple, pink, sin(hue) * 0.5 + 0.5);
+  return brandShades * fresnel * 1.5;
 }
 
 void main() {
@@ -168,8 +171,9 @@ void main() {
     float spec = pow(max(dot(normal, halfDir), 0.0), 32.0);
     vec3 iridescent = getHolographicMaterial(normal, viewDir, u_time);
     float rimLight = pow(1.0 - max(dot(normal, viewDir), 0.0), 3.0);
-    vec3 rimColor = vec3(0.4, 0.8, 1.0) * rimLight * 0.5;
-    vec3 baseColor = vec3(0.1, 0.12, 0.15);
+    // Brand coral #ffacac for rim light
+    vec3 rimColor = vec3(1.0, 0.675, 0.675) * rimLight * 0.6;
+    vec3 baseColor = vec3(0.062, 0.031, 0.104);
     color = baseColor * (0.1 + diff * 0.4);
     color += iridescent * (0.8 + diff * 0.2);
     color += vec3(1.0, 0.9, 0.8) * spec * 0.6;
@@ -263,7 +267,7 @@ export const Scene: FC = () => {
   )
 
   return (
-    <div className="h-full w-full bg-gradient-to-b from-neutral-950 via-neutral-900 to-emerald-900">
+    <div className="h-full w-full bg-[var(--brand-ink)]">
       <Canvas
         camera={cameraConfig}
         dpr={1}
