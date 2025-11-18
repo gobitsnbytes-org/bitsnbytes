@@ -57,7 +57,7 @@ export default function Home() {
           {stats.map((stat) => (
             <Card
               key={stat.label}
-              className="border-white/20 bg-white/80 p-6 shadow-[var(--shadow-card)] dark:border-white/5 dark:bg-white/5"
+              className="border-white/15 bg-card/90 p-6 shadow-[var(--shadow-card)] dark:border-white/10 dark:bg-white/5"
             >
               <CardContent className="p-0">
                 <p className="text-4xl font-bold text-[var(--brand-pink)]">{stat.value}</p>
@@ -105,7 +105,7 @@ export default function Home() {
         title="Ready to build the next flagship movement?"
         description="Whether you’re a first-time tinkerer or already leading launches, we’ll plug you into squads, mentors, and events worthy of your ambition."
       >
-        <div className="mx-auto flex max-w-4xl flex-col gap-5 rounded-[32px] border border-white/20 bg-gradient-to-br from-white/70 to-white/30 p-10 text-center shadow-[var(--shadow-card)] backdrop-blur-3xl dark:from-white/10 dark:to-white/0">
+        <div className="mx-auto flex max-w-4xl flex-col gap-5 rounded-[32px] border border-white/15 bg-gradient-to-br from-white/80 to-white/40 p-10 text-center shadow-[var(--shadow-card)] backdrop-blur-3xl dark:from-white/10 dark:to-white/0">
           <div className="flex flex-wrap justify-center gap-3 text-sm text-muted-foreground">
             <span className="rounded-full border border-white/30 px-4 py-2 uppercase tracking-[0.35em] text-xs text-foreground">
               Workshops

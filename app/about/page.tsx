@@ -118,18 +118,18 @@ export default function About() {
   return (
     <main className="bg-transparent">
       <PageSection
+        align="center"
         eyebrow="About"
         title={aboutContent.title}
         description={aboutContent.description}
-        align="center"
       >
         <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
           {aboutContent.sections.map((section, index) => (
             <div
               key={section.title}
-              className="card-surface border-white/20 bg-white/80 p-6 text-left dark:border-white/5 dark:bg-white/5"
+              className="rounded-3xl border border-white/15 bg-card/90 p-6 shadow-[var(--shadow-card)] backdrop-blur-lg transition-transform hover:-translate-y-1 dark:bg-white/5"
               style={{ animationDelay: `${index * 0.05}s` }}
-                  >
+            >
               <h3 className="font-display text-2xl font-semibold text-foreground">{section.title}</h3>
               <p className="mt-3 text-base text-muted-foreground">{section.description}</p>
             </div>
@@ -138,16 +138,14 @@ export default function About() {
       </PageSection>
 
       <PageSection
+        align="center"
         eyebrow="Team"
         title="Meet the Agents"
         description="A tight crew of designers, engineers, community leads, and storytellers powering Lucknow’s teen-led tech movement."
-        align="center"
       >
         <TeamCaseStudy members={teamMembers} />
-        <p className="mt-6 text-center text-sm text-muted-foreground">
-          *Roles stay flexible as our team and community grow.
-        </p>
+        <p className="mt-6 text-center text-sm text-muted-foreground">*Roles stay flexible as our team and community grow.</p>
       </PageSection>
-      </main>
+    </main>
   )
 }

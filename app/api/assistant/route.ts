@@ -8,12 +8,20 @@ const openai = new OpenAI({
 const PRIMARY_MODEL = "gpt-5-nano"
 const FALLBACK_MODEL = "gpt-4.1-mini"
 
+const SSE_HEADERS = {
+  "Content-Type": "text/event-stream",
+  "Cache-Control": "no-cache, no-transform",
+  Connection: "keep-alive",
+}
+
 const WEB3FORMS_ENDPOINT = "https://api.web3forms.com/submit"
 
 type ClientMessage = {
   role: "user" | "assistant"
   content: string
 }
+
+type AssistantAction = { type: "navigate"; path: string }
 
 const SITE_CONTEXT = `
 You are the official AI assistant for Bits&Bytes, a teen-led code club based in Lucknow.
@@ -85,7 +93,7 @@ const tools: OpenAI.Chat.Completions.ChatCompletionTool[] = [
           path: {
             type: "string",
             description: "The path to navigate to",
-            enum: ["/", "/about", "/impact", "/join", "/contact"],
+            enum: ["/", "/about", "/impact", "/join", "/contact", "home", "about", "impact", "join", "contact"],
           },
         },
         required: ["path"],
@@ -120,19 +128,18 @@ function mapClientMessagesToOpenAI(messages: ClientMessage[]): OpenAI.Chat.ChatC
 }
 
 function sectionToPath(section: string): string {
-  switch (section) {
-    case "about":
-      return "/about"
-    case "impact":
-      return "/impact"
-    case "join":
-      return "/join"
-    case "contact":
-      return "/contact"
-    case "home":
-    default:
-      return "/"
-  }
+  const normalized = normalizePath(section)
+  return normalized
+}
+
+function normalizePath(value?: string): string {
+  const input = (value ?? "/").toString().trim().toLowerCase()
+  if (input === "/" || input === "home") return "/"
+  if (input === "/about" || input === "about") return "/about"
+  if (input === "/impact" || input === "impact") return "/impact"
+  if (input === "/join" || input === "join") return "/join"
+  if (input === "/contact" || input === "contact") return "/contact"
+  return "/"
 }
 
 async function handleSubmitContactTool(args: any) {
@@ -267,12 +274,17 @@ export async function POST(req: NextRequest) {
     const choice = completion.choices[0]
     const message = choice?.message
 
-    // If no tool calls, just return the answer.
+    // If no tool calls, stream the final answer directly.
     if (!message?.tool_calls || message.tool_calls.length === 0) {
-      const answer = message?.content?.trim()
-      return NextResponse.json({
-        answer: answer ?? "I’m not sure about that based on the information publicly available on this site.",
-      })
+      try {
+        return await streamAssistantResponse(modelUsed, baseMessages)
+      } catch (streamErr) {
+        console.error("Assistant stream error:", streamErr)
+        const answer = message?.content?.trim()
+        return NextResponse.json({
+          answer: answer ?? "I’m not sure about that based on the information publicly available on this site.",
+        })
+      }
     }
 
     // Handle first tool call for now (this already gives agentic behaviour).
@@ -292,7 +304,7 @@ export async function POST(req: NextRequest) {
     if (toolName === "submit_contact_form") {
       toolResult = await handleSubmitContactTool(toolArgs)
     } else if (toolName === "suggest_navigation") {
-      const path = sectionToPath(toolArgs?.path ?? "/")
+      const path = normalizePath(toolArgs?.path)
       toolResult = { success: true, path }
       action = { type: "navigate", path }
     } else if (toolName === "get_site_section") {
@@ -312,19 +324,15 @@ export async function POST(req: NextRequest) {
       },
     ]
 
-    const finalCompletion = await openai.chat.completions.create({
-      model: modelUsed,
-      messages: messagesWithTool,
-      temperature: 0.3,
-      max_tokens: 400,
-    })
-
-    const finalAnswer = finalCompletion.choices[0]?.message?.content?.trim()
-
-    return NextResponse.json({
-      answer: finalAnswer ?? "I’ve completed the requested action.",
-      action,
-    })
+    try {
+      return await streamAssistantResponse(modelUsed, messagesWithTool, action)
+    } catch (streamErr) {
+      console.error("Assistant stream error after tool call:", streamErr)
+      return NextResponse.json(
+        { error: "Failed to stream the assistant response after tool call." },
+        { status: 500 }
+      )
+    }
   } catch (error) {
     console.error("Assistant API error:", error)
     return NextResponse.json(
@@ -332,6 +340,52 @@ export async function POST(req: NextRequest) {
       { status: 500 }
     )
   }
+}
+
+async function streamAssistantResponse(
+  model: string,
+  messages: OpenAI.Chat.ChatCompletionMessageParam[],
+  action?: AssistantAction
+) {
+  const completion = await openai.chat.completions.create({
+    model,
+    messages,
+    temperature: 0.3,
+    max_tokens: 400,
+    stream: true,
+  })
+
+  const encoder = new TextEncoder()
+
+  const stream = new ReadableStream({
+    async start(controller) {
+      const send = (payload: Record<string, unknown>) => {
+        controller.enqueue(encoder.encode(`data: ${JSON.stringify(payload)}\n\n`))
+      }
+
+      send({ type: "meta", model })
+
+      try {
+        for await (const part of completion) {
+          const delta = part.choices[0]?.delta
+          if (delta?.content) {
+            send({ type: "token", content: delta.content })
+          }
+        }
+
+        send({ type: "done", action: action ?? null })
+      } catch (error) {
+        console.error("Streaming error:", error)
+        send({ type: "error", message: "Failed to stream assistant response." })
+      } finally {
+        controller.close()
+      }
+    },
+  })
+
+  return new Response(stream, {
+    headers: SSE_HEADERS,
+  })
 }
 
 

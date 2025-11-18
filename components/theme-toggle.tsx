@@ -23,6 +23,7 @@ export function ThemeToggle({ className, size = 'md' }: ThemeToggleProps) {
   useEffect(() => setMounted(true), [])
 
   const isDark = resolvedTheme === 'dark'
+  const srLabel = mounted ? `Use ${isDark ? 'light' : 'dark'} theme` : 'Toggle color theme'
 
   return (
     <button
@@ -35,7 +36,7 @@ export function ThemeToggle({ className, size = 'md' }: ThemeToggleProps) {
       )}
       onClick={() => setTheme(isDark ? 'light' : 'dark')}
     >
-      <span className="sr-only">Use {isDark ? 'light' : 'dark'} theme</span>
+      <span className="sr-only">{srLabel}</span>
       <span
       className={cn(
           'absolute inset-px rounded-full bg-background/60 backdrop-blur-xl transition-colors duration-300 dark:bg-background/40',

@@ -10,7 +10,7 @@ import { cn } from "@/lib/utils"
 const INTERESTS = ["Web Development", "Mobile Apps", "AI/ML", "Game Dev", "Design"]
 
 const fieldClass =
-  "w-full rounded-2xl border border-white/20 bg-white/70 px-4 py-3 text-base text-foreground shadow-inner shadow-black/5 transition focus:border-[var(--brand-pink)] focus:outline-none focus:ring-2 focus:ring-[var(--brand-pink)]/30 dark:bg-white/5 dark:text-white"
+  "w-full rounded-2xl border border-white/20 bg-card/90 px-4 py-3 text-base text-foreground shadow-inner shadow-black/5 transition focus:border-[var(--brand-pink)] focus:outline-none focus:ring-2 focus:ring-[var(--brand-pink)]/30 dark:border-white/15 dark:bg-white/5 dark:text-white"
 
 export default function Join() {
   const [formData, setFormData] = useState({
