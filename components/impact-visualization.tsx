@@ -1,61 +1,36 @@
 "use client"
 
+import dynamic from "next/dynamic"
+
+import { LiquidGlassBackdrop } from "@/components/ui/liquid-glass-effect"
+
+const NeonScene = dynamic(() => import("@/components/ui/neon-raymarcher").then((mod) => mod.Scene), {
+  ssr: false,
+  loading: () => <div className="h-full w-full animate-pulse rounded-[40px] bg-black/30" />,
+})
+
+const highlights = [
+  { label: "Hackathons run", value: "5", detail: "Student built & operated" },
+  { label: "Mentors onboard", value: "18", detail: "Design · Dev · Content" },
+  { label: "Prototypes shipped", value: "26", detail: "Since Jan 2024" },
+]
+
 export default function ImpactVisualization() {
-  const schools = [
-    { name: "Central High", color: "#3e1e68", size: "w-24 h-24" },
-    { name: "Tech Academy", color: "#e45a92", size: "w-32 h-32" },
-    { name: "Oak Ridge", color: "#5d2f77", size: "w-20 h-20" },
-    { name: "Valley Tech", color: "#ffacac", size: "w-28 h-28" },
-    { name: "STEAM Lab", color: "#3e1e68", size: "w-26 h-26" },
-  ]
-
   return (
-    <div className="relative h-96 flex items-center justify-center w-full">
-      <div className="relative w-full h-full">
-        {/* Center circle */}
-        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-20">
-          <div className="w-24 h-24 bg-[#e45a92] rounded-full flex items-center justify-center shadow-2xl animate-pulse-glow">
-            <span className="font-display font-bold text-white text-2xl">80+</span>
-          </div>
-        </div>
-
-        {/* Orbiting schools */}
-        {schools.map((school, i) => {
-          const angle = (i / schools.length) * 360
-          const distance = 140
-          const x = Math.cos((angle * Math.PI) / 180) * distance
-          const y = Math.sin((angle * Math.PI) / 180) * distance
-
-          return (
-            <div
-              key={i}
-              className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2"
-              style={{
-                transform: `translate(calc(-50% + ${x}px), calc(-50% + ${y}px))`,
-                animation: `rotate-slow linear infinite`,
-                animationDuration: "20s",
-              }}
-            >
-              <div
-                className={`${school.size} rounded-full shadow-lg flex items-center justify-center text-white font-bold text-xs text-center p-2 hover:scale-110 transition-transform cursor-pointer`}
-                style={{ backgroundColor: school.color }}
-              >
-                <span>{school.name}</span>
-              </div>
+    <div className="relative w-full">
+      <div className="relative isolate aspect-[4/3] overflow-hidden rounded-[40px] border border-white/30 bg-white/70 shadow-2xl backdrop-blur-3xl dark:border-white/10 dark:bg-white/10">
+        <LiquidGlassBackdrop radiusClassName="rounded-[inherit]" />
+        <NeonScene />
+        <div className="pointer-events-none absolute inset-0 bg-gradient-to-tr from-black/10 via-transparent to-transparent opacity-40 dark:opacity-30" />
+        <div className="absolute inset-x-6 bottom-6 z-10 flex flex-col gap-3 rounded-2xl border border-white/40 bg-white/80 p-5 text-foreground backdrop-blur-xl shadow-lg dark:border-white/20 dark:bg-white/20 dark:text-white sm:flex-row sm:items-center sm:justify-between">
+          {highlights.map((item) => (
+            <div key={item.label} className="flex flex-col">
+              <span className="text-xs uppercase tracking-[0.35em] font-medium text-foreground/80 dark:text-white/80 drop-shadow-sm">{item.label}</span>
+              <p className="text-2xl font-bold text-foreground drop-shadow-sm dark:text-white">{item.value}</p>
+              <p className="text-xs font-medium text-foreground/90 dark:text-white/90 drop-shadow-sm">{item.detail}</p>
             </div>
-          )
-        })}
-
-        {/* Connecting lines */}
-        <svg className="absolute inset-0 w-full h-full" viewBox="0 0 400 400">
-          {schools.map((_, i) => {
-            const angle = (i / schools.length) * 360
-            const distance = 140
-            const x = Math.cos((angle * Math.PI) / 180) * distance + 200
-            const y = Math.sin((angle * Math.PI) / 180) * distance + 200
-            return <line key={i} x1="200" y1="200" x2={x} y2={y} stroke="#e45a92" strokeWidth="2" opacity="0.3" />
-          })}
-        </svg>
+          ))}
+        </div>
       </div>
     </div>
   )

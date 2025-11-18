@@ -1,7 +1,7 @@
 "use client"
 
-import Navigation from "@/components/navigation"
 import TeamCaseStudy from "@/components/team-case-study"
+import { PageSection } from "@/components/page-section"
 
 const aboutContent = {
   title: "About Bits&Bytes",
@@ -36,7 +36,7 @@ const teamMembers = [
     id: 1,
     name: "Yash",
     role: "Founder",
-    image: "/portrait-of-young-tech-leader.jpg",
+    image: "/team/yash.jpeg",
     bio: "Leads the entire organization, coordinating between all teams, organizing events, setting timelines, and ensuring that work gets executed efficiently.",
     expertise: ["Leadership", "Event Operations", "Team Coordination"],
   },
@@ -52,25 +52,28 @@ const teamMembers = [
     id: 3,
     name: "Akshat",
     role: "Co-Founder & Technical Lead",
-    image: "/portrait-of-young-project-manager.jpg",
-    bio: "Builds and maintains the website, leads programming projects, evaluates tech stacks, and ensures the technical stability of all projects.",
-    expertise: ["Technical Architecture", "Web Development", "Project Delivery"],
+    image: "/team/akshat.png",
+    bio: "Problem solver and tech explorer. Builds and maintains the website, leads programming projects, evaluates tech stacks, and ensures the technical stability of all projects.",
+    expertise: ["AI & LLMOps", "Cloud Infrastructure", "Full-Stack Dev"],
+    linkedin: "https://www.linkedin.com/in/akshat-singh-kushwaha/",
   },
   {
     id: 4,
     name: "Devansh",
     role: "Founding Member, Backend & Outreach Coordinator",
-    image: "/portrait-of-young-developer.jpg",
+    image: "/team/devaansh.jpeg",
     bio: "Manages backend development, collaborates on technical features, and builds relationships with schools, students, and external communities for participation and support.",
     expertise: ["Backend Development", "Databases", "Community Outreach"],
+    linkedin: "https://www.linkedin.com/in/devaanshpa/",
   },
   {
     id: 5,
     name: "Saksham",
     role: "Ideation & Research Associate",
-    image: "/portrait-of-young-designer.jpg",
+    image: "/team/saksham.jpeg",
     bio: "Brainstorms new concepts, supports ongoing initiatives with research, and helps refine plans for events and content.",
     expertise: ["Ideation", "Research", "Concept Development"],
+    linkedin: "https://www.linkedin.com/in/sakshm/",
   },
   {
     id: 6,
@@ -104,68 +107,42 @@ const teamMembers = [
     bio: "Supports the graphics design workflows, helping to craft visuals and streamline the design process.",
     expertise: ["Design Support", "Workflow Optimization", "Content Design"],
   },
-  {
-    id: 10,
-    name: "Areeb",
-    role: "Community Outreach & Programming Support (flexible role)",
-    image: "/portrait-of-young-developer.jpg",
-    bio: "Expands reach within student networks, assists in coding tasks, and provides technical support for events.",
-    expertise: ["Community Outreach", "Programming Support", "Event Tech"],
-  },
 ]
 
 export default function About() {
   return (
-    <>
-      <Navigation />
-      <main className="pt-24 pb-20 px-4 sm:px-6 lg:px-8 bg-white">
-        <div className="max-w-7xl mx-auto">
-          {/* About Section */}
-          <div className="mb-20">
-            <div className="text-center mb-16 animate-slide-in-up">
-              <h1 className="font-display font-bold text-5xl sm:text-6xl text-[#3e1e68] mb-4">{aboutContent.title}</h1>
-              <p className="text-xl text-[#656565] max-w-2xl mx-auto">{aboutContent.description}</p>
+    <main className="bg-transparent">
+      <PageSection
+        align="center"
+        eyebrow="About"
+        title={aboutContent.title}
+        description={aboutContent.description}
+      >
+        <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
+          {aboutContent.sections.map((section, index) => (
+            <div
+              key={section.title}
+              className="rounded-3xl border border-white/15 bg-card/90 p-6 shadow-[var(--shadow-card)] backdrop-blur-lg transition-transform hover:-translate-y-1 dark:bg-white/5"
+              style={{ animationDelay: `${index * 0.05}s` }}
+            >
+              <h3 className="font-display text-2xl font-semibold text-foreground">{section.title}</h3>
+              <p className="mt-3 text-base text-muted-foreground">{section.description}</p>
             </div>
-
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-16">
-              {aboutContent.sections.map((section, index) => {
-                const colors = ["bg-[#3e1e68]", "bg-[#e45a92]", "bg-[#5d2f77]", "bg-[#ffacac]"]
-                const textColors = ["text-white", "text-white", "text-white", "text-[#3e1e68]"]
-                return (
-                  <div
-                    key={index}
-                    className={`p-8 ${colors[index % 4]} rounded-2xl ${textColors[index % 4]} animate-slide-in-up`}
-                    style={{ animationDelay: `${index * 0.1}s` }}
-                  >
-                    <h3 className="font-display font-bold text-2xl mb-3">{section.title}</h3>
-                    <p
-                      className={textColors[index % 4] === "text-white" ? "text-white/90" : "text-[#3e1e68]/80"}
-                      style={{ opacity: textColors[index % 4] === "text-white" ? 0.9 : 0.8 }}
-                    >
-                      {section.description}
-                    </p>
-                  </div>
-                )
-              })}
-            </div>
-          </div>
-
-          {/* Team Section */}
-          <div className="border-t-2 border-[#e45a92]/20 pt-20">
-            <div className="text-center mb-16 animate-slide-in-up">
-              <h2 className="font-display font-bold text-5xl sm:text-6xl text-[#3e1e68] mb-4">Meet the Team</h2>
-              <p className="text-xl text-[#656565] max-w-2xl mx-auto">
-                The core crew behind Bits&Bytes—leading strategy, tech, community, and creativity to build Lucknow&apos;s coolest teen-led tech movement.
-              </p>
-            </div>
-
-            <TeamCaseStudy members={teamMembers} />
-            <p className="mt-6 text-center text-sm text-[#656565] max-w-2xl mx-auto">
-              *Some roles are flexible and may evolve as our team and community grow.
-            </p>
-          </div>
+          ))}
         </div>
-      </main>
-    </>
+      </PageSection>
+
+      <PageSection
+        align="center"
+        eyebrow="Team"
+        title="Meet the Agents"
+        description="A tight crew of designers, engineers, community leads, and storytellers powering Lucknow’s teen-led tech movement."
+      >
+        <TeamCaseStudy members={teamMembers} />
+        <p className="mt-6 text-center text-sm text-muted-foreground">*Roles stay flexible as our team and community grow.</p>
+      </PageSection>
+    </main>
   )
 }
+
+

@@ -25,7 +25,6 @@ export function TextGlitch({ text, hoverText, href, className = "", delay = 0 }:
 
       if (textRef.current) {
         gsap.set(textRef.current, {
-          backgroundSize: "0%",
           scale: 0.95,
           opacity: 0.7,
         })
@@ -37,15 +36,7 @@ export function TextGlitch({ text, hoverText, href, className = "", delay = 0 }:
           scale: 1,
           duration: 0.6,
           ease: "back.out(1.7)",
-        }).to(
-          textRef.current,
-          {
-            backgroundSize: "100%",
-            duration: 2,
-            ease: "elastic.out(1, 0.5)",
-          },
-          "-=0.3",
-        )
+        })
       }
     }
 
@@ -125,9 +116,8 @@ export function TextGlitch({ text, hoverText, href, className = "", delay = 0 }:
       ref={textRef}
       className={`
         text-[10vw] font-bold leading-none tracking-tight m-0 
-        text-neutral-600/20
-        bg-gradient-to-r from-neutral-700 to-neutral-500 bg-clip-text bg-no-repeat
-        border-b border-neutral-600/20
+        text-[var(--brand-coral)]
+        border-b border-[var(--brand-plum)]/30
         flex flex-col items-start justify-center relative
         transition-all duration-500 ease-out
         cursor-pointer
@@ -135,9 +125,6 @@ export function TextGlitch({ text, hoverText, href, className = "", delay = 0 }:
         ${className}
       `}
       style={{
-        backgroundSize: "0%",
-        WebkitBackgroundClip: "text",
-        backgroundClip: "text",
         width: "100%",
         maxWidth: "100vw",
         wordBreak: "break-word",

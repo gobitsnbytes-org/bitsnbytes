@@ -1,155 +1,180 @@
 "use client"
 
-import Navigation from "@/components/navigation"
-import ImpactVisualization from "@/components/impact-visualization"
 import Image from "next/image"
-import { ShaderAnimation } from "@/components/ui/shader-animation"
-import { SlideTabs } from "@/components/ui/slide-tabs"
+
+import ImpactVisualization from "@/components/impact-visualization"
+import { PageSection } from "@/components/page-section"
+import { LiquidButton } from "@/components/ui/liquid-glass-button"
+import { LiquidGlassBackdrop } from "@/components/ui/liquid-glass-effect"
+import { CardContainer, CardBody, CardItem } from "@/components/ui/3d-card"
+import TeamGlobe from "@/components/team-globe"
+
+const highlightStats = [
+  { value: "80+", label: "Students active", description: "From across Lucknow" },
+  { value: "10", label: "Schools represented", description: "Cross-campus exchange" },
+  { value: "50+", label: "Projects launched", description: "Products, apps, AI" },
+  { value: "1st", label: "Student-led hackathon", description: "Scrapyard Lucknow 2024" },
+]
+
+const culturePillars = [
+  {
+    title: "Innovation first",
+    copy: "Every prompt becomes a prototype. We encourage bold experiments and rapid iteration.",
+  },
+  {
+    title: "Community power",
+    copy: "Mentors, pods, and accountability partners keep everyone shipping and learning.",
+  },
+  {
+    title: "Real-world impact",
+    copy: "We solve for real audiences, from school ops to civic tech to accessibility.",
+  },
+]
 
 export default function Impact() {
   return (
     <>
-      <Navigation />
-      {/* Hero section with shader animation */}
-      <section className="relative h-[60vh] min-h-[500px] overflow-hidden">
-        <div className="absolute inset-0 z-0">
-          <ShaderAnimation />
-        </div>
-        <div className="absolute inset-0 z-10 bg-gradient-to-b from-black/60 via-black/40 to-transparent" />
-        <div className="relative z-20 h-full flex flex-col items-center justify-center px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-8 animate-slide-in-up">
-            <h1 className="font-display font-bold text-5xl sm:text-6xl text-white mb-4 drop-shadow-lg">
-              Our Impact
-            </h1>
-            <p className="text-xl text-white/90 max-w-2xl mx-auto drop-shadow-md">
-              Transforming teen creativity into real-world impact
-            </p>
-          </div>
-          <div className="animate-fade-in" style={{ animationDelay: "0.3s" }}>
-            <SlideTabs
-              tabs={["Overview", "Stats", "Events", "Projects", "Community"]}
-              defaultTab={0}
-            />
+      <section className="relative min-h-[60vh] overflow-hidden rounded-b-[3rem] text-white">
+        <div className="absolute inset-0 bg-gradient-to-b from-white/30 via-transparent to-[#05020a] dark:from-black/70 dark:via-[#110222]/70 dark:to-[#05020a]" />
+        <div className="relative z-10 mx-auto flex max-w-5xl flex-col items-center gap-6 px-4 py-24 text-center text-foreground sm:px-6 dark:text-white">
+          <div className="relative isolate w-full rounded-[40px] border border-white/30 bg-white/50 p-10 shadow-2xl backdrop-blur-3xl dark:border-white/10 dark:bg-white/5">
+            <LiquidGlassBackdrop radiusClassName="rounded-[inherit]" />
+            <div className="relative z-10 flex flex-col items-center gap-4 text-center">
+              <span className="rounded-full border border-white/40 px-4 py-1 text-xs uppercase tracking-[0.35em] font-medium text-foreground/90 dark:text-white/90 drop-shadow-sm">
+                Impact
+              </span>
+              <h1 className="font-display text-4xl leading-tight font-bold text-foreground drop-shadow-md dark:text-white md:text-5xl">
+                Our impact hits beyond the venue walls
+              </h1>
+              <p className="max-w-2xl text-base font-medium text-foreground/95 dark:text-white/95 drop-shadow-sm md:text-lg">
+                From first-high-schooler hackathons to squads embedded inside local schools, we design experiences that get teens building—and ship the outcomes publicly.
+              </p>
+              <div className="flex flex-wrap items-center justify-center gap-4">
+                <LiquidButton className="bg-gradient-to-r from-[var(--brand-pink)] to-[var(--brand-purple)] text-white shadow-[var(--glow-strong)] hover:scale-105">
+                  See showcase reel
+                </LiquidButton>
+                <LiquidButton className="border-2 border-white/40 bg-white/10 text-foreground backdrop-blur-sm hover:bg-white/20 dark:text-white">
+                  Book the team
+                </LiquidButton>
+              </div>
+            </div>
           </div>
         </div>
       </section>
 
-      <main className="pt-20 pb-20 px-4 sm:px-6 lg:px-8 bg-white">
-        <div className="max-w-7xl mx-auto">
-
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start mb-20">
-            {/* Left - Visualization */}
-            <div className="animate-slide-in-up w-full flex justify-center">
-              <ImpactVisualization />
+      <main className="bg-transparent">
+        <PageSection
+          title="Building the future with teen-led squads"
+          description="Workshops, hackathons, and labs unlock hands-on practice, industry mentorship, and opportunities to deploy solutions in schools and communities."
+        >
+          <div className="grid grid-cols-1 gap-10 lg:grid-cols-2">
+            <div className="order-2 w-full justify-self-center lg:order-1">
+              <div className="relative h-[500px] w-full overflow-hidden rounded-3xl border border-white/20 bg-white/70 shadow-2xl backdrop-blur-3xl dark:border-white/10 dark:bg-white/5">
+                <LiquidGlassBackdrop radiusClassName="rounded-[inherit]" />
+                <TeamGlobe />
+              </div>
             </div>
-
-            {/* Right - Stats */}
-            <div className="animate-slide-in-up" style={{ animationDelay: "0.2s" }}>
-              <h2 className="font-display font-bold text-3xl text-[#3e1e68] mb-8">Building the Future</h2>
-              <div className="space-y-8">
-                <div className="pb-6 border-b-2 border-[#e45a92]/20">
-                  <p className="font-display font-bold text-[#e45a92] text-4xl">80+</p>
-                  <p className="text-[#656565] mt-2 text-lg">Students Joined from Across the Region</p>
-                </div>
-                <div className="pb-6 border-b-2 border-[#e45a92]/20">
-                  <p className="font-display font-bold text-[#e45a92] text-4xl">10</p>
-                  <p className="text-[#656565] mt-2 text-lg">Different Schools Represented</p>
-                </div>
-                <div className="pb-6 border-b-2 border-[#e45a92]/20">
-                  <p className="font-display font-bold text-[#e45a92] text-4xl">50+</p>
-                  <p className="text-[#656565] mt-2 text-lg">Projects Built by Our Community</p>
-                </div>
-                <div>
-                  <p className="font-display font-bold text-[#e45a92] text-4xl">Hosted first high schooler led hackathon in Lucknow</p>
-                </div>
+            <div className="relative order-1 space-y-6 rounded-3xl border border-white/20 bg-white/70 p-8 text-foreground shadow-2xl backdrop-blur-3xl dark:border-white/10 dark:bg-white/5 dark:text-white lg:order-2">
+              <LiquidGlassBackdrop radiusClassName="rounded-[inherit]" />
+              <div className="relative z-10 space-y-6">
+                {highlightStats.map((stat, index) => (
+                  <div
+                    key={stat.label}
+                    className="flex flex-col border-b border-white/30 pb-5 last:border-none last:pb-0 dark:border-white/10"
+                    style={{ animationDelay: `${index * 0.08}s` }}
+                  >
+                    <span className="text-4xl font-bold text-[var(--brand-pink)]">{stat.value}</span>
+                    <p className="text-lg font-semibold text-foreground dark:text-white">{stat.label}</p>
+                    <p className="text-sm text-muted-foreground dark:text-white/70">{stat.description}</p>
+                  </div>
+                ))}
               </div>
             </div>
           </div>
+        </PageSection>
 
-          <div className="mb-20">
-            <h2 className="font-display font-bold text-3xl text-[#3e1e68] mb-2 text-center">Scrapyard Lucknow 2024</h2>
-            <p className="text-center text-[#656565] mb-12">
-              Our first hackathon brought together talented minds to build amazing projects
-            </p>
-
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-              <div
-                className="rounded-2xl overflow-hidden border-2 border-[#e45a92]/20 hover:border-[#e45a92] transition-colors duration-300 animate-fade-in"
-                style={{ animationDelay: "0.3s" }}
-              >
-                <div className="relative w-full h-64 sm:h-80">
-                  <Image
-                    src="/images/b653f79c-fcc9-49bb-a92a-4fc454659b3a-1-105-c.jpeg"
-                    alt="Scrapyard Lucknow hackathon group photo with 40+ participants"
-                    fill
-                    className="object-cover"
-                  />
-                </div>
-                <div className="p-4 bg-white">
-                  <h3 className="font-display font-bold text-[#3e1e68]">Community United</h3>
-                  <p className="text-sm text-[#656565] mt-1">40+ talented developers united for innovation</p>
-                </div>
-              </div>
-
-              <div
-                className="rounded-2xl overflow-hidden border-2 border-[#e45a92]/20 hover:border-[#e45a92] transition-colors duration-300 animate-fade-in"
-                style={{ animationDelay: "0.4s" }}
-              >
-                <div className="relative w-full h-64 sm:h-80">
-                  <Image
-                    src="/images/432a787b-bfde-4dd0-8c2a-cb994146a3b9-1-105-c.jpeg"
-                    alt="Team member presenting project ideas on whiteboard during hackathon"
-                    fill
-                    className="object-cover"
-                  />
-                </div>
-                <div className="p-4 bg-white">
-                  <h3 className="font-display font-bold text-[#3e1e68]">Creative Ideation</h3>
-                  <p className="text-sm text-[#656565] mt-1">Brainstorming solutions to real-world problems</p>
-                </div>
-              </div>
-
-              <div
-                className="rounded-2xl overflow-hidden border-2 border-[#e45a92]/20 hover:border-[#e45a92] transition-colors duration-300 animate-fade-in"
-                style={{ animationDelay: "0.5s" }}
-              >
-                <div className="relative w-full h-64 sm:h-80">
-                  <Image
-                    src="/images/4c59e5bb-c1eb-4e4d-9b69-f29faa693002-1-105-c.jpeg"
-                    alt="Project presentation showcase with interactive interface"
-                    fill
-                    className="object-cover"
-                  />
-                </div>
-                <div className="p-4 bg-white">
-                  <h3 className="font-display font-bold text-[#3e1e68]">Project Showcase</h3>
-                  <p className="text-sm text-[#656565] mt-1">Presenting innovative solutions to the community</p>
-                </div>
-              </div>
-            </div>
+        <PageSection
+          align="center"
+          eyebrow="Event highlight"
+          title="Scrapyard Lucknow 2024"
+          description={
+            <span className="mx-auto block max-w-2xl">
+              Our debut hackathon united 40+ coders, designers, filmmakers, and builders to tackle
+              civic, education, and sustainability problems.
+            </span>
+          }
+        >
+          <div className="grid grid-cols-1 gap-6 lg:grid-cols-3">
+            {[
+              {
+                image: "/images/b653f79c-fcc9-49bb-a92a-4fc454659b3a-1-105-c.jpeg",
+                title: "Community United",
+                copy: "40+ talented developers united for innovation",
+              },
+              {
+                image: "/images/hero-img.jpeg",
+                title: "Creative Ideation",
+                copy: "Brainstorming solutions to real-world problems",
+              },
+              {
+                image: "/images/4c59e5bb-c1eb-4e4d-9b69-f29faa693002-1-105-c.jpeg",
+                title: "Project Showcase",
+                copy: "Presenting prototypes to judges and community",
+              },
+            ].map((card) => (
+              <CardContainer key={card.title} className="inter-var" containerClassName="py-4">
+                <CardBody className="group/card relative h-auto w-full rounded-3xl border border-white/20 bg-white/70 p-6 shadow-2xl backdrop-blur-3xl transition-all hover:shadow-[var(--glow-strong)] dark:border-white/10 dark:bg-white/5">
+                  <CardItem
+                    translateZ="50"
+                    className="font-display text-2xl font-bold text-foreground dark:text-white"
+                  >
+                    {card.title}
+                  </CardItem>
+                  <CardItem
+                    as="p"
+                    translateZ="60"
+                    className="mt-2 text-sm text-muted-foreground dark:text-white/70"
+                  >
+                    {card.copy}
+                  </CardItem>
+                  <CardItem translateZ="100" className="mt-4 w-full">
+                    <Image
+                      src={card.image}
+                      height={1000}
+                      width={1000}
+                      className="h-60 w-full rounded-xl object-cover shadow-xl group-hover/card:shadow-2xl"
+                      alt={card.title}
+                    />
+                  </CardItem>
+                </CardBody>
+              </CardContainer>
+            ))}
           </div>
+        </PageSection>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <div className="p-8 bg-[#3e1e68] rounded-2xl text-white animate-fade-in" style={{ animationDelay: "0.3s" }}>
-              <h3 className="font-display font-bold text-lg mb-4 text-[#e45a92]">Innovation First</h3>
-              <p className="text-white/80 text-sm">
-                We encourage creative thinking and bold ideas. Every project is a chance to push boundaries.
-              </p>
-            </div>
-            <div className="p-8 bg-[#e45a92] rounded-2xl text-white animate-fade-in" style={{ animationDelay: "0.4s" }}>
-              <h3 className="font-display font-bold text-lg mb-4 text-white">Community Power</h3>
-              <p className="text-white/80 text-sm">
-                Together we're stronger. Our community supports each other through challenges and celebrates every win.
-              </p>
-            </div>
-            <div className="p-8 bg-[#5d2f77] rounded-2xl text-white animate-fade-in" style={{ animationDelay: "0.5s" }}>
-              <h3 className="font-display font-bold text-lg mb-4 text-[#ffacac]">Real-World Impact</h3>
-              <p className="text-white/80 text-sm">
-                Our projects don't just exist in code. They solve problems and make a difference in people's lives.
-              </p>
-            </div>
+        <PageSection
+          align="center"
+          eyebrow="Culture"
+          title="What we stand for"
+          description="We’re intentional about the energy in every room—how we collaborate, how we support each other, how we chase impact."
+        >
+          <div className="grid gap-6 md:grid-cols-3">
+            {culturePillars.map((pillar, idx) => (
+              <div
+                key={pillar.title}
+                className="relative rounded-3xl border border-white/15 bg-white/70 p-6 text-left text-foreground shadow-2xl backdrop-blur-2xl dark:border-white/10 dark:bg-white/5 dark:text-white animate-slide-in-up"
+                style={{ animationDelay: `${idx * 0.12}s` }}
+              >
+                <LiquidGlassBackdrop radiusClassName="rounded-[inherit]" />
+                <div className="relative z-10">
+                  <p className="text-xs uppercase tracking-[0.35em] text-[var(--brand-pink)]">0{idx + 1}</p>
+                  <h3 className="mt-3 font-display text-xl text-foreground dark:text-white">{pillar.title}</h3>
+                  <p className="mt-2 text-sm text-muted-foreground dark:text-white/70">{pillar.copy}</p>
+                </div>
+              </div>
+            ))}
           </div>
-        </div>
+        </PageSection>
       </main>
     </>
   )

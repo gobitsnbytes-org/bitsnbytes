@@ -1,9 +1,20 @@
 "use client"
 
-import Navigation from "@/components/navigation"
-import { Mail, MapPin, Clock } from "lucide-react"
+import { Mail, MapPin, Clock, Loader2 } from "lucide-react"
 import { InteractiveRobotSection } from "@/components/ui/interactive-3d-robot"
 import { useState, FormEvent } from "react"
+
+import { PageSection } from "@/components/page-section"
+import { Button } from "@/components/ui/button"
+import { Input } from "@/components/ui/input"
+import { Label } from "@/components/ui/label"
+import { Textarea } from "@/components/ui/textarea"
+import { ContactCard } from "@/components/ui/contact-card"
+import { cn } from "@/lib/utils"
+import { LiquidGlassBackdrop } from "@/components/ui/liquid-glass-effect"
+
+const fieldClass =
+  "w-full rounded-2xl border border-white/20 bg-card/90 px-4 py-3 text-base text-foreground shadow-inner shadow-black/5 transition focus:border-[var(--brand-pink)] focus:outline-none focus:ring-2 focus:ring-[var(--brand-pink)]/30 dark:border-white/15 dark:bg-white/5 dark:text-white"
 
 export default function Contact() {
   const [isSubmitting, setIsSubmitting] = useState(false)
@@ -52,119 +63,121 @@ export default function Contact() {
 
   return (
     <>
-      <Navigation />
-      {/* Hero section with interactive 3D robot */}
-      <section className="relative h-[70vh] min-h-[600px] overflow-hidden">
-        <InteractiveRobotSection />
-        <div className="absolute inset-0 z-10 bg-gradient-to-b from-black/50 via-transparent to-black/60" />
-        <div className="absolute inset-0 z-20 flex flex-col items-center justify-center px-4 sm:px-6 lg:px-8 pointer-events-none">
-          <div className="text-center max-w-3xl mx-auto">
-            <h1 className="text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold text-white mb-4 drop-shadow-2xl">
-              Get In Touch
-            </h1>
-            <p className="text-lg md:text-xl text-white/90 max-w-2xl mx-auto drop-shadow-lg">
-              Have questions? We'd love to hear from you. Reach out anytime!
+      <section className="relative overflow-hidden rounded-b-[3rem]">
+        <InteractiveRobotSection className="h-[70vh] min-h-[560px]">
+          <div className="space-y-4">
+            <p className="text-xs uppercase tracking-[0.35em] text-white/70">Contact</p>
+            <h1 className="font-display text-4xl leading-tight md:text-5xl">Let’s co-create the next big sprint</h1>
+            <p className="text-white/75">
+              Partner with us on hackathons, workshops, or custom experiences for schools across Lucknow.
             </p>
           </div>
-        </div>
+        </InteractiveRobotSection>
       </section>
 
-      <main className="pt-20 pb-20 px-4 sm:px-6 lg:px-8 bg-white">
-        <div className="max-w-7xl mx-auto">
-          {/* Contact Form */}
-          <div
-            className="max-w-2xl mx-auto bg-white rounded-3xl border-2 border-[#e0e0e0] p-8 sm:p-12 mb-16 animate-slide-in-up"
-            style={{ animationDelay: "0.1s" }}
-          >
-            <h2 className="font-display font-bold text-3xl text-[#3e1e68] mb-8">Send us a message</h2>
-            <form className="space-y-6" onSubmit={handleSubmit}>
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-                <input
-                  type="text"
-                  name="name"
-                  placeholder="Your Name"
-                  className="px-4 py-3 border-2 border-[#e0e0e0] rounded-xl focus:border-[#e45a92] focus:outline-none transition-colors"
-                  required
-                />
-                <input
-                  type="email"
-                  name="email"
-                  placeholder="Your Email"
-                  className="px-4 py-3 border-2 border-[#e0e0e0] rounded-xl focus:border-[#e45a92] focus:outline-none transition-colors"
-                  required
-                />
-              </div>
-              <input
-                type="text"
-                name="subject"
-                placeholder="Subject"
-                className="w-full px-4 py-3 border-2 border-[#e0e0e0] rounded-xl focus:border-[#e45a92] focus:outline-none transition-colors"
-              />
-              <textarea
-                rows={6}
-                name="message"
-                placeholder="Your message"
-                className="w-full px-4 py-3 border-2 border-[#e0e0e0] rounded-xl focus:border-[#e45a92] focus:outline-none transition-colors resize-none"
-                required
-              />
-              <button
-                type="submit"
-                disabled={isSubmitting}
-                className="w-full py-3 bg-[#e45a92] text-white font-display font-bold rounded-xl hover:bg-[#d1437a] transition-all hover:shadow-lg hover:shadow-[#e45a92]/30 disabled:opacity-60 disabled:cursor-not-allowed"
-              >
-                {isSubmitting ? "Sending..." : "Send Message"}
-              </button>
-
-              {status && (
-                <p
-                  className={`mt-2 text-sm ${
-                    status.type === "success" ? "text-emerald-600" : "text-red-600"
-                  }`}
+      <main className="bg-transparent">
+        <PageSection
+          align="center"
+          eyebrow="Contact"
+          title="Reach the team"
+          description="We love partnering with schools, sponsors, mentors, and students. Drop a note and we'll get back within a couple days."
+        >
+          <div className="mx-auto w-full max-w-6xl">
+            <ContactCard
+              title="Get in Touch"
+              description="Have questions about our hackathons, workshops, or programs? We'd love to hear from you! Fill out the form and we'll respond within 1-2 business days."
+              contactInfo={[
+                {
+                  icon: Mail,
+                  label: 'Email',
+                  value: 'hello@lucknow.codes',
+                },
+                {
+                  icon: MapPin,
+                  label: 'Location',
+                  value: 'Lucknow, India',
+                },
+                {
+                  icon: Clock,
+                  label: 'Established',
+                  value: 'Teen-led since 2025',
+                  className: 'col-span-2',
+                }
+              ]}
+              className="rounded-[40px] border-white/30 bg-white/50 shadow-2xl backdrop-blur-3xl dark:border-white/10 dark:bg-white/5 overflow-hidden"
+            >
+              <form onSubmit={handleSubmit} className="w-full space-y-4">
+                <div className="flex flex-col gap-2">
+                  <Label htmlFor="name" className="text-foreground dark:text-white">Name</Label>
+                  <Input 
+                    id="name"
+                    name="name" 
+                    type="text" 
+                    placeholder="Your name"
+                    className={fieldClass}
+                    required 
+                  />
+                </div>
+                <div className="flex flex-col gap-2">
+                  <Label htmlFor="email" className="text-foreground dark:text-white">Email</Label>
+                  <Input 
+                    id="email"
+                    name="email" 
+                    type="email" 
+                    placeholder="you@email.com"
+                    className={fieldClass}
+                    required 
+                  />
+                </div>
+                <div className="flex flex-col gap-2">
+                  <Label htmlFor="subject" className="text-foreground dark:text-white">Subject</Label>
+                  <Input 
+                    id="subject"
+                    name="subject" 
+                    type="text" 
+                    placeholder="Reason for reaching out"
+                    className={fieldClass}
+                  />
+                </div>
+                <div className="flex flex-col gap-2">
+                  <Label htmlFor="message" className="text-foreground dark:text-white">Message</Label>
+                  <Textarea 
+                    id="message"
+                    name="message"
+                    rows={5}
+                    placeholder="Tell us what you're thinking…"
+                    className={cn(fieldClass, "min-h-[120px] resize-none")}
+                    required
+                  />
+                </div>
+                <Button
+                  type="submit"
+                  disabled={isSubmitting}
+                  className="w-full rounded-full bg-gradient-to-r from-[var(--brand-pink)] to-[var(--brand-purple)] py-6 text-base font-semibold text-white shadow-[var(--glow-strong)] disabled:opacity-60"
                 >
-                  {status.message}
-                </p>
-              )}
-            </form>
+                  {isSubmitting ? (
+                    <>
+                      <Loader2 className="mr-2 h-5 w-5 animate-spin" />
+                      Sending…
+                    </>
+                  ) : (
+                    "Send message"
+                  )}
+                </Button>
+                {status && (
+                  <p
+                    className={cn(
+                      "text-sm text-center",
+                      status.type === "success" ? "text-emerald-600 dark:text-emerald-300" : "text-red-600 dark:text-red-300",
+                    )}
+                  >
+                    {status.message}
+                  </p>
+                )}
+              </form>
+            </ContactCard>
           </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {/* Email */}
-            <div
-              className="bg-[#5d2f77] rounded-2xl p-8 text-white text-center animate-fade-in"
-              style={{ animationDelay: "0.2s" }}
-            >
-              <div className="flex justify-center mb-4">
-                <Mail size={32} />
-              </div>
-              <h3 className="font-display font-bold text-xl mb-2">Email</h3>
-              <p className="text-white/80">hello@lucknow.codes</p>
-            </div>
-
-            {/* Location */}
-            <div
-              className="bg-[#ffacac] rounded-2xl p-8 text-[#3e1e68] text-center animate-fade-in"
-              style={{ animationDelay: "0.3s" }}
-            >
-              <div className="flex justify-center mb-4">
-                <MapPin size={32} />
-              </div>
-              <h3 className="font-display font-bold text-xl mb-2">Location</h3>
-              <p className="text-[#3e1e68]/80">Based in Lucknow</p>
-            </div>
-
-            {/* Hours */}
-            <div
-              className="bg-[#e45a92] rounded-2xl p-8 text-white text-center animate-fade-in"
-              style={{ animationDelay: "0.4s" }}
-            >
-              <div className="flex justify-center mb-4">
-                <Clock size={32} />
-              </div>
-              <h3 className="font-display font-bold text-xl mb-2">From</h3>
-              <p className="text-white/80">2025</p>
-            </div>
-          </div>
-        </div>
+        </PageSection>
       </main>
     </>
   )

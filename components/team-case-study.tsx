@@ -1,6 +1,10 @@
 "use client"
 
-import { ArrowRight } from "lucide-react"
+import Image from "next/image"
+import { useState, useRef } from "react"
+import { CometCard } from "@/components/ui/comet-card"
+import { cn } from "@/lib/utils"
+import { Linkedin } from "lucide-react"
 
 interface TeamMember {
   id: number
@@ -9,126 +13,138 @@ interface TeamMember {
   bio: string
   image: string
   expertise?: string[]
+  linkedin?: string
 }
 
 interface TeamCaseStudyProps {
   members: TeamMember[]
 }
 
+const brandColors = ["bg-[var(--brand-purple)]", "bg-[var(--brand-pink)]", "bg-[var(--brand-plum)]"]
+
+function TeamCard({ member, bgColor }: { member: TeamMember; bgColor: string }) {
+  const [dominantColor, setDominantColor] = useState<string | null>(null)
+  const imgRef = useRef<HTMLImageElement>(null)
+
+  const extractDominantColor = (img: HTMLImageElement) => {
+    const canvas = document.createElement("canvas")
+    const ctx = canvas.getContext("2d")
+    if (!ctx) return
+
+    // Check if image has valid dimensions
+    if (img.naturalWidth === 0 || img.naturalHeight === 0) return
+
+    canvas.width = img.naturalWidth
+    canvas.height = img.naturalHeight
+    
+    try {
+      ctx.drawImage(img, 0, 0)
+      const imageData = ctx.getImageData(0, 0, canvas.width, canvas.height)
+      const data = imageData.data
+      let r = 0,
+        g = 0,
+        b = 0,
+        count = 0
+
+      // Sample every 10th pixel for performance
+      for (let i = 0; i < data.length; i += 40) {
+        r += data[i]
+        g += data[i + 1]
+        b += data[i + 2]
+        count++
+      }
+
+      r = Math.floor(r / count)
+      g = Math.floor(g / count)
+      b = Math.floor(b / count)
+
+      setDominantColor(`rgb(${r}, ${g}, ${b})`)
+    } catch (error) {
+      console.error("Error extracting dominant color:", error)
+    }
+  }
+
+  return (
+    <CometCard className="w-full">
+      <div
+        className={cn(
+          "relative flex h-full cursor-pointer flex-col items-stretch rounded-2xl border border-white/10 p-4 backdrop-blur-xl transition-all duration-700",
+          bgColor
+        )}
+        style={{
+          background: dominantColor
+            ? `radial-gradient(circle at 50% 30%, ${dominantColor}33, ${dominantColor}11 50%, transparent 80%), ${
+                bgColor.includes("purple")
+                  ? "var(--brand-purple)"
+                  : bgColor.includes("pink")
+                    ? "var(--brand-pink)"
+                    : "var(--brand-plum)"
+              }`
+            : undefined,
+        }}
+      >
+        <div className="mx-2">
+          <div className="relative mt-2 aspect-[3/4] w-full overflow-hidden rounded-2xl">
+            <Image
+              ref={imgRef}
+              src={member.image}
+              alt={member.name}
+              fill
+              className="object-cover"
+              onLoad={(e) => extractDominantColor(e.currentTarget)}
+            />
+          </div>
+        </div>
+        <div className="mt-4 flex min-h-[220px] flex-col gap-2 p-4 text-white">
+          <div className="flex items-start justify-between">
+            <div className="flex-1">
+              <span className="text-[0.65rem] font-semibold uppercase tracking-[0.35em] opacity-70">
+                {member.role}
+              </span>
+              <h3 className="font-display text-2xl font-bold">{member.name}</h3>
+            </div>
+            {member.linkedin && (
+              <a
+                href={member.linkedin}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group flex h-10 w-10 items-center justify-center rounded-full bg-white/10 transition-all hover:bg-white/20 hover:scale-110"
+                aria-label={`${member.name}'s LinkedIn`}
+              >
+                <Linkedin className="h-5 w-5 transition-transform group-hover:scale-110" />
+              </a>
+            )}
+          </div>
+          <p className="mb-auto text-sm leading-relaxed opacity-80 line-clamp-4">{member.bio}</p>
+          {member.expertise && member.expertise.length > 0 ? (
+            <div className="mt-auto pt-4 flex flex-wrap gap-2">
+              {member.expertise.slice(0, 3).map((skill) => (
+                <span
+                  key={skill}
+                  className="rounded-full bg-white/20 px-3 py-1 text-[0.65rem] font-semibold uppercase tracking-wide"
+                >
+                  {skill}
+                </span>
+              ))}
+            </div>
+          ) : (
+            <div className="pt-4 h-8" />
+          )}
+        </div>
+      </div>
+    </CometCard>
+  )
+}
+
 export default function TeamCaseStudy({ members }: TeamCaseStudyProps) {
   return (
-    <div className="space-y-8">
+    <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
       {members.map((member, index) => {
-        const isEven = index % 2 === 0
-        const bgColors = ["bg-[#3e1e68]", "bg-[#e45a92]", "bg-[#5d2f77]", "bg-[#ffacac]"]
-        const bgColor = bgColors[index % 4]
-        const isLightBg = bgColor === "bg-[#ffacac]"
-        
+        const bgColor = brandColors[index % brandColors.length]
+
         return (
-          <div
-            key={member.id}
-            className={`group relative overflow-hidden rounded-3xl ${bgColor} transition-all duration-500 hover:shadow-2xl hover:scale-[1.02] animate-slide-in-up`}
-            style={{ animationDelay: `${index * 0.1}s` }}
-          >
-            <div className="grid md:grid-cols-2 gap-8 p-8 md:p-12">
-              {/* Content Side */}
-              <div className={`flex flex-col justify-center ${isEven ? "md:order-1" : "md:order-2"}`}>
-                <div className="space-y-4">
-                  <div className="inline-block">
-                    <span
-                      className={`text-sm font-semibold tracking-wider uppercase ${
-                        isLightBg ? "text-[#3e1e68]" : "text-white/80"
-                      }`}
-                    >
-                      {member.role}
-                    </span>
-                  </div>
-                  
-                  <h3
-                    className={`font-display font-bold text-4xl md:text-5xl ${
-                      isLightBg ? "text-[#3e1e68]" : "text-white"
-                    }`}
-                  >
-                    {member.name}
-                  </h3>
-                  
-                  <p
-                    className={`text-lg leading-relaxed ${
-                      isLightBg ? "text-[#3e1e68]/80" : "text-white/90"
-                    }`}
-                  >
-                    {member.bio}
-                  </p>
-                  
-                  {member.expertise && member.expertise.length > 0 && (
-                    <div className="flex flex-wrap gap-2 mt-6">
-                      {member.expertise.map((skill, idx) => (
-                        <span
-                          key={idx}
-                          className={`px-4 py-2 rounded-full text-sm font-medium ${
-                            isLightBg
-                              ? "bg-[#3e1e68] text-white"
-                              : "bg-white/20 text-white backdrop-blur-sm"
-                          }`}
-                        >
-                          {skill}
-                        </span>
-                      ))}
-                    </div>
-                  )}
-                  
-                  <button
-                    className={`group/btn inline-flex items-center gap-2 mt-6 font-semibold transition-all ${
-                      isLightBg
-                        ? "text-[#3e1e68] hover:gap-4"
-                        : "text-white hover:gap-4"
-                    }`}
-                  >
-                    Learn more
-                    <ArrowRight className="w-5 h-5 transition-transform group-hover/btn:translate-x-1" />
-                  </button>
-                </div>
-              </div>
-
-              {/* Image Side */}
-              <div className={`flex items-center justify-center ${isEven ? "md:order-2" : "md:order-1"}`}>
-                <div className="relative w-full aspect-square max-w-md">
-                  <div
-                    className={`absolute inset-0 rounded-3xl overflow-hidden ${
-                      isLightBg ? "bg-[#3e1e68]/10" : "bg-white/10"
-                    } backdrop-blur-sm transition-transform group-hover:scale-105`}
-                  >
-                    <div
-                      className="w-full h-full flex items-center justify-center"
-                      style={{
-                        background: isLightBg
-                          ? "radial-gradient(circle at 30% 30%, rgba(62, 30, 104, 0.1), transparent)"
-                          : "radial-gradient(circle at 30% 30%, rgba(255, 255, 255, 0.2), transparent)",
-                      }}
-                    >
-                      {/* Placeholder for member image */}
-                      <div
-                        className={`w-48 h-48 rounded-full flex items-center justify-center text-6xl font-bold ${
-                          isLightBg ? "bg-[#3e1e68] text-[#ffacac]" : "bg-white/20 text-white"
-                        }`}
-                      >
-                        {member.name.charAt(0)}
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            {/* Decorative elements */}
-            <div
-              className="absolute top-0 right-0 w-64 h-64 rounded-full blur-3xl opacity-30"
-              style={{
-                background: isLightBg
-                  ? "radial-gradient(circle, rgba(62, 30, 104, 0.3), transparent)"
-                  : "radial-gradient(circle, rgba(255, 255, 255, 0.2), transparent)",
-              }}
-            />
+          <div key={member.id} className="flex">
+            <TeamCard member={member} bgColor={bgColor} />
           </div>
         )
       })}

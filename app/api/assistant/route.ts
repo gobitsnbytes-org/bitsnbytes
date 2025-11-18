@@ -1,12 +1,19 @@
 import { NextRequest, NextResponse } from "next/server"
 import OpenAI, { APIError } from "openai"
+import { findExperts, recommendRoles } from "@/lib/team-data"
 
 const openai = new OpenAI({
   apiKey: process.env.OPENAI_API_KEY,
 })
 
-const PRIMARY_MODEL = "gpt-5-nano"
-const FALLBACK_MODEL = "gpt-4.1-mini"
+const PRIMARY_MODEL = "gpt-5-mini-2025-08-07"
+const FALLBACK_MODEL = "gpt-4o-mini-2024-07-18"
+
+const SSE_HEADERS = {
+  "Content-Type": "text/event-stream",
+  "Cache-Control": "no-cache, no-transform",
+  Connection: "keep-alive",
+}
 
 const WEB3FORMS_ENDPOINT = "https://api.web3forms.com/submit"
 
@@ -15,36 +22,34 @@ type ClientMessage = {
   content: string
 }
 
+type AssistantAction = { type: "navigate"; path: string }
+
 const SITE_CONTEXT = `
 You are the official AI assistant for Bits&Bytes, a teen-led code club based in Lucknow.
 
-Key facts (from the public site):
-- Bits&Bytes is a community of teen developers focused on innovation, collaboration, and real-world impact through technology.
-- They host hackathons, run workshops on topics like web development and AI/ML, and encourage teens to connect and collaborate across schools.
-- The club has 80+ members from around 10 different schools and has built 50+ projects.
-- Bits&Bytes hosted Scrapyard Lucknow 2024, one of the first high-schooler-led hackathons in Lucknow, bringing together 40+ participants to build solutions to real-world problems and showcase projects.
-- The core team listed on the About page includes:
-  - Yash – Founder (overall coordination, timelines, operations).
-  - Aadrika – Co-Founder & Chief Creative Strategist (branding, design, campaigns).
-  - Akshat – Co-Founder & Technical Lead (builds and maintains the website, leads programming projects, evaluates tech stacks, ensures technical stability). This means Akshat is the main technical lead.
-  - Devansh – Founding Member, Backend & Outreach Coordinator (backend development and community outreach).
-  - Saksham – Ideation & Research Associate.
-  - Kaustubh – Content & Reels Producer.
-  - Oviyaa – Social Media Manager & Promotions Head.
-  - Maryam – Graphics Designer.
-  - Fatima – Graphics Design Assistant.
-  - Areeb – Community Outreach & Programming Support.
-- Students can join by filling out the join form on the site, sharing their name, email, school, experience level, interests (e.g. web dev, mobile apps, AI/ML, game dev, design), and a short message about their goals.
-- The club can be reached via email at hello@lucknow.codes.
- 
-You are AGENTIC but safe:
-- You can call tools to submit the contact form on a visitor's behalf once you have their name, email, subject, and message.
-- You can call tools to suggest navigation to a specific page (home, about, impact, join, contact). Use this when the user asks to "take me to..." or clearly wants a specific page.
-- You can call tools to fetch live HTML for key site sections (home, about, impact, join, contact) when you need fresher or more detailed information.
+**Your Goal:** Help visitors learn about the club, find the right team members to talk to, and get involved.
+
+**Core Identity (Do not hallucinate these):**
+- **Mission:** Innovation, collaboration, and real-world impact through technology.
+- **Activities:** Hackathons (e.g., Scrapyard Lucknow), workshops, and student mentorship.
+- **Contact:** hello@lucknow.codes
+
+**How to get answers:**
+1. **For Team/Roles:** DO NOT guess. Always use the 'find_team_expert' or 'recommend_role' tools. The team structure is dynamic.
+2. **For Specific Page Content:** Use 'get_site_section' to "read" the website (Home, About, Impact, Join, Contact) if the user asks for details you don't know (like specific project stats, upcoming event dates, or recent news).
+3. **For Navigation:** Use 'suggest_navigation' to guide them.
+
+**Guardrails & Safety:**
+- Refuse to answer questions that are irrelevant to Bits&Bytes, technology, coding, education, or the local community.
+- If a user asks about general knowledge (e.g. "Who won the World Cup?", "How to bake a cake?"), politely redirect them:
+  "I can only help with questions about Bits&Bytes, our events, or technology topics."
+- Do not engage in roleplay scenarios unrelated to the club.
+- Do not generate code for malicious purposes.
+- If asked for personal information about members beyond what is available via tools (superpowers/roles), refuse.
 
 Rules:
-- Always stay truthful to Bits&Bytes and the site content.
-- If you are asked about anything not covered by the site (e.g. internal operations, personal data, private contact details beyond hello@lucknow.codes, exact dates other than Scrapyard Lucknow 2024, or financials), say:
+- Always stay truthful to Bits&Bytes.
+- If you can't find the answer in the tools or page content, admit it:
   "I’m not sure about that based on the information publicly available on this site."
 `
 
@@ -85,7 +90,7 @@ const tools: OpenAI.Chat.Completions.ChatCompletionTool[] = [
           path: {
             type: "string",
             description: "The path to navigate to",
-            enum: ["/", "/about", "/impact", "/join", "/contact"],
+            enum: ["/", "/about", "/impact", "/join", "/contact", "home", "about", "impact", "join", "contact"],
           },
         },
         required: ["path"],
@@ -97,7 +102,7 @@ const tools: OpenAI.Chat.Completions.ChatCompletionTool[] = [
     function: {
       name: "get_site_section",
       description:
-        "Fetch live HTML for a section of the Bits&Bytes site so you can answer with up-to-date, detailed information.",
+        "Fetch live HTML for a section of the Bits&Bytes site. USE THIS OFTEN to read the latest content about projects, impact, or about page details.",
       parameters: {
         type: "object",
         properties: {
@@ -107,6 +112,49 @@ const tools: OpenAI.Chat.Completions.ChatCompletionTool[] = [
           },
         },
         required: ["section"],
+      },
+    },
+  },
+  {
+    type: "function",
+    function: {
+      name: "find_team_expert",
+      description:
+        "Find team members. Pass a specific topic (e.g. 'React') or pass an empty string '' to list the Core Team.",
+      parameters: {
+        type: "object",
+        properties: {
+          query: {
+            type: "string",
+            description: "The topic/skill to search for, or empty string for all members.",
+          },
+        },
+        required: ["query"],
+      },
+    },
+  },
+
+  {
+    type: "function",
+    function: {
+      name: "recommend_role",
+      description:
+        "Recommend a role or team within Bits&Bytes based on the user's skills and interests.",
+      parameters: {
+        type: "object",
+        properties: {
+          skills: {
+            type: "array",
+            items: { type: "string" },
+            description: "List of skills the user has (e.g. ['Python', 'drawing']).",
+          },
+          interests: {
+            type: "array",
+            items: { type: "string" },
+            description: "List of interests the user has (e.g. ['AI', 'community']).",
+          },
+        },
+        required: ["skills", "interests"],
       },
     },
   },
@@ -120,19 +168,18 @@ function mapClientMessagesToOpenAI(messages: ClientMessage[]): OpenAI.Chat.ChatC
 }
 
 function sectionToPath(section: string): string {
-  switch (section) {
-    case "about":
-      return "/about"
-    case "impact":
-      return "/impact"
-    case "join":
-      return "/join"
-    case "contact":
-      return "/contact"
-    case "home":
-    default:
-      return "/"
-  }
+  const normalized = normalizePath(section)
+  return normalized
+}
+
+function normalizePath(value?: string): string {
+  const input = (value ?? "/").toString().trim().toLowerCase()
+  if (input === "/" || input === "home") return "/"
+  if (input === "/about" || input === "about") return "/about"
+  if (input === "/impact" || input === "impact") return "/impact"
+  if (input === "/join" || input === "join") return "/join"
+  if (input === "/contact" || input === "contact") return "/contact"
+  return "/"
 }
 
 async function handleSubmitContactTool(args: any) {
@@ -241,8 +288,7 @@ export async function POST(req: NextRequest) {
         messages,
         tools,
         tool_choice: "auto",
-        temperature: 0.3,
-        max_tokens: 400,
+        max_completion_tokens: 400,
       })
     }
 
@@ -255,8 +301,13 @@ export async function POST(req: NextRequest) {
       const apiError = err as APIError
       const code = (apiError as any)?.code ?? (apiError as any)?.error?.code
       const status = (apiError as any)?.status
+      const shouldFallback =
+        code === "model_not_found" ||
+        code === "unsupported_parameter" ||
+        code === "unsupported_value" ||
+        status === 403
 
-      if (code === "model_not_found" || status === 403) {
+      if (shouldFallback) {
         modelUsed = FALLBACK_MODEL
         completion = await runCompletion(FALLBACK_MODEL, baseMessages)
       } else {
@@ -267,12 +318,17 @@ export async function POST(req: NextRequest) {
     const choice = completion.choices[0]
     const message = choice?.message
 
-    // If no tool calls, just return the answer.
+    // If no tool calls, stream the final answer directly.
     if (!message?.tool_calls || message.tool_calls.length === 0) {
-      const answer = message?.content?.trim()
-      return NextResponse.json({
-        answer: answer ?? "I’m not sure about that based on the information publicly available on this site.",
-      })
+      try {
+        return await streamAssistantResponse(modelUsed, baseMessages)
+      } catch (streamErr) {
+        console.error("Assistant stream error:", streamErr)
+        const answer = message?.content?.trim()
+        return NextResponse.json({
+          answer: answer ?? "I’m not sure about that based on the information publicly available on this site.",
+        })
+      }
     }
 
     // Handle first tool call for now (this already gives agentic behaviour).
@@ -292,11 +348,20 @@ export async function POST(req: NextRequest) {
     if (toolName === "submit_contact_form") {
       toolResult = await handleSubmitContactTool(toolArgs)
     } else if (toolName === "suggest_navigation") {
-      const path = sectionToPath(toolArgs?.path ?? "/")
+      const path = normalizePath(toolArgs?.path)
       toolResult = { success: true, path }
       action = { type: "navigate", path }
     } else if (toolName === "get_site_section") {
       toolResult = await handleGetSiteSectionTool(toolArgs?.section ?? "home", req)
+    } else if (toolName === "find_team_expert") {
+      const query = (toolArgs?.query ?? "").toString()
+      const experts = findExperts(query)
+      toolResult = { query, experts }
+    } else if (toolName === "recommend_role") {
+      const skills = Array.isArray(toolArgs?.skills) ? toolArgs.skills : []
+      const interests = Array.isArray(toolArgs?.interests) ? toolArgs.interests : []
+      const recommendation = recommendRoles(skills, interests)
+      toolResult = { skills, interests, recommendation }
     } else {
       toolResult = { success: false, message: `Unknown tool: ${toolName}` }
     }
@@ -312,19 +377,15 @@ export async function POST(req: NextRequest) {
       },
     ]
 
-    const finalCompletion = await openai.chat.completions.create({
-      model: modelUsed,
-      messages: messagesWithTool,
-      temperature: 0.3,
-      max_tokens: 400,
-    })
-
-    const finalAnswer = finalCompletion.choices[0]?.message?.content?.trim()
-
-    return NextResponse.json({
-      answer: finalAnswer ?? "I’ve completed the requested action.",
-      action,
-    })
+    try {
+      return await streamAssistantResponse(modelUsed, messagesWithTool, action)
+    } catch (streamErr) {
+      console.error("Assistant stream error after tool call:", streamErr)
+      return NextResponse.json(
+        { error: "Failed to stream the assistant response after tool call." },
+        { status: 500 }
+      )
+    }
   } catch (error) {
     console.error("Assistant API error:", error)
     return NextResponse.json(
@@ -334,4 +395,47 @@ export async function POST(req: NextRequest) {
   }
 }
 
+async function streamAssistantResponse(
+  model: string,
+  messages: OpenAI.Chat.ChatCompletionMessageParam[],
+  action?: AssistantAction
+) {
+  const completion = await openai.chat.completions.create({
+    model,
+    messages,
+    max_completion_tokens: 400,
+    stream: true,
+  })
 
+  const encoder = new TextEncoder()
+
+  const stream = new ReadableStream({
+    async start(controller) {
+      const send = (payload: Record<string, unknown>) => {
+        controller.enqueue(encoder.encode(`data: ${JSON.stringify(payload)}\n\n`))
+      }
+
+      send({ type: "meta", model })
+
+      try {
+        for await (const part of completion) {
+          const delta = part.choices[0]?.delta
+          if (delta?.content) {
+            send({ type: "token", content: delta.content })
+          }
+        }
+
+        send({ type: "done", action: action ?? null })
+      } catch (error) {
+        console.error("Streaming error:", error)
+        send({ type: "error", message: "Failed to stream assistant response." })
+      } finally {
+        controller.close()
+      }
+    },
+  })
+
+  return new Response(stream, {
+    headers: SSE_HEADERS,
+  })
+}
