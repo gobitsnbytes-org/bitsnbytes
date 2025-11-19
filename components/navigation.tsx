@@ -6,7 +6,6 @@ import { usePathname } from "next/navigation"
 import { useEffect, useState } from "react"
 import { ArrowUpRight, Menu, X, Github } from "lucide-react"
 
-import ThemeToggle from "@/components/theme-toggle"
 import { Button, buttonVariants } from "@/components/ui/button"
 import { cn } from "@/lib/utils"
 import logo from "@public/logo.svg"
@@ -91,7 +90,6 @@ export default function Navigation() {
             >
               <Github className="h-4 w-4" />
             </Link>
-            <ThemeToggle size="sm" />
             <Link
               href="/join"
               prefetch={true}
