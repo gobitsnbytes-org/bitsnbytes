@@ -2,13 +2,25 @@
 
 import Link from "next/link"
 import { ArrowRight, Code2, Users, Rocket, Lightbulb, Trophy, Sparkles } from "lucide-react"
+import dynamic from "next/dynamic"
+import { Suspense } from "react"
 
 import { HeroFuturistic } from "@/components/ui/hero-futuristic"
 import { PageSection } from "@/components/page-section"
 import { Card, CardContent, CardDescription, CardTitle } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
-import { InfiniteMovingCards } from "@/components/ui/infinite-moving-cards"
-import GlassIcons from "@/components/GlassIcons"
+import { LoadingInline } from "@/components/loading-wrapper"
+
+// Lazy load heavy components
+const InfiniteMovingCards = dynamic(() => import("@/components/ui/infinite-moving-cards").then(mod => ({ default: mod.InfiniteMovingCards })), {
+  loading: () => <LoadingInline />,
+  ssr: true
+})
+
+const GlassIcons = dynamic(() => import("@/components/GlassIcons"), {
+  loading: () => <LoadingInline />,
+  ssr: true
+})
 
 const stats = [
   { value: "80+", label: "Active members", detail: "across Lucknow" },
@@ -22,30 +34,35 @@ const stories = [
       "Scrapyard hackathon felt electric—40+ teens building, pitching, and cheering each other on. It proved students can run world-class events.",
     name: "Aadrika",
     title: "Co-Founder & Chief Creative Strategist",
+    image: "/team/aadrika.png",
   },
   {
     quote:
       "We pair first-time coders with experienced mentors, so everyone ships something real. The confidence boost is unreal.",
     name: "Yash",
-    title: "Co-Founder & Lead Developer",
+    title: "Co-Founder & Local Lead",
+    image: "/team/yash.jpeg",
   },
   {
     quote:
       "Building this platform has been incredible. We're not just coding—we're creating opportunities for the next generation of Lucknow's tech talent.",
     name: "Akshat",
     title: "Co-Founder & Technical Lead",
+    image: "/team/akshat.png",
   },
   {
     quote:
       "The backend work we do here isn't just about databases and APIs—it's about creating a stable foundation that allows every member to build boldly.",
     name: "Devansh",
     title: "Founding Member & Backend Lead",
+    image: "/team/devaansh.jpeg",
   },
   {
     quote:
       "From brainstorming wild ideas to seeing them come alive at events, every moment here pushes us to think bigger and execute faster.",
     name: "Oviyaa",
     title: "Social Media & Promotions Head",
+    image: "/portrait-of-young-community-organizer.jpg",
   },
 ]
 
@@ -156,17 +173,21 @@ export default function Home() {
         description="Explore the different ways we help teens build, learn, and grow in tech"
         align="center"
       >
-        <div className="relative mx-auto" style={{ height: '500px' }}>
-          <GlassIcons items={focusAreas} className="max-w-4xl" />
-        </div>
+        <Suspense fallback={<LoadingInline />}>
+          <div className="relative mx-auto" style={{ height: '500px' }}>
+            <GlassIcons items={focusAreas} className="max-w-4xl" />
+          </div>
+        </Suspense>
       </PageSection>
 
       <PageSection eyebrow="Stories" title="Voices from the crew" align="center">
-        <InfiniteMovingCards
-          items={stories}
-          direction="right"
-          speed="slow"
-        />
+        <Suspense fallback={<LoadingInline />}>
+          <InfiniteMovingCards
+            items={stories}
+            direction="right"
+            speed="slow"
+          />
+        </Suspense>
       </PageSection>
     </div>
   )

@@ -58,6 +58,12 @@ const GlassIcons: React.FC<GlassIconsProps> = ({ items, className }) => {
               item.customClass || ''
             }`}
           >
+            {/* Ambient glow background matching icon color */}
+            <span
+              className="absolute top-0 left-0 w-full h-full rounded-[1.25em] -z-10 scale-150 opacity-40 blur-xl transition-opacity duration-300"
+              style={getBackgroundStyle(item.color)}
+            ></span>
+
             <span
               className="absolute top-0 left-0 w-full h-full rounded-[1.25em] block transition-[opacity,transform] duration-300 ease-[cubic-bezier(0.83,0,0.17,1)] origin-[100%_100%] rotate-[15deg] group-hover:[transform:rotate(25deg)_translate3d(-0.5em,-0.5em,0.5em)]"
               style={{
@@ -91,9 +97,16 @@ const GlassIcons: React.FC<GlassIconsProps> = ({ items, className }) => {
           onClick={closeCard}
         >
           <div 
-            className="relative w-full max-w-2xl glass-card p-8 shadow-xl hover:shadow-[var(--glow-strong)] text-foreground dark:text-white"
+            className="relative w-full max-w-2xl"
             onClick={(e) => e.stopPropagation()}
           >
+            {/* Ambient glow background matching icon color */}
+            <div 
+              className="absolute inset-0 -z-10 scale-110 opacity-30 blur-3xl rounded-2xl"
+              style={{ backgroundColor: brandColors[items[activeCard].color] || items[activeCard].color }}
+            />
+            {/* Main card */}
+            <div className="relative glass-card p-8 shadow-xl hover:shadow-[var(--glow-strong)] text-foreground dark:text-white">
             <button
               onClick={closeCard}
               className="absolute top-6 right-6 p-1.5 rounded-lg hover:bg-white/10 transition-colors"
@@ -126,7 +139,7 @@ const GlassIcons: React.FC<GlassIconsProps> = ({ items, className }) => {
                 {items[activeCard].content.map((point, idx) => (
                   <div 
                     key={idx}
-                    className="flex items-start gap-3 p-4 rounded-2xl border border-white/20 dark:border-white/10"
+                    className="glass-card flex items-start gap-3 p-4 rounded-2xl shadow-lg"
                   >
                     <div 
                       className="w-1.5 h-1.5 rounded-full mt-2 flex-shrink-0"
@@ -138,6 +151,7 @@ const GlassIcons: React.FC<GlassIconsProps> = ({ items, className }) => {
                   </div>
                 ))}
               </div>
+            </div>
             </div>
           </div>
         </div>

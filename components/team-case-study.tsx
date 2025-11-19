@@ -96,15 +96,27 @@ function TeamCard({ member, bgColor }: { member: TeamMember; bgColor: string }) 
         }}
       >
         <div className="mx-2">
-          <div className="relative mt-2 aspect-[3/4] w-full overflow-hidden rounded-2xl">
-            <Image
-              ref={imgRef}
-              src={member.image}
-              alt={member.name}
-              fill
-              className="object-cover"
-              onLoad={(e) => extractDominantColor(e.currentTarget)}
-            />
+          <div className="relative mt-2 aspect-[3/4] w-full rounded-2xl">
+            {/* Ambient glow background - YouTube style */}
+            <div className="absolute inset-0 -z-10 scale-105 opacity-50 blur-3xl">
+              <Image
+                src={member.image}
+                alt=""
+                fill
+                className="object-cover rounded-2xl"
+              />
+            </div>
+            {/* Main image */}
+            <div className="relative h-full w-full overflow-hidden rounded-2xl">
+              <Image
+                ref={imgRef}
+                src={member.image}
+                alt={member.name}
+                fill
+                className="object-cover"
+                onLoad={(e) => extractDominantColor(e.currentTarget)}
+              />
+            </div>
           </div>
         </div>
         <div className="mt-4 flex min-h-[220px] flex-col gap-2 p-4 text-white">

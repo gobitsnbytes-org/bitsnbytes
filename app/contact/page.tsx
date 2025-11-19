@@ -1,18 +1,28 @@
 "use client"
 
 import { Mail, MapPin, Clock, Loader2, Github, Linkedin, Instagram } from "lucide-react"
-import { useState, FormEvent } from "react"
+import { useState, FormEvent, Suspense } from "react"
 import Link from "next/link"
+import dynamic from "next/dynamic"
 
 import { PageSection } from "@/components/page-section"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { Textarea } from "@/components/ui/textarea"
-import { ContactCard } from "@/components/ui/contact-card"
 import { cn } from "@/lib/utils"
-import { LiquidGlassBackdrop } from "@/components/ui/liquid-glass-effect"
-import { WebGLShader } from "@/components/ui/web-gl-shader"
+import { LoadingInline } from "@/components/loading-wrapper"
+
+// Lazy load heavy components
+const ContactCard = dynamic(() => import("@/components/ui/contact-card").then(mod => ({ default: mod.ContactCard })), {
+  loading: () => <LoadingInline />,
+  ssr: true
+})
+
+const WebGLShader = dynamic(() => import("@/components/ui/web-gl-shader").then(mod => ({ default: mod.WebGLShader })), {
+  loading: () => null,
+  ssr: false
+})
 
 const fieldClass =
   "w-full rounded-2xl border border-white/20 bg-card/90 px-4 py-3 text-base text-foreground shadow-inner shadow-black/5 transition focus:border-[var(--brand-pink)] focus:outline-none focus:ring-2 focus:ring-[var(--brand-pink)]/30 dark:border-white/15 dark:bg-white/5 dark:text-white"
@@ -92,7 +102,8 @@ export default function Contact() {
           description="We love partnering with schools, sponsors, mentors, and students. Drop a note and we'll get back within a couple days."
         >
           <div className="mx-auto w-full max-w-6xl">
-            <ContactCard
+            <Suspense fallback={<LoadingInline />}>
+              <ContactCard
               title="Get in Touch"
               description="Have questions about our hackathons, workshops, or programs? We'd love to hear from you! Fill out the form and we'll respond within 1-2 business days."
               contactInfo={[
@@ -185,6 +196,7 @@ export default function Contact() {
                 )}
               </form>
             </ContactCard>
+            </Suspense>
 
             {/* Social Links Section */}
             <div className="mt-12 text-center">

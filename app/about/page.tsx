@@ -1,8 +1,20 @@
 "use client"
 
-import TeamCaseStudy from "@/components/team-case-study"
+import dynamic from "next/dynamic"
+import { Suspense } from "react"
 import { PageSection } from "@/components/page-section"
-import { WebGLShader } from "@/components/ui/web-gl-shader"
+import { LoadingInline } from "@/components/loading-wrapper"
+
+// Lazy load heavy components
+const TeamCaseStudy = dynamic(() => import("@/components/team-case-study"), {
+  loading: () => <LoadingInline />,
+  ssr: true
+})
+
+const WebGLShader = dynamic(() => import("@/components/ui/web-gl-shader").then(mod => ({ default: mod.WebGLShader })), {
+  loading: () => null,
+  ssr: false
+})
 
 const aboutContent = {
   title: "About Bits&Bytes",
@@ -88,7 +100,7 @@ const teamMembers = [
     id: 6,
     name: "Kaustubh",
     role: "Content & Video Producer",
-    image: "/portrait-of-young-engineer.jpg",
+    image: "/team/kaustubh.jpeg",
     bio: "Creates compelling video content, edits event highlights, and works on storytelling that attracts attention.",
     expertise: ["Video Production", "Content Creation", "Video Editing", "Brand Storytelling"],
   },
@@ -105,7 +117,7 @@ const teamMembers = [
     id: 8,
     name: "Maryam",
     role: "Lead Graphics Designer",
-    image: "/portrait-of-young-mobile-developer.jpg",
+    image: "/team/maryam.jpeg",
     bio: "Designs visuals for posts, events, and campaigns while maintaining branding consistency. Coordinates closely with the social media and content teams.",
     expertise: ["Graphic Design", "Brand Identity", "Visual Communication", "Design Systems"],
     linkedin: "https://www.linkedin.com/in/maryam-fatima-9719aa377/",
@@ -151,7 +163,9 @@ export default function About() {
         title="Meet the Agents"
         description="A tight crew of designers, engineers, club leads, and storytellers powering Lucknow's teen-led tech movement."
       >
-        <TeamCaseStudy members={teamMembers} />
+        <Suspense fallback={<LoadingInline />}>
+          <TeamCaseStudy members={teamMembers} />
+        </Suspense>
         <p className="mt-6 text-center text-sm text-muted-foreground">*Roles stay flexible as our team and club grow.</p>
       </PageSection>
       </main>

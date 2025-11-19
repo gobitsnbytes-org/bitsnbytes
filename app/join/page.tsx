@@ -1,10 +1,16 @@
 "use client"
 
 import { useEffect } from "react"
+import dynamic from "next/dynamic"
 import { PageSection } from "@/components/page-section"
-import { WebGLShader } from "@/components/ui/web-gl-shader"
 import { Button } from "@/components/ui/button"
 import { ArrowRight } from "lucide-react"
+
+// Lazy load WebGL shader
+const WebGLShader = dynamic(() => import("@/components/ui/web-gl-shader").then(mod => ({ default: mod.WebGLShader })), {
+  loading: () => null,
+  ssr: false
+})
 
 export default function Join() {
   useEffect(() => {

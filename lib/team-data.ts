@@ -9,7 +9,7 @@ export interface TeamMember {
 export const TEAM_MEMBERS: TeamMember[] = [
   {
     name: "Yash",
-    role: "Co-Founder & Lead Dev",
+    role: "Co-Founder & Local Lead",
     superpowers: ["Full-stack dev", "AI", "Web architecture", "Modern web frameworks"],
     talkToMeWhen: [
       "Designing a new system or feature",

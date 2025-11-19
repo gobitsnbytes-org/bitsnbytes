@@ -29,29 +29,34 @@ const testimonials = [
       "Scrapyard hackathon felt electric—40+ teens building, pitching, and cheering each other on. It proved students can run world-class events.",
     name: "Aadrika",
     title: "Community Lead",
+    image: "/team/aadrika.png",
   },
   {
     quote:
       "We pair first-time coders with experienced mentors, so everyone ships something real. The confidence boost is unreal.",
     name: "Yash",
-    title: "Co-founder & Lead Dev",
+    title: "Co-Founder & Local Lead",
+    image: "/team/yash.jpeg",
   },
   {
     quote:
       "Bits&Bytes gave me the freedom to explore complex backend systems. Now I help others architect their own projects.",
     name: "Devansh",
     title: "Backend Specialist",
+    image: "/team/devaansh.jpeg",
   },
   {
     quote:
       "I never thought I could build apps until I joined. The mentorship here is different—everyone actually wants you to win.",
     name: "Maryam",
     title: "Mobile Dev Lead",
+    image: "/team/maryam.jpeg",
   },
   {
     quote:
       "From design systems to deployment pipelines, we learn by doing. It's the best way to grow as an engineer.",
     name: "Kaustubh",
     title: "DevOps Engineer",
+    image: "/team/kaustubh.jpeg",
   },
 ];

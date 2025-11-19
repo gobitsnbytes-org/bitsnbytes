@@ -3,13 +3,14 @@ import type { Metadata } from "next"
 import { Poppins, Space_Grotesk, JetBrains_Mono } from "next/font/google"
 import { Analytics } from "@vercel/analytics/next"
 import { SpeedInsights } from "@vercel/speed-insights/next"
+import { Suspense } from "react"
 
 import "./globals.css"
-import { FloatingAiAssistant } from "@/components/ui/glowing-ai-chat-assistant"
 import { ThemeProvider } from "@/components/theme-provider"
 import { PageBackground } from "@/components/page-background"
 import Navigation from "@/components/navigation"
 import Footer from "@/components/footer"
+import { FloatingAiAssistant } from "@/components/client-only-components"
 
 const poppins = Poppins({
   subsets: ["latin"],
@@ -128,9 +129,13 @@ export default function RootLayout({
           <PageBackground />
           <div className="relative flex min-h-screen flex-col">
             <Navigation />
-            <main className="flex-1">{children}</main>
+            <main className="flex-1">
+              {children}
+            </main>
             <Footer />
-            <FloatingAiAssistant />
+            <Suspense fallback={null}>
+              <FloatingAiAssistant />
+            </Suspense>
           </div>
           <Analytics />
           <SpeedInsights />

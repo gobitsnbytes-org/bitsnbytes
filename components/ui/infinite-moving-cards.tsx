@@ -2,6 +2,7 @@
 
 import { cn } from "@/lib/utils";
 import React, { useEffect, useState, useRef } from "react";
+import Image from "next/image";
 
 export const InfiniteMovingCards = ({
   items,
@@ -14,6 +15,7 @@ export const InfiniteMovingCards = ({
     quote: string;
     name: string;
     title: string;
+    image?: string;
   }[];
   direction?: "left" | "right";
   speed?: "fast" | "normal" | "slow";
@@ -93,7 +95,29 @@ export const InfiniteMovingCards = ({
               <span className="relative z-20 text-sm leading-[1.6] font-normal text-foreground">
                 {item.quote}
               </span>
-              <div className="relative z-20 mt-6 flex flex-row items-center">
+              <div className="relative z-20 mt-6 flex flex-row items-center gap-3">
+                {item.image && (
+                  <div className="relative h-12 w-12 flex-shrink-0">
+                    {/* Ambient glow background */}
+                    <div className="absolute inset-0 -z-10 scale-150 opacity-40 blur-xl">
+                      <Image
+                        src={item.image}
+                        alt=""
+                        fill
+                        className="object-cover rounded-full"
+                      />
+                    </div>
+                    {/* Main image */}
+                    <div className="relative h-full w-full overflow-hidden rounded-full">
+                      <Image
+                        src={item.image}
+                        alt={item.name}
+                        fill
+                        className="object-cover"
+                      />
+                    </div>
+                  </div>
+                )}
                 <span className="flex flex-col gap-1">
                   <span className="text-sm leading-[1.6] font-normal text-muted-foreground">
                     {item.name}
@@ -120,7 +144,29 @@ export const InfiniteMovingCards = ({
               <span className="relative z-20 text-sm leading-[1.6] font-normal text-foreground">
                 {item.quote}
               </span>
-              <div className="relative z-20 mt-6 flex flex-row items-center">
+              <div className="relative z-20 mt-6 flex flex-row items-center gap-3">
+                {item.image && (
+                  <div className="relative h-12 w-12 flex-shrink-0">
+                    {/* Ambient glow background */}
+                    <div className="absolute inset-0 -z-10 scale-150 opacity-40 blur-xl">
+                      <Image
+                        src={item.image}
+                        alt=""
+                        fill
+                        className="object-cover rounded-full"
+                      />
+                    </div>
+                    {/* Main image */}
+                    <div className="relative h-full w-full overflow-hidden rounded-full">
+                      <Image
+                        src={item.image}
+                        alt={item.name}
+                        fill
+                        className="object-cover"
+                      />
+                    </div>
+                  </div>
+                )}
                 <span className="flex flex-col gap-1">
                   <span className="text-sm leading-[1.6] font-normal text-muted-foreground">
                     {item.name}

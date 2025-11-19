@@ -1,14 +1,25 @@
 "use client"
 
 import Image from "next/image"
+import dynamic from "next/dynamic"
+import { Suspense } from "react"
 
-import ImpactVisualization from "@/components/impact-visualization"
 import { PageSection } from "@/components/page-section"
 import { LiquidButton } from "@/components/ui/liquid-glass-button"
 import { LiquidGlassBackdrop } from "@/components/ui/liquid-glass-effect"
 import { CardContainer, CardBody, CardItem } from "@/components/ui/3d-card"
-import TeamGlobe from "@/components/team-globe"
-import { WebGLShader } from "@/components/ui/web-gl-shader"
+import { LoadingInline } from "@/components/loading-wrapper"
+
+// Lazy load heavy components
+const TeamGlobe = dynamic(() => import("@/components/team-globe"), {
+  loading: () => <LoadingInline />,
+  ssr: false
+})
+
+const WebGLShader = dynamic(() => import("@/components/ui/web-gl-shader").then(mod => ({ default: mod.WebGLShader })), {
+  loading: () => null,
+  ssr: false
+})
 
 const highlightStats = [
   { value: "80+", label: "Students active", description: "From across Lucknow" },
@@ -78,7 +89,9 @@ export default function Impact() {
             <div className="order-2 w-full justify-self-center lg:order-1">
               <div className="glass-card relative h-[500px] w-full overflow-hidden shadow-2xl">
                 <LiquidGlassBackdrop radiusClassName="rounded-[inherit]" />
-                <TeamGlobe />
+                <Suspense fallback={<LoadingInline />}>
+                  <TeamGlobe />
+                </Suspense>
               </div>
             </div>
             <div className="glass-card relative order-1 space-y-6 p-8 text-foreground shadow-2xl dark:text-white lg:order-2">
