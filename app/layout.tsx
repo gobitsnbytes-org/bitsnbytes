@@ -30,20 +30,20 @@ const jetBrainsMono = JetBrains_Mono({
 })
 
 export const metadata: Metadata = {
-  metadataBase: new URL('https://lucknow.codes'),
+  metadataBase: new URL('https://gobitsnbytes.org'),
   title: {
     default: "Bits&Bytes - Teen Led Code Club | Lucknow",
     template: "%s | Bits&Bytes"
   },
   description: "Innovate. Collaborate. Hack. Join the most creative code club for teens in Lucknow. Build real projects, attend hackathons, and grow as a developer.",
-  keywords: ["bits&bytes", "teen code club", "lucknow hackathons", "student developers", "coding community", "tech events lucknow", "learn coding", "teen programmers"],
+  keywords: ["bits&bytes", "teen code club", "lucknow hackathons", "student developers", "coding club", "tech events lucknow", "learn coding", "teen programmers"],
   authors: [{ name: "Bits&Bytes Team" }],
   creator: "Bits&Bytes",
   publisher: "Bits&Bytes",
   openGraph: {
     type: "website",
     locale: "en_IN",
-    url: "https://lucknow.codes",
+    url: "https://gobitsnbytes.org",
     siteName: "Bits&Bytes",
     title: "Bits&Bytes - Teen Led Code Club | Lucknow",
     description: "Innovate. Collaborate. Hack. Join the most creative code club for teens in Lucknow.",
