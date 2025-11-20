@@ -174,7 +174,7 @@ export default function Home() {
         align="center"
       >
         <Suspense fallback={<LoadingInline />}>
-          <div className="relative mx-auto" style={{ height: '500px' }}>
+          <div className="relative mx-auto">
             <GlassIcons items={focusAreas} className="max-w-4xl" />
           </div>
         </Suspense>

@@ -26,7 +26,7 @@ export function PageSection({
   const headingAlignment = align === "center" ? "items-center text-center" : "text-left"
 
   return (
-    <Component className={cn("section-shell", bleed && "max-w-none px-0 sm:px-6", className)}>
+    <Component className={cn("section-shell py-12 sm:py-16", bleed && "max-w-none px-0 sm:px-6", className)}>
       {(eyebrow || title || description) && (
         <div className={cn("mb-10 flex flex-col gap-3", headingAlignment)}>
           {eyebrow && <span className="section-eyebrow">{eyebrow}</span>}

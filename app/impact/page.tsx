@@ -60,7 +60,7 @@ export default function Impact() {
                   </span>
                   Impact
                 </span>
-                <h1 className="font-display text-5xl sm:text-6xl lg:text-7xl leading-tight font-extrabold text-white tracking-tighter">
+                <h1 className="font-display text-4xl sm:text-5xl md:text-6xl lg:text-7xl leading-tight font-extrabold text-white tracking-tighter">
                   Our impact hits beyond the venue walls
                 </h1>
                 <p className="max-w-2xl text-base sm:text-lg text-white/80 font-medium">
@@ -87,7 +87,7 @@ export default function Impact() {
         >
           <div className="grid grid-cols-1 gap-10 lg:grid-cols-2">
             <div className="order-2 w-full justify-self-center lg:order-1">
-              <div className="glass-card relative h-[500px] w-full overflow-hidden shadow-2xl">
+              <div className="glass-card relative h-[300px] sm:h-[400px] lg:h-[500px] w-full overflow-hidden shadow-2xl">
                 <LiquidGlassBackdrop radiusClassName="rounded-[inherit]" />
                 <Suspense fallback={<LoadingInline />}>
                   <TeamGlobe />

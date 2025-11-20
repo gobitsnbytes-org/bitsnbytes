@@ -82,7 +82,7 @@ export default function Contact() {
               <div className="absolute inset-0 bg-[var(--brand-purple)]/20" />
               <div className="relative z-10 space-y-4 text-center">
                 <p className="text-[10px] md:text-xs uppercase tracking-[0.35em] text-white/70">Contact</p>
-                <h1 className="font-display text-3xl md:text-5xl leading-tight font-extrabold text-white">
+                <h1 className="font-display text-3xl sm:text-4xl md:text-5xl leading-tight font-extrabold text-white">
                   Let's co-create the next big sprint
                 </h1>
                 <p className="text-base md:text-lg text-white/80 max-w-2xl mx-auto">
