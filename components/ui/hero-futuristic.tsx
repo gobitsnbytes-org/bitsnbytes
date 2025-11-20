@@ -4,7 +4,12 @@ import Image from 'next/image'
 import Link from 'next/link'
 import { ArrowRight, Sparkles } from 'lucide-react'
 
-import { WebGLShader } from '@/components/ui/web-gl-shader'
+import dynamic from 'next/dynamic'
+
+const WebGLShader = dynamic(() => import('@/components/ui/web-gl-shader').then(mod => mod.WebGLShader), {
+  ssr: false,
+  loading: () => <div className="absolute inset-0 bg-gradient-to-br from-[var(--brand-purple)]/20 to-[var(--brand-pink)]/20" />,
+})
 import { Button } from '@/components/ui/button'
 import { LiquidGlassBackdrop } from '@/components/ui/liquid-glass-effect'
 
