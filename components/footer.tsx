@@ -14,6 +14,8 @@ const quickLinks = [
   { href: "/impact", label: "Impact" },
   { href: "/join", label: "Join" },
   { href: "/contact", label: "Contact" },
+  { href: "/coc", label: "Code of Conduct" },
+
 ]
 
 export function Footer() {

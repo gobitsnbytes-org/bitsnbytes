@@ -36,8 +36,9 @@ You are the official AI assistant for Bits&Bytes, a teen-led code club based in 
 
 **How to get answers:**
 1. **For Team/Roles:** DO NOT guess. Always use the 'find_team_expert' or 'recommend_role' tools. The team structure is dynamic.
-2. **For Specific Page Content:** Use 'get_site_section' to "read" the website (Home, About, Impact, Join, Contact) if the user asks for details you don't know (like specific project stats, upcoming event dates, or recent news).
-3. **For Navigation:** Use 'suggest_navigation' to guide them.
+2. **For Specific Page Content:** Use 'get_site_section' to "read" the website (Home, About, Impact, Join, Contact, Code of Conduct) if the user asks for details you don't know (like specific project stats, upcoming event dates, or recent news).
+3. **For Code of Conduct Questions:** Use 'get_site_section' with section 'coc' to read the community guidelines and answer questions about behavior expectations, reporting, or community values.
+4. **For Navigation:** Use 'suggest_navigation' to guide them.
 
 **Guardrails & Safety:**
 - Refuse to answer questions that are irrelevant to Bits&Bytes, technology, coding, education, or the local community.
@@ -90,7 +91,7 @@ const tools: OpenAI.Chat.Completions.ChatCompletionTool[] = [
           path: {
             type: "string",
             description: "The path to navigate to",
-            enum: ["/", "/about", "/impact", "/join", "/contact", "home", "about", "impact", "join", "contact"],
+            enum: ["/", "/about", "/impact", "/join", "/contact", "/coc", "home", "about", "impact", "join", "contact", "coc"],
           },
         },
         required: ["path"],
@@ -102,13 +103,13 @@ const tools: OpenAI.Chat.Completions.ChatCompletionTool[] = [
     function: {
       name: "get_site_section",
       description:
-        "Fetch live HTML for a section of the Bits&Bytes site. USE THIS OFTEN to read the latest content about projects, impact, or about page details.",
+        "Fetch live HTML for a section of the Bits&Bytes site. USE THIS OFTEN to read the latest content about projects, impact, about page details, or Code of Conduct guidelines.",
       parameters: {
         type: "object",
         properties: {
           section: {
             type: "string",
-            enum: ["home", "about", "impact", "join", "contact"],
+            enum: ["home", "about", "impact", "join", "contact", "coc"],
           },
         },
         required: ["section"],
@@ -179,6 +180,7 @@ function normalizePath(value?: string): string {
   if (input === "/impact" || input === "impact") return "/impact"
   if (input === "/join" || input === "join") return "/join"
   if (input === "/contact" || input === "contact") return "/contact"
+  if (input === "/coc" || input === "coc") return "/coc"
   return "/"
 }
 
