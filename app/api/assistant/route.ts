@@ -345,14 +345,14 @@ export async function POST(req: NextRequest) {
     }
 
     let toolResult: any = null
-    let action: { type: string; path?: string } | undefined
+    let action: AssistantAction | undefined
 
     if (toolName === "submit_contact_form") {
       toolResult = await handleSubmitContactTool(toolArgs)
     } else if (toolName === "suggest_navigation") {
       const path = normalizePath(toolArgs?.path)
       toolResult = { success: true, path }
-      action = { type: "navigate", path }
+      action = { type: "navigate" as const, path }
     } else if (toolName === "get_site_section") {
       toolResult = await handleGetSiteSectionTool(toolArgs?.section ?? "home", req)
     } else if (toolName === "find_team_expert") {
@@ -374,9 +374,8 @@ export async function POST(req: NextRequest) {
       {
         role: "tool",
         tool_call_id: toolCall.id,
-        name: toolName,
         content: JSON.stringify(toolResult),
-      },
+      } as OpenAI.Chat.ChatCompletionToolMessageParam,
     ]
 
     try {
