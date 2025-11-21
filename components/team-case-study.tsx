@@ -119,7 +119,7 @@ function TeamCard({ member, bgColor }: { member: TeamMember; bgColor: string }) 
             </div>
           </div>
         </div>
-        <div className="mt-4 flex min-h-[220px] flex-col gap-2 p-4 text-white">
+        <div className="mt-4 flex min-h-[180px] sm:min-h-[220px] flex-col gap-2 p-4 text-white">
           <div className="flex items-start justify-between">
             <div className="flex-1">
               <span className="text-[0.65rem] font-semibold uppercase tracking-[0.35em] opacity-70">

@@ -1,9 +1,15 @@
-"use client"
+
 
 import Link from "next/link"
 import { ArrowRight, Code2, Users, Rocket, Lightbulb, Trophy, Sparkles } from "lucide-react"
 import dynamic from "next/dynamic"
 import { Suspense } from "react"
+import { Metadata } from "next"
+
+export const metadata: Metadata = {
+  title: "Bits&Bytes - Teen Led Code Club | Lucknow",
+  description: "Innovate. Collaborate. Hack. Join the most creative code club for teens in Lucknow. Build real projects, attend hackathons, and grow as a developer.",
+}
 
 import { HeroFuturistic } from "@/components/ui/hero-futuristic"
 import { PageSection } from "@/components/page-section"
@@ -67,9 +73,9 @@ const stories = [
 ]
 
 const focusAreas = [
-  { 
-    icon: <Trophy className="w-full h-full" />, 
-    color: "deep-purple", 
+  {
+    icon: <Trophy className="w-full h-full" />,
+    color: "deep-purple",
     label: "Hackathons",
     description: "Competitive coding events where creativity meets execution",
     content: [
@@ -79,9 +85,9 @@ const focusAreas = [
       "Prizes, networking, and real opportunities for standout projects"
     ]
   },
-  { 
-    icon: <Lightbulb className="w-full h-full" />, 
-    color: "vibrant-pink", 
+  {
+    icon: <Lightbulb className="w-full h-full" />,
+    color: "vibrant-pink",
     label: "Workshops",
     description: "Hands-on learning sessions covering modern tech stacks",
     content: [
@@ -91,9 +97,9 @@ const focusAreas = [
       "Led by experienced teen developers and guest industry speakers"
     ]
   },
-  { 
-    icon: <Code2 className="w-full h-full" />, 
-    color: "purple-pink", 
+  {
+    icon: <Code2 className="w-full h-full" />,
+    color: "purple-pink",
     label: "Projects",
     description: "Real-world builds that ship to production",
     content: [
@@ -103,9 +109,9 @@ const focusAreas = [
       "Open-source contributions and team project squads"
     ]
   },
-  { 
-    icon: <Users className="w-full h-full" />, 
-    color: "rich-plum", 
+  {
+    icon: <Users className="w-full h-full" />,
+    color: "rich-plum",
     label: "Club",
     description: "A tight-knit crew of ambitious teen builders",
     content: [
@@ -115,9 +121,9 @@ const focusAreas = [
       "Safe, inclusive environment where everyone ships something real"
     ]
   },
-  { 
-    icon: <Rocket className="w-full h-full" />, 
-    color: "plum-coral", 
+  {
+    icon: <Rocket className="w-full h-full" />,
+    color: "plum-coral",
     label: "Innovation",
     description: "Experimenting with cutting-edge tech and bold ideas",
     content: [
@@ -127,9 +133,9 @@ const focusAreas = [
       "Encouragement to fail fast, learn faster, and iterate boldly"
     ]
   },
-  { 
-    icon: <Sparkles className="w-full h-full" />, 
-    color: "soft-coral", 
+  {
+    icon: <Sparkles className="w-full h-full" />,
+    color: "soft-coral",
     label: "Mentorship",
     description: "Experienced teens guiding first-time builders",
     content: [
@@ -174,7 +180,7 @@ export default function Home() {
         align="center"
       >
         <Suspense fallback={<LoadingInline />}>
-          <div className="relative mx-auto" style={{ height: '500px' }}>
+          <div className="relative mx-auto">
             <GlassIcons items={focusAreas} className="max-w-4xl" />
           </div>
         </Suspense>
@@ -184,7 +190,7 @@ export default function Home() {
         <Suspense fallback={<LoadingInline />}>
           <InfiniteMovingCards
             items={stories}
-            direction="right"
+            direction="left"
             speed="slow"
           />
         </Suspense>

@@ -18,7 +18,7 @@
   --popover: #ffffff;
   --popover-foreground: #120524;
   --muted: rgba(20, 6, 39, 0.06);
-  --muted-foreground: rgba(20, 6, 39, 0.64);
+  --muted-foreground: rgba(20, 6, 39, 0.75);
   --border: rgba(62, 30, 104, 0.15);
   --input: rgba(20, 6, 39, 0.08);
 
@@ -62,7 +62,7 @@
   --popover: rgba(7, 4, 12, 0.95);
   --popover-foreground: #ffffff;
   --muted: rgba(248, 240, 255, 0.08);
-  --muted-foreground: rgba(246, 236, 255, 0.7);
+  --muted-foreground: rgba(246, 236, 255, 0.8);
   --border: rgba(248, 240, 255, 0.08);
   --input: rgba(248, 240, 255, 0.12);
 

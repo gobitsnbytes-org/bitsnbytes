@@ -4,7 +4,12 @@ import Image from 'next/image'
 import Link from 'next/link'
 import { ArrowRight, Sparkles } from 'lucide-react'
 
-import { WebGLShader } from '@/components/ui/web-gl-shader'
+import dynamic from 'next/dynamic'
+
+const WebGLShader = dynamic(() => import('@/components/ui/web-gl-shader').then(mod => mod.WebGLShader), {
+  ssr: false,
+  loading: () => <div className="absolute inset-0 bg-gradient-to-br from-[var(--brand-purple)]/20 to-[var(--brand-pink)]/20" />,
+})
 import { Button } from '@/components/ui/button'
 import { LiquidGlassBackdrop } from '@/components/ui/liquid-glass-effect'
 
@@ -20,19 +25,19 @@ export const HeroFuturistic = () => {
       <WebGLShader />
       <div className="absolute inset-0 bg-black/30" />
 
-      <div className="relative z-10 mx-auto flex max-w-6xl flex-col gap-12 px-4 pb-20 pt-28 sm:px-6 lg:flex-row lg:items-stretch lg:gap-16">
+      <div className="relative z-10 mx-auto flex max-w-6xl flex-col gap-12 px-4 pb-12 pt-20 sm:px-6 sm:pb-20 sm:pt-28 lg:flex-row lg:items-stretch lg:gap-16">
         <div className="flex-1">
-          <div className="relative isolate flex h-full flex-col gap-8 rounded-[32px] border border-white/30 bg-white/70 p-8 text-foreground shadow-xl dark:border-white/10 dark:bg-white/10 dark:text-white">
+          <div className="relative isolate flex h-full flex-col gap-8 rounded-[32px] border border-white/30 bg-white/70 p-6 sm:p-8 text-foreground shadow-xl dark:border-white/10 dark:bg-white/10 dark:text-white">
             <LiquidGlassBackdrop radiusClassName="rounded-[inherit]" />
             <span className="relative z-10 inline-flex w-fit items-center gap-2 rounded-full border border-white/30 px-4 py-1 text-[0.65rem] font-semibold uppercase tracking-[0.35em] text-foreground/70 dark:text-white/80">
               <Sparkles className="h-3 w-3" />
               TEEN-LED
             </span>
             <div className="relative z-10 space-y-6">
-              <h1 className="font-display text-4xl leading-tight text-foreground dark:text-white md:text-6xl">
+              <h1 className="font-display text-3xl font-bold leading-tight text-foreground dark:text-white sm:text-4xl md:text-5xl lg:text-6xl">
                 Lucknow&apos;s boldest builders club for ambitious teens
               </h1>
-              <p className="text-lg text-foreground/80 dark:text-white/70 md:text-xl">
+              <p className="text-base text-foreground/80 dark:text-white/70 sm:text-lg md:text-xl">
                 We host premium hackathons, design/dev squads, and real-world launches—run entirely by students who want to
                 ship things that matter.
               </p>
