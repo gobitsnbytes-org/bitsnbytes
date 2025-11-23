@@ -191,9 +191,15 @@ export default function CodeOfConduct() {
                     <p className="text-muted-foreground dark:text-white/80">Permanent removal from the community.</p>
                   </div>
                 </div>
-                <p className="text-muted-foreground dark:text-white/70 text-lg mt-4">
-                  For serious situations, the team can take immediate action without warning.
-                </p>
+                <div className="mt-6 space-y-3">
+                  <p className="text-muted-foreground dark:text-white/70 text-lg">
+                    For serious situations, the team can take immediate action without warning.
+                  </p>
+                  <p className="text-muted-foreground dark:text-white/70 text-base italic border-l-4 border-[var(--brand-pink)]/50 pl-4">
+                    <strong className="text-foreground dark:text-white">Important:</strong> The Bits&Bytes staff team has sole discretion in determining what constitutes a violation of this Code of Conduct. 
+                    Decisions are made in the best interest of maintaining a safe, welcoming community. Appeals or arguments that "it doesn't break policy" will not be entertained.
+                  </p>
+                </div>
               </div>
             </div>
 
