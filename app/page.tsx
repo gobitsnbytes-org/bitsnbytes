@@ -7,8 +7,8 @@ import { Suspense } from "react"
 import { Metadata } from "next"
 
 export const metadata: Metadata = {
-  title: "Bits&Bytes - Teen Led Code Club | Lucknow",
-  description: "Innovate. Collaborate. Hack. Join the most creative code club for teens in Lucknow. Build real projects, attend hackathons, and grow as a developer.",
+  title: "Bits&Bytes - Teen Led Code Club | India",
+  description: "Innovate. Collaborate. Hack. Join India's boldest builders club for ambitious teens. Build real projects, attend hackathons, and grow as a developer.",
 }
 
 import { HeroFuturistic } from "@/components/ui/hero-futuristic"
@@ -29,8 +29,8 @@ const GlassIcons = dynamic(() => import("@/components/GlassIcons"), {
 })
 
 const stats = [
-  { value: "80+", label: "Active members", detail: "across Lucknow" },
-  { value: "50+", label: "Projects shipped", detail: "from apps to AI" },
+  { value: "120+", label: "Active members", detail: "across India" },
+  { value: "60+", label: "Projects shipped", detail: "from apps to AI" },
   { value: "10", label: "Partner schools", detail: "and growing" },
 ]
 
@@ -51,7 +51,7 @@ const stories = [
   },
   {
     quote:
-      "Building this platform has been incredible. We're not just coding—we're creating opportunities for the next generation of Lucknow's tech talent.",
+      "Building this platform has been incredible. We're not just coding—we're creating opportunities for the next generation of India's teen tech talent.",
     name: "Akshat",
     title: "Co-Founder & Technical Lead",
     image: "/team/akshat.png",
@@ -79,7 +79,7 @@ const focusAreas = [
     label: "Hackathons",
     description: "Competitive coding events where creativity meets execution",
     content: [
-      "40+ teens building together at Scrapyard Lucknow, our flagship hackathon",
+      "40+ teens building together at Scrapyard, our flagship hackathon born in Lucknow",
       "24-hour sprints turning ideas into working prototypes",
       "Judging panels with industry mentors and startup founders",
       "Prizes, networking, and real opportunities for standout projects"
@@ -115,7 +115,7 @@ const focusAreas = [
     label: "Club",
     description: "A tight-knit crew of ambitious teen builders",
     content: [
-      "80+ active members across Lucknow schools",
+      "80+ active members across India",
       "Discord workspace for daily code help and project collabs",
       "Study groups, pair programming sessions, and code reviews",
       "Safe, inclusive environment where everyone ships something real"

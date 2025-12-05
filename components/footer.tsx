@@ -41,7 +41,7 @@ export function Footer() {
             </div>
           </div>
           <p>
-            Building Lucknow&apos;s coolest hackathons & creative code movements. Teen-led, club-backed, future ready.
+            Building India&apos;s boldest teen-led hackathons & creative code movements - born in Lucknow, scaling nationwide.
           </p>
         </div>
 
@@ -67,7 +67,7 @@ export function Footer() {
             </a>
             <p className="flex items-center gap-2">
               <MapPin className="h-4 w-4" />
-              Lucknow, India
+              Based in Lucknow, India
             </p>
           </div>
         </div>

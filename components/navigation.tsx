@@ -56,7 +56,7 @@ export default function Navigation() {
             </div>
             <div className="hidden sm:flex flex-col leading-tight">
               <span className="font-display text-lg font-semibold text-foreground">Bits&Bytes</span>
-              <span className="text-xs uppercase tracking-[0.35em] text-muted-foreground">Lucknow</span>
+              <span className="text-xs uppercase tracking-[0.35em] text-muted-foreground">India</span>
             </div>
           </Link>
 

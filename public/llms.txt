@@ -1,12 +1,12 @@
-# Bits&Bytes - Teen Led Code Club | Lucknow
+# Bits&Bytes - Teen Led Code Club | India
 
-> **Mission:** Building Lucknow's coolest hackathons & tech movements  
-> **Org Type:** Nonprofit · Teen‑Led Code Club · Based in Lucknow, India
+> **Mission:** Building India's boldest teen-led hackathons & tech movements  
+> **Org Type:** Nonprofit · Teen‑Led Code Club · Based in Lucknow, India · Serving teens nationwide
 
 This file provides context for AI agents about Bits&Bytes.
 
 ## Core Identity
-Bits&Bytes is a teen-led code club and nonprofit based in Lucknow, India. We focus on empowering students to build real-world projects, participate in hackathons, and grow as developers.
+Bits&Bytes is a teen-led code club and nonprofit based in Lucknow, India, serving ambitious teens nationwide. We focus on empowering students to build real-world projects, participate in hackathons, and grow as developers.
 
 ## Key Focus Areas
 - **Hackathons**: Organizing events like "Scrapyard Lucknow" where teens build prototypes in 24-hour sprints.
@@ -32,7 +32,7 @@ Bits&Bytes is a teen-led code club and nonprofit based in Lucknow, India. We foc
 ## Contact
 - **Website**: https://gobitsnbytes.org
 - **LinkedIn**: https://www.linkedin.com/company/gobitsbytes
-- **Location**: Lucknow, India
+- **Location**: Based in Lucknow, India (operating across India)
 
 ## Content Structure
 The website contains:

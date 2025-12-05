@@ -34,11 +34,11 @@ const jetBrainsMono = JetBrains_Mono({
 export const metadata: Metadata = {
   metadataBase: new URL('https://gobitsnbytes.org'),
   title: {
-    default: "Bits&Bytes - Teen Led Code Club | Lucknow",
+    default: "Bits&Bytes - Teen Led Code Club | India",
     template: "%s | Bits&Bytes"
   },
-  description: "Innovate. Collaborate. Hack. Join the most creative code club for teens in Lucknow. Build real projects, attend hackathons, and grow as a developer.",
-  keywords: ["bits&bytes", "teen code club", "lucknow hackathons", "student developers", "coding club", "tech events lucknow", "learn coding", "teen programmers", "hackathons in lucknow", "coding classes for teens"],
+  description: "Innovate. Collaborate. Hack. Join the most creative code club for teens in India. Build real projects, attend hackathons, and grow as a developer.",
+  keywords: ["bits&bytes", "teen code club", "india hackathons", "student developers", "coding club", "tech events india", "learn coding", "teen programmers", "hackathons in india", "coding classes for teens"],
   authors: [{ name: "Bits&Bytes Team", url: "https://gobitsnbytes.org" }],
   creator: "Bits&Bytes",
   publisher: "Bits&Bytes",
@@ -61,8 +61,8 @@ export const metadata: Metadata = {
     locale: "en_IN",
     url: "https://gobitsnbytes.org",
     siteName: "Bits&Bytes",
-    title: "Bits&Bytes - Teen Led Code Club | Lucknow",
-    description: "Innovate. Collaborate. Hack. Join the most creative code club for teens in Lucknow.",
+    title: "Bits&Bytes - Teen Led Code Club | India",
+    description: "Innovate. Collaborate. Hack. Join the most creative code club for teens in India.",
     images: [
       {
         url: "/og-image.png",
@@ -74,8 +74,8 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Bits&Bytes - Teen Led Code Club | Lucknow",
-    description: "Innovate. Collaborate. Hack. Join the most creative code club for teens in Lucknow.",
+    title: "Bits&Bytes - Teen Led Code Club | India",
+    description: "Innovate. Collaborate. Hack. Join the most creative code club for teens in India.",
     images: ["/og-image.png"],
     creator: "@bitsnbytes_lko",
     site: "@bitsnbytes_lko",
@@ -106,7 +106,7 @@ export default function RootLayout({
     "sameAs": [
       "https://www.linkedin.com/company/gobitsbytes"
     ],
-    "description": "Innovate. Collaborate. Hack. Join the most creative code club for teens in Lucknow.",
+    "description": "Innovate. Collaborate. Hack. Join the most creative code club for teens in India.",
     "address": {
       "@type": "PostalAddress",
       "addressLocality": "Lucknow",

@@ -2,7 +2,7 @@ import { ImageResponse } from 'next/og'
 
 export const runtime = 'edge'
 
-export const alt = 'Bits&Bytes - Teen Led Code Club | Lucknow'
+export const alt = 'Bits&Bytes - Teen Led Code Club | India'
 export const size = {
   width: 1200,
   height: 630,
@@ -91,7 +91,7 @@ export default async function Image() {
               textTransform: 'uppercase',
             }}
           >
-            Lucknow's Teen Code Club
+            India's Teen Code Club
           </div>
 
           <div

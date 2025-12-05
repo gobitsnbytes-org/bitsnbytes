@@ -161,7 +161,7 @@ export default function About() {
         align="center"
         eyebrow="Team"
         title="Meet the Agents"
-        description="A tight crew of designers, engineers, club leads, and storytellers powering Lucknow's teen-led tech movement."
+        description="A tight crew of designers, engineers, club leads, and storytellers powering India-wide teen-led tech movements."
       >
         <Suspense fallback={<LoadingInline />}>
           <TeamCaseStudy members={teamMembers} />

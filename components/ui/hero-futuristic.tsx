@@ -35,7 +35,7 @@ export const HeroFuturistic = () => {
             </span>
             <div className="relative z-10 space-y-6">
               <h1 className="font-display text-3xl font-bold leading-tight text-foreground dark:text-white sm:text-4xl md:text-5xl lg:text-6xl">
-                Lucknow&apos;s boldest builders club for ambitious teens
+                India&apos;s boldest builders club for ambitious teens
               </h1>
               <p className="text-base text-foreground/80 dark:text-white/70 sm:text-lg md:text-xl">
                 We host premium hackathons, design/dev squads, and real-world launches—run entirely by students who want to

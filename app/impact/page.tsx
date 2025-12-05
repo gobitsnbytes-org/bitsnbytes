@@ -22,9 +22,9 @@ const WebGLShader = dynamic(() => import("@/components/ui/web-gl-shader").then(m
 })
 
 const highlightStats = [
-  { value: "80+", label: "Students active", description: "From across Lucknow" },
+  { value: "120+", label: "Students active", description: "From across India" },
   { value: "10", label: "Schools represented", description: "Cross-campus exchange" },
-  { value: "50+", label: "Projects launched", description: "Products, apps, AI" },
+  { value: "60+", label: "Projects launched", description: "Products, apps, AI" },
   { value: "1st", label: "Student-led hackathon", description: "Scrapyard Lucknow 2024" },
 ]
 

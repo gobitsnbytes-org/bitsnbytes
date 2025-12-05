@@ -1,7 +1,7 @@
 # Bits&Bytes Team – Agents Handbook
 
-> **Mission:** Building Lucknow's coolest hackathons & tech movements  
-> **Org Type:** Nonprofit · Teen‑Led Code Club · Based in Lucknow, India
+> **Mission:** Building India's boldest teen-led hackathons & tech movements  
+> **Org Type:** Nonprofit · Teen‑Led Code Club · Based in Lucknow, India · Serving teens nationwide
 
 This handbook describes the core Bits&Bytes “agents” (team members), what each person is great at, and how we collaborate to ship high‑impact projects fast.
 
@@ -214,7 +214,7 @@ Quick reference for “who to ping for what”.
 
 For partnerships, collaborations, or general questions, reach out via the **website contact form** or message us on **LinkedIn**.
 
-Special thanks to all our volunteers, mentors, and supporters. Together, we’re building the next generation of tech innovators from Lucknow and beyond.
+Special thanks to all our volunteers, mentors, and supporters. Together, we’re building the next generation of tech innovators across India and beyond.
 
 ---
 
