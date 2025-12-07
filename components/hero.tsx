@@ -79,11 +79,11 @@ export default function Hero() {
                   </p>
                   <div className="grid grid-cols-3 gap-3">
                     <div>
-                      <p className="text-lg sm:text-xl font-bold text-[var(--brand-coral)]">80+</p>
+                      <p className="text-lg sm:text-xl font-bold text-[var(--brand-coral)]">120+</p>
                       <p className="text-[0.65rem] sm:text-xs text-white/60">Members</p>
                     </div>
                     <div>
-                      <p className="text-lg sm:text-xl font-bold text-[var(--brand-pink)]">50+</p>
+                      <p className="text-lg sm:text-xl font-bold text-[var(--brand-pink)]">60+</p>
                       <p className="text-[0.65rem] sm:text-xs text-white/60">Projects</p>
                     </div>
                     <div>

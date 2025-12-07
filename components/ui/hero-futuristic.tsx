@@ -14,8 +14,8 @@ import { Button } from '@/components/ui/button'
 import { LiquidGlassBackdrop } from '@/components/ui/liquid-glass-effect'
 
 const stats = [
-  { value: '80+', label: 'Active members' },
-  { value: '50+', label: 'Projects shipped' },
+  { value: '120+', label: 'Active members' },
+  { value: '60+', label: 'Projects shipped' },
   { value: '10', label: 'Partner schools' },
 ]
 

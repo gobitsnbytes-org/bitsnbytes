@@ -103,7 +103,7 @@ const focusAreas = [
     label: "Projects",
     description: "Real-world builds that ship to production",
     content: [
-      "50+ projects launched—from apps to AI tools",
+      "60+ projects launched—from apps to AI tools",
       "Collaborate with design, dev, and club teams",
       "Portfolio-ready work with mentorship at every stage",
       "Open-source contributions and team project squads"
@@ -115,7 +115,7 @@ const focusAreas = [
     label: "Club",
     description: "A tight-knit crew of ambitious teen builders",
     content: [
-      "80+ active members across India",
+      "120+ active members across India",
       "Discord workspace for daily code help and project collabs",
       "Study groups, pair programming sessions, and code reviews",
       "Safe, inclusive environment where everyone ships something real"
