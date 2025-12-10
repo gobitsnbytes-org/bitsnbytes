@@ -124,11 +124,11 @@ const teamMembers = [
   },
   {
     id: 9,
-    name: "Fatima",
-    role: "Graphics Design Associate",
-    image: "/team/fatima.jpeg",
-    bio: "Supports the graphics design workflows, helping to craft visuals and streamline the design process for faster execution.",
-    expertise: ["Design Support", "Visual Assets", "Workflow Optimization", "Creative Collaboration"],
+    name: "Areeb",
+    role: "Backend Developer",
+    image: "/team/areeb.png",
+    bio: "Assists in backend development tasks, collaborates on building robust APIs, and ensures smooth data management for various projects.",
+    expertise: ["Backend Development", "API Design", "Database Management", "Collaboration"],
   },
 ]
 
