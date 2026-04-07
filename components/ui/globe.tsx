@@ -10,14 +10,19 @@ const RING_PROPAGATION_SPEED = 3;
 const aspect = 1.2;
 const cameraZ = 300;
 
-// Detect Safari/Firefox for performance adjustments
+// Detect Safari/Firefox or Mobile for performance adjustments
+const isMobile =
+  typeof navigator !== "undefined" &&
+  /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(
+    navigator.userAgent
+  );
 const isSafari =
   typeof navigator !== "undefined" &&
   /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
 const isFirefox =
   typeof navigator !== "undefined" &&
   navigator.userAgent.toLowerCase().indexOf("firefox") > -1;
-const isLowPerfBrowser = isSafari || isFirefox;
+const isLowPerfBrowser = isSafari || isFirefox || isMobile;
 
 type Position = {
   order: number;
@@ -173,7 +178,7 @@ export function Globe({ globeConfig, data }: WorldProps) {
     // Configure globe
     globe
       .hexPolygonsData(countries.features)
-      .hexPolygonResolution(isLowPerfBrowser ? 2 : 3) // Lower resolution on Safari/Firefox
+      .hexPolygonResolution(isLowPerfBrowser ? 1 : 2) // Lower resolution for better performance
       .hexPolygonMargin(0.7)
       .showAtmosphere(defaultProps.showAtmosphere)
       .atmosphereColor(defaultProps.atmosphereColor)
@@ -355,30 +360,42 @@ export function World(props: WorldProps) {
           autoRotate={globeConfig.autoRotate ?? true}
           minPolarAngle={Math.PI / 3.5}
           maxPolarAngle={Math.PI - Math.PI / 3}
-          // Start at India (Lucknow ~80.9° longitude)
-          // Azimuthal angle is offset from default view, converting lng to radians
           target={[0, 0, 0]}
         />
-        <InitialRotation lng={globeConfig.initialPosition?.lng ?? 80.9462} />
+        <InitialRotation
+          lat={globeConfig.initialPosition?.lat ?? 26.8467}
+          lng={globeConfig.initialPosition?.lng ?? 80.9462}
+        />
       </Canvas>
     </div>
   );
 }
 
-// Component to set initial globe rotation to focus on a longitude
-function InitialRotation({ lng }: { lng: number }) {
-  const { scene } = useThree();
+// Component to set initial globe rotation to focus on a longitude and latitude
+function InitialRotation({ lat, lng }: { lat: number; lng: number }) {
+  const { camera, scene } = useThree();
   const initialized = useRef(false);
 
   useEffect(() => {
     if (!initialized.current) {
-      // Rotate the scene to show the target longitude
-      // Convert longitude to radians and adjust for globe orientation
-      const rotation = (-lng - 90) * (Math.PI / 180);
-      scene.rotation.y = rotation;
+      // Convert lat/lng to radians
+      const phi = (90 - lat) * (Math.PI / 180);
+      const theta = (lng + 280) * (Math.PI / 180);
+      // 280 degree hardcode to spawn globe directly at lucknow
+
+      // Calculate camera position to face the target (opposite side)
+      const radius = cameraZ;
+      const x = radius * Math.sin(phi) * Math.cos(theta);
+      const y = radius * Math.cos(phi);
+      const z = radius * Math.sin(phi) * Math.sin(theta);
+
+      camera.position.set(x, y, z);
+      camera.lookAt(0, 0, 0);
+      camera.updateProjectionMatrix();
+
       initialized.current = true;
     }
-  }, [scene, lng]);
+  }, [camera, scene, lat, lng]);
 
   return null;
 }
@@ -392,10 +409,10 @@ export function hexToRgb(hex: string) {
   var result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
   return result
     ? {
-        r: parseInt(result[1], 16),
-        g: parseInt(result[2], 16),
-        b: parseInt(result[3], 16),
-      }
+      r: parseInt(result[1], 16),
+      g: parseInt(result[2], 16),
+      b: parseInt(result[3], 16),
+    }
     : null;
 }
 

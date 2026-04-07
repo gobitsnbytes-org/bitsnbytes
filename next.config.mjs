@@ -1,10 +1,37 @@
 import path from "path"
+import { execSync } from "child_process"
+
+// Inject git build info at build time
+const getGitInfo = () => {
+  try {
+    const commitHash = execSync("git rev-parse HEAD").toString().trim();
+    const commitShort = execSync("git rev-parse --short HEAD").toString().trim();
+    const branch = execSync("git rev-parse --abbrev-ref HEAD").toString().trim();
+    const commitMessage = execSync("git log -1 --pretty=%s").toString().trim();
+    const commitDate = execSync("git log -1 --pretty=%ci").toString().trim();
+    return { commitHash, commitShort, branch, commitMessage, commitDate };
+  } catch {
+    return { commitHash: "unknown", commitShort: "unknown", branch: "unknown", commitMessage: "", commitDate: "" };
+  }
+};
+
+const gitInfo = getGitInfo();
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+  env: {
+    NEXT_PUBLIC_GIT_COMMIT_HASH: gitInfo.commitHash,
+    NEXT_PUBLIC_GIT_COMMIT_SHORT: gitInfo.commitShort,
+    NEXT_PUBLIC_GIT_BRANCH: gitInfo.branch,
+    NEXT_PUBLIC_GIT_COMMIT_MESSAGE: gitInfo.commitMessage,
+    NEXT_PUBLIC_GIT_COMMIT_DATE: gitInfo.commitDate,
+    NEXT_PUBLIC_BUILD_TIME: new Date().toISOString(),
+    NEXT_PUBLIC_REPO_URL: "https://github.com/gobitsnbytes/bitsnbytes",
+  },
   typescript: {
     ignoreBuildErrors: true,
   },
+  serverExternalPackages: ["sharp", "onnxruntime-node"],
   images: {
     // Enable image optimization for Vercel
     domains: [],
@@ -65,7 +92,7 @@ const nextConfig = {
           },
           {
             key: 'Content-Security-Policy',
-            value: "default-src 'self'; script-src 'self' 'unsafe-eval' 'unsafe-inline' https://va.vercel-scripts.com https://tally.so; style-src 'self' 'unsafe-inline'; img-src 'self' blob: data: https:; font-src 'self' data: https://r2cdn.perplexity.ai; connect-src 'self' https://vitals.vercel-insights.com; frame-src 'self' https://tally.so;"
+            value: "default-src 'self'; script-src 'self' 'unsafe-eval' 'unsafe-inline' https://va.vercel-scripts.com https://tally.so https://hcaptcha.com https://*.hcaptcha.com https://static.cloudflareinsights.com; style-src 'self' 'unsafe-inline' https://hcaptcha.com https://*.hcaptcha.com; img-src 'self' blob: data: https:; font-src 'self' data: https://r2cdn.perplexity.ai; connect-src 'self' https://vitals.vercel-insights.com https://hcaptcha.com https://*.hcaptcha.com https://*.supabase.co https://cloudflareinsights.com; frame-src 'self' https://tally.so https://hcaptcha.com https://*.hcaptcha.com https://discord.com https://*.discord.com https://*.notion.site https://www.notion.so;"
           }
         ]
       }

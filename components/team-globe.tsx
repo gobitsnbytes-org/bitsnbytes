@@ -9,7 +9,7 @@ const World = dynamic(
     loading: () => (
       <div className="flex items-center justify-center h-full w-full">
         <div className="animate-pulse text-muted-foreground">
-          Loading globe...
+          Loading...
         </div>
       </div>
     ),
@@ -17,6 +17,8 @@ const World = dynamic(
 );
 
 export default function TeamGlobe() {
+  const isMobile = typeof window !== "undefined" && window.innerWidth < 768;
+
   const globeConfig = useMemo(
     () => ({
       pointSize: 4,
@@ -38,9 +40,9 @@ export default function TeamGlobe() {
       maxRings: 3,
       initialPosition: { lat: 26.8467, lng: 80.9462 }, // Lucknow coordinates
       autoRotate: true,
-      autoRotateSpeed: 0.5,
+      autoRotateSpeed: isMobile ? 0.3 : 0.5,
     }),
-    [],
+    [isMobile],
   );
 
   const teamArcs = useMemo(
@@ -116,6 +118,42 @@ export default function TeamGlobe() {
         endLng: 77.5946,
         arcAlt: 0.22,
         color: "#FFACAC",
+      },
+      {
+        order: 9,
+        startLat: 26.8467, // Lucknow
+        startLng: 80.9462,
+        endLat: 21.1702, // Surat
+        endLng: 72.8311,
+        arcAlt: 0.15,
+        color: "#E45A92",
+      },
+      {
+        order: 10,
+        startLat: 26.8467, // Lucknow
+        startLng: 80.9462,
+        endLat: 30.901, // Ludhiana
+        endLng: 75.8573,
+        arcAlt: 0.14,
+        color: "#FFACAC",
+      },
+      {
+        order: 11,
+        startLat: 26.8467, // Lucknow
+        startLng: 80.9462,
+        endLat: 13.0827, // Chennai (Madras)
+        endLng: 80.2707,
+        arcAlt: 0.24,
+        color: "#5D2F77",
+      },
+      {
+        order: 12,
+        startLat: 26.8467, // Lucknow
+        startLng: 80.9462,
+        endLat: 19.076, // Mumbai
+        endLng: 72.8777,
+        arcAlt: 0.18,
+        color: "#E45A92",
       },
     ],
     [],

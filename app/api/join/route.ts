@@ -1,17 +1,7 @@
 import { NextRequest, NextResponse } from "next/server"
-
-const WEB3FORMS_ENDPOINT = "https://api.web3forms.com/submit"
+import { supabase } from "@/lib/supabase"
 
 export async function POST(req: NextRequest) {
-  const accessKey = process.env.WEB3FORMS_ACCESS_KEY
-
-  if (!accessKey) {
-    return NextResponse.json(
-      { error: "WEB3FORMS_ACCESS_KEY is not configured on the server." },
-      { status: 500 },
-    )
-  }
-
   try {
     const body = await req.json()
     const name = (body?.name ?? "").toString().trim()
@@ -28,42 +18,19 @@ export async function POST(req: NextRequest) {
       )
     }
 
-    const formattedMessage = `
-New join request from Bits&Bytes site.
-
-Name: ${name}
-Email: ${email}
-School: ${school || "Not provided"}
-Experience: ${experience || "Not provided"}
-Interests: ${interests || "Not provided"}
-
-Message:
-${message}
-`.trim()
-
-    const payload = {
-      access_key: accessKey,
+    const { error } = await supabase.from("join_requests").insert({
       name,
       email,
-      subject: "New join request from Bits&Bytes",
-      message: formattedMessage,
-    }
-
-    const response = await fetch(WEB3FORMS_ENDPOINT, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        Accept: "application/json",
-      },
-      body: JSON.stringify(payload),
+      school: school || null,
+      experience: experience || null,
+      interests: interests || null,
+      message,
     })
 
-    const result = await response.json()
-
-    if (!result?.success) {
-      console.error("Web3Forms join error:", result)
+    if (error) {
+      console.error("Supabase join insert error:", error)
       return NextResponse.json(
-        { error: "Failed to submit join form." },
+        { error: error.message || "Failed to submit join form." },
         { status: 502 },
       )
     }
@@ -77,5 +44,3 @@ ${message}
     )
   }
 }
-
-

@@ -30,27 +30,27 @@ const WebGLShader = dynamic(
 const aboutContent = {
   title: "About Bits&Bytes",
   description:
-    "We're a teen-led code club dedicated to fostering innovation, collaboration, and real-world impact through technology.",
+    "We are a teen-led code club dedicated to empowering high-agency individuals to ship production-grade technology through real-world product launches.",
   sections: [
     {
-      title: "Open Source Culture",
+      title: "The Origin Story",
       description:
-        "We believe in building in public. Our projects are open for collaboration, encouraging every member to contribute, learn, and improve each other's code.",
+        "Originally hosting Daydream Lucknow under Hack Club, we faced a last-minute venue withdrawal. We decided to go fully independent to bypass rigid formats and deliver actual value to builders.",
     },
     {
-      title: "Workshops & Learning",
+      title: "High Agency Only",
       description:
-        "Regular workshops cover everything from web development to AI/ML, helping teens master cutting-edge technologies and industry best practices.",
+        "We move away from 'beginner-friendly' formats that treat participants like they need hand-holding. We build for exceptionally talented individuals who want to ship real products.",
     },
     {
-      title: "Connect & Collaborate",
+      title: "Ship Real Products",
       description:
-        "We bring together like-minded individuals from different schools, creating a supportive club where teens can learn from each other and build lasting connections.",
+        "Workshops and hack nights must convert into tangible outcomes. We focus on premium hackathons, dev squads, and real-world launches that are fully student-led.",
     },
     {
-      title: "Inspire & Build",
+      title: "Production Grade",
       description:
-        "We inspire the next generation of developers and innovators to turn their ideas into reality and create solutions that make a real difference.",
+        "We prioritize performance and stability. Our technical infrastructure is built with professional standards, removing barriers for the next generation of builders.",
     },
   ],
 };
@@ -59,31 +59,33 @@ const aboutContent = {
 const coreTeam = [
   {
     id: 1,
-    name: "Yash",
+    name: "Yash Singh",
     role: "Founder & Local Lead",
     image: "/team/yash.jpeg",
-    bio: "Leads the entire organization, coordinating between all teams, organizing events, setting timelines, and ensuring that work gets executed efficiently.",
+    bio: "High school student who builds things that matter—from VS Code extensions with thousands of users to hackathons with 400+ participants. IOQM National Qualifier and Educator at STEMist Lucknow, teaching underrepresented talent.",
     expertise: [
-      "Leadership",
-      "Event Management",
-      "Team Coordination",
-      "Strategic Planning",
+      "Mathematics (IOQM)",
+      "Full-Stack Dev",
+      "Three.js / Three.js",
+      "AI / ML Scaling",
+      "GoDOT Game Dev",
     ],
-    linkedin: "https://www.linkedin.com/in/yash-singh-a41540270/",
+    linkedin: "https://www.linkedin.com/in/yash-vardhan-singh-a41540270/",
     accentColor: "#3E1E68", // Deep Purple
     isFounder: true,
   },
   {
     id: 2,
-    name: "Aadrika",
+    name: "Aadrika Maurya",
     role: "Co-Founder & Chief Creative Strategist",
     image: "/team/aadrika.png",
-    bio: "Leads branding, design decisions, idea generation, and promotional campaign planning. Handles basic tech work and guides the overall direction of the organization.",
+    isFeatured: true,
+    bio: "RSI India Alumni who conducted neuroscience research on EEG signals and attention pattern modeling. Regional Manager for CodeDay Kanpur and building 'The Nerdy Network'.",
     expertise: [
+      "Neuroscience (EEG)",
       "Creative Strategy",
+      "Regional Management",
       "Brand Development",
-      "Campaign Planning",
-      "Design Direction",
     ],
     linkedin: "https://in.linkedin.com/in/aadrika-maurya",
     accentColor: "#E45A92", // Vibrant Pink
@@ -94,11 +96,13 @@ const coreTeam = [
     name: "Akshat Kushwaha",
     role: "Co-Founder & Technical Lead",
     image: "/team/akshat.webp",
-    bio: "Builds and maintains the website, leads programming projects, evaluates tech stacks, and ensures the technical stability of all projects.",
+    bio: "AI-native systems engineer who asks what happens when software fails—building production workflows and retrieval architectures that survive real constraints. Lead at STEMist Prayagraj, defining high-performance engineering culture.",
     expertise: [
-      "AI & LLMOps",
-      "Cloud Infrastructure",
-      "Full-Stack Development",
+      "LLMOps / RAG",
+      "Agentic Frameworks",
+      "Next.js 16 / React 19",
+      "FastAPI / Python",
+      "System Design",
     ],
     linkedin: "https://www.linkedin.com/in/akshat-singh-kushwaha/",
     accentColor: "#5D2F77", // Rich Plum
@@ -106,31 +110,45 @@ const coreTeam = [
   },
   {
     id: 4,
-    name: "Devansh",
+    name: "Devaansh Pathak",
     role: "Founding Member & Backend Lead",
-    image: "/team/devaansh.jpeg",
-    bio: "Manages backend development, collaborates on technical features, and builds relationships with schools, students, and external communities for participation and support.",
+    image: "/team/devansh.jpeg",
+    bio: "Manages high-performance backend development and partnership economics.",
     expertise: [
-      "Backend Development",
-      "Database Architecture",
-      "Community Outreach",
+      "Backend Architecture",
+      "Database Systems",
       "Partnership Building",
+      "Community Outreach",
     ],
     linkedin: "https://www.linkedin.com/in/devaanshpa/",
   },
   {
-    id: 6,
-    name: "Maryam",
+    id: 5,
+    name: "Maryam Fatima",
     role: "Social Media & Promotions Head",
     image: "/team/maryam.jpeg",
-    bio: "Designs visuals for posts, events, and campaigns while maintaining branding consistency. Coordinates closely with the social media and content teams.",
+    bio: "Leading social strategy and impact storytelling. Generated 10k+ impressions for club events. Spearheads visual campaigns for major independent hackathons.",
     expertise: [
-      "Social Media",
+      "Impact Storytelling",
+      "Visual Design",
+      "Campaign Planning",
       "Brand Identity",
-      "Visual Communication",
-      "Design Systems",
     ],
     linkedin: "https://www.linkedin.com/in/maryam-fatima-9719aa377/",
+  },
+  {
+    id: 6,
+    name: "Sristhi Singh",
+    role: "Operations & Communications Head",
+    image: "/team/srishti.jpeg",
+    bio: "Optimizing internal communication for 100+ members. Ensures smooth collaboration across design/dev squads and city-wide event transitions.",
+    expertise: [
+      "Process Optimization",
+      "Resource Logistics",
+      "Team Communications",
+      "Project Coordination",
+    ],
+    linkedin: "https://www.linkedin.com/in/srishti-singh-ab6a1b391",
   },
 ];
 
@@ -138,9 +156,14 @@ const coreTeam = [
 const volunteers = [
   {
     id: 11,
-    name: "Oviyaa",
-    image: "/team/oviyaa.jpeg",
-    linkedin: "https://www.linkedin.com/in/oviyaa-singh-3a183a370/",
+    name: "Jaagruti",
+    image: "/team/jaagruti.jpeg",
+  },
+  {
+    id: 14,
+    name: "Adithya",
+    image: "/team/adhitya.png", // Corrected image path and extension
+    linkedin: "https://www.linkedin.com/in/adithya---k/",
   },
   {
     id: 5,
@@ -171,6 +194,13 @@ const volunteers = [
     name: "Kavan",
     image: "/team/kavan.jpg",
   },
+
+  {
+    id: 13,
+    name: "Aishwary",
+    image: "/team/aishwary.jpeg",
+    linkedin: "https://www.linkedin.com/in/ashlovesnoodle",
+  },
 ];
 
 export default function About() {
@@ -183,6 +213,7 @@ export default function About() {
           eyebrow="About"
           title={aboutContent.title}
           description={aboutContent.description}
+          className="pt-24 md:pt-32"
         >
           <ul className="grid grid-cols-1 grid-rows-none gap-4 md:grid-cols-12 md:grid-rows-2 lg:gap-4">
             {aboutContent.sections.map((section, index) => {

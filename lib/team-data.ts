@@ -2,108 +2,127 @@ export interface TeamMember {
   name: string
   role: string
   superpowers: string[]
+  achievements: string[]
   talkToMeWhen: string[]
-  department: "Leadership" | "Engineering" | "Design" | "Community" | "Content"
+  department: "Leadership" | "Engineering" | "Design" | "Community" | "Content" | "Operations"
 }
 
 export const TEAM_MEMBERS: TeamMember[] = [
   {
-    name: "Yash",
-    role: "Co-Founder & Local Lead",
-    superpowers: ["Full-stack dev", "AI", "Web architecture", "Modern web frameworks"],
-    talkToMeWhen: [
-      "Designing a new system or feature",
-      "Blocked on complex implementation details",
-      "Exploring AI/ML ideas",
+    name: "Yash Singh",
+    role: "Founder & Local Lead",
+    superpowers: ["Full-Stack Engineering", "Mathematics (IOQM)", "AI / LLM Intelligence", "Game Dev (GoDOT)", "Three.js & Creative Coding"],
+    achievements: [
+      "Founder of Bits&Bytes (gobitsnbytes.org), leading 100+ active members in student-led tech culture",
+      "Created Codiva: A 5-star rated VS Code extension that gamifies coding for thousands of users",
+      "National Qualifier for the Indian Mathematics Olympiad (IOQM)",
+      "Built Alem (AI notes app <25MB) and MailAF (AI cold outreach automation)",
+      "Educator at STEMist Lucknow, teaching Computer Science to underprivileged students with talent",
+      "Lead Organizer for Scrapyard Lucknow and Galactic Local Mentor at NASA Space Apps Challenge"
     ],
-    department: "Leadership",
+    talkToMeWhen: [
+      "You want to discuss community building or scaling high-agency movements",
+      "You need help with VS Code extensions, Three.js, or AI-powered outreach workflows",
+      "You want to talk about deep mathematical problem solving or competitive programming",
+      "You're interested in hardware experiments like LiDAR-based fitness apps or Flipper Zero clones"
+    ],
+    department: "Leadership"
   },
   {
-    name: "Saksham",
-    role: "Co-Founder & Designer",
-    superpowers: ["UI/UX", "Design systems", "Visual identity", "Accessibility"],
-    talkToMeWhen: [
-      "Starting a new product/page and want high-quality UI",
-      "Need flows, wireframes, or interaction design",
-      "Need feedback on accessibility or visual consistency",
+    name: "Aadrika Maurya",
+    role: "Co-Founder & Chief Creative Strategist",
+    superpowers: ["Neuroscience Research", "Creative Strategy", "Brand Development", "Regional Management", "Design Direction"],
+    achievements: [
+      "RSI India Alumni who conducted neuroscience research on EEG signals and attention pattern modeling",
+      "Regional Manager for CodeDay Kanpur, empowering local student developers",
+      "Building 'The Nerdy Network' to foster intellectual collaboration among teens",
+      "Designed the complete visual identity and campaign strategy for India-wide movements"
     ],
-    department: "Design",
-  },
-  {
-    name: "Aadrika",
-    role: "Community Lead",
-    superpowers: ["Community building", "Mentoring", "Event hosting", "Onboarding"],
     talkToMeWhen: [
-      "You're new and don't know where to start",
-      "Want to host a community activity or workshop",
-      "See community issues needing care or support",
+      "You need input on complex design systems or branding strategy",
+      "You want to discuss neuroscience, cognitive modeling, or research-driven design",
+      "You are looking for insights on regional event management and scaling communities"
     ],
-    department: "Community",
+    department: "Design"
   },
   {
     name: "Akshat Kushwaha",
-    role: "Project Manager",
-    superpowers: ["Project planning", "Timelines", "Coordination", "Strategy"],
-    talkToMeWhen: [
-      "Unsure about priorities or what to work on next",
-      "A project feels stuck and needs structure",
-      "Want to propose a new initiative or cross-team collab",
+    role: "Co-Founder & Technical Lead",
+    superpowers: ["Production-Grade Engineering", "LLMOps & RAG Architecture", "Agentic Workflows", "Next.js 16 / React 19", "System Design"],
+    achievements: [
+      "AI-native systems engineer; lead architect for the entire Bits&Bytes production-grade tech infrastructure",
+      "Designed high-performance efficient retrieval systems for complex AI workflows",
+      "Developed reliable long-running autonomous execution stacks for complex tool orchestration",
+      "Chapter Lead @ STEMist Education, founding builder-focused STEM culture at Boys High School, Prayagraj",
+      "Project Lead for the Bits&Bytes Platform, turning community operations into durable infrastructure"
     ],
-    department: "Leadership",
+    talkToMeWhen: [
+      "You care about the edge cases where AI systems usually break and want to build for real constraints",
+      "You're building complex agentic workflows, LLMOps pipelines, or local-first AI software",
+      "You want to discuss how technical execution and systems thinking overlap to ship meaningful product",
+      "You want to close the gap between ambition and the first build for young developers"
+    ],
+    department: "Engineering"
   },
   {
-    name: "Devansh",
-    role: "Backend Specialist",
-    superpowers: ["Databases", "APIs", "System design", "Scalability"],
-    talkToMeWhen: [
-      "Designing a new API or database schema",
-      "Have performance or scaling questions",
-      "Validating backend architecture decisions",
+    name: "Devaansh Pathak",
+    role: "Founding Member & Backend Lead",
+    superpowers: ["Backend Architecture", "Database Systems", "Partnership Economics"],
+    achievements: [
+      "Co-Architected the high-performance backend systems for the Bits&Bytes platform",
+      "Executed partnerships that delivered genuine ROI for sponsors across multiple cities"
     ],
-    department: "Engineering",
+    talkToMeWhen: [
+      "You are designing scalable database schemas or backend APIs",
+      "You want to talk about how we treat participants like high-agency builders",
+      "You're interested in the economics of sustainable tech communities"
+    ],
+    department: "Engineering"
   },
   {
-    name: "Maryam",
-    role: "Mobile Dev Lead",
-    superpowers: ["iOS", "Android", "Cross-platform frameworks", "Mobile UX"],
-    talkToMeWhen: [
-      "Starting or integrating a mobile app",
-      "Need help making something feel 'native'",
-      "Dealing with device-specific bugs or optimizations",
+    name: "Maryam Fatima",
+    role: "Social Media & Promotions Head",
+    superpowers: ["Visual Communication", "Brand Consistency", "Impact Storytelling", "Social Strategy"],
+    achievements: [
+      "Generating 10k+ impressions for club events through strategic storytelling",
+      "Maintains the premium Bits&Bytes brand identity across all social channels",
+      "Orchestrated promotions for GitHub Copilot Dev Days and multiple CodeDay hackathons"
     ],
-    department: "Engineering",
+    talkToMeWhen: [
+      "You need high-impact visuals for a campaign or real-world product launch",
+      "You want to ensure visual consistency for a student-led project",
+      "You have questions regarding premium social media presence"
+    ],
+    department: "Design"
   },
   {
-    name: "Kaustubh",
-    role: "DevOps Engineer",
-    superpowers: ["Infrastructure", "CI/CD", "Cloud", "Security", "Monitoring"],
-    talkToMeWhen: [
-      "Deploying a new service",
-      "Want logging/monitoring added or improved",
-      "Questions about infra costs, security, or scaling",
+    name: "Sristhi Singh",
+    role: "Operations & Communications Head",
+    superpowers: ["Process Optimization", "Resource Coordination", "Logistics Management", "Internal Communication"],
+    achievements: [
+      "Engineered the internal communication workflows for our 100+ active members",
+      "Coordinated logistics for NASA Space Apps and multiple city-wide transitions",
+      "Optimized the project lifecycle from workshop to tangible product launch"
     ],
-    department: "Engineering",
-  },
-  {
-    name: "Fatima",
-    role: "Content Creator",
-    superpowers: ["Technical writing", "Tutorials", "Educational content", "Social posts"],
     talkToMeWhen: [
-      "Shipping a feature that needs docs or a blog",
-      "Running a workshop and want clear content",
-      "Want to share a project story with the community",
+      "You need help navigating internal operations or resource allocation",
+      "You want to optimize the transition from idea to shipped product",
+      "You need assistance coordinating cross-department city-wide hackathons"
     ],
-    department: "Content",
-  },
+    department: "Operations"
+  }
 ]
 
 export function findExperts(query: string): TeamMember[] {
   const lowerQuery = query.toLowerCase()
+  if (!lowerQuery) return TEAM_MEMBERS
+
   return TEAM_MEMBERS.filter(
     (member) =>
       member.name.toLowerCase().includes(lowerQuery) ||
       member.role.toLowerCase().includes(lowerQuery) ||
       member.superpowers.some((s) => s.toLowerCase().includes(lowerQuery)) ||
+      member.achievements.some((a) => a.toLowerCase().includes(lowerQuery)) ||
       member.talkToMeWhen.some((t) => t.toLowerCase().includes(lowerQuery))
   )
 }
@@ -112,36 +131,22 @@ export function recommendRoles(skills: string[], interests: string[]): string {
   const userKeywords = [...skills, ...interests].map((k) => k.toLowerCase())
   const recommendations: string[] = []
 
-  if (userKeywords.some((k) => k.includes("design") || k.includes("ui") || k.includes("art") || k.includes("drawing"))) {
-    recommendations.push("Design Team (Talk to Saksham)")
+  if (userKeywords.some((k) => k.includes("design") || k.includes("ui") || k.includes("art") || k.includes("drawing") || k.includes("brand"))) {
+    recommendations.push("Design & Content Team (Talk to Aadrika or Maryam)")
   }
   if (
     userKeywords.some(
-      (k) => k.includes("code") || k.includes("dev") || k.includes("web") || k.includes("python") || k.includes("js")
+      (k) => k.includes("code") || k.includes("dev") || k.includes("web") || k.includes("python") || k.includes("js") || k.includes("ai") || k.includes("cloud")
     )
   ) {
-    recommendations.push("Engineering Team (Talk to Yash or Devansh)")
+    recommendations.push("Engineering Team (Talk to Akshat Kushwaha or Devansh)")
   }
   if (
     userKeywords.some(
-      (k) => k.includes("people") || k.includes("event") || k.includes("manage") || k.includes("lead")
+      (k) => k.includes("people") || k.includes("event") || k.includes("manage") || k.includes("lead") || k.includes("operations")
     )
   ) {
-    recommendations.push("Community & Leadership (Talk to Aadrika or Akshat Kushwaha)")
-  }
-  if (
-    userKeywords.some(
-      (k) => k.includes("mobile") || k.includes("app") || k.includes("android") || k.includes("ios")
-    )
-  ) {
-    recommendations.push("Mobile Development (Talk to Maryam)")
-  }
-  if (
-    userKeywords.some(
-      (k) => k.includes("write") || k.includes("blog") || k.includes("teach") || k.includes("content")
-    )
-  ) {
-    recommendations.push("Content Team (Talk to Fatima)")
+    recommendations.push("Community, Operations & Leadership (Talk to Yash or Srishti)")
   }
 
   if (recommendations.length === 0) {
@@ -150,4 +155,5 @@ export function recommendRoles(skills: string[], interests: string[]): string {
 
   return recommendations.join(", ")
 }
+
 

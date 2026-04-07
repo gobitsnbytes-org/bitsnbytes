@@ -3,7 +3,7 @@
 import { motion, AnimatePresence } from "framer-motion";
 import { usePathname } from "next/navigation";
 import { useState, useEffect, useMemo } from "react";
-import { Entropy } from "@/components/ui/entropy";
+import { CpuArchitecture } from "@/components/ui/cpu-architecture";
 
 const LOADING_QUOTES = [
   "Calculating the matrix...",
@@ -121,7 +121,7 @@ export default function Template({ children }: { children: React.ReactNode }) {
             transition={{ duration: 0.4 }}
             className="fixed inset-0 z-50 flex flex-col items-center justify-center bg-black"
           >
-            <Entropy size={280} className="rounded-xl" />
+            <CpuArchitecture className="w-80 h-auto" />
             <motion.p
               key={quoteIndex}
               initial={{ opacity: 0, y: 5 }}

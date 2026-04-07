@@ -3,388 +3,420 @@
 import dynamic from "next/dynamic";
 import Image from "next/image";
 import Link from "next/link";
+import { useState } from "react";
 import { PageSection } from "@/components/page-section";
+import { GlassContainer } from "@/components/ui/glass-container";
+import { Gallery4 } from "@/components/ui/gallery4";
 import { Button } from "@/components/ui/button";
 import {
-  ArrowRight,
+  Trophy,
+  Users,
   Calendar,
   MapPin,
-  Users,
   Clock,
+  Building2,
+  Activity,
+  Eye,
+  Check,
   ExternalLink,
 } from "lucide-react";
 
-// Lazy load WebGL shader
 const WebGLShader = dynamic(
-  () =>
-    import("@/components/ui/web-gl-shader").then((mod) => ({
-      default: mod.WebGLShader,
-    })),
-  {
-    loading: () => null,
-    ssr: false,
-  },
+  () => import("@/components/ui/web-gl-shader").then((m) => ({ default: m.WebGLShader })),
+  { loading: () => null, ssr: false },
 );
 
-interface Event {
-  id: string;
-  title: string;
-  description: string;
-  date: string;
-  time?: string;
-  location: string;
-  type: "hackathon" | "workshop" | "meetup" | "talk";
-  status: "upcoming" | "past";
-  attendees?: number;
-  image?: string;
-  link?: string;
-  highlights?: string[];
-}
-
-const events: Event[] = [
-  {
-    id: "scrapyard-lucknow-2025",
-    title: "Scrapyard Lucknow 2025",
-    description:
-      "Our flagship hackathon returns! 48 hours of building, learning, and shipping. Open to all high school students across India.",
-    date: "March 2025",
-    time: "48 Hours",
-    location: "Lucknow, India",
-    type: "hackathon",
-    status: "upcoming",
-    link: "#",
-  },
-  {
-    id: "ai-workshop-feb",
-    title: "Intro to AI/ML for Teens",
-    description:
-      "Learn the fundamentals of machine learning and build your first AI model. No prior experience required.",
-    date: "February 15, 2025",
-    time: "2:00 PM IST",
-    location: "Online (Discord)",
-    type: "workshop",
-    status: "upcoming",
-  },
-  {
-    id: "web-dev-bootcamp",
-    title: "Web Dev Bootcamp",
-    description:
-      "A 4-week intensive program covering HTML, CSS, JavaScript, and React. Build and deploy your portfolio site.",
-    date: "January 20 - February 17, 2025",
-    time: "Weekends",
-    location: "Online (Discord)",
-    type: "workshop",
-    status: "upcoming",
-  },
-  {
-    id: "scrapyard-lucknow-2025-archived",
-    title: "Scrapyard Lucknow 2025",
-    description:
-      "Our debut hackathon united 40+ coders, designers, filmmakers, and builders to tackle civic, education, and sustainability problems.",
-    date: "December 2025",
-    time: "24 Hours",
-    location: "Lucknow, India",
-    type: "hackathon",
-    status: "past",
-    attendees: 40,
-    image: "/images/hero-img.jpeg",
-    highlights: [
-      "40+ participants from 10 schools",
-      "12 projects submitted",
-      "Industry mentors from top startups",
-      "₹50,000 in prizes distributed",
-    ],
-  },
-  {
-    id: "git-github-workshop",
-    title: "Git & GitHub Masterclass",
-    description:
-      "Master version control and collaboration workflows. Learn branching, pull requests, and open-source contribution.",
-    date: "November 2024",
-    time: "3 Hours",
-    location: "Online (Discord)",
-    type: "workshop",
-    status: "past",
-    attendees: 25,
-  },
-  {
-    id: "design-thinking-workshop",
-    title: "Design Thinking for Developers",
-    description:
-      "Learn how to approach problems like a designer. User research, prototyping, and iterating on feedback.",
-    date: "October 2024",
-    time: "2 Hours",
-    location: "Online (Discord)",
-    type: "workshop",
-    status: "past",
-    attendees: 18,
-  },
-  {
-    id: "first-meetup",
-    title: "Bits&Bytes Launch Meetup",
-    description:
-      "The official launch of Bits&Bytes India. We gathered to share our vision and build our founding community.",
-    date: "September 2024",
-    location: "Lucknow, India",
-    type: "meetup",
-    status: "past",
-    attendees: 30,
-    image: "/images/b653f79c-fcc9-49bb-a92a-4fc454659b3a-1-105-c.jpeg",
-    highlights: [
-      "30 founding members joined",
-      "Set up Discord community",
-      "Planned first hackathon",
-      "Formed initial leadership team",
-    ],
-  },
-];
-
-const typeColors: Record<Event["type"], string> = {
-  hackathon: "bg-[var(--brand-pink)]",
-  workshop: "bg-[var(--brand-purple)]",
-  meetup: "bg-emerald-500",
-  talk: "bg-amber-500",
-};
-
-const typeLabels: Record<Event["type"], string> = {
-  hackathon: "Hackathon",
-  workshop: "Workshop",
-  meetup: "Meetup",
-  talk: "Tech Talk",
-};
+// ── Component ─────────────────────────────────────────────────────────────
 
 export default function Events() {
-  const upcomingEvents = events.filter((e) => e.status === "upcoming");
-  const pastEvents = events.filter((e) => e.status === "past");
+  const [activeEvent, setActiveEvent] = useState<"all" | "copilot" | "india-innovates">("all");
 
   return (
     <>
-      {/* Hero Section */}
-      <section className="relative min-h-[50vh] flex items-center justify-center overflow-hidden text-white">
+      {/* ── Hero ──────────────────────────────────────────────────────────── */}
+      <section
+        className="relative min-h-[70vh] flex items-center justify-center overflow-hidden text-white pt-24 md:pt-32"
+        aria-labelledby="events-hero-title"
+      >
         <WebGLShader />
-        <div className="relative z-10 w-full mx-auto max-w-5xl px-4 sm:px-6 py-12 md:py-24">
-          <div className="relative border-2 border-[var(--brand-pink)]/30 rounded-[32px] md:rounded-[40px] p-1.5 md:p-2 backdrop-blur-sm bg-black/10">
-            <div className="relative border-2 border-[var(--brand-pink)]/50 rounded-[28px] md:rounded-[36px] py-8 px-4 sm:px-10 overflow-hidden bg-black/40 backdrop-blur-xl">
-              <div className="absolute inset-0 bg-[var(--brand-purple)]/20" />
-              <div className="relative z-10 space-y-4 text-center">
-                <p className="text-[10px] md:text-xs uppercase tracking-[0.35em] text-white/70">
-                  Events
-                </p>
-                <h1 className="font-display text-3xl sm:text-4xl md:text-5xl leading-tight font-extrabold text-white">
-                  Hackathons, workshops & more
-                </h1>
-                <p className="text-base md:text-lg text-white/80 max-w-2xl mx-auto">
-                  From intensive hackathons to hands-on workshops, we create
-                  experiences that help teens build real skills and ship real
-                  projects.
-                </p>
-              </div>
+        <div className="relative z-10 w-full mx-auto max-w-5xl px-4 sm:px-6">
+          <GlassContainer className="px-6 py-12 md:py-20 sm:px-10 lg:px-16 text-center">
+            <div className="flex flex-col items-center gap-6">
+              <span className="inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/5 px-4 py-1.5 text-xs uppercase tracking-[0.35em] font-semibold text-white/90 backdrop-blur-md shadow-inner">
+                <span className="relative flex h-2 w-2">
+                  <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-(--brand-pink) opacity-75" />
+                  <span className="relative inline-flex h-2 w-2 rounded-full bg-(--brand-pink)" />
+                </span>
+                Events
+              </span>
+              <h1 id="events-hero-title" className="font-display text-4xl sm:text-5xl md:text-6xl lg:text-7xl leading-tight font-extrabold text-white tracking-tighter drop-shadow-2xl">
+                Where code meets <br className="hidden sm:block" /> every boundary
+              </h1>
+              <p className="max-w-2xl text-base sm:text-lg md:text-xl text-white/85 font-medium leading-relaxed">
+                Join thousands of student innovators at hackathons, summits, and workshops that
+                turn teen builders into tomorrow&apos;s founders and policymakers.
+              </p>
             </div>
-          </div>
+          </GlassContainer>
         </div>
       </section>
 
-      <main className="relative z-10 bg-transparent">
-        {/* Upcoming Events */}
-        <PageSection
-          align="center"
-          eyebrow="Coming Up"
-          title="Upcoming events"
-          description="Mark your calendar for these upcoming opportunities to learn and build."
+      <main className="bg-transparent flex flex-col pt-12">
+        {/* ── Event Toggle Tabs ────────────────────────────────────────── */}
+        <div
+          className="mx-auto flex w-fit max-w-[95vw] flex-wrap items-center justify-center gap-2 rounded-[2rem] border border-white/10 bg-white/5 p-1.5 backdrop-blur-md mb-8"
+          role="tablist"
+          aria-label="Filter events"
         >
-          <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-            {upcomingEvents.map((event, index) => (
-              <div
-                key={event.id}
-                className="glass-card relative isolate overflow-hidden p-6 text-left shadow-xl hover:shadow-[var(--glow-strong)] transition-all duration-300 group"
-                style={{ animationDelay: `${index * 0.1}s` }}
-              >
-                {/* Event type badge */}
-                <div className="flex items-center justify-between mb-4">
-                  <span
-                    className={`inline-flex items-center rounded-full px-3 py-1 text-xs font-semibold text-white ${typeColors[event.type]}`}
-                  >
-                    {typeLabels[event.type]}
+          <button
+            type="button"
+            onClick={() => setActiveEvent("all")}
+            aria-selected={activeEvent === "all"}
+            role="tab"
+            className={`rounded-full px-5 py-2.5 text-sm font-bold transition-all ${activeEvent === "all"
+              ? "bg-(--brand-pink) text-white shadow-[0_0_20px_rgba(228,90,146,0.3)]"
+              : "text-white/70 hover:text-white hover:bg-white/5"
+              }`}
+          >
+            All Events
+          </button>
+          <button
+            type="button"
+            onClick={() => setActiveEvent("copilot")}
+            aria-selected={activeEvent === "copilot"}
+            role="tab"
+            className={`rounded-full px-5 py-2.5 text-sm font-bold transition-all ${activeEvent === "copilot"
+              ? "bg-(--brand-pink) text-white shadow-[0_0_20px_rgba(228,90,146,0.3)]"
+              : "text-white/70 hover:text-white hover:bg-white/5"
+              }`}
+          >
+            GitHub Copilot Dev Days
+          </button>
+          <button
+            type="button"
+            onClick={() => setActiveEvent("india-innovates")}
+            aria-selected={activeEvent === "india-innovates"}
+            role="tab"
+            className={`rounded-full px-5 py-2.5 text-sm font-bold transition-all ${activeEvent === "india-innovates"
+              ? "bg-(--brand-pink) text-white shadow-[0_0_20px_rgba(228,90,146,0.3)]"
+              : "text-white/70 hover:text-white hover:bg-white/5"
+              }`}
+          >
+            Archived: India Innovates
+          </button>
+        </div>
+
+        {/* ── GitHub Copilot Dev Days — Featured Spotlight ──────────────── */}
+        {(activeEvent === "all" || activeEvent === "copilot") && (
+          <PageSection
+            eyebrow="Upcoming · Apr 19"
+            title="GitHub Copilot Dev Days | Lucknow"
+            description="AI-Assisted Coding with GitHub Copilot — A Community Developer Event."
+          >
+            <GlassContainer glowColor="pink" animated={false} className="overflow-hidden">
+
+              {/* ── Banner image header ── */}
+              <div className="relative w-full overflow-hidden rounded-t-[2.25rem] bg-white/5">
+                <Image
+                  src="/images/copilot-dev-day.png"
+                  alt="GitHub Copilot Dev Days | Lucknow"
+                  width={1920}
+                  height={640}
+                  className="w-full h-auto object-cover"
+                  priority
+                />
+              </div>
+
+              {/* ── Details grid ── */}
+              <div className="p-6 sm:p-8 md:p-10">
+                {/* Badges row */}
+                <div className="flex flex-wrap items-center gap-2 mb-6">
+                  <span className="inline-flex items-center rounded-full px-3 py-1 text-xs font-semibold text-white bg-(--brand-pink)">
+                    Workshop / Developer Event
                   </span>
-                  <span className="inline-flex items-center gap-1 rounded-full border border-emerald-500/30 bg-emerald-500/10 px-2 py-0.5 text-[10px] font-medium uppercase tracking-wider text-emerald-500">
-                    <span className="h-1.5 w-1.5 rounded-full bg-emerald-500 animate-pulse"></span>
-                    Upcoming
+                  <span className="inline-flex items-center gap-1 rounded-full border border-emerald-500/30 bg-emerald-500/10 px-2 py-0.5 text-[10px] font-medium uppercase tracking-wider text-emerald-400">
+                    <span className="h-1.5 w-1.5 rounded-full bg-emerald-500 animate-pulse" />
+                    Registration Open
+                  </span>
+                  <span className="inline-flex items-center gap-1.5 rounded-full border border-white/10 bg-white/5 px-2.5 py-0.5 text-[10px] font-bold uppercase tracking-widest text-white/80 backdrop-blur-md">
+                    Hosted by Bits&amp;Bytes
                   </span>
                 </div>
 
-                <h3 className="font-display text-xl font-bold text-foreground dark:text-white">
-                  {event.title}
-                </h3>
+                {/* Stats + details two-column */}
+                <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
 
-                <p className="mt-2 text-sm text-muted-foreground line-clamp-2">
-                  {event.description}
-                </p>
-
-                <div className="mt-4 space-y-2">
-                  <div className="flex items-center gap-2 text-sm text-foreground/80 dark:text-white/80">
-                    <Calendar className="h-4 w-4 text-[var(--brand-pink)]" />
-                    <span>{event.date}</span>
-                    {event.time && (
-                      <>
-                        <span className="text-muted-foreground">·</span>
-                        <Clock className="h-4 w-4 text-[var(--brand-pink)]" />
-                        <span>{event.time}</span>
-                      </>
-                    )}
+                  {/* Left — key stats */}
+                  <div className="space-y-0 divide-y divide-white/10 rounded-2xl border border-white/10 bg-white/5 overflow-hidden">
+                    {[
+                      { icon: <Calendar className="h-4 w-4 text-(--brand-pink)" />, label: "Date", value: "Sunday, April 19, 2026" },
+                      { icon: <Clock className="h-4 w-4 text-(--brand-pink)" />, label: "Time", value: "10:00 AM – 2:00 PM IST" },
+                      { icon: <MapPin className="h-4 w-4 text-(--brand-pink)" />, label: "Venue", value: <Link href="https://www.google.com/maps/search/?api=1&query=26.9109169%2C80.9464606&query_place_id=ChIJSydGKnNXmTkRj475BfUXmeA" target="_blank" className="hover:text-(--brand-pink) hover:underline underline-offset-2">Cubispace, Lucknow</Link> },
+                      { icon: <Users className="h-4 w-4 text-(--brand-pink)" />, label: "Format", value: "In-Person · Approval Required" },
+                      { icon: <Building2 className="h-4 w-4 text-(--brand-pink)" />, label: "Host", value: "Bits&Bytes" },
+                    ].map((s) => (
+                      <div key={s.label} className="flex items-center justify-between px-5 py-3.5">
+                        <div className="flex items-center gap-2.5">
+                          {s.icon}
+                          <span className="text-sm text-white/60 font-medium">{s.label}</span>
+                        </div>
+                        <span className="text-sm font-black text-white text-right">{s.value}</span>
+                      </div>
+                    ))}
                   </div>
-                  <div className="flex items-center gap-2 text-sm text-foreground/80 dark:text-white/80">
-                    <MapPin className="h-4 w-4 text-[var(--brand-pink)]" />
-                    <span>{event.location}</span>
-                  </div>
-                </div>
 
-                {event.link && (
-                  <div className="mt-4">
+                  {/* Right — description, what you'll learn, CTA */}
+                  <div className="flex flex-col gap-5">
+
+                    {/* Community Partners */}
+                    <div>
+                      <p className="text-[10px] uppercase tracking-widest font-semibold text-white/40 mb-2.5">Community Partners</p>
+                      <div className="flex flex-wrap gap-2">
+                        {["Coding Connoisseurs", "Aryan Singh", "Notion Lucknow"].map((d) => (
+                          <span key={d} className="inline-flex items-center gap-1.5 rounded-full border border-white/15 bg-white/5 px-3 py-1.5 text-xs font-medium text-white/80">
+                            {d}
+                          </span>
+                        ))}
+                      </div>
+                    </div>
+
+                    {/* What You Will Learn */}
+                    <div>
+                      <p className="text-[10px] uppercase tracking-widest font-semibold text-white/40 mb-2.5">What You Will Learn</p>
+                      <ul className="space-y-1.5">
+                        {[
+                          "How GitHub Copilot works inside modern dev environments",
+                          "Integrating AI-assisted coding into real workflows",
+                          "Prompt techniques for better code suggestions",
+                          "Responsible and efficient use of AI in development",
+                        ].map((item) => (
+                          <li key={item} className="flex items-start gap-2 text-xs text-white/65">
+                            <Check className="h-3.5 w-3.5 shrink-0 mt-0.5 text-(--brand-pink)" />
+                            {item}
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+
+                    {/* About */}
+                    <div className="rounded-2xl border border-white/10 bg-white/5 p-4 text-xs text-white/50 leading-relaxed space-y-1">
+                      <p className="font-semibold text-white/70 text-[11px] uppercase tracking-wider mb-1">About</p>
+                      <p>Artificial intelligence is rapidly changing the way developers write and think about code. This community developer event in Lucknow brings together students, developers, and technology enthusiasts to explore how AI-assisted development works in real projects.</p>
+                      <p className="mt-2">All participants are expected to follow the <Link href="https://www.microsoft.com/en-us/events/code-of-conduct" target="_blank" rel="noopener noreferrer" className="text-(--brand-pink) hover:underline underline-offset-2">GitHub Event Code of Conduct</Link>.</p>
+                    </div>
+
+                    {/* CTA */}
                     <Button
                       asChild
-                      size="sm"
-                      className="w-full rounded-full bg-[var(--brand-pink)] text-white"
+                      className="w-full rounded-2xl bg-(--brand-pink) py-5 text-sm font-bold text-white shadow-[0_0_24px_rgba(228,90,146,0.35)] hover:opacity-90 mt-auto"
                     >
-                      <Link href={event.link}>
-                        Register Now
-                        <ArrowRight className="ml-2 h-4 w-4" />
+                      <Link
+                        href="https://luma.com/xtxua1jl"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                      >
+                        Request to Join on Luma
+                        <ExternalLink className="ml-2 h-4 w-4" />
                       </Link>
                     </Button>
                   </div>
-                )}
+                </div>
               </div>
-            ))}
-          </div>
+            </GlassContainer>
+          </PageSection>
+        )}
 
-          {upcomingEvents.length === 0 && (
-            <div className="glass-card p-8 text-center">
-              <p className="text-muted-foreground">
-                No upcoming events at the moment. Check back soon or follow us
-                on social media for announcements!
-              </p>
-            </div>
-          )}
-        </PageSection>
+        {/* ── India Innovates 2026 ──────────────────────────────────────── */}
+        {(activeEvent === "all" || activeEvent === "india-innovates") && (
+          <>
+            <PageSection
+              eyebrow="Archived · Mar 28, 2026"
+              title="India Innovates 2026"
+              description="World's Largest Civic Tech Hackathon."
+            >
+              <GlassContainer glowColor="pink" animated={false} className="overflow-hidden">
 
-        {/* Past Events */}
-        <PageSection
-          align="center"
-          eyebrow="Archive"
-          title="Past events"
-          description="A look back at the events that shaped our community."
-        >
-          <div className="space-y-8">
-            {pastEvents.map((event) => (
-              <div
-                key={event.id}
-                className="glass-card relative isolate overflow-hidden shadow-xl hover:shadow-[var(--glow-strong)] transition-all duration-300"
-              >
-                <div className="flex flex-col lg:flex-row">
-                  {/* Image */}
-                  {event.image && (
-                    <div className="relative w-full lg:w-1/3 h-48 lg:h-auto">
-                      <Image
-                        src={event.image}
-                        alt={event.title}
-                        fill
-                        className="object-cover"
-                      />
-                      <div className="absolute inset-0 bg-gradient-to-r from-transparent to-black/20 lg:bg-gradient-to-l" />
-                    </div>
-                  )}
+                {/* ── Banner image header ── */}
+                <div className="relative w-full overflow-hidden rounded-t-[2.25rem] bg-white/5">
+                  <Image
+                    src="/images/banner.jpeg"
+                    alt="India Innovates 2026 — Bharat Mandapam, New Delhi"
+                    width={1920}
+                    height={640}
+                    className="w-full h-auto object-cover"
+                    priority
+                  />
+                </div>
 
-                  {/* Content */}
-                  <div className={`flex-1 p-6 ${!event.image ? "lg:p-8" : ""}`}>
-                    <div className="flex flex-wrap items-center gap-3 mb-4">
-                      <span
-                        className={`inline-flex items-center rounded-full px-3 py-1 text-xs font-semibold text-white ${typeColors[event.type]}`}
-                      >
-                        {typeLabels[event.type]}
-                      </span>
-                      <span className="inline-flex items-center gap-1 text-xs text-muted-foreground">
-                        <Calendar className="h-3 w-3" />
-                        {event.date}
-                      </span>
-                      {event.attendees && (
-                        <span className="inline-flex items-center gap-1 text-xs text-muted-foreground">
-                          <Users className="h-3 w-3" />
-                          {event.attendees} attendees
-                        </span>
-                      )}
-                    </div>
+                {/* ── Details ── */}
+                <div className="p-6 sm:p-8 md:p-10">
+                  <div className="flex flex-wrap items-center gap-2 mb-8">
+                    <span className="inline-flex items-center rounded-full px-3 py-1 text-xs font-semibold text-white bg-(--brand-pink)">
+                      Archived Event
+                    </span>
+                    <span className="inline-flex items-center gap-1.5 rounded-full border border-white/10 bg-white/5 px-3 py-1 text-[10px] font-bold uppercase tracking-widest text-white/80 backdrop-blur-md">
+                      <Trophy className="h-3 w-3 text-(--brand-pink)" />
+                      Official Executive Partner: Bits&Bytes
+                    </span>
+                  </div>
 
-                    <h3 className="font-display text-2xl font-bold text-foreground dark:text-white">
-                      {event.title}
-                    </h3>
-
-                    <p className="mt-2 text-sm text-muted-foreground">
-                      {event.description}
+                  <div className="prose prose-invert max-w-none text-white/80 space-y-6">
+                    <p className="text-lg text-white font-medium">
+                      <strong>India Innovates 2026</strong> is now archived. <strong>Bits&Bytes (GobitsnBytes)</strong> was listed as the <strong>Official Executive Partner</strong> for the finale.
                     </p>
 
-                    {event.highlights && event.highlights.length > 0 && (
-                      <div className="mt-4">
-                        <p className="text-xs font-semibold uppercase tracking-wider text-[var(--brand-pink)] mb-2">
-                          Highlights
-                        </p>
-                        <ul className="grid gap-2 sm:grid-cols-2">
-                          {event.highlights.map((highlight, idx) => (
-                            <li
-                              key={idx}
-                              className="flex items-start gap-2 text-sm text-foreground/80 dark:text-white/80"
-                            >
-                              <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-[var(--brand-pink)]" />
-                              {highlight}
-                            </li>
-                          ))}
-                        </ul>
-                      </div>
-                    )}
+                    <div>
+                      <h2 className="text-xl font-bold text-white mb-2">Event Summary</h2>
+                      <p>
+                        India Innovates 2026 was presented as the <strong>World's Largest Civic Tech Hackathon</strong>, held on <strong>March 28, 2026</strong> at <strong>Bharat Mandapam, Pragati Maidan, New Delhi</strong> (9 AM - 7 PM). Organizers included <strong>HN Group</strong> and <strong>MCD</strong>, with partner institutions such as <strong>IIT Kharagpur, NSUT, GGSIPU, and DDU</strong>. <Link href="https://indiainnovates.org" target="_blank" className="text-(--brand-pink) hover:underline">[indiainnovates]</Link>
+                      </p>
+                    </div>
 
-                    <div className="mt-4 flex items-center gap-2 text-sm text-muted-foreground">
-                      <MapPin className="h-4 w-4" />
-                      <span>{event.location}</span>
+                    <div>
+                      <h2 className="text-xl font-bold text-white mb-2">Scale</h2>
+                      <ul className="list-disc pl-5 space-y-1">
+                        <li><strong>1.26 crore+</strong> total applicants nationwide. <Link href="https://www.tribuneindia.com/news/j-k/ju-team-among-top-15-at-india-innovates-2026/" target="_blank" className="text-(--brand-pink) hover:underline">[tribuneindia]</Link></li>
+                        <li><strong>28,000+ to 5,000+ to 15 teams</strong> across three elimination rounds. <Link href="https://www.dailyexcelsior.com/ju-students-outshine-at-india-innovates-2026/" target="_blank" className="text-(--brand-pink) hover:underline">[dailyexcelsior]</Link></li>
+                        <li><strong>₹10 lakh+</strong> prize pool, including <strong>₹1L, ₹75K, ₹50K, and ₹25K per domain</strong>. <Link href="https://indiainnovates.org" target="_blank" className="text-(--brand-pink) hover:underline">[indiainnovates]</Link></li>
+                        <li>Domains: <strong>Urban Solutions, Digital Democracy, and Open Innovation</strong>. <Link href="https://indiainnovates.org" target="_blank" className="text-(--brand-pink) hover:underline">[indiainnovates]</Link></li>
+                      </ul>
+                    </div>
+
+                    <div>
+                      <h2 className="text-xl font-bold text-white mb-2">Finale Format</h2>
+                      <p>
+                        It was not a build-on-site round. Teams developed in advance, and the final day focused on <strong>live product demonstrations</strong> reviewed by investors, officials, diplomats, and founders. <Link href="https://indiainnovates.org" target="_blank" className="text-(--brand-pink) hover:underline">[indiainnovates]</Link>
+                      </p>
+                    </div>
+
+                    <div>
+                      <h2 className="text-xl font-bold text-white mb-2">Dignitaries and Finalists</h2>
+                      <p>
+                        Confirmed attendees included <strong>Delhi CM Rekha Gupta</strong>, the <strong>Bihar Assembly Speaker</strong>, and <strong>MP Manoj Tiwari (North East Delhi)</strong>. <Link href="https://www.newdelhitimes.com/delhi-cm-rekha-gupta-attends-india-innovates-2026-hackathon-highlights-youth-driven-innovation/" target="_blank" className="text-(--brand-pink) hover:underline">[newdelhitimes]</Link>
+                      </p>
+                      <p>
+                        <strong>Team Dupahar</strong> from the University of Jammu reached the Top 15 and was reported as the only finalist team from J&K. <Link href="https://www.tribuneindia.com/news/j-k/ju-team-among-top-15-at-india-innovates-2026/" target="_blank" className="text-(--brand-pink) hover:underline">[tribuneindia]</Link>
+                      </p>
+                    </div>
+
+                    <div>
+                      <h2 className="text-xl font-bold text-white mb-2">Post-Event Pathway</h2>
+                      <p>
+                        Following the finale, selected teams entered a <strong>ministry-level presentation stage</strong> for post-event review and exposure. <Link href="https://indiainnovates.org" target="_blank" className="text-(--brand-pink) hover:underline">[indiainnovates]</Link>
+                      </p>
+                    </div>
+
+                    <div>
+                      <h2 className="text-xl font-bold text-white mb-2">Media and Social Coverage</h2>
+                      <ul className="list-disc pl-5 space-y-1">
+                        <li><code>#IndiaInnovates2026</code> was trending on X (Twitter) on event day. <Link href="https://x.com/search?q=%23IndiaInnovates2026" target="_blank" className="text-(--brand-pink) hover:underline">[x]</Link></li>
+                        <li>Event updates were also posted by Delhi CM via official channels. <Link href="https://www.newdelhitimes.com/delhi-cm-rekha-gupta-attends-india-innovates-2026-hackathon-highlights-youth-driven-innovation/" target="_blank" className="text-(--brand-pink) hover:underline">[newdelhitimes]</Link></li>
+                        <li>Coverage includes Tribune India, Daily Excelsior, and New Delhi Times. <Link href="https://www.dailyexcelsior.com/ju-students-outshine-at-india-innovates-2026/" target="_blank" className="text-(--brand-pink) hover:underline">[dailyexcelsior]</Link></li>
+                        <li>The @hn.india account described it as a historic moment involving 5,000 innovators. <Link href="https://www.instagram.com/p/DWMfnECE8Eu/" target="_blank" className="text-(--brand-pink) hover:underline">[instagram]</Link></li>
+                      </ul>
                     </div>
                   </div>
                 </div>
-              </div>
-            ))}
-          </div>
-        </PageSection>
+              </GlassContainer>
+            </PageSection>
 
-        {/* CTA */}
-        <PageSection align="center">
-          <div className="glass-card p-8 md:p-12 text-center">
-            <h2 className="font-display text-2xl md:text-3xl font-bold text-foreground dark:text-white">
-              Want to host an event with us?
-            </h2>
-            <p className="mt-3 text-muted-foreground max-w-xl mx-auto">
-              We partner with schools, companies, and organizations to bring
-              tech education to more teens. Let's create something amazing
-              together.
-            </p>
-            <div className="mt-6 flex flex-wrap justify-center gap-4">
-              <Button
-                asChild
-                className="rounded-full bg-[var(--brand-pink)] px-8 py-6 text-base font-semibold text-white shadow-[var(--glow-strong)]"
-              >
-                <Link href="/contact">
-                  Partner with us
-                  <ArrowRight className="ml-2 h-5 w-5" />
-                </Link>
-              </Button>
-              <Button
-                asChild
-                variant="outline"
-                className="rounded-full border-white/40 bg-white/10 px-8 py-6 text-base hover:bg-white/20"
-              >
-                <Link href="/join">
-                  Join the club
-                  <ExternalLink className="ml-2 h-4 w-4" />
-                </Link>
-              </Button>
-            </div>
-          </div>
-        </PageSection>
+            {/* ── Event Video ─────────────────────────────────────────────── */}
+            <PageSection
+              align="left"
+              className="pb-0"
+            >
+              <GlassContainer glowColor="pink" animated={false} className="p-4 sm:p-6 md:p-8">
+                <div className="space-y-5">
+                  <div className="flex flex-wrap items-center justify-between gap-3">
+                    <div className="space-y-1">
+                      <h3 className="text-lg sm:text-xl font-bold text-white">Event Video</h3>
+                      <p className="text-sm text-white/65">Stage highlights and on-floor moments from the finale.</p>
+                    </div>
+                    <div className="flex items-center gap-2">
+                      <span className="inline-flex items-center rounded-full border border-white/15 bg-white/5 px-3 py-1 text-[10px] font-semibold uppercase tracking-widest text-white/70">
+                        Archive Footage
+                      </span>
+                      <span className="inline-flex items-center rounded-full border border-(--brand-pink)/40 bg-(--brand-pink)/10 px-3 py-1 text-[10px] font-semibold uppercase tracking-widest text-(--brand-pink)">
+                        March 2026
+                      </span>
+                    </div>
+                  </div>
+
+                  <div className="relative overflow-hidden rounded-[1.4rem] border border-white/15 bg-gradient-to-b from-white/10 to-white/[0.03] p-2 shadow-[0_20px_70px_rgba(0,0,0,0.45)]">
+                    <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(228,90,146,0.18),transparent_45%)]" />
+                    <video
+                      className="relative z-10 w-full rounded-[1rem] border border-white/10 bg-black/50"
+                      controls
+                      playsInline
+                      preload="metadata"
+                      poster="/event_pictures/HEe923ub0AE-92F.jpg"
+                    >
+                      <source src="/event_pictures/india-innovates-2026-stage-address.mp4" type="video/mp4" />
+                      Your browser does not support the video tag.
+                    </video>
+                  </div>
+                </div>
+              </GlassContainer>
+            </PageSection>
+
+            {/* ── Past Events Gallery ─────────────────────────────────────────────── */}
+            <PageSection
+              align="left"
+              className="pb-0"
+            >
+              <Gallery4
+                title="In Pictures"
+                description=""
+                items={[
+                  {
+                    id: "img-1",
+                    title: "Opening Address",
+                    description: "Main stage opening session at India Innovates 2026.",
+                    href: "#",
+                    image: "/event_pictures/HEe93oOakAAi2Mi.jpg",
+                  },
+                  {
+                    id: "img-2",
+                    title: "Plenary Session",
+                    description: "Live address from the central stage at Bharat Mandapam.",
+                    href: "#",
+                    image: "/event_pictures/HEe923ub0AE-92F.jpg",
+                  },
+                  {
+                    id: "img-3",
+                    title: "Jury Interaction",
+                    description: "On-floor demo review with students and evaluators.",
+                    href: "#",
+                    image: "/event_pictures/866d62697f3d42819e2007714047a3a80001af45.jpg",
+                  },
+                  {
+                    id: "img-4",
+                    title: "Participant Teams",
+                    description: "Student teams preparing for demonstrations in the main hall.",
+                    href: "#",
+                    image: "/event_pictures/3d53b4900bb7c0176eadb242c495cbfb3634ffb3.jpg",
+                  },
+                  {
+                    id: "img-5",
+                    title: "Build Table",
+                    description: "Final-stage hardware and prototype iteration under evaluation windows.",
+                    href: "#",
+                    image: "/event_pictures/1ae8b9183c456f721ab4a04a7cbd0268ce3b2e97.jpg",
+                  },
+                  {
+                    id: "img-6",
+                    title: "Hall View",
+                    description: "Full auditorium turnout during keynote and showcase rounds.",
+                    href: "#",
+                    image: "/event_pictures/HEe923uagAATqvy.jpg",
+                  },
+                ]}
+              />
+            </PageSection>
+
+          </>
+        )}
+
       </main>
     </>
   );

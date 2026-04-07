@@ -56,11 +56,11 @@ const projects: Project[] = [
     id: "1",
     title: "Bits&Bytes Website",
     description:
-      "The official website you're browsing right now! Built with Next.js 14, featuring glassmorphism design, WebGL shaders, and smooth animations.",
+      "The official platform you're browsing right now. Built with production-grade Next.js 14, featuring glassmorphism design, WebGL shaders, and agentic AI integrations.",
     category: "web",
     image: "/images/hero-img.jpeg",
     tags: ["Next.js", "TypeScript", "Tailwind CSS", "WebGL"],
-    team: ["Akshat", "Aadrika", "Devansh"],
+    team: ["Akshat Singh Kushwaha", "Aadrika Maurya", "Devansh"],
     links: {
       live: "https://gobitsnbytes.org",
       github: "https://github.com/gobitsnbytes/website",
@@ -71,11 +71,11 @@ const projects: Project[] = [
     id: "2",
     title: "Scrapyard Event Platform",
     description:
-      "Registration and management platform for our flagship hackathon. Handles 40+ participant registrations, team formation, and project submissions.",
+      "Registration and management platform for our flagship hackathon. Handled 80+ participant registrations, team formation, and project submissions in our 13-day sprint.",
     category: "web",
     image: "/images/432a787b-bfde-4dd0-8c2a-cb994146a3b9-1-105-c.jpeg",
     tags: ["React", "Node.js", "PostgreSQL", "Stripe"],
-    team: ["Akshat", "Devansh", "Areeb"],
+    team: ["Akshat Singh Kushwaha", "Devansh", "Areeb"],
     links: {
       live: "https://scrapyard.gobitsnbytes.org",
     },
@@ -89,7 +89,7 @@ const projects: Project[] = [
     category: "ai",
     image: "/images/b653f79c-fcc9-49bb-a92a-4fc454659b3a-1-105-c.jpeg",
     tags: ["Python", "OpenAI", "FastAPI", "React"],
-    team: ["Saksham", "Akshat"],
+    team: ["Saksham", "Akshat Singh Kushwaha"],
     links: {
       github: "https://github.com/gobitsnbytes/studybuddy",
     },
@@ -102,7 +102,7 @@ const projects: Project[] = [
     category: "mobile",
     image: "/images/4c59e5bb-c1eb-4e4d-9b69-f29faa693002-1-105-c.jpeg",
     tags: ["React Native", "Expo", "Firebase"],
-    team: ["Maryam", "Yash"],
+    team: ["Maryam", "Yash Vardhan Singh"],
   },
   {
     id: "5",
@@ -125,19 +125,19 @@ const projects: Project[] = [
     category: "design",
     image: "/images/432a787b-bfde-4dd0-8c2a-cb994146a3b9-1-105-c.jpeg",
     tags: ["Figma Plugin", "TypeScript", "Canvas API"],
-    team: ["Aadrika", "Kaustubh"],
+    team: ["Aadrika Maurya", "Kaustubh"],
   },
   {
     id: "7",
-    title: "CodeReview Bot",
+    title: "Codiva",
     description:
-      "An AI-powered Discord bot that provides code review suggestions, detects common issues, and helps beginners improve their code quality.",
-    category: "ai",
+      "A 5-star rated VS Code extension that gamifies coding, motivates developers with a distraction-free Pomodoro timer, and offers deep analytics on coding habits.",
+    category: "tools",
     image: "/images/b653f79c-fcc9-49bb-a92a-4fc454659b3a-1-105-c.jpeg",
-    tags: ["Python", "Discord.py", "GPT-4", "AST"],
-    team: ["Akshat", "Saksham"],
+    tags: ["VS Code Extension", "TypeScript", "Node.js", "Analytics"],
+    team: ["Yash Vardhan Singh"],
     links: {
-      github: "https://github.com/gobitsnbytes/codereview-bot",
+      live: "https://marketplace.visualstudio.com/items?itemName=YASHVARDHANSINGH.codiva",
     },
   },
   {
@@ -149,6 +149,16 @@ const projects: Project[] = [
     image: "/images/4c59e5bb-c1eb-4e4d-9b69-f29faa693002-1-105-c.jpeg",
     tags: ["Next.js", "Cloudinary", "AWS Rekognition"],
     team: ["Oviyaa", "Kaustubh", "Devansh"],
+  },
+  {
+    id: "11",
+    title: "MedReady AI",
+    description:
+      "Workforce-readiness platform helping healthcare professionals train and move faster in underserved regions. Focused on access, clarity, and high-friction user movement.",
+    category: "ai",
+    image: "/images/432a787b-bfde-4dd0-8c2a-cb994146a3b9-1-105-c.jpeg",
+    tags: ["Next.js 16", "Supabase", "Applied AI", "Healthcare Tech"],
+    team: ["Akshat Kushwaha"],
   },
 ];
 
@@ -166,7 +176,7 @@ export default function Projects() {
   return (
     <>
       {/* Hero Section */}
-      <section className="relative min-h-[50vh] flex items-center justify-center overflow-hidden text-white">
+      <section className="relative min-h-[50vh] flex items-center justify-center overflow-hidden text-white pt-24 md:pt-32">
         <WebGLShader />
         <div className="relative z-10 w-full mx-auto max-w-5xl px-4 sm:px-6 py-12 md:py-24">
           <div className="relative border-2 border-[var(--brand-pink)]/30 rounded-[32px] md:rounded-[40px] p-1.5 md:p-2 backdrop-blur-sm bg-black/10">
@@ -196,7 +206,7 @@ export default function Projects() {
             <div className="grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
               <div>
                 <p className="text-3xl font-bold text-[var(--brand-pink)]">
-                  15+
+                  25+
                 </p>
                 <p className="text-sm text-muted-foreground">
                   Projects shipped
@@ -204,15 +214,15 @@ export default function Projects() {
               </div>
               <div>
                 <p className="text-3xl font-bold text-[var(--brand-pink)]">
-                  200+
+                  100+
                 </p>
                 <p className="text-sm text-muted-foreground">Active members</p>
               </div>
               <div>
                 <p className="text-3xl font-bold text-[var(--brand-pink)]">
-                  15+
+                  10k+
                 </p>
-                <p className="text-sm text-muted-foreground">Open source</p>
+                <p className="text-sm text-muted-foreground">Impressions</p>
               </div>
               <div>
                 <p className="text-3xl font-bold text-[var(--brand-pink)]">
@@ -229,7 +239,7 @@ export default function Projects() {
           align="center"
           eyebrow="Featured"
           title="Flagship projects"
-          description="Our most impactful builds that showcase what teen developers can accomplish together."
+          description="Our most impactful builds that showcase what high-agency teen developers can accomplish together."
         >
           <div className="grid gap-8 md:grid-cols-2">
             {featuredProjects.map((project) => (
@@ -256,7 +266,7 @@ export default function Projects() {
                     <h3 className="font-display text-xl font-bold text-foreground dark:text-white">
                       {project.title}
                     </h3>
-                    <p className="mt-2 text-sm text-muted-foreground line-clamp-2">
+                    <p className="mt-2 text-sm text-muted-foreground line-clamp-4">
                       {project.description}
                     </p>
                   </div>
@@ -398,7 +408,7 @@ export default function Projects() {
                   <h3 className="font-display text-lg font-bold text-foreground dark:text-white">
                     {project.title}
                   </h3>
-                  <p className="text-sm text-muted-foreground line-clamp-2">
+                  <p className="text-sm text-muted-foreground line-clamp-4">
                     {project.description}
                   </p>
                   <div className="flex flex-wrap gap-1.5">

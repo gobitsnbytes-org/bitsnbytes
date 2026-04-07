@@ -34,9 +34,9 @@
     --ring: rgba(228, 90, 146, 0.4);
     --radius: 18px;
 
-    --glow-strong: 0 25px 80px rgba(228, 90, 146, 0.35);
-    --glow-soft: 0 12px 45px rgba(62, 30, 104, 0.18);
-    --shadow-card: 0 25px 70px rgba(17, 8, 31, 0.08);
+    --glow-strong: 0 15px 50px rgba(228, 90, 146, 0.25);
+    --glow-soft: 0 8px 30px rgba(62, 30, 104, 0.12);
+    --shadow-card: 0 15px 45px rgba(17, 8, 31, 0.05);
 
     --chart-1: oklch(0.646 0.222 41.116);
     --chart-2: oklch(0.6 0.118 184.704);
@@ -77,9 +77,9 @@
 
     --ring: rgba(255, 172, 172, 0.45);
 
-    --glow-strong: 0 35px 120px rgba(228, 90, 146, 0.45);
-    --glow-soft: 0 18px 60px rgba(9, 0, 25, 0.75);
-    --shadow-card: 0 35px 90px rgba(1, 0, 8, 0.8);
+    --glow-strong: 0 25px 90px rgba(228, 90, 146, 0.35);
+    --glow-soft: 0 12px 40px rgba(9, 0, 25, 0.6);
+    --shadow-card: 0 25px 70px rgba(1, 0, 8, 0.7);
 
     --sidebar: rgba(5, 2, 10, 0.78);
     --sidebar-foreground: #f8f0ff;
@@ -161,6 +161,9 @@
     .section-shell {
         @apply relative mx-auto w-full max-w-6xl px-4 py-16 sm:px-6 lg:px-8 overflow-x-hidden;
         max-width: min(72rem, 100vw);
+        /* Performance optimizations for off-screen rendering */
+        content-visibility: auto;
+        contain-intrinsic-size: auto 1000px;
     }
 
     .section-eyebrow {
@@ -171,14 +174,17 @@
         background: hsla(0, 0%, 100%, 0.18);
         box-shadow: 0 0 0 0.1em hsla(0, 0%, 100%, 0.3) inset;
         @apply rounded-3xl dark:bg-white/10;
+        /* Hardware acceleration */
+        transform: translateZ(0);
+        backface-visibility: hidden;
     }
 
     /* Only apply backdrop-filter on devices that handle it well */
-    @supports (backdrop-filter: blur(12px)) {
-        @media (prefers-reduced-motion: no-preference) {
+    @supports (backdrop-filter: blur(8px)) {
+        @media (prefers-reduced-motion: no-preference) and (min-width: 768px) {
             .glass-panel {
-                backdrop-filter: blur(12px);
-                -webkit-backdrop-filter: blur(12px);
+                backdrop-filter: blur(8px);
+                -webkit-backdrop-filter: blur(8px);
             }
         }
     }
@@ -193,24 +199,26 @@
             transform 0.2s ease-out,
             box-shadow 0.2s ease-out;
         will-change: transform;
+        backface-visibility: hidden;
     }
 
     .glass-card:hover {
         transform: translateY(-4px) translateZ(0);
     }
 
-    /* Only apply backdrop-filter on devices that handle it well */
-    @supports (backdrop-filter: blur(12px)) {
-        @media (prefers-reduced-motion: no-preference) {
+    /* Only apply backdrop-filter on devices that handle it well and not on mobile for battery saving */
+    @supports (backdrop-filter: blur(8px)) {
+        @media (prefers-reduced-motion: no-preference) and (min-width: 768px) {
             .glass-card {
-                backdrop-filter: blur(12px);
-                -webkit-backdrop-filter: blur(12px);
+                backdrop-filter: blur(8px);
+                -webkit-backdrop-filter: blur(8px);
             }
         }
     }
 
     .card-surface {
         @apply rounded-3xl border border-white/10 bg-card/80 p-6 shadow-[var(--shadow-card)] transition-transform duration-300 hover:-translate-y-1 hover:shadow-[var(--glow-soft)];
+        transform: translateZ(0);
     }
 
     .tag-chip {
@@ -531,5 +539,70 @@
         will-change: transform, opacity, filter;
         transform-style: preserve-3d;
         backface-visibility: hidden;
+    }
+
+    .cpu-architecture {
+        offset-anchor: 10px 0px;
+        animation: animation-path;
+        animation-iteration-count: infinite;
+        animation-timing-function: cubic-bezier(0.75, -0.01, 0, 0.99);
+    }
+
+    .cpu-line-1 {
+        offset-path: path("M 10 20 h 79.5 q 5 0 5 5 v 30");
+        animation-duration: 5s;
+        animation-delay: 1s;
+    }
+
+    .cpu-line-2 {
+        offset-path: path("M 180 10 h -69.7 q -5 0 -5 5 v 40");
+        animation-delay: 6s;
+        animation-duration: 2s;
+    }
+
+    .cpu-line-3 {
+        offset-path: path("M 130 20 v 21.8 q 0 5 -5 5 h -25");
+        animation-delay: 4s;
+        animation-duration: 6s;
+    }
+
+    .cpu-line-4 {
+        offset-path: path("M 170 80 v -21.8 q 0 -5 -5 -5 h -65");
+        animation-delay: 3s;
+        animation-duration: 3s;
+    }
+
+    .cpu-line-5 {
+        offset-path: path("M 135 65 h 15 q 5 0 5 5 v 10 q 0 5 -5 5 h -39.8 q -5 0 -5 -5 v -35");
+        animation-delay: 9s;
+        animation-duration: 4s;
+    }
+
+    .cpu-line-6 {
+        offset-path: path("M 94.8 95 v -46");
+        animation-delay: 3s;
+        animation-duration: 7s;
+    }
+
+    .cpu-line-7 {
+        offset-path: path("M 88 88 v -15 q 0 -5 -5 -5 h -10 q -5 0 -5 -5 v -5 q 0 -5 5 -5 h 28");
+        animation-delay: 4s;
+        animation-duration: 4s;
+    }
+
+    .cpu-line-8 {
+        offset-path: path("M 30 30 h 25 q 5 0 5 5 v 6.5 q 0 5 5 5 h 35");
+        animation-delay: 3s;
+        animation-duration: 3s;
+    }
+
+    @keyframes animation-path {
+        0% {
+            offset-distance: 0%;
+        }
+
+        100% {
+            offset-distance: 100%;
+        }
     }
 }

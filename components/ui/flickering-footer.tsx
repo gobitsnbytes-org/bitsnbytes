@@ -289,9 +289,11 @@ export function FlickeringFooter() {
                         ))}
                         <div className="flex flex-col gap-y-2">
                             <p className="mb-2 text-xs font-semibold uppercase tracking-[0.25em] text-foreground">Connect</p>
-                            <a className="flex items-center gap-2 text-sm text-muted-foreground transition-colors hover:text-foreground" href="mailto:hello@gobitsnbytes.org">
-                                <Mail className="h-4 w-4 shrink-0" />
-                                <span>hello@gobitsnbytes.org</span>
+                            <a
+                                href="mailto:hello@gobitsnbytes.org"
+                                className="text-white/70 hover:text-white transition-colors"
+                            >
+                                hello@gobitsnbytes.org
                             </a>
                             <p className="flex items-center gap-2 text-sm text-muted-foreground">
                                 <MapPin className="h-4 w-4 shrink-0" />
@@ -301,12 +303,12 @@ export function FlickeringFooter() {
                     </div>
                 </div>
             </div>
-            <div className="w-full h-32 md:h-48 relative mt-8 z-0">
+            <div className="w-full h-24 sm:h-32 md:h-48 relative mt-8 z-0">
                 <div className="absolute inset-0 bg-gradient-to-t from-transparent to-background z-10 from-40%" />
                 <div className="absolute inset-0 mx-4">
                     <FlickeringGrid
                         text={tablet ? "B&B" : "Bits&Bytes"}
-                        fontSize={tablet ? 60 : 80}
+                        fontSize={tablet ? 50 : 80}
                         className="h-full w-full"
                         squareSize={2}
                         gridGap={tablet ? 2 : 3}
@@ -317,7 +319,7 @@ export function FlickeringFooter() {
                 </div>
             </div>
             <div className="border-t border-white/10 text-center text-[10px] sm:text-xs py-3 sm:py-4 px-4 w-full text-muted-foreground">
-                © {new Date().getFullYear()} Bits&Bytes. Built with club love.
+                © {new Date().getFullYear()} Bits&Bytes. Built with club ❤️.
             </div>
         </footer>
     );

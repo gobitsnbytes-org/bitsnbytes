@@ -2,13 +2,14 @@ import { NextRequest, NextResponse } from "next/server"
 import OpenAI, { APIError } from "openai"
 
 const openai = new OpenAI({
-  apiKey: process.env.OPENAI_API_KEY,
+  apiKey: process.env.HACKCLUB_PROXY_API_KEY,
+  baseURL: "https://ai.hackclub.com/proxy/v1",
 })
 
 export async function POST(req: NextRequest) {
-  if (!process.env.OPENAI_API_KEY) {
+  if (!process.env.OSM_API_KEY) {
     return NextResponse.json(
-      { error: "OPENAI_API_KEY is not configured on the server." },
+      { error: "OSM_API_KEY is not configured on the server." },
       { status: 500 }
     )
   }
