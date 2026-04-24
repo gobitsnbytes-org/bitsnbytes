@@ -245,7 +245,7 @@ export default function Projects() {
             {featuredProjects.map((project) => (
               <div
                 key={project.id}
-                className="glass-card group relative isolate overflow-hidden shadow-xl hover:shadow-[var(--glow-strong)] transition-all duration-300"
+                className="glass-card group relative isolate overflow-hidden shadow-xl hover:shadow-[var(--glow-strong)] transition-transform transition-colors transition-opacity duration-300"
               >
                 <div className="relative h-48 overflow-hidden">
                   <Image
@@ -357,7 +357,7 @@ export default function Projects() {
                 key={category.value}
                 onClick={() => setActiveCategory(category.value)}
                 className={cn(
-                  "rounded-full px-4 py-2 text-sm font-medium transition-all duration-300",
+                  "rounded-full px-4 py-2 text-sm font-medium transition-transform transition-colors transition-opacity duration-300",
                   activeCategory === category.value
                     ? "bg-[var(--brand-pink)] text-white shadow-[var(--glow-soft)]"
                     : "border border-white/20 bg-white/5 text-muted-foreground hover:border-white/40 hover:text-foreground",
@@ -387,7 +387,7 @@ export default function Projects() {
             {filteredProjects.map((project, index) => (
               <div
                 key={project.id}
-                className="glass-card group relative isolate overflow-hidden shadow-xl hover:shadow-[var(--glow-strong)] transition-all duration-300"
+                className="glass-card group relative isolate overflow-hidden shadow-xl hover:shadow-[var(--glow-strong)] transition-transform transition-colors transition-opacity duration-300"
                 style={{ animationDelay: `${index * 0.05}s` }}
               >
                 <div className="relative h-40 overflow-hidden">

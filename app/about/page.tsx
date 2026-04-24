@@ -9,23 +9,16 @@ import {
   GlowingCardTitle,
   GlowingCardDescription,
 } from "@/components/ui/glowing-card";
+import type {
+  CoreTeamMember,
+  Volunteer,
+} from "@/components/team-case-study";
 
 // Lazy load heavy components
 const TeamCaseStudy = dynamic(() => import("@/components/team-case-study"), {
   loading: () => <LoadingInline />,
   ssr: true,
 });
-
-const WebGLShader = dynamic(
-  () =>
-    import("@/components/ui/web-gl-shader").then((mod) => ({
-      default: mod.WebGLShader,
-    })),
-  {
-    loading: () => null,
-    ssr: false,
-  },
-);
 
 const aboutContent = {
   title: "About Bits&Bytes",
@@ -56,12 +49,13 @@ const aboutContent = {
 };
 
 // Core Team - Top tier
-const coreTeam = [
+const coreTeam: CoreTeamMember[] = [
   {
     id: 1,
     name: "Yash Singh",
-    role: "Founder & Local Lead",
+    role: "Co-Founder & Organisation Lead",
     image: "/team/yash.jpeg",
+    mobileImagePosition: "center 18%",
     bio: "High school student who builds things that matter—from VS Code extensions with thousands of users to hackathons with 400+ participants. IOQM National Qualifier and Educator at STEMist Lucknow, teaching underrepresented talent.",
     expertise: [
       "Mathematics (IOQM)",
@@ -70,8 +64,12 @@ const coreTeam = [
       "AI / ML Scaling",
       "GoDOT Game Dev",
     ],
-    linkedin: "https://www.linkedin.com/in/yash-vardhan-singh-a41540270/",
-    accentColor: "#3E1E68", // Deep Purple
+    socials: {
+      linkedin: "https://www.linkedin.com/in/yash-vardhan-singh-a41540270/",
+      github: "https://github.com/yashclouded",
+      website: "https://yashvibe.codes/",
+    },
+    accentColor: "var(--brand-purple)", // Deep Purple
     isFounder: true,
   },
   {
@@ -79,23 +77,30 @@ const coreTeam = [
     name: "Aadrika Maurya",
     role: "Co-Founder & Chief Creative Strategist",
     image: "/team/aadrika.png",
+    mobileImagePosition: "center 20%",
     isFeatured: true,
-    bio: "RSI India Alumni who conducted neuroscience research on EEG signals and attention pattern modeling. Regional Manager for CodeDay Kanpur and building 'The Nerdy Network'.",
+    bio: "RSI India Alumni who conducted neuroscience research on EEG signals and attention pattern modeling. Regional Manager for CodeDay Kanpur and a creative strategist for student-led initiatives.",
     expertise: [
       "Neuroscience (EEG)",
       "Creative Strategy",
       "Regional Management",
       "Brand Development",
     ],
-    linkedin: "https://in.linkedin.com/in/aadrika-maurya",
-    accentColor: "#E45A92", // Vibrant Pink
+    socials: {
+      linkedin: "https://www.linkedin.com/in/aadrika-maurya/",
+      github: "https://github.com/Aadrika08",
+      website: "https://aadrikasportfolio.framer.website/",
+    },
+    accentColor: "var(--brand-pink)", // Vibrant Pink
     isFounder: true,
   },
   {
     id: 3,
     name: "Akshat Kushwaha",
     role: "Co-Founder & Technical Lead",
-    image: "/team/akshat.webp",
+    image: "/team/akshat.jpg",
+    mobileImagePosition: "center 16%",
+    mobileImageScale: 1.03,
     bio: "AI-native systems engineer who asks what happens when software fails—building production workflows and retrieval architectures that survive real constraints. Lead at STEMist Prayagraj, defining high-performance engineering culture.",
     expertise: [
       "LLMOps / RAG",
@@ -104,8 +109,12 @@ const coreTeam = [
       "FastAPI / Python",
       "System Design",
     ],
-    linkedin: "https://www.linkedin.com/in/akshat-singh-kushwaha/",
-    accentColor: "#5D2F77", // Rich Plum
+    socials: {
+      linkedin: "https://www.linkedin.com/in/akshat-singh-kushwaha/",
+      github: "https://github.com/a3ro-dev",
+      website: "https://a3ro.dev",
+    },
+    accentColor: "var(--brand-plum)", // Rich Plum
     isFounder: true,
   },
   {
@@ -113,6 +122,7 @@ const coreTeam = [
     name: "Devaansh Pathak",
     role: "Founding Member & Backend Lead",
     image: "/team/devansh.jpeg",
+    mobileImagePosition: "center 18%",
     bio: "Manages high-performance backend development and partnership economics.",
     expertise: [
       "Backend Architecture",
@@ -127,6 +137,7 @@ const coreTeam = [
     name: "Maryam Fatima",
     role: "Social Media & Promotions Head",
     image: "/team/maryam.jpeg",
+    mobileImagePosition: "center 22%",
     bio: "Leading social strategy and impact storytelling. Generated 10k+ impressions for club events. Spearheads visual campaigns for major independent hackathons.",
     expertise: [
       "Impact Storytelling",
@@ -141,6 +152,7 @@ const coreTeam = [
     name: "Sristhi Singh",
     role: "Operations & Communications Head",
     image: "/team/srishti.jpeg",
+    mobileImagePosition: "center 16%",
     bio: "Optimizing internal communication for 100+ members. Ensures smooth collaboration across design/dev squads and city-wide event transitions.",
     expertise: [
       "Process Optimization",
@@ -153,60 +165,80 @@ const coreTeam = [
 ];
 
 // Volunteers - smaller cards section
-const volunteers = [
+const volunteers: Volunteer[] = [
   {
     id: 11,
     name: "Jaagruti",
     image: "/team/jaagruti.jpeg",
+    section: "Creatives",
   },
   {
-    id: 14,
-    name: "Adithya",
-    image: "/team/adhitya.png", // Corrected image path and extension
-    linkedin: "https://www.linkedin.com/in/adithya---k/",
+    id: 18,
+    name: "Kavan",
+    image: "/team/kavan.jpg",
+    section: "Creatives",
+  },
+  {
+    id: 16,
+    name: "Vareesha",
+    image: "/team/vareesha.jpg",
+    linkedin: "https://www.linkedin.com/in/vareesha-mehdi-a669203ab/",
+    section: "Creatives",
+  },
+  {
+    id: 13,
+    name: "Aishwary",
+    image: "/team/aishwary.jpeg",
+    linkedin: "https://www.linkedin.com/in/ashlovesnoodle",
+    section: "Creatives",
   },
   {
     id: 5,
     name: "Saksham",
     image: "/team/saksham.jpeg",
     linkedin: "https://www.linkedin.com/in/sakshm/",
-  },
-  {
-    id: 10,
-    name: "Kaustubh",
-    image: "/team/kaustubh.jpeg",
-    linkedin: "https://www.linkedin.com/in/kaustubh-shaw-905ab3381/",
+    section: "Tech",
   },
   {
     id: 7,
     name: "Areeb",
     image: "/team/areeb.png",
     linkedin: "https://www.linkedin.com/in/areeb-ahmad-066547315/",
+    section: "Tech",
+  },
+  {
+    id: 15,
+    name: "Prakhar",
+    image: "/team/prakhar.png",
+    linkedin: "https://www.linkedin.com/in/prakharrdev/",
+    section: "Tech",
+  },
+  {
+    id: 14,
+    name: "Adithya",
+    image: "/team/adhitya.png", // Corrected image path and extension
+    linkedin: "https://www.linkedin.com/in/adithya---k/",
+    section: "Outreach",
   },
   {
     id: 8,
     name: "Atharva",
     image: "/team/atharva.jpg",
     linkedin: "https://www.linkedin.com/in/atharvaupadhyay/",
+    section: "Outreach",
   },
   {
-    id: 9,
-    name: "Kavan",
-    image: "/team/kavan.jpg",
-  },
-
-  {
-    id: 13,
-    name: "Aishwary",
-    image: "/team/aishwary.jpeg",
-    linkedin: "https://www.linkedin.com/in/ashlovesnoodle",
+    id: 17,
+    name: "Aanjaneya",
+    image: "/team/aanjaneya.jpg",
+    linkedin: "https://www.linkedin.com/in/aanjaneya-tripathi-0700a4346/",
+    section: "Outreach",
   },
 ];
 
 export default function About() {
   return (
     <>
-      <WebGLShader />
       <main className="relative z-10 bg-transparent">
         <PageSection
           align="center"

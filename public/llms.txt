@@ -9,9 +9,9 @@ This file provides context for AI agents and LLM-powered search engines about Bi
 ## Quick Facts
 - **Founded:** 2024
 - **Location:** Lucknow, Uttar Pradesh, India
-- **Members:** 200+ active student developers from across India
-- **Projects Shipped:** 15+ real-world products (apps, web, AI)
-- **Partner Schools:** 10+ and growing
+- **Members:** 1500+ active student developers from across India
+- **Projects Shipped:** 130+ real-world products (apps, web, AI)
+- **Partner Schools:** 100+ and growing
 - **Membership Cost:** FREE (Always 100% student-led)
 - **Age Range:** 13-19 years old
 
@@ -28,16 +28,26 @@ Bits&Bytes is India's boldest teen-led code club and nonprofit, based in Lucknow
 4. **Community**: A safe, inclusive community for members to learn openly.
 
 ## Current & Upcoming Events
-- **GitHub Copilot Dev Days | Lucknow** — A community developer event exploring AI-assisted coding with GitHub Copilot. Sunday, April 19, 2026, 10:00 AM – 2:00 PM at Cubispace, Jankipuram, Lucknow, UP (Map: https://www.google.com/maps/search/?api=1&query=26.9109169%2C80.9464606&query_place_id=ChIJSydGKnNXmTkRj475BfUXmeA). Hosted by Bits&Bytes. Community Partners: Coding Connoisseurs, Aryan Singh, and Notion Lucknow. Registration via Luma (approval required): https://luma.com/xtxua1jl. Topics: how GitHub Copilot works, integrating AI into dev workflows, prompt techniques for better code suggestions, responsible AI use. **Note: Bits&Bytes is the Host of this event.**
-- **India Innovates 2026** [ARCHIVED] — Held on March 28, 2026 at Bharat Mandapam, New Delhi (9 AM to 7 PM). Organized by HN Group and MCD with DDU, IIT Kharagpur, DTC, NSUT, and GGSIPU. Verified scale: 1.26 crore+ applicants, narrowed to 28,000+, then 5,000+, and finally 15 teams. Domains: Urban Solutions, Digital Democracy, and Open Innovation. Prize pool: ₹10 Lakh+ with ₹1L/₹75K/₹50K/₹25K per domain. Bits&Bytes served as the Official Executive Partner. Post-event flow included a ministry-level presentation stage.
+- **India Innovates 2026** [ARCHIVED] — Held on March 28, 2026 at Bharat Mandapam, New Delhi (9 AM to 7 PM). Verified scale: 1.26 crore+ applicants, narrowed to 28,000+, then 5,000+, and finally 15 teams. Domains: Urban Solutions, Digital Democracy, and Open Innovation. Prize pool: ₹10 Lakh+ with ₹1L/₹75K/₹50K/₹25K per domain. Bits&Bytes served as the Official Executive Partner. Attended by Delhi CM Rekha Gupta, Bihar Assembly Speaker, and MP Manoj Tiwari. Post-event flow included ministry-level presentation stage. Media coverage: #IndiaInnovates2026 trended on X. Details: https://indiainnovates.org
+
+- **Execron 1.0** [ARCHIVED] — AI Hackathon & Workshop for Classes 9–12, held March 19–22, 2026 at IIT Kanpur. In collaboration with TechKriti '26. Featured 4-hour hands-on workshops followed by 24-hour hackathon sprints. Topics: AI & ML, Web Development, App Development, Cybersecurity, Cloud Computing. Team sizes 1–4 members. Partners: ByteForge, Bits&Bytes. Details: https://byteforge.paxus.in/
+
+- **GitHub Copilot Dev Days | Lucknow** [ARCHIVED] — Community developer event on Sunday, April 19, 2026, 10:00 AM – 2:00 PM at Cubispace, Jankipuram, Lucknow, UP. Hosted by Bits&Bytes with community partners Coding Connoisseurs, Aryan Singh, and Notion Lucknow. Topics: how GitHub Copilot works, integrating AI into dev workflows, prompt techniques for better code suggestions, and responsible AI use. Archive link: https://luma.com/xtxua1jl.
+
+- **Lucknow Build Guild** [ARCHIVED] — Free hardware workshop and meetup held on April 19, 2026 at SureStay by Best Western, Lucknow. Hosted by Shaurya. Event site: https://www.lucknow-build-guild.xyz/, Host: https://linktr.ee/shauryaashu and https://github.com/Shaurya-Ashu.
 
 ## Leadership Team (Core Team)
-- **Yash**: Founder & Local Lead – Leads entire organization, coords teams, tech architect.
-- **Aadrika**: Co-Founder & Chief Creative Strategist – Branding, design, promotional campaigns.
-- **Akshat Kushwaha**: Co-Founder & Technical Lead – Website, programming projects, AI & LLMOps, cloud.
-- **Devansh**: Founding Member & Backend Lead – Backend dev, database arch, community outreach.
-- **Maryam**: Social Media & Promotions Head – Designs visuals, brand consistency.
-- **Srishti**: Operations & Communications Head – Internal ops, team communications.
+- **Yash Singh** — Co-Founder & Organisation Lead. Full-stack engineer, IOQM national qualifier, 5-star Codiva VS Code extension creator (1000+ users). Founder of Bits&Bytes leading 100+ members. Educator at STEMist Lucknow for underprivileged students. Lead organizer for Scrapyard Lucknow & NASA Space Apps Challenge mentor. LinkedIn: https://www.linkedin.com/in/yash-vardhan-singh-a41540270/, GitHub: https://github.com/yashclouded, Website: https://yashvibe.codes/
+
+- **Aadrika Maurya** — Co-Founder & Chief Creative Strategist. RSI India alumna, neuroscience researcher (EEG/attention modeling), regional manager for CodeDay Kanpur. Designed complete visual identity & campaign strategy for India-wide movements. LinkedIn: https://www.linkedin.com/in/aadrika-maurya/, GitHub: https://github.com/Aadrika08, Website: https://aadrikasportfolio.framer.website/
+
+- **Akshat Kushwaha** — Co-Founder & Technical Lead. AI-native systems engineer, designed production-grade infrastructure for entire Bits&Bytes platform. LLMOps, RAG architecture, agentic workflows expert. Chapter Lead @ STEMist Education (Boys High School, Prayagraj). LinkedIn: https://www.linkedin.com/in/akshat-singh-kushwaha/, GitHub: https://github.com/a3ro-dev, Website: https://a3ro.dev
+
+- **Devaansh Pathak** — Founding Member & Backend Lead. Co-architected high-performance backend systems & database architecture. Executed partnerships delivering genuine sponsor ROI across multiple cities. LinkedIn: https://www.linkedin.com/in/devaanshpa/
+
+- **Maryam Fatima** — Social Media & Promotions Head. Generates 10k+ impressions for club events through visual storytelling. Maintains premium Bits&Bytes brand identity. Orchestrated promotions for GitHub Copilot Dev Days & CodeDay hackathons. LinkedIn: https://www.linkedin.com/in/maryam-fatima-9719aa377/
+
+- **Sristhi Singh** — Operations & Communications Head. Engineered internal communication workflows for 100+ active members. Coordinated logistics for NASA Space Apps & city-wide transitions. Optimized project lifecycle from idea to shipped product. LinkedIn: https://www.linkedin.com/in/srishti-singh-ab6a1b391
 
 ## Technology Stack
 - **Frontend**: Next.js, React, TypeScript, Tailwind CSS, Framer Motion, Three.js / WebGL
@@ -62,7 +72,7 @@ Bits&Bytes is India's boldest teen-led code club and nonprofit, based in Lucknow
 ## Website Structure
 - **/** - Homepage with overview and impact stats
 - **/about** - Team profiles and mission details
-- **/projects** - Showcase of 15+ teen-built projects
+- **/projects** - Showcase of 130+ teen-built projects
 - **/events** - Upcoming hackathons and workshops
 - **/impact** - Community statistics and success stories
 - **/join** - Free membership application
@@ -76,15 +86,56 @@ Bits&Bytes is India's boldest teen-led code club and nonprofit, based in Lucknow
 - **Contact Page**: https://gobitsnbytes.org/contact
 - **LinkedIn**: https://www.linkedin.com/company/gobitsbytes
 - **GitHub**: https://github.com/gobitsnbytes
-- **Twitter/X**: @bitsnbytes_lko
-- **Location**: Lucknow, Uttar Pradesh, India
+- **Twitter/X**: https://x.com/gobitsnbytes
+- **Location**:  India
 
-## Brand Colors
-- Deep Purple: #3E1E68 (Primary)
-- Rich Plum: #5D2F77 (Accents)
-- Vibrant Pink: #E45A92 (Interactive elements)
-- Soft Coral: #FFACAC (Backgrounds)
+## Brand Kit
+
+### Brand Mark
+- The Bits&Bytes brand mark is a compact 3D cube monogram with a small star accent. Use the full wordmark for hero headings and the cube mark (square) for avatars, favicons, and constrained spaces. Prefer the reversed white mark on dark backgrounds and the single-color mark on light backgrounds. Maintain clear space around the mark equal to the cube's height.
+
+### Fonts & Typography
+- **Primary:** Helvetica Now — headings and display; bold weights for impact.
+- **Secondary:** Georgia Pro — body text and longer reading.
+- **Accent (script):** Palm Club — reserved for decorative hero treatments.
+- **Accent (display):** Anton — condensed/impact accents, use sparingly.
+
+### Color System
+### Color System
+- **Burgundy (Core gradient):**
+  - Base: #97192C
+  - 20%: #791423
+  - 40%: #5B0F1A
+  - 60%: #3C0A12
+  - 80%: #1E0509
+- **Neutrals (dark → light):**
+  - #120F0A, #413F3B, #716F6C, #A09F9D, #D0CFCE
+- **Accent — Orange (pop gradient):**
+  - #FC920D, #FDA83D, #FDBE6E, #FED39E, #FEE9CF
+- **Warm Accent Range (supporting):**
+  - #C94218, #D46846, #DF8E74, #E9B3A3, #F4D9D1
+- **Utility / Interaction colors:**
+  - Vibrant Pink (Interactive): #E45A92
+  - Rich Plum (Secondary): #5D2F77
+  - Deep Purple (Brand accent): #3E1E68
+
+Design guidance:
+- **Burgundy / Core:** the voice of the brand — serious and composed; use as the structural anchor for hero surfaces and heavy weights.
+- **Orange / Pop:** use for emphasis, micro-animations, and callouts where things should pop.
+- **Gradients:** prefer layered gradients (Burgundy → Plum → Vibrant Pink → Orange) for hero and promotional areas to create depth and movement.
+- **Neutrals:** use the neutral scale to layer content and preserve legibility; prefer warm neutrals when overlaying textures.
+
+### Visual Elements
+- Use rich gradients that blend Vibrant Pink → Rich Plum → Deep Purple for hero backgrounds and promotional graphics.
+- Halftone and stipple textures, geometric checks, and a small star/sparkle motif are approved decorative elements. Apply these as subtle overlays or masks (low opacity) to add tactile texture.
+- Maintain restrained use of script accents; keep body copy in Georgia Pro for legibility.
+
+### Logo files & usage
+- Prefer vector SVG for web and print. Provide PNG/JPEG fallbacks for legacy uses.
+- Recommended assets: full wordmark, cube mark (square), monochrome (black/white) variants, and favicon-sized versions.
+- Do not rotate, skew, or recolor the mark outside the defined palette. Preserve legibility and clear space at all sizes.
+
+These brand guidelines are a concise reference; for creative executions follow the visual examples and gradients shown in the official brand board.
 
 ---
-Last updated: February 2026
-
+Last updated: April 22, 2026

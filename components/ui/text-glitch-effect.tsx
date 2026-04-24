@@ -119,7 +119,7 @@ export function TextGlitch({ text, hoverText, href, className = "", delay = 0 }:
         text-[var(--brand-coral)]
         border-b border-[var(--brand-plum)]/30
         flex flex-col items-start justify-center relative
-        transition-all duration-500 ease-out
+        transition-transform transition-colors transition-opacity duration-500 ease-out
         cursor-pointer
         overflow-hidden
         ${className}
@@ -140,7 +140,7 @@ export function TextGlitch({ text, hoverText, href, className = "", delay = 0 }:
           absolute w-full h-full 
           text-black font-bold
           flex flex-col justify-center
-          transition-all duration-400 ease-out
+          transition-transform transition-colors transition-opacity duration-400 ease-out
           pointer-events-none
           overflow-hidden
         "

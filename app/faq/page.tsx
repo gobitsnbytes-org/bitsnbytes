@@ -112,10 +112,10 @@ export default function FAQ() {
   return (
     <>
       {/* Hero Section */}
-      <section className="relative min-h-[40vh] sm:min-h-[45vh] flex items-center justify-center overflow-hidden text-white pt-24 md:pt-32">
+      <section className="relative min-h-[58vh] sm:min-h-[64vh] flex items-center justify-center overflow-hidden text-white pt-24 md:pt-32">
         <WebGLShader />
         <div className="relative z-10 w-full mx-auto max-w-5xl px-4 sm:px-6 py-8 sm:py-12 md:py-20">
-          <GlassContainer className="px-6 py-12 md:py-20 sm:px-10 lg:px-16 text-center">
+            <div className="px-6 py-12 md:py-20 sm:px-10 lg:px-16 text-center">
             <div className="flex flex-col items-center gap-6">
               <p className="text-[10px] md:text-xs uppercase tracking-[0.35em] text-white/70 font-bold">
                 FAQ
@@ -128,7 +128,7 @@ export default function FAQ() {
                 participate.
               </p>
             </div>
-          </GlassContainer>
+          </div>
         </div>
       </section>
 
@@ -154,7 +154,7 @@ export default function FAQ() {
                       {faq.question}
                     </h3>
                     <div className={cn(
-                      "flex h-10 w-10 shrink-0 items-center justify-center rounded-full border border-white/10 bg-white/5 text-(--brand-pink) transition-all duration-300",
+                      "flex h-10 w-10 shrink-0 items-center justify-center rounded-full border border-white/10 bg-white/5 text-(--brand-pink) transition-transform transition-colors transition-opacity duration-300",
                       isOpen && "rotate-180 bg-(--brand-pink) text-white border-(--brand-pink)/50"
                     )}>
                       <ChevronDown className="h-6 w-6" />
@@ -162,7 +162,7 @@ export default function FAQ() {
                   </button>
                   <div
                     className={cn(
-                      "grid transition-all duration-300 ease-in-out",
+                      "grid transition-transform transition-colors transition-opacity duration-300 ease",
                       isOpen ? "grid-rows-[1fr] opacity-100" : "grid-rows-[0fr] opacity-0",
                     )}
                   >
@@ -193,7 +193,7 @@ export default function FAQ() {
             <div className="mt-10 flex flex-col sm:flex-row items-center justify-center gap-4">
               <Button
                 asChild
-                className="group rounded-full bg-(--brand-pink) px-10 py-7 text-lg font-black text-white shadow-lg shadow-[#e45a92]/20 hover:shadow-xl hover:shadow-[#e45a92]/40 transition-all hover:scale-105 w-full sm:w-auto"
+                className="group rounded-full bg-[var(--brand-pink)] px-10 py-7 text-lg font-black text-white shadow-lg shadow-[var(--brand-pink)/20] hover:shadow-xl hover:shadow-[var(--brand-pink)/40] transition-transform transition-colors transition-opacity hover:scale-105 w-full sm:w-auto"
               >
                 <Link href="/contact">
                   Contact Us
@@ -203,7 +203,7 @@ export default function FAQ() {
               <Button
                 asChild
                 variant="outline"
-                className="rounded-full border-white/20 bg-white/5 px-10 py-7 text-lg font-bold text-white backdrop-blur-md hover:bg-white/10 w-full sm:w-auto transition-all"
+                className="rounded-full border-white/20 bg-white/5 px-10 py-7 text-lg font-bold text-white backdrop-blur-md hover:bg-white/10 w-full sm:w-auto transition-transform transition-colors transition-opacity"
               >
                 <Link href="/join">Apply to Join</Link>
               </Button>

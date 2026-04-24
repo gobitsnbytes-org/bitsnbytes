@@ -41,7 +41,7 @@ const GlassEffect: React.FC<GlassEffectProps> = ({
 
   const content = (
     <div
-      className={`relative flex font-semibold overflow-hidden text-black cursor-pointer transition-all duration-700 ${className}`}
+      className={`relative flex font-semibold overflow-hidden text-black cursor-pointer transition-transform transition-colors transition-opacity duration-700 ${className}`}
       style={glassStyle}
     >
       {/* Glass Layers */}
@@ -93,7 +93,7 @@ const GlassDock: React.FC<{ icons: DockIcon[]; href?: string }> = ({
         <button
           key={index}
           type="button"
-          className="w-16 h-16 flex items-center justify-center rounded-2xl bg-white/80 text-[#3e1e68] shadow-sm transition-all duration-700 hover:scale-110 hover:bg-white"
+          className="w-16 h-16 flex items-center justify-center rounded-2xl bg-white/80 text-[#3e1e68] shadow-sm transition-transform transition-colors transition-opacity duration-700 hover:scale-110 hover:bg-white"
           style={{
             transformOrigin: "center center",
             transitionTimingFunction: "cubic-bezier(0.175, 0.885, 0.32, 2.2)",
@@ -118,7 +118,7 @@ const GlassButton: React.FC<{ children: React.ReactNode; href?: string }> = ({
     className="rounded-3xl px-10 py-4 md:py-6 hover:px-11 hover:py-5 md:hover:py-7 hover:rounded-4xl overflow-hidden"
   >
     <div
-      className="transition-all duration-700 hover:scale-95 text-white"
+      className="transition-transform transition-colors transition-opacity duration-700 hover:scale-95 text-white"
       style={{
         transitionTimingFunction: "cubic-bezier(0.175, 0.885, 0.32, 2.2)",
       }}

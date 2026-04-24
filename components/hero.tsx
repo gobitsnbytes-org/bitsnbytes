@@ -32,7 +32,7 @@ export default function Hero() {
               <Link
                 href="/join"
                 prefetch={true}
-                className="inline-flex items-center justify-center px-8 py-3 bg-[var(--brand-pink)] text-white rounded-full font-medium hover:bg-[var(--brand-plum)] transition-all hover:shadow-lg hover:shadow-[var(--brand-pink)]/30 group"
+                className="inline-flex items-center justify-center px-8 py-3 bg-[var(--brand-pink)] text-white rounded-full font-medium hover:bg-[var(--brand-plum)] transition-transform transition-colors transition-opacity hover:shadow-lg hover:shadow-[var(--brand-pink)]/30 group"
               >
                 Join Us Now <ArrowRight className="ml-2 group-hover:translate-x-1 transition-transform" size={20} />
               </Link>
@@ -79,15 +79,15 @@ export default function Hero() {
                   </p>
                   <div className="grid grid-cols-3 gap-3">
                     <div>
-                      <p className="text-lg sm:text-xl font-bold text-[var(--brand-coral)]">200+</p>
+                      <p className="text-lg sm:text-xl font-bold text-[var(--brand-coral)]">1500+</p>
                       <p className="text-[0.65rem] sm:text-xs text-white/60">Members</p>
                     </div>
                     <div>
-                      <p className="text-lg sm:text-xl font-bold text-[var(--brand-pink)]">15+</p>
+                      <p className="text-lg sm:text-xl font-bold text-[var(--brand-pink)]">130+</p>
                       <p className="text-[0.65rem] sm:text-xs text-white/60">Projects</p>
                     </div>
                     <div>
-                      <p className="text-lg sm:text-xl font-bold text-[var(--brand-plum)]">10+</p>
+                      <p className="text-lg sm:text-xl font-bold text-[var(--brand-plum)]">100+</p>
                       <p className="text-[0.65rem] sm:text-xs text-white/60">Schools</p>
                     </div>
                   </div>

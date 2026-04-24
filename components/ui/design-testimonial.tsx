@@ -9,7 +9,7 @@ const testimonials = [
   {
     quote: "Leading this community has shown me that there's no limit to what ambitious teens can achieve when they have the right ecosystem to build in.",
     author: "Yash",
-    role: "Founder & Local Lead",
+    role: "Co-Founder & Organisation Lead",
     company: "Bits&Bytes",
   },
   {
@@ -85,9 +85,9 @@ export function Testimonial() {
           <AnimatePresence mode="wait">
             <motion.span
               key={activeIndex}
-              initial={{ opacity: 0, scale: 0.8, filter: "blur(10px)" }}
-              animate={{ opacity: 1, scale: 1, filter: "blur(0px)" }}
-              exit={{ opacity: 0, scale: 1.1, filter: "blur(10px)" }}
+              initial={{ opacity: 0, transform: "scale(0.8)", filter: "blur(10px)" }}
+              animate={{ opacity: 1, transform: "scale(1)", filter: "blur(0px)" }}
+              exit={{ opacity: 0, transform: "scale(1.1)", filter: "blur(10px)" }}
               transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
               className="block"
             >
@@ -113,9 +113,10 @@ export function Testimonial() {
             {/* Vertical progress line */}
             <div className="relative h-32 w-px bg-border mt-8">
               <motion.div
-                className="absolute top-0 left-0 w-full bg-foreground origin-top"
+                className="absolute top-0 left-0 w-full h-full bg-foreground"
+                style={{ transformOrigin: "top" }}
                 animate={{
-                  height: `${((activeIndex + 1) / testimonials.length) * 100}%`,
+                  transform: `scaleY(${((activeIndex + 1) / testimonials.length)})`,
                 }}
                 transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
               />
@@ -128,9 +129,9 @@ export function Testimonial() {
             <AnimatePresence mode="wait">
               <motion.div
                 key={activeIndex}
-                initial={{ opacity: 0, x: -20 }}
-                animate={{ opacity: 1, x: 0 }}
-                exit={{ opacity: 0, x: 20 }}
+                initial={{ opacity: 0, transform: "translateX(-20px)" }}
+                animate={{ opacity: 1, transform: "translateX(0px)" }}
+                exit={{ opacity: 0, transform: "translateX(20px)" }}
                 transition={{ duration: 0.4 }}
                 className="mb-6 md:mb-8"
               >
@@ -186,19 +187,19 @@ export function Testimonial() {
               <AnimatePresence mode="wait">
                 <motion.div
                   key={activeIndex}
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  exit={{ opacity: 0, y: -20 }}
+                  initial={{ opacity: 0, transform: "translateY(20px)" }}
+                  animate={{ opacity: 1, transform: "translateY(0px)" }}
+                  exit={{ opacity: 0, transform: "translateY(-20px)" }}
                   transition={{ duration: 0.4, delay: 0.2 }}
                   className="flex items-center gap-4"
                 >
                   {/* Animated line before name */}
                   <motion.div
                     className="w-8 h-px bg-[var(--brand-pink)]"
-                    initial={{ scaleX: 0 }}
-                    animate={{ scaleX: 1 }}
+                    initial={{ transform: "scaleX(0)" }}
+                    animate={{ transform: "scaleX(1)" }}
                     transition={{ duration: 0.6, delay: 0.3 }}
-                    style={{ originX: 0 }}
+                    style={{ transformOrigin: "left" }}
                   />
                   <div>
                     <p className="text-base font-medium text-foreground">{current.author}</p>
@@ -280,7 +281,7 @@ export function Testimonial() {
         <div className="absolute -bottom-16 left-0 right-0 overflow-hidden opacity-[0.08] pointer-events-none">
           <motion.div
             className="flex whitespace-nowrap text-4xl md:text-6xl font-bold tracking-tight"
-            animate={{ x: [0, -1000] }}
+            animate={{ transform: ["translateX(0px)", "translateX(-1000px)"] }}
             transition={{ duration: 20, repeat: Number.POSITIVE_INFINITY, ease: "linear" }}
           >
             {[...Array(10)].map((_, i) => (

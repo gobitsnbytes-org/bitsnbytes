@@ -17,14 +17,14 @@ export interface GlassIconsProps {
   className?: string;
 }
 
-// Brand colors from Bits&Bytes - solid colors only
+// Brand colors from Bits&Bytes - reference CSS variables from the canonical palette
 const brandColors: Record<string, string> = {
-  "deep-purple": "#3E1E68",
-  "vibrant-pink": "#E45A92",
-  "soft-coral": "#FFACAC",
-  "rich-plum": "#5D2F77",
-  "purple-pink": "#E45A92",
-  "plum-coral": "#FFACAC",
+  "deep-purple": "var(--bb-deep-purple)",
+  "vibrant-pink": "var(--bb-pink)",
+  "soft-coral": "var(--bb-orange-20)",
+  "rich-plum": "var(--bb-plum)",
+  "purple-pink": "var(--bb-pink)",
+  "plum-coral": "var(--bb-orange-20)",
 };
 
 const GlassIcons: React.FC<GlassIconsProps> = ({ items, className }) => {

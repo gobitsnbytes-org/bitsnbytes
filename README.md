@@ -50,14 +50,12 @@ GOOGLE_SITE_VERIFICATION=...
 Optional:
 
 ```env
-OSM_API_KEY=...
 NVIDIA_KEY=...
 ```
 
 Notes:
 - `HACKCLUB_PROXY_API_KEY` is required for the assistant and embedding generation.
 - `NVIDIA_KEY` is required only for the Stable Diffusion image generation branch.
-- `OSM_API_KEY` is currently referenced by the voice route.
 
 ### 4. Run Locally
 

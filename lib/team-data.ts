@@ -10,7 +10,7 @@ export interface TeamMember {
 export const TEAM_MEMBERS: TeamMember[] = [
   {
     name: "Yash Singh",
-    role: "Founder & Local Lead",
+    role: "Co-Founder & Organisation Lead",
     superpowers: ["Full-Stack Engineering", "Mathematics (IOQM)", "AI / LLM Intelligence", "Game Dev (GoDOT)", "Three.js & Creative Coding"],
     achievements: [
       "Founder of Bits&Bytes (gobitsnbytes.org), leading 100+ active members in student-led tech culture",
@@ -35,7 +35,7 @@ export const TEAM_MEMBERS: TeamMember[] = [
     achievements: [
       "RSI India Alumni who conducted neuroscience research on EEG signals and attention pattern modeling",
       "Regional Manager for CodeDay Kanpur, empowering local student developers",
-      "Building 'The Nerdy Network' to foster intellectual collaboration among teens",
+      "Leading creative strategy and cross-city collaboration initiatives for teen builders",
       "Designed the complete visual identity and campaign strategy for India-wide movements"
     ],
     talkToMeWhen: [

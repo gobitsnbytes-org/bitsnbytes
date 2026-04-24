@@ -155,6 +155,24 @@ export default function TeamGlobe() {
         arcAlt: 0.18,
         color: "#E45A92",
       },
+      {
+        order: 13,
+        startLat: 28.6139, // Delhi
+        startLng: 77.209,
+        endLat: 25.4358, // Prayagraj
+        endLng: 81.8463,
+        arcAlt: 0.16,
+        color: "#FFACAC",
+      },
+      {
+        order: 14,
+        startLat: 28.6139, // Delhi
+        startLng: 77.209,
+        endLat: 19.076, // Mumbai
+        endLng: 72.8777,
+        arcAlt: 0.2,
+        color: "#5D2F77",
+      },
     ],
     [],
   );

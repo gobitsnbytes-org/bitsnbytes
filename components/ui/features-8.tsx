@@ -8,7 +8,7 @@ export function Features() {
         <div className="mx-auto max-w-6xl">
             <div className="relative">
                 <div className="relative z-10 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-6 gap-3">
-                    {/* Card 1: 200+ Members (Replaces Customizable) */}
+                    {/* Card 1: 1500+ Members (Replaces Customizable) */}
                     <GlassContainer
                         containerClassName="col-span-full lg:col-span-2"
                         className="flex p-0 overflow-hidden"
@@ -22,7 +22,7 @@ export function Features() {
                                         fill="currentColor"
                                     />
                                 </svg>
-                                <span className="mx-auto block w-fit text-5xl md:text-6xl font-black text-white tracking-tighter">200+</span>
+                                <span className="mx-auto block w-fit text-5xl md:text-6xl font-black text-white tracking-tighter">1500+</span>
                             </div>
                             <h2 className="mt-8 text-center text-2xl font-black text-white uppercase tracking-widest">Across India</h2>
                         </div>
@@ -43,7 +43,7 @@ export function Features() {
                         </div>
                     </GlassContainer>
 
-                    {/* Card 3: 15+ Projects */}
+                    {/* Card 3: 130+ Projects */}
                     <GlassContainer
                         containerClassName="col-span-full sm:col-span-3 lg:col-span-2"
                         className="overflow-hidden p-8 md:p-12"
@@ -79,7 +79,7 @@ export function Features() {
                             </svg>
                         </div>
                         <div className="relative z-10 mt-10 space-y-3 text-center">
-                            <h2 className="text-2xl font-black text-white px-2">15+ Projects</h2>
+                            <h2 className="text-2xl font-black text-white px-2">130+ Projects</h2>
                             <p className="text-base text-white/60 font-medium">From apps to AI, shipping to production.</p>
                         </div>
                     </GlassContainer>
@@ -106,7 +106,7 @@ export function Features() {
                                     <span className="block size-2.5 rounded-full border border-white/10 bg-yellow-500/50"></span>
                                     <span className="block size-2.5 rounded-full border border-white/10 bg-green-500/50"></span>
                                 </div>
-                                <svg className="w-full sm:w-[150%] mt-4 opacity-50 grayscale transition-all group-hover:grayscale-0 group-hover:opacity-100" viewBox="0 0 366 231" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <svg className="w-full sm:w-[150%] mt-4 opacity-50 grayscale transition-transform transition-colors transition-opacity group-hover:grayscale-0 group-hover:opacity-100" viewBox="0 0 366 231" fill="none" xmlns="http://www.w3.org/2000/svg">
                                     <path
                                         fillRule="evenodd"
                                         clipRule="evenodd"
@@ -144,7 +144,7 @@ export function Features() {
                                     </div>
                                     <div className="relative ml-[calc(50%-1.25rem)] flex items-center gap-3 transition-transform hover:scale-105">
                                         <div className="ring-white/10 size-14 ring-2 rounded-2xl overflow-hidden border border-white/20">
-                                            <Image className="size-full object-cover" src="/team/akshat.webp" alt="Akshat" width={56} height={56} />
+                                            <Image className="size-full object-cover" src="/team/akshat.jpg" alt="Akshat" width={56} height={56} />
                                         </div>
                                         <span className="block h-fit rounded-full border border-white/10 bg-white/5 px-4 py-1.5 text-xs font-bold text-white shadow-sm backdrop-blur-md">Akshat Kushwaha</span>
                                     </div>

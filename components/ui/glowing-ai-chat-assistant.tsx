@@ -153,12 +153,13 @@ const MAX_HISTORY = 8
 const STORAGE_KEY = "bb-floating-assistant-state-v1"
 const FEEDBACK_STORAGE_KEY = "bb-assistant-feedback-v1"
 const QUICK_PROMPTS = [
-  "When is GitHub Copilot Dev Days and how do I register?",
-  "What were the official domains for India Innovates 2026?",
-  "Who are the founders and core team at Bits&Bytes?",
-  "How can I join Bits&Bytes this month?",
-  "Show upcoming and archived events.",
-  "Draw a vintage steampunk airship! 🎨",
+  "Who founded Bits&Bytes and what are they working on?",
+  "What makes Bits&Bytes different from other tech clubs?",
+  "Tell me about India Innovates 2026 — what was it?",
+  "How can I join Bits&Bytes as a student developer?",
+  "What kind of projects do members ship?",
+  "Show me all the past events and hackathons.",
+  "Generate a cool sci-fi robot concept for me! 🤖",
 ]
 
 // ─── Smart FAQ: instant answers without API calls ────────────────────────────
@@ -170,8 +171,8 @@ const SMART_FAQ: FaqEntry[] = [
     answer: "**Bits&Bytes** is a teen-led code club based in Lucknow, India. We run hackathons, workshops, and product-focused build programs led by students.\n\n[Learn more about us](/about \"cta\")\n\n[Who founded it?](# \"follow-up\")  \n[How can I join?](# \"follow-up\")",
   },
   {
-    patterns: ["how to join", "how can i join", "join bits", "become a member", "sign up", "get involved"],
-    answer: "To join Bits&Bytes:\n\n1. Join our community channels\n2. Attend an active workshop or event\n3. Start contributing to a live project track\n\n[Join Bits&Bytes](/join \"cta\")\n\n[What events are coming up?](# \"follow-up\")",
+    patterns: ["how to join", "how can i join", "join bits", "become a member", "sign up", "get involved", "membership"],
+    answer: "To join Bits&Bytes **completely free**:\n\n1. **Apply** — Fill the form on our join page\n2. **Join Discord/WhatsApp** — Connect with 1500+ student builders\n3. **Attend an event or workshop** — Start building with mentors\n4. **Ship projects** — Get paired with accountability partners\n\n**Requirements:** Be a student (ages 13–19), commit 2–4 hours/week, and stay active.\n\n[Apply now](/join \"cta\")\n[Join WhatsApp Community](https://chat.whatsapp.com/DvAIRLgEEBxISR8bsb9kVg \"cta\")",
   },
   {
     patterns: ["contact", "email", "reach out", "get in touch", "how to contact"],
@@ -179,15 +180,23 @@ const SMART_FAQ: FaqEntry[] = [
   },
   {
     patterns: ["copilot dev days", "copilot event", "github copilot", "april 19", "cubispace"],
-    answer: "**GitHub Copilot Dev Days | Lucknow**\n\n- **Date:** Sunday, April 19, 2026\n- **Time:** 10:00 AM - 2:00 PM IST\n- **Venue:** Cubispace, Jankipuram, Lucknow\n- **Registration:** Approval required\n\n[Register on Luma](https://luma.com/xtxua1jl \"cta\")\n\n[What will I learn?](# \"follow-up\")",
+    answer: "**GitHub Copilot Dev Days | Lucknow (Archive)**\n\n- **Date:** Sunday, April 19, 2026\n- **Time:** 10:00 AM - 2:00 PM IST\n- **Venue:** Cubispace, Jankipuram, Lucknow\n- **Status:** Registrations closed\n\n[View Event Archive](https://luma.com/xtxua1jl \"cta\")\n\n[What did the event cover?](# \"follow-up\")",
+  },
+  {
+    patterns: ["lucknow build guild", "build guild", "hardware workshop", "shaurya"],
+    answer: "**Lucknow Build Guild (Archive)**\n\n- **Date:** April 19, 2026\n- **Venue:** SureStay by Best Western, Lucknow\n- **Format:** Free hardware workshop and meetup\n- **Host:** Shaurya\n\n[Visit Event Website](https://www.lucknow-build-guild.xyz/ \"cta\")\n[Host Linktree](https://linktr.ee/shauryaashu \"cta\")\n[Host GitHub](https://github.com/Shaurya-Ashu \"cta\")",
   },
   {
     patterns: ["india innovates", "hackathon 2026", "ii 2026", "india innovates 2026"],
-    answer: "**India Innovates 2026 (Archive)**\n\nBits&Bytes served as the **Official Executive Partner**.\n\n- **Date:** March 28, 2026\n- **Venue:** Bharat Mandapam, New Delhi\n- **Scale:** 1.26+ crore applicants, narrowed to 28,000+, then 5,000+, and finally 15 teams\n- **Domains:** Urban Solutions, Digital Democracy, and Open Innovation\n- **Status:** Event closed and archived\n\n[Tell me about Copilot Dev Days](# \"follow-up\")",
+    answer: "**India Innovates 2026 (Archive)**\n\nThe world's largest civic tech hackathon. Bits&Bytes served as the **Official Executive Partner**.\n\n- **Date:** March 28, 2026\n- **Venue:** Bharat Mandapam, New Delhi\n- **Scale:** 1.26+ crore applicants → 28,000+ → 5,000+ → **15 finalist teams**\n- **Prize Pool:** ₹10 Lakh+ (₹1L/₹75K/₹50K/₹25K per domain)\n- **Domains:** Urban Solutions, Digital Democracy, Open Innovation\n- **Dignitaries:** Delhi CM Rekha Gupta, Bihar Assembly Speaker, MP Manoj Tiwari\n- **Media:** #IndiaInnovates2026 trended on X on event day\n\n[View official site](https://indiainnovates.org \"cta\")",
   },
   {
-    patterns: ["who founded", "founders", "who started", "who created", "team", "leadership"],
-    answer: "Bits&Bytes was co-founded by:\n\n- **Yash** — Founder & Local Lead\n- **Aadrika** — Co-Founder & Chief Creative Strategist\n- **Akshat Kushwaha** — Co-Founder & Technical Lead\n\nPlus an amazing core team: Devansh (Backend), Maryam (Social Media), and Srishti (Operations)!\n\n[Meet the team](/about \"cta\")",
+    patterns: ["execron", "execron 1.0", "iit kanpur hackathon", "techkriti"],
+    answer: "**Execron 1.0 (Archive)**\n\nAI Hackathon & Workshop for teen builders at IIT Kanpur.\n\n- **Date:** March 19–22, 2026\n- **Venue:** IIT Kanpur\n- **Format:** 4-hour workshop + 24-hour hackathon sprint\n- **Target:** Classes 9–12 (Ages ~14–18)\n- **Topics:** AI & ML, Web Dev, App Dev, Cybersecurity, Cloud Computing\n- **Partner:** In collaboration with TechKriti '26, ByteForge\n- **Team Size:** 1–4 members\n\n[View event details](https://byteforge.paxus.in/ \"cta\")",
+  },
+  {
+    patterns: ["who founded", "founders", "who started", "who created", "team", "leadership", "core team"],
+    answer: "**Bits&Bytes Core Team:**\n\n- **Yash Singh** — Co-Founder & Organisation Lead. Founder of Bits&Bytes, IOQM national qualifier, created the 5-star Codiva VS Code extension (1000+ users).\n\n- **Aadrika Maurya** — Co-Founder & Chief Creative Strategist. RSI India alumna, neuroscience researcher, designed our complete visual identity.\n\n- **Akshat Kushwaha** — Co-Founder & Technical Lead. AI-native systems engineer who architected our entire production platform and LLMOps infrastructure.\n\n- **Devaansh Pathak** — Founding Member & Backend Lead. Built our high-performance backend systems and partnership economics.\n\n- **Maryam Fatima** — Social Media & Promotions Head. Generates 10k+ impressions through visual storytelling.\n\n- **Sristhi Singh** — Operations & Communications Head. Orchestrates logistics and optimizes our product lifecycle.\n\n[Meet the team](/about \"cta\")",
   },
   {
     patterns: ["discord", "community link", "whatsapp group", "discord server"],
@@ -198,12 +207,12 @@ const SMART_FAQ: FaqEntry[] = [
     answer: "We are based in **Lucknow, India**, and we collaborate with students and partners across other cities as well.\n\n[See events](/events \"cta\")",
   },
   {
-    patterns: ["what do you do", "activities", "what does bits", "programs", "workshops"],
-    answer: "At Bits&Bytes we run:\n\n- **Hackathons**\n- **Workshops**\n- **Build programs**\n- **Mentorship and team projects**\n\n[See our focus areas](/ \"cta\")\n\n[What events are active now?](# \"follow-up\")",
+    patterns: ["what do you do", "activities", "what does bits", "programs", "workshops", "what makes bits different", "why bits"],
+    answer: "At Bits&Bytes we build for **high-agency teen builders** who want to ship real products:\n\n- **Hackathons** — Scrapyard Lucknow, NASA Space Apps, and 48-hour sprints\n- **Workshops** — Web dev, AI/ML, mobile apps, UI/UX, hardware building\n- **Build programs** — Portfolio-ready projects with mentorship at every stage\n- **Mentorship pods** — Pair programming, code reviews, and accountability partners\n\nWe treat participants like **ambitious builders**, not beginners. Every prompt becomes a prototype. You'll ship real impact.\n\n[View our projects](/projects \"cta\")",
   },
   {
     patterns: ["events", "upcoming event", "next event", "what events"],
-    answer: "**Events Snapshot:**\n\n1. **GitHub Copilot Dev Days | Lucknow** — Upcoming\n2. **India Innovates 2026** — Archived\n\n[View all events](/events \"cta\")\n\n[Tell me about Copilot Dev Days](# \"follow-up\")",
+    answer: "**Events Snapshot:**\n\n1. **Lucknow Build Guild** — Archived\n2. **GitHub Copilot Dev Days | Lucknow** — Archived\n3. **Execron 1.0** — Archived\n4. **India Innovates 2026** — Archived\n\n[View all events](/events \"cta\")\n\n[Tell me about Lucknow Build Guild](# \"follow-up\")",
   },
   {
     patterns: ["akshat achievement", "akshat's achievement", "what has akshat done", "akshat projects", "akshats' achievements"],
@@ -245,7 +254,7 @@ const FloatingAiAssistant: React.FC = () => {
   const [error, setError] = useState<string | null>(null)
   const [voiceError, setVoiceError] = useState<string | null>(null)
   const [isRecording, setIsRecording] = useState(false)
-  const [modelName, setModelName] = useState("qwen3.5-397b-a17b")
+  const [modelName, setModelName] = useState("")
   const [hasHydrated, setHasHydrated] = useState(false)
   const [feedbackMap, setFeedbackMap] = useState<Record<number, FeedbackValue>>({})
   const [sessionId, setSessionId] = useState<string>("")
@@ -880,7 +889,7 @@ const FloatingAiAssistant: React.FC = () => {
 
         {/* Floating AI button */}
         <button
-          className={`floating-ai-button relative ml-auto flex h-11 w-11 sm:h-14 sm:w-14 items-center justify-center rounded-full border border-white/40 bg-[var(--brand-pink)] shadow-lg shadow-[#e45a92]/40 transition-all duration-300 hover:scale-110 hover:shadow-xl ${isChatOpen ? "rotate-90" : "rotate-0"
+          className={`floating-ai-button relative ml-auto flex h-11 w-11 sm:h-14 sm:w-14 items-center justify-center rounded-full border border-white/40 bg-[var(--brand-pink)] shadow-lg shadow-[#e45a92]/40 transition-transform transition-colors transition-opacity duration-300 hover:scale-110 hover:shadow-xl ${isChatOpen ? "rotate-90" : "rotate-0"
             }`}
           onClick={handleToggle}
           aria-label={isChatOpen ? "Close Bits&Bytes assistant" : "Open Bits&Bytes assistant"}
@@ -917,9 +926,6 @@ const FloatingAiAssistant: React.FC = () => {
                   </div>
                 </div>
                 <div className="flex items-center gap-2">
-                  <span className="rounded-2xl bg-zinc-800/70 px-2 py-1 text-[0.65rem] font-medium text-zinc-200">
-                    {modelName}
-                  </span>
                   <div className="relative inline-flex items-center">
                     <span id="export-toast" className="absolute right-full mr-2 whitespace-nowrap opacity-0 transition-opacity duration-300 text-[10px] font-medium text-emerald-400 bg-emerald-400/10 px-1.5 py-0.5 rounded">Copied!</span>
                     <button
@@ -1035,7 +1041,7 @@ const FloatingAiAssistant: React.FC = () => {
                                 return (
                                   <a
                                     href={href}
-                                    className="inline-flex mt-2 mb-1 w-full sm:w-auto items-center justify-center rounded-xl bg-[var(--brand-pink)] px-4 py-2 text-xs font-semibold text-white shadow-lg shadow-[#e45a92]/30 transition-all hover:scale-105 hover:shadow-xl hover:shadow-[#e45a92]/40 text-center"
+                                    className="inline-flex mt-2 mb-1 w-full sm:w-auto items-center justify-center rounded-xl bg-[var(--brand-pink)] px-4 py-2 text-xs font-semibold text-white shadow-lg shadow-[#e45a92]/30 transition-transform transition-colors transition-opacity hover:scale-105 hover:shadow-xl hover:shadow-[#e45a92]/40 text-center"
                                     {...props}
                                   >
                                     {children}
@@ -1050,7 +1056,7 @@ const FloatingAiAssistant: React.FC = () => {
                                       const promptText = Array.isArray(children) ? children.join("") : String(children)
                                       handleQuickPrompt(promptText)
                                     }}
-                                    className="block w-full mt-2 text-left rounded-xl border border-zinc-700/80 bg-zinc-800/50 px-3 py-2.5 text-xs text-zinc-300 transition-all hover:border-[#e45a92] hover:bg-zinc-800 hover:text-white"
+                                    className="block w-full mt-2 text-left rounded-xl border border-zinc-700/80 bg-zinc-800/50 px-3 py-2.5 text-xs text-zinc-300 transition-transform transition-colors transition-opacity hover:border-[#e45a92] hover:bg-zinc-800 hover:text-white"
                                   >
                                     ↳ {children}
                                   </button>
@@ -1174,7 +1180,7 @@ const FloatingAiAssistant: React.FC = () => {
                       <div className="flex items-center gap-1 mt-1 ml-1">
                         <button
                           onClick={() => handleFeedback(m.id, "up", m.content)}
-                          className={`group/fb inline-flex items-center justify-center h-6 w-6 rounded-md transition-all ${
+                          className={`group/fb inline-flex items-center justify-center h-6 w-6 rounded-md transition-transform transition-colors transition-opacity ${
                             feedbackMap[m.id] === "up"
                               ? "bg-emerald-500/20 text-emerald-400"
                               : "text-zinc-600 hover:text-emerald-400 hover:bg-zinc-800/80"
@@ -1186,7 +1192,7 @@ const FloatingAiAssistant: React.FC = () => {
                         </button>
                         <button
                           onClick={() => handleFeedback(m.id, "down", m.content)}
-                          className={`group/fb inline-flex items-center justify-center h-6 w-6 rounded-md transition-all ${
+                          className={`group/fb inline-flex items-center justify-center h-6 w-6 rounded-md transition-transform transition-colors transition-opacity ${
                             feedbackMap[m.id] === "down"
                               ? "bg-red-500/20 text-red-400"
                               : "text-zinc-600 hover:text-red-400 hover:bg-zinc-800/80"
@@ -1254,7 +1260,7 @@ const FloatingAiAssistant: React.FC = () => {
                       type="button"
                       onClick={() => void handleSend()}
                       disabled={!message.trim() || isLoading}
-                      className="relative inline-flex h-8 sm:h-9 items-center justify-center rounded-xl bg-[var(--brand-pink)] px-3 sm:px-4 text-xs font-semibold text-white shadow-lg shadow-[#e45a92]/30 transition-all hover:shadow-xl hover:shadow-[#e45a92]/40 disabled:cursor-not-allowed disabled:opacity-60"
+                      className="relative inline-flex h-8 sm:h-9 items-center justify-center rounded-xl bg-[var(--brand-pink)] px-3 sm:px-4 text-xs font-semibold text-white shadow-lg shadow-[#e45a92]/30 transition-transform transition-colors transition-opacity hover:shadow-xl hover:shadow-[#e45a92]/40 disabled:cursor-not-allowed disabled:opacity-60"
                     >
                       <Send className="mr-1.5 h-3.5 w-3.5" />
                       Ask
@@ -1275,10 +1281,7 @@ const FloatingAiAssistant: React.FC = () => {
                     </span>
                     <span className="sm:hidden">Assistant</span>
                   </div>
-                  <div className="flex items-center justify-end gap-1 min-w-0 pr-1 truncate">
-                    <span className="h-1.5 w-1.5 shrink-0 rounded-full bg-emerald-400" />
-                    <span className="truncate">Powered by OSM/{modelName}</span>
-                  </div>
+                  {/* model / attribution removed intentionally */}
                 </div>
               </div>
 

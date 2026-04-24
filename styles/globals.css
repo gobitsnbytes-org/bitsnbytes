@@ -4,10 +4,41 @@
 @custom-variant dark (&:is(.dark *));
 
 :root {
-  --brand-purple: #3e1e68;
-  --brand-plum: #5d2f77;
-  --brand-pink: #e45a92;
-  --brand-coral: #ffacac;
+  /* Canonical Bits&Bytes brand palette (Brand Kit) */
+  --bb-burgundy-100: #97192C;
+  --bb-burgundy-80: #791423;
+  --bb-burgundy-60: #5B0F1A;
+  --bb-burgundy-40: #3C0A12;
+  --bb-burgundy-20: #1E0509;
+
+  --bb-neutral-100: #120F0A;
+  --bb-neutral-80: #413F3B;
+  --bb-neutral-60: #716F6C;
+  --bb-neutral-40: #A09F9D;
+  --bb-neutral-20: #D0CFCE;
+
+  --bb-orange-100: #FC920D;
+  --bb-orange-80: #FDA83D;
+  --bb-orange-60: #FDBE6E;
+  --bb-orange-40: #FED39E;
+  --bb-orange-20: #FEE9CF;
+
+  --bb-warm-100: #C94218;
+  --bb-warm-80: #D46846;
+  --bb-warm-60: #DF8E74;
+  --bb-warm-40: #E9B3A3;
+  --bb-warm-20: #F4D9D1;
+
+  --bb-pink: #E45A92;
+  --bb-plum: #5D2F77;
+  --bb-deep-purple: #3E1E68;
+
+  /* Legacy aliases (keeps existing classnames working while using canonical palette) */
+  --brand-purple: var(--bb-deep-purple);
+  --brand-plum: var(--bb-plum);
+  --brand-pink: var(--bb-pink);
+  --brand-coral: var(--bb-orange-20);
+
   --brand-midnight: #0f051c;
   --brand-ink: #160b23;
 
@@ -305,7 +336,7 @@
 }
 
 .animate-float {
-  animation: float 3s ease-in-out infinite;
+  animation: float 3s ease infinite;
 }
 
 .animate-slide-in-up {
@@ -321,7 +352,7 @@
 }
 
 .animate-pulse-glow {
-  animation: pulse-glow 2s ease-in-out infinite;
+  animation: pulse-glow 2s ease infinite;
 }
 
 .animate-rotate-slow {

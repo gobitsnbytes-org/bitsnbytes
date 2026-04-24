@@ -27,17 +27,6 @@ import { LoadingInline } from "@/components/loading-wrapper";
 import { Partners } from "@/components/partners";
 
 // Lazy load heavy components
-const WebGLShader = dynamic(
-  () =>
-    import("@/components/ui/web-gl-shader").then((mod) => ({
-      default: mod.WebGLShader,
-    })),
-  {
-    loading: () => null,
-    ssr: false,
-  },
-);
-
 const Testimonial = dynamic(
   () =>
     import("@/components/ui/design-testimonial").then((mod) => ({
@@ -52,9 +41,9 @@ const Testimonial = dynamic(
 // GlassIcons removed in favor of Features bento grid
 
 const stats = [
-  { value: "200+", label: "Active members", detail: "across India" },
-  { value: "15+", label: "Projects shipped", detail: "from apps to AI" },
-  { value: "10+", label: "Partner schools", detail: "and growing" },
+  { value: "1500+", label: "Active members", detail: "across India" },
+  { value: "130+", label: "Projects shipped", detail: "from apps to AI" },
+  { value: "100+", label: "Partner schools", detail: "and growing" },
 ];
 
 
@@ -65,7 +54,6 @@ import { GlassContainer } from "@/components/ui/glass-container";
 export default function Home() {
   return (
     <>
-      <WebGLShader />
       <div className="flex flex-col w-full max-w-full overflow-x-hidden">
         <HeroFuturistic />
 

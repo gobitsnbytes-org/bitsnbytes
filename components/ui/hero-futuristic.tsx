@@ -6,13 +6,14 @@ import { useState, useEffect, useCallback } from "react";
 import { ArrowRight, Sparkles } from "lucide-react";
 
 import dynamic from "next/dynamic";
+import { heroEvents } from "@/lib/events-data";
 
 const WebGLShader = dynamic(
   () => import("@/components/ui/web-gl-shader").then((mod) => mod.WebGLShader),
   {
     ssr: false,
     loading: () => (
-      <div className="absolute inset-0 bg-gradient-to-br from-[var(--brand-purple)]/20 to-[var(--brand-pink)]/20" />
+      <div className="absolute inset-0 bg-gradient-to-br from-[#0a0908] via-[#2f0a13] to-[#8f2d0c]" />
     ),
   },
 );
@@ -20,32 +21,9 @@ import { Button } from "@/components/ui/button";
 import { GlassContainer } from "@/components/ui/glass-container";
 
 const stats = [
-  { value: "200+", label: "Active members" },
-  { value: "15+", label: "Projects shipped" },
-  { value: "10+", label: "Partner schools" },
-];
-
-const heroEvents = [
-  {
-    image: "/images/github-copilot-hero-desktop.png",
-    imageMobile: "/images/github-copilot-hero-mobile.png",
-    alt: "GitHub Copilot Dev Days | Lucknow",
-    badge: "Upcoming Event",
-    status: "upcoming",
-    title: "GitHub Copilot Dev Days",
-    subtitle: "19 Apr 2026 · Lucknow",
-    href: "/events",
-  },
-  {
-    image: "/event_pictures/HEe923uagAATqvy.jpg",
-    imageMobile: "/event_pictures/HEe923uagAATqvy.jpg",
-    alt: "India Innovates 2026 archive",
-    badge: "Archived Event",
-    status: "archived",
-    title: "India Innovates 2026 Archive",
-    subtitle: "28 Mar 2026 · New Delhi",
-    href: "/events",
-  },
+  { value: "1500+", label: "Active members" },
+  { value: "130+", label: "Projects shipped" },
+  { value: "100+", label: "Partner schools" },
 ];
 
 export const HeroFuturistic = () => {
@@ -66,11 +44,10 @@ export const HeroFuturistic = () => {
       aria-labelledby="home-hero-title"
     >
       <WebGLShader />
-      <div className="absolute inset-0 bg-black/40 backdrop-blur-[2px]" />
 
       <div className="relative z-10 mx-auto flex w-full max-w-7xl flex-col gap-4 sm:gap-6 md:gap-8 lg:gap-12 px-4 pb-8 pt-20 sm:px-6 sm:pb-10 sm:pt-20 md:px-6 md:pb-16 md:pt-24 lg:pb-20 lg:pt-28 lg:flex-row lg:items-stretch lg:gap-16 box-border">
         {/* Left content card */}
-        <div className="flex-[1.2] min-w-0">
+        <div className="flex-1 min-w-0">
           <GlassContainer
             className="p-5 sm:p-6 md:p-8 lg:p-12"
             containerClassName="h-full"
@@ -98,7 +75,7 @@ export const HeroFuturistic = () => {
               <div className="flex flex-col gap-4 sm:flex-row w-full mt-2">
                 <Button
                   asChild
-                  className="w-full sm:flex-1 h-12 sm:h-14 px-6 sm:px-8 rounded-full bg-(--brand-pink) text-sm sm:text-base font-bold text-white shadow-[0_0_30px_rgba(228,90,146,0.5)] hover:shadow-[0_0_50px_rgba(228,90,146,0.7)] transition-all hover:scale-[1.02] active:scale-[0.98] focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-black/20"
+                  className="w-full sm:flex-1 h-12 sm:h-14 px-6 sm:px-8 rounded-full bg-(--brand-pink) text-sm sm:text-base font-bold text-white shadow-[0_0_30px_rgba(228,90,146,0.5)] hover:shadow-[0_0_50px_rgba(228,90,146,0.7)] transition-transform transition-colors transition-opacity hover:scale-[1.02] active:scale-[0.98] focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-black/20"
                 >
                   <Link href="/join" className="flex items-center justify-center gap-2">
                     Join the crew
@@ -108,7 +85,7 @@ export const HeroFuturistic = () => {
                 <Button
                   asChild
                   variant="outline"
-                  className="w-full sm:flex-1 h-12 sm:h-14 px-6 sm:px-8 rounded-full border-white/20 bg-white/5 text-sm sm:text-base font-semibold text-white backdrop-blur-md hover:bg-white/10 transition-all hover:scale-[1.02] focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-black/20"
+                  className="w-full sm:flex-1 h-12 sm:h-14 px-6 sm:px-8 rounded-full border-white/20 bg-white/5 text-sm sm:text-base font-semibold text-white backdrop-blur-md hover:bg-white/10 transition-transform transition-colors transition-opacity hover:scale-[1.02] focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-black/20"
                 >
                   <Link href="/impact" className="flex items-center justify-center">See what we&apos;ve built</Link>
                 </Button>
@@ -148,20 +125,22 @@ export const HeroFuturistic = () => {
               {heroEvents.map((event, idx) => (
                 <div
                   key={event.title}
-                  className={`absolute inset-0 bg-[#0a0a0d] transition-opacity duration-700 ease-in-out ${idx === activeSlide ? "opacity-100 z-10" : "opacity-0 z-0"}`}
+                  className={`absolute inset-0 bg-[#0a0a0d] transition-opacity duration-700 ease ${idx === activeSlide ? "opacity-100 z-10" : "opacity-0 z-0"}`}
                 >
                   <Image
                     src={event.image}
                     alt={event.alt}
                     fill
-                    className={`hidden sm:block object-cover transition-all duration-700 ${idx === 0 ? "object-center scale-[1.05]" : "object-center"}`}
+                    sizes="(max-width: 639px) 0px, (max-width: 1023px) 100vw, 42vw"
+                    className={`hidden sm:block object-cover transition-transform transition-colors transition-opacity duration-700 ${idx === 0 ? "object-center scale-[1.05]" : "object-center"}`}
                     priority={idx === 0}
                   />
                   <Image
                     src={event.imageMobile ?? event.image}
                     alt={event.alt}
                     fill
-                    className={`block sm:hidden object-cover transition-all duration-700 ${idx === 0 ? "object-center scale-[1.02]" : "object-center"}`}
+                    sizes="100vw"
+                    className={`block sm:hidden object-cover transition-transform transition-colors transition-opacity duration-700 ${idx === 0 ? "object-center scale-[1.02]" : "object-center"}`}
                     priority={idx === 0}
                   />
                 </div>
@@ -172,12 +151,16 @@ export const HeroFuturistic = () => {
                 <span
                   className={`inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-[0.65rem] font-bold uppercase tracking-widest ${heroEvents[activeSlide].status === "upcoming"
                     ? "bg-emerald-500/10 border border-emerald-500/30 text-emerald-400"
+                    : heroEvents[activeSlide].status === "closed"
+                      ? "bg-amber-500/10 border border-amber-500/30 text-amber-300"
                     : "bg-white/10 border border-white/20 text-white/80"
                     }`}
                 >
                   <span
                     className={`h-1.5 w-1.5 rounded-full ${heroEvents[activeSlide].status === "upcoming"
                       ? "bg-emerald-500 animate-pulse"
+                      : heroEvents[activeSlide].status === "closed"
+                        ? "bg-amber-300"
                       : "bg-white/70"
                       }`}
                   />
@@ -198,7 +181,7 @@ export const HeroFuturistic = () => {
                       key={idx}
                       type="button"
                       onClick={(e) => { e.preventDefault(); e.stopPropagation(); setActiveSlide(idx); }}
-                      className={`h-1.5 rounded-full transition-all duration-300 ${idx === activeSlide ? "w-6 bg-(--brand-pink)" : "w-1.5 bg-white/30 hover:bg-white/50"}`}
+                      className={`h-1.5 rounded-full transition-transform transition-colors transition-opacity duration-300 ${idx === activeSlide ? "w-6 bg-(--brand-pink)" : "w-1.5 bg-white/30 hover:bg-white/50"}`}
                       aria-label={`Go to slide ${idx + 1}`}
                       aria-current={idx === activeSlide}
                     />

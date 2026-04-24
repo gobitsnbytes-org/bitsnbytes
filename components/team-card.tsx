@@ -21,7 +21,7 @@ export default function TeamCard({ member }: { member: any }) {
           style={{ backfaceVisibility: "hidden" }}
         >
           <div
-            className="w-full h-56 overflow-hidden bg-[#3e1e68]"
+            className="w-full h-56 overflow-hidden bg-[var(--brand-purple)]"
             style={{
               borderRadius: "0 0 50% 50% / 0 0 40% 40%",
             }}
@@ -36,14 +36,14 @@ export default function TeamCard({ member }: { member: any }) {
           </div>
 
           <div className="w-full flex-1 bg-white flex flex-col items-center justify-center px-4 py-4 relative">
-            <h3 className="font-display font-bold text-[#3e1e68] text-lg text-center">{member.name}</h3>
-            <p className="text-[#e45a92] text-sm mt-1 font-medium text-center">{member.role}</p>
+            <h3 className="font-display font-bold text-[var(--brand-purple)] text-lg text-center">{member.name}</h3>
+            <p className="text-[var(--brand-pink)] text-sm mt-1 font-medium text-center">{member.role}</p>
           </div>
         </div>
 
         {/* Back of card - Bio info with splash shape */}
         <div
-          className="absolute w-full h-full bg-[#e45a92] flex items-center justify-center overflow-hidden"
+          className="absolute w-full h-full bg-[var(--brand-pink)] flex items-center justify-center overflow-hidden"
           style={{
             backfaceVisibility: "hidden",
             transform: "rotateY(180deg)",

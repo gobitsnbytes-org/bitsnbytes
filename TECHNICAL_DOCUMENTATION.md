@@ -10,7 +10,7 @@
 
 **Key Features:** Semantic search over site content, AI-powered Q&A, team member matching, project idea generation, contact/sponsor lead capture, rate limiting, multi-language support (English/Hindi).
 
-**Scale:** 200+ active members, 15+ shipped projects, served via Vercel with production source maps disabled.
+**Scale:** 1500+ active members, 130+ shipped projects, served via Vercel with production source maps disabled.
 
 ---
 
@@ -92,7 +92,6 @@ NEXT_PUBLIC_SUPABASE_URL=https://your-project.supabase.co
 NEXT_PUBLIC_SUPABASE_ANON_KEY=your-anon-key
 HACKCLUB_PROXY_API_KEY=your-hackclub-key
 GOOGLE_SITE_VERIFICATION=your-verification-code
-OSM_API_KEY=your-osm-key  # Optional: OpenStreetMap
 ```
 
 ### Installation
@@ -477,7 +476,7 @@ Automatically captures at build time:
 **CSS Framework:** Tailwind CSS 4 with `@tailwindcss/postcss` plugin.
 
 **Theme Colors (Figma System):**
-- Primary: `#3E1E68` (purple)
+- Primary (brand anchor): `#97192C` (burgundy base) — accent: `#3E1E68` (deep purple)
 - Secondary: Pink, Blue (accent)
 - Dark mode theme: Black background + white text
 

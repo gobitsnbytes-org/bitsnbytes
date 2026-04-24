@@ -3,11 +3,13 @@
 import dynamic from "next/dynamic";
 import Image from "next/image";
 import Link from "next/link";
+import Script from "next/script";
 import { useState } from "react";
 import { PageSection } from "@/components/page-section";
 import { GlassContainer } from "@/components/ui/glass-container";
 import { Gallery4 } from "@/components/ui/gallery4";
 import { Button } from "@/components/ui/button";
+import { githubDevDayEvent, lucknowBuildGuildEvent } from "@/lib/events-data";
 import {
   Trophy,
   Users,
@@ -29,18 +31,18 @@ const WebGLShader = dynamic(
 // ── Component ─────────────────────────────────────────────────────────────
 
 export default function Events() {
-  const [activeEvent, setActiveEvent] = useState<"all" | "copilot" | "india-innovates">("all");
+  const [activeEvent, setActiveEvent] = useState<"all" | "lucknow-build-guild" | "copilot" | "execron" | "india-innovates">("all");
 
   return (
     <>
       {/* ── Hero ──────────────────────────────────────────────────────────── */}
       <section
-        className="relative min-h-[70vh] flex items-center justify-center overflow-hidden text-white pt-24 md:pt-32"
+        className="relative min-h-[72vh] flex items-center justify-center overflow-hidden text-white pt-24 md:pt-32"
         aria-labelledby="events-hero-title"
       >
         <WebGLShader />
-        <div className="relative z-10 w-full mx-auto max-w-5xl px-4 sm:px-6">
-          <GlassContainer className="px-6 py-12 md:py-20 sm:px-10 lg:px-16 text-center">
+        <div className="relative z-10 w-full mx-auto max-w-6xl px-4 sm:px-6">
+          <div className="mx-auto w-full max-w-[860px] min-h-[460px] md:min-h-[500px] px-6 py-12 md:py-20 sm:px-10 lg:px-16 text-center flex items-center justify-center">
             <div className="flex flex-col items-center gap-6">
               <span className="inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/5 px-4 py-1.5 text-xs uppercase tracking-[0.35em] font-semibold text-white/90 backdrop-blur-md shadow-inner">
                 <span className="relative flex h-2 w-2">
@@ -57,7 +59,7 @@ export default function Events() {
                 turn teen builders into tomorrow&apos;s founders and policymakers.
               </p>
             </div>
-          </GlassContainer>
+          </div>
         </div>
       </section>
 
@@ -73,7 +75,7 @@ export default function Events() {
             onClick={() => setActiveEvent("all")}
             aria-selected={activeEvent === "all"}
             role="tab"
-            className={`rounded-full px-5 py-2.5 text-sm font-bold transition-all ${activeEvent === "all"
+            className={`rounded-full px-5 py-2.5 text-sm font-bold transition-transform transition-colors transition-opacity ${activeEvent === "all"
               ? "bg-(--brand-pink) text-white shadow-[0_0_20px_rgba(228,90,146,0.3)]"
               : "text-white/70 hover:text-white hover:bg-white/5"
               }`}
@@ -82,22 +84,46 @@ export default function Events() {
           </button>
           <button
             type="button"
-            onClick={() => setActiveEvent("copilot")}
-            aria-selected={activeEvent === "copilot"}
+            onClick={() => setActiveEvent("lucknow-build-guild")}
+            aria-selected={activeEvent === "lucknow-build-guild"}
             role="tab"
-            className={`rounded-full px-5 py-2.5 text-sm font-bold transition-all ${activeEvent === "copilot"
+            className={`rounded-full px-5 py-2.5 text-sm font-bold transition-transform transition-colors transition-opacity ${activeEvent === "lucknow-build-guild"
               ? "bg-(--brand-pink) text-white shadow-[0_0_20px_rgba(228,90,146,0.3)]"
               : "text-white/70 hover:text-white hover:bg-white/5"
               }`}
           >
-            GitHub Copilot Dev Days
+            Archived: Lucknow Build Guild
+          </button>
+          <button
+            type="button"
+            onClick={() => setActiveEvent("copilot")}
+            aria-selected={activeEvent === "copilot"}
+            role="tab"
+            className={`rounded-full px-5 py-2.5 text-sm font-bold transition-transform transition-colors transition-opacity ${activeEvent === "copilot"
+              ? "bg-(--brand-pink) text-white shadow-[0_0_20px_rgba(228,90,146,0.3)]"
+              : "text-white/70 hover:text-white hover:bg-white/5"
+              }`}
+          >
+            Archived: Copilot Dev Days
+          </button>
+          <button
+            type="button"
+            onClick={() => setActiveEvent("execron")}
+            aria-selected={activeEvent === "execron"}
+            role="tab"
+            className={`rounded-full px-5 py-2.5 text-sm font-bold transition-transform transition-colors transition-opacity ${activeEvent === "execron"
+              ? "bg-(--brand-pink) text-white shadow-[0_0_20px_rgba(228,90,146,0.3)]"
+              : "text-white/70 hover:text-white hover:bg-white/5"
+              }`}
+          >
+            Archived: Execron 1.0
           </button>
           <button
             type="button"
             onClick={() => setActiveEvent("india-innovates")}
             aria-selected={activeEvent === "india-innovates"}
             role="tab"
-            className={`rounded-full px-5 py-2.5 text-sm font-bold transition-all ${activeEvent === "india-innovates"
+            className={`rounded-full px-5 py-2.5 text-sm font-bold transition-transform transition-colors transition-opacity ${activeEvent === "india-innovates"
               ? "bg-(--brand-pink) text-white shadow-[0_0_20px_rgba(228,90,146,0.3)]"
               : "text-white/70 hover:text-white hover:bg-white/5"
               }`}
@@ -106,10 +132,150 @@ export default function Events() {
           </button>
         </div>
 
+        {/* ── Lucknow Build Guild ───────────────────────────────────────── */}
+        {(activeEvent === "all" || activeEvent === "lucknow-build-guild") && (
+          <PageSection
+            eyebrow="Archived · Apr 19, 2026"
+            title="Lucknow Build Guild"
+            description="Free hardware workshop and meetup in Lucknow."
+          >
+            <GlassContainer glowColor="pink" animated={false} className="overflow-hidden">
+
+              {/* ── Banner image header ── */}
+              <div className="relative w-full overflow-hidden rounded-t-[2.25rem] bg-white/5">
+                <Image
+                  src="images/lucknow-build-guild.jpg"
+                  alt="Lucknow Build Guild"
+                  width={1920}
+                  height={640}
+                  className="w-full h-auto object-cover"
+                  priority
+                />
+              </div>
+
+              {/* ── Details grid ── */}
+              <div className="p-6 sm:p-8 md:p-10">
+                <div className="flex flex-wrap items-center gap-2 mb-6">
+                  <span className="inline-flex items-center rounded-full px-3 py-1 text-xs font-semibold text-white bg-(--brand-pink)">
+                    Archived Event
+                  </span>
+                  <span className="inline-flex items-center gap-1.5 rounded-full border border-white/10 bg-white/5 px-2.5 py-0.5 text-[10px] font-bold uppercase tracking-widest text-white/80 backdrop-blur-md">
+                    Sponsored* by Bits&amp;Bytes
+                  </span>
+                </div>
+
+                <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+                  <div className="prose prose-invert max-w-none text-white/80 space-y-6 lg:col-span-2">
+                    <div>
+                      <h2 className="text-xl font-bold text-white mb-2">Event Summary</h2>
+                      <p>
+                        We hosted <strong>Lucknow Build Guild</strong>, a free hardware workshop and meetup on <strong>19 April</strong> at <strong>SureStay by Best Western</strong>. The event was designed to help participants explore hands-on hardware building, connect with like-minded builders, and learn through community-driven sessions.
+                      </p>
+                    </div>
+
+                    <div>
+                      <h2 className="text-xl font-bold text-white mb-2">What the meetup focused on</h2>
+                      <ul className="list-disc pl-5 space-y-1">
+                        <li>Hands-on hardware building and practical workflows.</li>
+                        <li>Community networking with local tech enthusiasts.</li>
+                        <li>Open peer learning with an in-person builder crowd.</li>
+                      </ul>
+                    </div>
+
+                    <div>
+                      <h2 className="text-xl font-bold text-white mb-2">Host</h2>
+                      <p>
+                        Event host: <strong>{lucknowBuildGuildEvent.hostName}</strong>. Explore: <Link href={lucknowBuildGuildEvent.hostLinktree} target="_blank" rel="noopener noreferrer" className="text-(--brand-pink) hover:underline underline-offset-2">Linktree</Link> and <Link href={lucknowBuildGuildEvent.hostGithub} target="_blank" rel="noopener noreferrer" className="text-(--brand-pink) hover:underline underline-offset-2">GitHub</Link>.
+                      </p>
+                    </div>
+                  </div>
+
+                  <div className="space-y-6">
+                    <div className="space-y-0 divide-y divide-white/10 rounded-2xl border border-white/10 bg-white/5 overflow-hidden">
+                      {[
+                        { icon: <Calendar className="h-4 w-4 text-(--brand-pink)" />, label: "Date", value: lucknowBuildGuildEvent.dateLabel },
+                        { icon: <MapPin className="h-4 w-4 text-(--brand-pink)" />, label: "Venue", value: lucknowBuildGuildEvent.venueLabel },
+                        { icon: <Users className="h-4 w-4 text-(--brand-pink)" />, label: "Format", value: lucknowBuildGuildEvent.formatLabel },
+                        { icon: <Check className="h-4 w-4 text-(--brand-pink)" />, label: "Status", value: lucknowBuildGuildEvent.statusLabel },
+                      ].map((s) => (
+                        <div key={s.label} className="flex items-center justify-between px-5 py-3.5">
+                          <div className="flex items-center gap-2.5">
+                            {s.icon}
+                            <span className="text-sm text-white/60 font-medium">{s.label}</span>
+                          </div>
+                          <span className="text-sm font-black text-white text-right">{s.value}</span>
+                        </div>
+                      ))}
+                    </div>
+
+                    <Button
+                      asChild
+                      className="w-full rounded-2xl bg-white/10 border border-white/20 py-5 text-sm font-bold text-white hover:bg-white/20 transition-colors"
+                    >
+                      <Link
+                        href={lucknowBuildGuildEvent.eventSite}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                      >
+                        Visit Event Website
+                        <ExternalLink className="ml-2 h-4 w-4" />
+                      </Link>
+                    </Button>
+                  </div>
+                </div>
+
+                <div className="mt-16 border-t border-white/10 pt-12">
+                  <Gallery4
+                    title="In Pictures"
+                    description=""
+                    items={[
+                      {
+                        id: "lbg-1",
+                        title: "Lucknow Build Guild",
+                        description: "Free hardware workshop and meetup",
+                        href: "#",
+                        image: "/event_pictures/bd1.jpg",
+                      },
+                      {
+                        id: "lbg-2",
+                        title: "Lucknow Build Guild",
+                        description: "Free hardware workshop and meetup",
+                        href: "#",
+                        image: "/event_pictures/bd2.jpg",
+                      },
+                      {
+                        id: "lbg-3",
+                        title: "Lucknow Build Guild",
+                        description: "Free hardware workshop and meetup",
+                        href: "#",
+                        image: "/event_pictures/bd3.jpg",
+                      },
+                      {
+                        id: "lbg-4",
+                        title: "Lucknow Build Guild",
+                        description: "Free hardware workshop and meetup",
+                        href: "#",
+                        image: "/event_pictures/bd4.jpg",
+                      },
+                      {
+                        id: "lbg-5",
+                        title: "Lucknow Build Guild",
+                        description: "Free hardware workshop and meetup",
+                        href: "#",
+                        image: "/event_pictures/bd5.jpg",
+                      },
+                    ]}
+                  />
+                </div>
+              </div>
+            </GlassContainer>
+          </PageSection>
+        )}
+
         {/* ── GitHub Copilot Dev Days — Featured Spotlight ──────────────── */}
         {(activeEvent === "all" || activeEvent === "copilot") && (
           <PageSection
-            eyebrow="Upcoming · Apr 19"
+            eyebrow="Archived · Apr 19"
             title="GitHub Copilot Dev Days | Lucknow"
             description="AI-Assisted Coding with GitHub Copilot — A Community Developer Event."
           >
@@ -132,11 +298,7 @@ export default function Events() {
                 {/* Badges row */}
                 <div className="flex flex-wrap items-center gap-2 mb-6">
                   <span className="inline-flex items-center rounded-full px-3 py-1 text-xs font-semibold text-white bg-(--brand-pink)">
-                    Workshop / Developer Event
-                  </span>
-                  <span className="inline-flex items-center gap-1 rounded-full border border-emerald-500/30 bg-emerald-500/10 px-2 py-0.5 text-[10px] font-medium uppercase tracking-wider text-emerald-400">
-                    <span className="h-1.5 w-1.5 rounded-full bg-emerald-500 animate-pulse" />
-                    Registration Open
+                    Archived Event
                   </span>
                   <span className="inline-flex items-center gap-1.5 rounded-full border border-white/10 bg-white/5 px-2.5 py-0.5 text-[10px] font-bold uppercase tracking-widest text-white/80 backdrop-blur-md">
                     Hosted by Bits&amp;Bytes
@@ -144,82 +306,280 @@ export default function Events() {
                 </div>
 
                 {/* Stats + details two-column */}
-                <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-
-                  {/* Left — key stats */}
-                  <div className="space-y-0 divide-y divide-white/10 rounded-2xl border border-white/10 bg-white/5 overflow-hidden">
-                    {[
-                      { icon: <Calendar className="h-4 w-4 text-(--brand-pink)" />, label: "Date", value: "Sunday, April 19, 2026" },
-                      { icon: <Clock className="h-4 w-4 text-(--brand-pink)" />, label: "Time", value: "10:00 AM – 2:00 PM IST" },
-                      { icon: <MapPin className="h-4 w-4 text-(--brand-pink)" />, label: "Venue", value: <Link href="https://www.google.com/maps/search/?api=1&query=26.9109169%2C80.9464606&query_place_id=ChIJSydGKnNXmTkRj475BfUXmeA" target="_blank" className="hover:text-(--brand-pink) hover:underline underline-offset-2">Cubispace, Lucknow</Link> },
-                      { icon: <Users className="h-4 w-4 text-(--brand-pink)" />, label: "Format", value: "In-Person · Approval Required" },
-                      { icon: <Building2 className="h-4 w-4 text-(--brand-pink)" />, label: "Host", value: "Bits&Bytes" },
-                    ].map((s) => (
-                      <div key={s.label} className="flex items-center justify-between px-5 py-3.5">
-                        <div className="flex items-center gap-2.5">
-                          {s.icon}
-                          <span className="text-sm text-white/60 font-medium">{s.label}</span>
-                        </div>
-                        <span className="text-sm font-black text-white text-right">{s.value}</span>
-                      </div>
-                    ))}
-                  </div>
-
-                  {/* Right — description, what you'll learn, CTA */}
-                  <div className="flex flex-col gap-5">
-
-                    {/* Community Partners */}
+                <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+                  <div className="prose prose-invert max-w-none text-white/80 space-y-6 lg:col-span-2">
                     <div>
-                      <p className="text-[10px] uppercase tracking-widest font-semibold text-white/40 mb-2.5">Community Partners</p>
-                      <div className="flex flex-wrap gap-2">
-                        {["Coding Connoisseurs", "Aryan Singh", "Notion Lucknow"].map((d) => (
-                          <span key={d} className="inline-flex items-center gap-1.5 rounded-full border border-white/15 bg-white/5 px-3 py-1.5 text-xs font-medium text-white/80">
-                            {d}
-                          </span>
-                        ))}
-                      </div>
+                      <h2 className="text-xl font-bold text-white mb-2">Event Summary</h2>
+                      <p>
+                        <strong>GitHub Copilot Dev Days</strong> was a community developer event in Lucknow that brought together students, developers, and technology enthusiasts to explore how AI-assisted development works in real projects.
+                      </p>
                     </div>
 
-                    {/* What You Will Learn */}
                     <div>
-                      <p className="text-[10px] uppercase tracking-widest font-semibold text-white/40 mb-2.5">What You Will Learn</p>
-                      <ul className="space-y-1.5">
-                        {[
-                          "How GitHub Copilot works inside modern dev environments",
-                          "Integrating AI-assisted coding into real workflows",
-                          "Prompt techniques for better code suggestions",
-                          "Responsible and efficient use of AI in development",
-                        ].map((item) => (
-                          <li key={item} className="flex items-start gap-2 text-xs text-white/65">
-                            <Check className="h-3.5 w-3.5 shrink-0 mt-0.5 text-(--brand-pink)" />
-                            {item}
-                          </li>
-                        ))}
+                      <h2 className="text-xl font-bold text-white mb-2">What the event covered</h2>
+                      <ul className="list-disc pl-5 space-y-1">
+                        <li>How GitHub Copilot works inside modern dev environments.</li>
+                        <li>Integrating AI-assisted coding into real workflows.</li>
+                        <li>Prompt techniques for better code suggestions.</li>
+                        <li>Responsible and efficient use of AI in development.</li>
                       </ul>
                     </div>
 
-                    {/* About */}
-                    <div className="rounded-2xl border border-white/10 bg-white/5 p-4 text-xs text-white/50 leading-relaxed space-y-1">
-                      <p className="font-semibold text-white/70 text-[11px] uppercase tracking-wider mb-1">About</p>
-                      <p>Artificial intelligence is rapidly changing the way developers write and think about code. This community developer event in Lucknow brings together students, developers, and technology enthusiasts to explore how AI-assisted development works in real projects.</p>
-                      <p className="mt-2">All participants are expected to follow the <Link href="https://www.microsoft.com/en-us/events/code-of-conduct" target="_blank" rel="noopener noreferrer" className="text-(--brand-pink) hover:underline underline-offset-2">GitHub Event Code of Conduct</Link>.</p>
+                    <div>
+                      <h2 className="text-xl font-bold text-white mb-2">Partners & Details</h2>
+                      <p>
+                        The event was hosted by <strong>Bits&Bytes</strong>, with community partners including <strong>Coding Connoisseurs</strong>, <strong>Aryan Singh</strong>, and <strong>Notion Lucknow</strong>. All participants observed the official <Link href="https://www.microsoft.com/en-us/events/code-of-conduct" target="_blank" rel="noopener noreferrer" className="text-(--brand-pink) hover:underline underline-offset-2">GitHub Event Code of Conduct</Link>.
+                      </p>
+                    </div>
+                  </div>
+
+                  <div className="space-y-6">
+                    <div className="space-y-0 divide-y divide-white/10 rounded-2xl border border-white/10 bg-white/5 overflow-hidden">
+                      {[
+                        { icon: <Calendar className="h-4 w-4 text-(--brand-pink)" />, label: "Date", value: githubDevDayEvent.dateLabel },
+                        { icon: <MapPin className="h-4 w-4 text-(--brand-pink)" />, label: "Venue", value: githubDevDayEvent.venueLabel },
+                        { icon: <Users className="h-4 w-4 text-(--brand-pink)" />, label: "Format", value: githubDevDayEvent.formatLabel },
+                        { icon: <Check className="h-4 w-4 text-(--brand-pink)" />, label: "Status", value: githubDevDayEvent.statusLabel },
+                      ].map((s) => (
+                        <div key={s.label} className="flex items-center justify-between px-5 py-3.5">
+                          <div className="flex items-center gap-2.5">
+                            {s.icon}
+                            <span className="text-sm text-white/60 font-medium">{s.label}</span>
+                          </div>
+                          <span className="text-sm font-black text-white text-right">{s.value}</span>
+                        </div>
+                      ))}
+                    </div>
+
+                    <div className="rounded-2xl border border-white/15 bg-white/5 p-4">
+                      <a
+                        href={githubDevDayEvent.lumaCheckoutUrl}
+                        className="luma-checkout--button inline-flex w-full items-center justify-center rounded-xl bg-(--brand-pink) px-4 py-3 text-sm font-bold text-white transition-transform transition-colors transition-opacity hover:scale-[1.01] hover:brightness-110"
+                        data-luma-action="checkout"
+                        data-luma-event-id={githubDevDayEvent.lumaEventId}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                      >
+                        Register for Event
+                      </a>
                     </div>
 
                     {/* CTA */}
                     <Button
                       asChild
-                      className="w-full rounded-2xl bg-(--brand-pink) py-5 text-sm font-bold text-white shadow-[0_0_24px_rgba(228,90,146,0.35)] hover:opacity-90 mt-auto"
+                      className="w-full rounded-2xl bg-white/10 border border-white/20 py-5 text-sm font-bold text-white hover:bg-white/20 transition-colors"
                     >
                       <Link
-                        href="https://luma.com/xtxua1jl"
+                        href={githubDevDayEvent.archiveLink}
                         target="_blank"
                         rel="noopener noreferrer"
                       >
-                        Request to Join on Luma
+                        View Event Archive
                         <ExternalLink className="ml-2 h-4 w-4" />
                       </Link>
                     </Button>
                   </div>
+                </div>
+
+                {/* ── Gallery ── */}
+                <div className="mt-16 border-t border-white/10 pt-12">
+                  <Gallery4
+                    title="In Pictures"
+                    description=""
+                    items={[
+                      {
+                        id: "dev-1",
+                        title: "GitHub Copilot Dev Days",
+                        description: "Community Developer Event",
+                        href: "#",
+                        image: "/event_pictures/devday.jpeg",
+                      },
+                      {
+                        id: "dev-2",
+                        title: "GitHub Copilot Dev Days",
+                        description: "Community Developer Event",
+                        href: "#",
+                        image: "/event_pictures/devday2.jpeg",
+                      },
+                      {
+                        id: "dev-3",
+                        title: "GitHub Copilot Dev Days",
+                        description: "Community Developer Event",
+                        href: "#",
+                        image: "/event_pictures/devday3.jpeg",
+                      },
+                      {
+                        id: "dev-4",
+                        title: "GitHub Copilot Dev Days",
+                        description: "Community Developer Event",
+                        href: "#",
+                        image: "/event_pictures/devday4.jpeg",
+                      },
+                      {
+                        id: "dev-5",
+                        title: "GitHub Copilot Dev Days",
+                        description: "Community Developer Event",
+                        href: "#",
+                        image: "/event_pictures/founder-s.jpeg",
+                      }
+                    ]}
+                  />
+                </div>
+              </div>
+            </GlassContainer>
+          </PageSection>
+        )}
+
+        {/* ── Execron 1.0 ─────────────────────────────────────────────────── */}
+        {(activeEvent === "all" || activeEvent === "execron") && (
+          <PageSection
+            eyebrow="Archived · Mar 19-22, 2026"
+            title="Execron 1.0"
+            description="AI Hackathon & Workshop for Teens at IIT Kanpur."
+          >
+            <GlassContainer glowColor="pink" animated={false} className="overflow-hidden">
+
+              {/* ── Banner image header ── */}
+              <div className="relative w-full overflow-hidden rounded-t-[2.25rem] bg-white/5 flex items-center justify-center min-h-[320px] border-b border-white/10">
+                <div className="text-center p-8">
+                  <div className="inline-flex items-center justify-center p-4 rounded-full bg-white/5 border border-white/10 mb-4">
+                    <Activity className="h-12 w-12 text-(--brand-pink)" />
+                  </div>
+                  <h3 className="text-2xl font-black tracking-tight text-white mb-2">Execron 1.0</h3>
+                  <p className="text-white/60 font-medium">Build. Break. Repeat. Ship Something Real.</p>
+                </div>
+              </div>
+
+              {/* ── Details ── */}
+              <div className="p-6 sm:p-8 md:p-10">
+                <div className="flex flex-wrap items-center gap-2 mb-8">
+                  <span className="inline-flex items-center rounded-full px-3 py-1 text-xs font-semibold text-white bg-(--brand-pink)">
+                    Archived Event
+                  </span>
+                  <span className="inline-flex items-center gap-1.5 rounded-full border border-white/10 bg-white/5 px-3 py-1 text-[10px] font-bold uppercase tracking-widest text-white/80 backdrop-blur-md">
+                    <Trophy className="h-3 w-3 text-(--brand-pink)" />
+                    In Collaboration with TechKriti '26, IIT Kanpur
+                  </span>
+                  <span className="inline-flex items-center gap-1.5 rounded-full border border-white/10 bg-white/5 px-3 py-1 text-[10px] font-bold uppercase tracking-widest text-white/80 backdrop-blur-md">
+                    <Building2 className="h-3 w-3 text-(--brand-pink)" />
+                    IIT Kanpur
+                  </span>
+                </div>
+
+                <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+                  <div className="prose prose-invert max-w-none text-white/80 space-y-6 lg:col-span-2">
+                    <div>
+                      <h2 className="text-xl font-bold text-white mb-2">Event Summary</h2>
+                      <p>
+                        <strong>Execron 1.0</strong> was an AI Hackathon & Workshop designed for students in <strong>Classes 9–12</strong>. Held in collaboration with <strong>TechKriti '26, IIT Kanpur</strong>, the event featured a 4-hour hands-on tech workshop followed by a 24-hour hackathon sprint.
+                      </p>
+                    </div>
+
+                    <div>
+                      <h2 className="text-xl font-bold text-white mb-2">What the event included</h2>
+                      <ul className="list-disc pl-5 space-y-1">
+                        <li>A 4-hour hands-on workshop on modern tech topics.</li>
+                        <li>A 24-hour hackathon sprint with mentor support.</li>
+                        <li>Mentorship from IIT Kanpur alumni and industry experts.</li>
+                        <li>Full access to the broader TechKriti '26 festival experiences (mega hackathons, pro shows, robotics expo).</li>
+                      </ul>
+                    </div>
+
+                    <div>
+                      <h2 className="text-xl font-bold text-white mb-2">Topics Covered</h2>
+                      <ul className="list-disc pl-5 space-y-1">
+                        <li><strong>AI & ML</strong> — Models and real-world AI applications.</li>
+                        <li><strong>Web Development</strong> — Modern frameworks and responsive design.</li>
+                        <li><strong>App Development</strong> — Mobile creation and UI/UX.</li>
+                        <li><strong>Cybersecurity</strong> — Ethical hacking and fundamentals.</li>
+                        <li><strong>Cloud Computing</strong> — Platforms and deployment.</li>
+                      </ul>
+                    </div>
+
+                    <div>
+                      <h2 className="text-xl font-bold text-white mb-2">Schedule</h2>
+                      <p>
+                        Workshop batches were held from <strong>19–21 March 2026</strong>. The grand finale took place on <strong>22 March 2026</strong>. Team sizes ranged from 1 to 4 members. Registration closed on 18 March 2026.
+                      </p>
+                    </div>
+                  </div>
+
+                  <div className="space-y-6">
+                    <div className="space-y-0 divide-y divide-white/10 rounded-2xl border border-white/10 bg-white/5 overflow-hidden">
+                      {[
+                        { icon: <Calendar className="h-4 w-4 text-(--brand-pink)" />, label: "Date", value: "Mar 19–22, 2026" },
+                        { icon: <MapPin className="h-4 w-4 text-(--brand-pink)" />, label: "Venue", value: "IIT Kanpur" },
+                        { icon: <Users className="h-4 w-4 text-(--brand-pink)" />, label: "Team Size", value: "1–4 members" },
+                        { icon: <Building2 className="h-4 w-4 text-(--brand-pink)" />, label: "Partners", value: "ByteForge, Bits&Bytes" },
+                      ].map((s) => (
+                        <div key={s.label} className="flex items-center justify-between px-5 py-3.5">
+                          <div className="flex items-center gap-2.5">
+                            {s.icon}
+                            <span className="text-sm text-white/60 font-medium">{s.label}</span>
+                          </div>
+                          <span className="text-sm font-black text-white text-right">{s.value}</span>
+                        </div>
+                      ))}
+                    </div>
+
+                    <Button
+                      asChild
+                      className="w-full rounded-2xl bg-white/10 border border-white/20 py-5 text-sm font-bold text-white hover:bg-white/20 transition-colors"
+                    >
+                      <Link
+                        href="https://byteforge.paxus.in/"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                      >
+                        View Official Site (Archived)
+                        <ExternalLink className="ml-2 h-4 w-4" />
+                      </Link>
+                    </Button>
+                  </div>
+                </div>
+
+                <div className="mt-16 border-t border-white/10 pt-12">
+                  <Gallery4
+                    title="In Pictures"
+                    description=""
+                    items={[
+                      {
+                        id: "ex-1",
+                        title: "Execron 1.0",
+                        description: "AI Hackathon & Workshop for Teens",
+                        href: "#",
+                        image: "/event_pictures/byteforge1.webp",
+                      },
+                      {
+                        id: "ex-2",
+                        title: "Execron 1.0",
+                        description: "AI Hackathon & Workshop for Teens",
+                        href: "#",
+                        image: "/event_pictures/byteforge2.webp",
+                      },
+                      {
+                        id: "ex-3",
+                        title: "Execron 1.0",
+                        description: "AI Hackathon & Workshop for Teens",
+                        href: "#",
+                        image: "/event_pictures/byteforge3.webp",
+                      },
+                      {
+                        id: "ex-4",
+                        title: "Execron 1.0",
+                        description: "AI Hackathon & Workshop for Teens",
+                        href: "#",
+                        image: "/event_pictures/byteforge4.webp",
+                      },
+                      {
+                        id: "ex-5",
+                        title: "Execron 1.0",
+                        description: "AI Hackathon & Workshop for Teens",
+                        href: "#",
+                        image: "/event_pictures/byteforge5.webp",
+                      }
+                    ]}
+                  />
                 </div>
               </div>
             </GlassContainer>
@@ -228,39 +588,39 @@ export default function Events() {
 
         {/* ── India Innovates 2026 ──────────────────────────────────────── */}
         {(activeEvent === "all" || activeEvent === "india-innovates") && (
-          <>
-            <PageSection
-              eyebrow="Archived · Mar 28, 2026"
-              title="India Innovates 2026"
-              description="World's Largest Civic Tech Hackathon."
-            >
-              <GlassContainer glowColor="pink" animated={false} className="overflow-hidden">
+          <PageSection
+            eyebrow="Archived · Mar 28, 2026"
+            title="India Innovates 2026"
+            description="World's Largest Civic Tech Hackathon."
+          >
+            <GlassContainer glowColor="pink" animated={false} className="overflow-hidden">
 
-                {/* ── Banner image header ── */}
-                <div className="relative w-full overflow-hidden rounded-t-[2.25rem] bg-white/5">
-                  <Image
-                    src="/images/banner.jpeg"
-                    alt="India Innovates 2026 — Bharat Mandapam, New Delhi"
-                    width={1920}
-                    height={640}
-                    className="w-full h-auto object-cover"
-                    priority
-                  />
+              {/* ── Banner image header ── */}
+              <div className="relative w-full overflow-hidden rounded-t-[2.25rem] bg-white/5">
+                <Image
+                  src="/images/banner.jpeg"
+                  alt="India Innovates 2026 — Bharat Mandapam, New Delhi"
+                  width={1920}
+                  height={640}
+                  className="w-full h-auto object-cover"
+                  priority
+                />
+              </div>
+
+              {/* ── Details grid ── */}
+              <div className="p-6 sm:p-8 md:p-10">
+                <div className="flex flex-wrap items-center gap-2 mb-8">
+                  <span className="inline-flex items-center rounded-full px-3 py-1 text-xs font-semibold text-white bg-(--brand-pink)">
+                    Archived Event
+                  </span>
+                  <span className="inline-flex items-center gap-1.5 rounded-full border border-white/10 bg-white/5 px-3 py-1 text-[10px] font-bold uppercase tracking-widest text-white/80 backdrop-blur-md">
+                    <Trophy className="h-3 w-3 text-(--brand-pink)" />
+                    Official Executive Partner: Bits&Bytes
+                  </span>
                 </div>
 
-                {/* ── Details ── */}
-                <div className="p-6 sm:p-8 md:p-10">
-                  <div className="flex flex-wrap items-center gap-2 mb-8">
-                    <span className="inline-flex items-center rounded-full px-3 py-1 text-xs font-semibold text-white bg-(--brand-pink)">
-                      Archived Event
-                    </span>
-                    <span className="inline-flex items-center gap-1.5 rounded-full border border-white/10 bg-white/5 px-3 py-1 text-[10px] font-bold uppercase tracking-widest text-white/80 backdrop-blur-md">
-                      <Trophy className="h-3 w-3 text-(--brand-pink)" />
-                      Official Executive Partner: Bits&Bytes
-                    </span>
-                  </div>
-
-                  <div className="prose prose-invert max-w-none text-white/80 space-y-6">
+                <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+                  <div className="prose prose-invert max-w-none text-white/80 space-y-6 lg:col-span-2">
                     <p className="text-lg text-white font-medium">
                       <strong>India Innovates 2026</strong> is now archived. <strong>Bits&Bytes (GobitsnBytes)</strong> was listed as the <strong>Official Executive Partner</strong> for the finale.
                     </p>
@@ -316,17 +676,42 @@ export default function Events() {
                       </ul>
                     </div>
                   </div>
-                </div>
-              </GlassContainer>
-            </PageSection>
 
-            {/* ── Event Video ─────────────────────────────────────────────── */}
-            <PageSection
-              align="left"
-              className="pb-0"
-            >
-              <GlassContainer glowColor="pink" animated={false} className="p-4 sm:p-6 md:p-8">
-                <div className="space-y-5">
+                  <div className="space-y-6">
+                    <div className="space-y-0 divide-y divide-white/10 rounded-2xl border border-white/10 bg-white/5 overflow-hidden">
+                      {[
+                        { icon: <Calendar className="h-4 w-4 text-(--brand-pink)" />, label: "Date", value: "Mar 28, 2026" },
+                        { icon: <MapPin className="h-4 w-4 text-(--brand-pink)" />, label: "Venue", value: "Bharat Mandapam, New Delhi" },
+                        { icon: <Users className="h-4 w-4 text-(--brand-pink)" />, label: "Scale", value: "1.26 crore+ applicants" },
+                        { icon: <Check className="h-4 w-4 text-(--brand-pink)" />, label: "Status", value: "Concluded" },
+                      ].map((s) => (
+                        <div key={s.label} className="flex items-center justify-between px-5 py-3.5">
+                          <div className="flex items-center gap-2.5">
+                            {s.icon}
+                            <span className="text-sm text-white/60 font-medium">{s.label}</span>
+                          </div>
+                          <span className="text-sm font-black text-white text-right">{s.value}</span>
+                        </div>
+                      ))}
+                    </div>
+
+                    <Button
+                      asChild
+                      className="w-full rounded-2xl bg-white/10 border border-white/20 py-5 text-sm font-bold text-white hover:bg-white/20 transition-colors"
+                    >
+                      <Link
+                        href="https://indiainnovates.org"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                      >
+                        View Official Site (Archived)
+                        <ExternalLink className="ml-2 h-4 w-4" />
+                      </Link>
+                    </Button>
+                  </div>
+                </div>
+
+                <div className="mt-16 border-t border-white/10 pt-12 space-y-5">
                   <div className="flex flex-wrap items-center justify-between gap-3">
                     <div className="space-y-1">
                       <h3 className="text-lg sm:text-xl font-bold text-white">Event Video</h3>
@@ -342,10 +727,10 @@ export default function Events() {
                     </div>
                   </div>
 
-                  <div className="relative overflow-hidden rounded-[1.4rem] border border-white/15 bg-gradient-to-b from-white/10 to-white/[0.03] p-2 shadow-[0_20px_70px_rgba(0,0,0,0.45)]">
-                    <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(228,90,146,0.18),transparent_45%)]" />
+                  <div className="relative flex items-center justify-center overflow-hidden rounded-[1.4rem] border border-white/15 bg-black/40 p-2 shadow-[0_20px_70px_rgba(0,0,0,0.45)] backdrop-blur-md">
+                    <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(228,90,146,0.15),transparent_50%)]" />
                     <video
-                      className="relative z-10 w-full rounded-[1rem] border border-white/10 bg-black/50"
+                      className="relative z-10 w-full max-h-[75vh] object-contain rounded-[1rem] border border-white/10 bg-black"
                       controls
                       playsInline
                       preload="metadata"
@@ -356,68 +741,64 @@ export default function Events() {
                     </video>
                   </div>
                 </div>
-              </GlassContainer>
-            </PageSection>
 
-            {/* ── Past Events Gallery ─────────────────────────────────────────────── */}
-            <PageSection
-              align="left"
-              className="pb-0"
-            >
-              <Gallery4
-                title="In Pictures"
-                description=""
-                items={[
-                  {
-                    id: "img-1",
-                    title: "Opening Address",
-                    description: "Main stage opening session at India Innovates 2026.",
-                    href: "#",
-                    image: "/event_pictures/HEe93oOakAAi2Mi.jpg",
-                  },
-                  {
-                    id: "img-2",
-                    title: "Plenary Session",
-                    description: "Live address from the central stage at Bharat Mandapam.",
-                    href: "#",
-                    image: "/event_pictures/HEe923ub0AE-92F.jpg",
-                  },
-                  {
-                    id: "img-3",
-                    title: "Jury Interaction",
-                    description: "On-floor demo review with students and evaluators.",
-                    href: "#",
-                    image: "/event_pictures/866d62697f3d42819e2007714047a3a80001af45.jpg",
-                  },
-                  {
-                    id: "img-4",
-                    title: "Participant Teams",
-                    description: "Student teams preparing for demonstrations in the main hall.",
-                    href: "#",
-                    image: "/event_pictures/3d53b4900bb7c0176eadb242c495cbfb3634ffb3.jpg",
-                  },
-                  {
-                    id: "img-5",
-                    title: "Build Table",
-                    description: "Final-stage hardware and prototype iteration under evaluation windows.",
-                    href: "#",
-                    image: "/event_pictures/1ae8b9183c456f721ab4a04a7cbd0268ce3b2e97.jpg",
-                  },
-                  {
-                    id: "img-6",
-                    title: "Hall View",
-                    description: "Full auditorium turnout during keynote and showcase rounds.",
-                    href: "#",
-                    image: "/event_pictures/HEe923uagAATqvy.jpg",
-                  },
-                ]}
-              />
-            </PageSection>
-
-          </>
+                <div className="mt-16 border-t border-white/10 pt-12">
+                  <Gallery4
+                    title="In Pictures"
+                    description=""
+                    items={[
+                      {
+                        id: "img-1",
+                        title: "Opening Address",
+                        description: "Main stage opening session at India Innovates 2026.",
+                        href: "#",
+                        image: "/event_pictures/HEe93oOakAAi2Mi.jpg",
+                      },
+                      {
+                        id: "img-2",
+                        title: "Plenary Session",
+                        description: "Live address from the central stage at Bharat Mandapam.",
+                        href: "#",
+                        image: "/event_pictures/HEe923ub0AE-92F.jpg",
+                      },
+                      {
+                        id: "img-3",
+                        title: "Jury Interaction",
+                        description: "On-floor demo review with students and evaluators.",
+                        href: "#",
+                        image: "/event_pictures/866d62697f3d42819e2007714047a3a80001af45.jpg",
+                      },
+                      {
+                        id: "img-4",
+                        title: "Participant Teams",
+                        description: "Student teams preparing for demonstrations in the main hall.",
+                        href: "#",
+                        image: "/event_pictures/3d53b4900bb7c0176eadb242c495cbfb3634ffb3.jpg",
+                      },
+                      {
+                        id: "img-5",
+                        title: "Build Table",
+                        description: "Final-stage hardware and prototype iteration under evaluation windows.",
+                        href: "#",
+                        image: "/event_pictures/1ae8b9183c456f721ab4a04a7cbd0268ce3b2e97.jpg",
+                      },
+                      {
+                        id: "img-6",
+                        title: "Hall View",
+                        description: "Full auditorium turnout during keynote and showcase rounds.",
+                        href: "#",
+                        image: "/event_pictures/HEe923uagAATqvy.jpg",
+                      },
+                    ]}
+                  />
+                </div>
+              </div>
+            </GlassContainer>
+          </PageSection>
         )}
 
       </main>
+      <Script id="luma-checkout" src="https://embed.lu.ma/checkout-button.js" strategy="afterInteractive" />
     </>
   );
 }

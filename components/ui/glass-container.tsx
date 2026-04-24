@@ -18,7 +18,7 @@ export function GlassContainer({
 }: GlassContainerProps) {
     return (
         <div className={cn(
-            "group relative overflow-hidden rounded-2xl sm:rounded-3xl md:rounded-[2.5rem] border border-white/10 bg-white/5 p-1.5 sm:p-2 transition-all duration-500 hover:border-white/20 hover:bg-white/10",
+            "group relative overflow-hidden rounded-2xl sm:rounded-3xl md:rounded-[2.5rem] border border-white/10 bg-white/5 p-1.5 sm:p-2 transition-transform transition-colors transition-opacity duration-500 hover:border-white/20 hover:bg-white/10",
             "md:backdrop-blur-xl", // Only apply blur on larger screens for mobile performance
             containerClassName
         )}>

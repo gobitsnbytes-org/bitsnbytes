@@ -1,6 +1,6 @@
 import type React from "react";
 import type { Metadata, Viewport } from "next";
-import { Poppins, Space_Grotesk, JetBrains_Mono } from "next/font/google";
+import { Anton, JetBrains_Mono } from "next/font/google";
 import { Analytics } from "@vercel/analytics/next";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import { Suspense } from "react";
@@ -12,16 +12,10 @@ import Navigation from "@/components/navigation";
 import Footer from "@/components/footer";
 import { FloatingAiAssistant } from "@/components/client-only-components";
 
-const poppins = Poppins({
+const anton = Anton({
   subsets: ["latin"],
-  variable: "--font-sans",
-  weight: ["300", "400", "500", "600", "700"],
-  display: "swap",
-});
-
-const spaceGrotesk = Space_Grotesk({
-  subsets: ["latin"],
-  variable: "--font-display",
+  variable: "--font-accent-sans",
+  weight: ["400"],
   display: "swap",
 });
 
@@ -44,12 +38,13 @@ export const viewport: Viewport = {
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://gobitsnbytes.org"),
+  manifest: "/manifest.webmanifest",
   title: {
     default: "Bits&Bytes - India's Teen-Led Code Club | Hackathons & Tech Community",
     template: "%s | Bits&Bytes",
   },
   description:
-    "Join India's boldest teen-led code club. Build real projects, attend hackathons, workshops, and grow as a developer. 200+ active members, 15+ shipped projects. Free to join!",
+    "Join India's boldest teen-led code club. Build real projects, attend hackathons, and grow as a developer. 1500+ active members and 2700+ participant submissions evaluated in 3 days.",
   keywords: [
     "Bits and Bytes",
     "bits&bytes",
@@ -102,7 +97,7 @@ export const metadata: Metadata = {
     siteName: "Bits&Bytes",
     title: "Bits&Bytes - India's Teen-Led Code Club | Hackathons & Tech Community",
     description:
-      "Join India's boldest teen-led code club. Build real projects, attend hackathons, and grow as a developer. 200+ active members building the future.",
+      "Join India's boldest teen-led code club. Build real projects, attend hackathons, and grow as a developer. 1500+ active members with proven high-velocity execution.",
     images: [
       {
         url: "/og-image.png",
@@ -117,7 +112,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Bits&Bytes - India's Teen-Led Code Club",
     description:
-      "Join India's boldest teen-led code club. Build real projects, attend hackathons, and grow as a developer.",
+      "Join India's boldest teen-led code club. 1500+ active members building real products with high-velocity execution.",
     images: ["/og-image.png"],
     creator: "@bitsnbytes_lko",
     site: "@bitsnbytes_lko",
@@ -133,14 +128,8 @@ export const metadata: Metadata = {
     "apple-mobile-web-app-status-bar-style": "black-translucent",
   },
   icons: {
-    icon: [
-      { url: "/logo.svg", type: "image/svg+xml" },
-      { url: "/favicon.ico", sizes: "any" },
-    ],
-    shortcut: "/logo.svg",
-    apple: [
-      { url: "/logo.svg", sizes: "180x180", type: "image/svg+xml" },
-    ],
+    icon: [{ url: "/logo.svg", type: "image/svg+xml" }],
+    shortcut: [{ url: "/logo.svg", type: "image/svg+xml" }],
   },
 };
 
@@ -165,7 +154,7 @@ export default function RootLayout({
     },
     image: "https://gobitsnbytes.org/og-image.png",
     description:
-      "India's boldest teen-led code club. We run hackathons, workshops, and build real projects. Join 200+ student developers building the future.",
+      "India's boldest teen-led code club. We run hackathons, workshops, and build real projects with 1500+ student developers across India.",
     foundingDate: "2024",
     address: {
       "@type": "PostalAddress",
@@ -255,7 +244,7 @@ export default function RootLayout({
       {
         "@type": "WebPage",
         name: "Projects",
-        description: "Explore 15+ projects built by teen developers",
+        description: "Explore 130+ projects built by teen developers",
         url: "https://gobitsnbytes.org/projects",
       },
       {
@@ -273,7 +262,7 @@ export default function RootLayout({
       {
         "@type": "WebPage",
         name: "Impact",
-        description: "See our community impact - 200+ students, 15+ projects",
+        description: "See our community impact - 1500+ students, 130+ projects",
         url: "https://gobitsnbytes.org/impact",
       },
       {
@@ -294,12 +283,10 @@ export default function RootLayout({
   return (
     <html
       lang="en-IN"
-      className={`${poppins.variable} ${spaceGrotesk.variable} ${jetBrainsMono.variable}`}
+      className={`${anton.variable} ${jetBrainsMono.variable}`}
       suppressHydrationWarning
     >
       <head>
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
         <link rel="dns-prefetch" href="https://vercel.live" />
       </head>
       <body className="font-sans antialiased bg-background text-foreground selection:bg-accent/30 selection:text-primary overflow-x-hidden">

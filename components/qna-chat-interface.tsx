@@ -148,14 +148,14 @@ function ProjectCards({ ideas }: { ideas: ProjectIdea[] }) {
 
 const MAX_CHARS = 2000
 const MAX_HISTORY = 20
-const STORAGE_KEY = "bb-qna-assistant-state-v1"
+const STORAGE_KEY = "bb-floating-assistant-state-v1"
 const QUICK_PROMPTS = [
-        "When is GitHub Copilot Dev Days and how do I register?",
-        "Give me a verified summary of India Innovates 2026 archive.",
-        "What were the official India Innovates 2026 domains?",
-        "Who are the founders and core team at Bits&Bytes?",
-        "How can I join Bits&Bytes this month?",
-        "Show me upcoming events and archived events.",
+        "Who founded Bits&Bytes and what are they working on?",
+        "What makes Bits&Bytes different from other tech clubs?",
+        "Tell me about India Innovates 2026 — what was it?",
+        "How can I join Bits&Bytes as a student developer?",
+        "What kind of projects do members ship?",
+        "Show me all the past events and hackathons.",
 ]
 
 type StreamPayload =
@@ -429,7 +429,7 @@ export function QnAChatInterface() {
         >
             <div className="flex flex-wrap items-center justify-between gap-3 px-6 pt-5 pb-4 border-b border-zinc-800/80 bg-zinc-900/50 shrink-0">
                 <div className="flex items-center gap-3">
-                    <div className="relative flex items-center justify-center w-10 h-10 rounded-full bg-[var(--brand-pink)] shadow-lg shadow-[#e45a92]/40">
+                        <div className="relative flex items-center justify-center w-10 h-10 rounded-full bg-[var(--brand-pink)] shadow-lg shadow-[var(--brand-pink)/40]">
                         <Bot className="w-5 h-5 text-white" />
                     </div>
                     <div className="flex flex-col">
@@ -452,7 +452,7 @@ export function QnAChatInterface() {
                             setMessage("")
                             window.localStorage.removeItem(STORAGE_KEY)
                         }}
-                        className={`flex h-9 items-center justify-center gap-2 rounded-xl bg-zinc-800/60 px-3 text-xs font-medium border transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#e45a92] focus-visible:ring-offset-2 focus-visible:ring-offset-zinc-950 ${messages.length === 0 ? "opacity-0 invisible" : "text-zinc-400 hover:bg-zinc-800 hover:text-red-400 border-transparent hover:border-red-900/50"}`}
+                        className={`flex h-9 items-center justify-center gap-2 rounded-xl bg-zinc-800/60 px-3 text-xs font-medium border transition-transform transition-colors transition-opacity focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--brand-pink)] focus-visible:ring-offset-2 focus-visible:ring-offset-zinc-950 ${messages.length === 0 ? "opacity-0 invisible" : "text-zinc-400 hover:bg-zinc-800 hover:text-red-400 border-transparent hover:border-red-900/50"}`}
                         aria-label="Clear chat session"
                         title="Clear chat session"
                         disabled={messages.length === 0}
@@ -480,9 +480,9 @@ export function QnAChatInterface() {
                                     key={prompt}
                                     type="button"
                                     onClick={() => handleQuickPrompt(prompt)}
-                                    className="rounded-xl border border-zinc-800 bg-zinc-900/40 p-3 text-sm text-zinc-300 text-left transition hover:border-[#e45a92]/60 hover:bg-zinc-800 hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#e45a92] focus-visible:ring-offset-2 focus-visible:ring-offset-zinc-950 group flex items-start gap-3"
+                                    className="rounded-xl border border-zinc-800 bg-zinc-900/40 p-3 text-sm text-zinc-300 text-left transition hover:border-[var(--brand-pink)/60] hover:bg-zinc-800 hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--brand-pink)] focus-visible:ring-offset-2 focus-visible:ring-offset-zinc-950 group flex items-start gap-3"
                                 >
-                                    <span className="text-[#e45a92] opacity-70 group-hover:opacity-100 mt-0.5">↳</span>
+                                    <span className="text-[var(--brand-pink)] opacity-70 group-hover:opacity-100 mt-0.5">↳</span>
                                     <span>{prompt}</span>
                                 </button>
                             ))}
@@ -494,12 +494,12 @@ export function QnAChatInterface() {
                         <div key={m.id} className={`flex w-full ${m.role === "user" ? "justify-end" : "justify-start"}`}>
                             {m.role === "assistant" && (
                                 <div className="hidden sm:flex self-end mr-3 mb-1 w-8 h-8 rounded-full bg-zinc-800 items-center justify-center border border-zinc-700/50 flex-shrink-0">
-                                    <Bot className="w-4 h-4 text-[#e45a92]" />
+                                    <Bot className="w-4 h-4 text-[var(--brand-pink)]" />
                                 </div>
                             )}
                             <div
                                 className={`w-fit max-w-[90%] sm:max-w-[85%] md:max-w-[75%] rounded-2xl px-5 py-3.5 text-[0.95rem] leading-relaxed shadow-sm break-words ${m.role === "user"
-                                    ? "bg-[#e45a92] text-white rounded-br-sm"
+                                    ? "bg-[var(--brand-pink)] text-white rounded-br-sm"
                                     : "border border-zinc-700/60 bg-zinc-900/90 text-zinc-100 rounded-bl-sm prose prose-invert prose-p:my-2 prose-headings:my-3 prose-ul:my-2 prose-li:my-1 max-w-none"
                                     }`}
                             >
@@ -543,7 +543,7 @@ export function QnAChatInterface() {
                                                     return (
                                                         <a
                                                             href={href}
-                                                            className="inline-flex my-2 w-full sm:w-auto items-center justify-center rounded-xl bg-[var(--brand-pink)] px-5 py-2.5 text-sm font-semibold text-white shadow-lg shadow-[#e45a92]/30 transition-all hover:scale-105 hover:shadow-xl hover:shadow-[#e45a92]/40 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/80 focus-visible:ring-offset-2 focus-visible:ring-offset-zinc-900"
+                                                            className="inline-flex my-2 w-full sm:w-auto items-center justify-center rounded-xl bg-[var(--brand-pink)] px-5 py-2.5 text-sm font-semibold text-white shadow-lg shadow-[#e45a92]/30 transition-transform transition-colors transition-opacity hover:scale-105 hover:shadow-xl hover:shadow-[#e45a92]/40 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/80 focus-visible:ring-offset-2 focus-visible:ring-offset-zinc-900"
                                                             target="_blank"
                                                             rel="noopener noreferrer"
                                                             {...props}
@@ -561,7 +561,7 @@ export function QnAChatInterface() {
                                                                 const promptText = Array.isArray(children) ? children.join("") : String(children)
                                                                 handleQuickPrompt(promptText)
                                                             }}
-                                                            className="block w-full mt-3 text-left rounded-xl border border-zinc-700/80 bg-zinc-800/60 px-4 py-3 text-sm text-zinc-200 transition-all hover:border-[#e45a92] hover:bg-zinc-800 hover:text-white"
+                                                            className="block w-full mt-3 text-left rounded-xl border border-zinc-700/80 bg-zinc-800/60 px-4 py-3 text-sm text-zinc-200 transition-transform transition-colors transition-opacity hover:border-[#e45a92] hover:bg-zinc-800 hover:text-white"
                                                         >
                                                             ↳ {children}
                                                         </button>
@@ -581,7 +581,7 @@ export function QnAChatInterface() {
                                                             target="_blank"
                                                             rel="noopener noreferrer"
                                                             aria-label="Open venue on Google Maps"
-                                                            className="mt-4 mb-2 flex flex-col gap-2 rounded-2xl border border-zinc-700/50 bg-zinc-900/50 p-4 transition-all hover:bg-zinc-800/80 hover:border-emerald-500/50 group no-underline"
+                                                            className="mt-4 mb-2 flex flex-col gap-2 rounded-2xl border border-zinc-700/50 bg-zinc-900/50 p-4 transition-transform transition-colors transition-opacity hover:bg-zinc-800/80 hover:border-emerald-500/50 group no-underline"
                                                         >
                                                             <div className="flex items-center gap-3">
                                                                 <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-emerald-500/10 group-hover:bg-emerald-500/20 transition-colors">

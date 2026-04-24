@@ -25,7 +25,7 @@ const MiniNavbarDemo = () => {
                 <div className="flex flex-col sm:flex-row items-center text-xl text-white/60 mb-8 space-y-2 sm:space-y-0 sm:space-x-3">
                     <span className="font-medium">Please support by saving this component</span>
                     <button
-                        className="px-6 py-2 border border-white/10 bg-white/5 rounded-full text-white transition-all duration-300 cursor-pointer text-base
+                        className="px-6 py-2 border border-white/10 bg-white/5 rounded-full text-white transition-transform transition-colors transition-opacity duration-300 cursor-pointer text-base
                        inline-flex items-center justify-center hover:bg-white/10 hover:border-white/20 active:scale-95"
                     >
                         <span className="font-bold">Thank You</span>

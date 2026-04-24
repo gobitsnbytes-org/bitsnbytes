@@ -108,7 +108,7 @@ export const FlickeringGrid: React.FC<FlickeringGridProps> = ({
                 maskCtx.save();
                 maskCtx.scale(dpr, dpr);
                 maskCtx.fillStyle = "white";
-                maskCtx.font = `${fontWeight} ${fontSize}px "Geist", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif`;
+                maskCtx.font = `${fontWeight} ${fontSize}px "Helvetica Now Display", "Helvetica Neue", Helvetica, Arial, sans-serif`;
                 maskCtx.textAlign = "center";
                 maskCtx.textBaseline = "middle";
                 maskCtx.fillText(text, width / (2 * dpr), height / (2 * dpr));
@@ -280,7 +280,7 @@ export function FlickeringFooter() {
                                 {column.links.map((link) => (
                                     <li key={link.id} className="group inline-flex cursor-pointer items-center justify-start gap-1 text-sm text-muted-foreground">
                                         <Link href={link.url} className="transition-colors hover:text-foreground">{link.title}</Link>
-                                        <div className="flex size-4 items-center justify-center border border-border rounded translate-x-0 transform opacity-0 transition-all duration-300 ease-out group-hover:translate-x-1 group-hover:opacity-100">
+                                        <div className="flex size-4 items-center justify-center border border-border rounded translate-x-0 transform opacity-0 transition-transform transition-colors transition-opacity duration-300 ease-out group-hover:translate-x-1 group-hover:opacity-100">
                                             <ChevronRightIcon className="h-3 w-3" />
                                         </div>
                                     </li>
@@ -309,12 +309,32 @@ export function FlickeringFooter() {
                     <FlickeringGrid
                         text={tablet ? "B&B" : "Bits&Bytes"}
                         fontSize={tablet ? 50 : 80}
-                        className="h-full w-full"
+                        className="absolute inset-0 h-full w-full"
                         squareSize={2}
                         gridGap={tablet ? 2 : 3}
-                        color="#E45A92"
-                        maxOpacity={0.3}
-                        flickerChance={0.1}
+                        color="var(--brand-pink)"
+                        maxOpacity={0.22}
+                        flickerChance={0.08}
+                    />
+                    <FlickeringGrid
+                        text={tablet ? "B&B" : "Bits&Bytes"}
+                        fontSize={tablet ? 50 : 80}
+                        className="absolute inset-0 h-full w-full"
+                        squareSize={2}
+                        gridGap={tablet ? 2 : 3}
+                        color="var(--brand-coral)"
+                        maxOpacity={0.32}
+                        flickerChance={0.12}
+                    />
+                    <FlickeringGrid
+                        text={tablet ? "B&B" : "Bits&Bytes"}
+                        fontSize={tablet ? 50 : 80}
+                        className="absolute inset-0 h-full w-full"
+                        squareSize={2}
+                        gridGap={tablet ? 2 : 3}
+                        color="var(--brand-amber)"
+                        maxOpacity={0.18}
+                        flickerChance={0.06}
                     />
                 </div>
             </div>

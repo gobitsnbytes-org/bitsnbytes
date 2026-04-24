@@ -7,13 +7,6 @@ const openai = new OpenAI({
 })
 
 export async function POST(req: NextRequest) {
-  if (!process.env.OSM_API_KEY) {
-    return NextResponse.json(
-      { error: "OSM_API_KEY is not configured on the server." },
-      { status: 500 }
-    )
-  }
-
   try {
     const formData = await req.formData()
     const audioFile = formData.get("audio")

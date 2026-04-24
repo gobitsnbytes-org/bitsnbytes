@@ -35,6 +35,7 @@ const nextConfig = {
   images: {
     // Enable image optimization for Vercel
     domains: [],
+    qualities: [60, 75, 85, 90],
     formats: ['image/avif', 'image/webp'],
     remotePatterns: [
       {
@@ -64,6 +65,26 @@ const nextConfig = {
     }
 
     return config
+  },
+  async redirects() {
+    return [
+      {
+        source: '/favicon.ico',
+        destination: '/logo.svg',
+        permanent: true,
+      },
+      {
+        source: '/:path*',
+        has: [
+          {
+            type: 'host',
+            value: 'www.gobitsnbytes.org',
+          },
+        ],
+        destination: 'https://gobitsnbytes.org/:path*',
+        permanent: true,
+      },
+    ]
   },
   async headers() {
     return [

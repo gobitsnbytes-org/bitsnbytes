@@ -99,8 +99,8 @@ export default function Template({ children }: { children: React.ReactNode }) {
       {!showIntro && (
         <motion.div
           key={pathname}
-          initial={{ opacity: 0, y: 12 }}
-          animate={{ opacity: 1, y: 0 }}
+          initial={{ opacity: 0, transform: "translateY(12px)" }}
+          animate={{ opacity: 1, transform: "translateY(0)" }}
           transition={{
             duration: 0.25,
             ease: "easeOut",
@@ -124,9 +124,9 @@ export default function Template({ children }: { children: React.ReactNode }) {
             <CpuArchitecture className="w-80 h-auto" />
             <motion.p
               key={quoteIndex}
-              initial={{ opacity: 0, y: 5 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -5 }}
+              initial={{ opacity: 0, transform: "translateY(5px)" }}
+              animate={{ opacity: 1, transform: "translateY(0)" }}
+              exit={{ opacity: 0, transform: "translateY(-5px)" }}
               transition={{ duration: 0.15 }}
               className="mt-6 font-mono text-sm text-white/60 tracking-wide h-6"
             >

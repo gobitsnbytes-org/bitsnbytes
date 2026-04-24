@@ -34,22 +34,22 @@ const WebGLShader = dynamic(
 
 const highlightStats = [
   {
-    value: "28,000+",
-    label: "Event Participants",
-    description: "Through India Innovates",
-    timeframe: "Mar 2026 ↑",
+    value: "1,500+",
+    label: "Active Community Members",
+    description: "Teen builders across India",
+    timeframe: "Growing fast ↑",
   },
   {
-    value: "5,000+",
-    label: "Developers",
-    description: "At our finale",
-    timeframe: "Mar 2026 ↑",
+    value: "2,700",
+    label: "Submissions Evaluated",
+    description: "Reviewed by the Bits&Bytes team in a 3-day sprint",
+    timeframe: "3 days ↑",
   },
   {
-    value: "₹10L+",
-    label: "Prize Pools",
-    description: "Products, apps, AI",
-    timeframe: "Building the future ↑",
+    value: "900/day",
+    label: "Evaluation Throughput",
+    description: "High-efficiency review operations with a small team",
+    timeframe: "Execution benchmark ↑",
   },
   {
     value: "100%",
@@ -82,8 +82,8 @@ export default function Impact() {
         aria-labelledby="impact-hero-title"
       >
         <WebGLShader />
-        <div className="relative z-10 w-full mx-auto max-w-5xl px-4 sm:px-6">
-          <GlassContainer className="px-6 py-12 md:py-20 sm:px-10 lg:px-16 text-center">
+        <div className="relative z-10 w-full mx-auto max-w-6xl px-4 sm:px-6">
+          <div className="mx-auto w-full max-w-[860px] min-h-[460px] md:min-h-[500px] px-6 py-12 md:py-20 sm:px-10 lg:px-16 text-center flex items-center justify-center">
             <div className="flex flex-col items-center gap-6">
               <span className="inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/5 px-4 py-1.5 text-xs uppercase tracking-[0.35em] font-semibold text-white/90 backdrop-blur-md shadow-inner">
                 <span className="relative flex h-2 w-2">
@@ -101,7 +101,7 @@ export default function Impact() {
                 building—and ship the outcomes publicly.
               </p>
             </div>
-          </GlassContainer>
+          </div>
         </div>
       </section>
 
@@ -198,7 +198,7 @@ export default function Impact() {
                       src={card.image}
                       height={600}
                       width={600}
-                      className="h-52 w-full object-cover grayscale transition-all duration-500 group-hover:grayscale-0 group-hover:scale-110"
+                      className="h-52 w-full object-cover grayscale transition-transform transition-colors transition-opacity duration-500 group-hover:grayscale-0 group-hover:scale-110"
                       alt={card.title}
                     />
                   </CardItem>

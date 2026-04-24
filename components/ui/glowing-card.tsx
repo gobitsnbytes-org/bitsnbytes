@@ -42,7 +42,7 @@ export function GlowingCard({
             )}
             style={{ animationDelay: `${animationDelay}s` }}
         >
-            <div className="relative h-full overflow-hidden rounded-[2.5rem] border border-white/10 bg-white/5 p-2 backdrop-blur-2xl transition-all duration-500 hover:border-white/20 hover:bg-white/10">
+            <div className="relative h-full overflow-hidden rounded-[2.5rem] border border-white/10 bg-white/5 p-2 backdrop-blur-2xl transition-transform transition-colors transition-opacity duration-500 hover:border-white/20 hover:bg-white/10">
                 {/* Reflective top edge */}
                 <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-white/30 to-transparent z-20" />
 

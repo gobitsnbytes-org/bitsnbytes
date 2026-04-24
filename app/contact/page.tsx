@@ -100,7 +100,7 @@ export default function Contact() {
       <section className="relative min-h-[50vh] md:min-h-[65vh] flex items-center justify-center overflow-hidden text-white pt-24 md:pt-32">
         <WebGLShader />
         <div className="relative z-10 w-full mx-auto max-w-5xl px-4 sm:px-6 py-12 md:py-24">
-          <GlassContainer className="px-6 py-12 md:py-20 sm:px-10 lg:px-16 text-center">
+            <div className="px-6 py-12 md:py-20 sm:px-10 lg:px-16 text-center">
             <div className="flex flex-col items-center gap-6">
               <span className="inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/5 px-4 py-1.5 text-xs uppercase tracking-[0.35em] font-semibold text-white/90 backdrop-blur-md shadow-inner">
                 Contact
@@ -112,7 +112,7 @@ export default function Contact() {
                 Partner with us on hackathons, workshops, or custom experiences for schools across Lucknow.
               </p>
             </div>
-          </GlassContainer>
+          </div>
         </div>
       </section>
 
@@ -214,7 +214,7 @@ export default function Contact() {
                     <Button
                       type="submit"
                       disabled={isSubmitting}
-                      className="group w-full h-16 rounded-full bg-(--brand-pink) text-lg font-black text-white shadow-lg shadow-[#e45a92]/20 hover:shadow-xl hover:shadow-[#e45a92]/40 transition-all hover:scale-[1.02] disabled:opacity-50"
+                      className="group w-full h-16 rounded-full bg-(--brand-pink) text-lg font-black text-white shadow-lg shadow-[#e45a92]/20 hover:shadow-xl hover:shadow-[#e45a92]/40 transition-transform transition-colors transition-opacity hover:scale-[1.02] disabled:opacity-50"
                     >
                       {isSubmitting ? (
                         <>

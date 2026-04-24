@@ -1,1 +1,24 @@
+#!/bin/sh
+
+set -e
+
+EMBED_PATHS="public/llms.txt agents.md scripts/embed-site.ts"
+SHOULD_EMBED=0
+
+while read local_ref local_sha remote_ref remote_sha
+do
+  if [ "$remote_sha" = "0000000000000000000000000000000000000000" ]; then
+    if git diff-tree --no-commit-id --name-only -r "$local_sha" -- $EMBED_PATHS | grep -q .; then
+      SHOULD_EMBED=1
+    fi
+  elif git diff --name-only "$remote_sha" "$local_sha" -- $EMBED_PATHS | grep -q .; then
+    SHOULD_EMBED=1
+  fi
+done
+
+if [ "$SHOULD_EMBED" -eq 0 ]; then
+  echo "Skipping site embeddings: no content source changes detected."
+  exit 0
+fi
+
 npx tsx scripts/embed-site.ts
