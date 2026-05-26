@@ -26,35 +26,35 @@ export default function InfiniteMovingCardsDemo() {
 const testimonials = [
   {
     quote:
-      "Scrapyard hackathon felt electric—40+ teens building, pitching, and cheering each other on. It proved students can run world-class events.",
+      "Our builder meetups feel electric. Teens building, pitching, and cheering each other on. Students can run real events.",
     name: "Aadrika",
     title: "Community Lead",
     image: "/team/aadrika.png",
   },
   {
     quote:
-      "We pair first-time coders with experienced mentors, so everyone ships something real. The confidence boost is unreal.",
+      "We pair first-time coders with mentors, so everyone ships something real. The confidence boost is unreal.",
     name: "Yash",
-    title: "Co-Founder & Organisation Lead",
+    title: "Chief Executive Officer",
     image: "/team/yash.jpeg",
   },
   {
     quote:
-      "Bits&Bytes gave me the freedom to explore complex backend systems. Now I help others architect their own projects.",
+      "Bits&Bytes let me dig into complex backend systems. Now I help others design their own projects.",
     name: "Devansh",
     title: "Backend Specialist",
     image: "/team/devansh.jpeg",
   },
   {
     quote:
-      "I never thought I could build apps until I joined. The mentorship here is different—everyone actually wants you to win.",
+      "I never thought I could build apps until I joined. The mentorship here is different. Everyone actually wants you to win.",
     name: "Maryam",
     title: "Mobile Dev Lead",
     image: "/team/maryam.jpeg",
   },
   {
     quote:
-      "From design systems to deployment pipelines, we learn by doing. It's the best way to grow as an engineer.",
+      "From design systems to deployment pipelines, we learn by doing. That's how you actually grow as an engineer.",
     name: "Kaustubh",
     title: "DevOps Engineer",
     image: "/team/kaustubh.jpeg",

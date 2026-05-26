@@ -42,10 +42,9 @@ const Testimonial = dynamic(
 
 const stats = [
   { value: "1500+", label: "Active members", detail: "across India" },
-  { value: "130+", label: "Projects shipped", detail: "from apps to AI" },
-  { value: "100+", label: "Partner schools", detail: "and growing" },
+  { value: "2700+", label: "Submissions evaluated", detail: "in a 3-day sprint" },
+  { value: "100%", label: "Student-led", detail: "by and for teens" },
 ];
-
 
 // Focus Areas are now handled within the Features component
 
@@ -59,15 +58,19 @@ export default function Home() {
 
         <PageSection
           eyebrow="Impact"
-          title="Club-powered learning with real outcomes"
-          description="We're a teen-led code club where workshops, hackathons, and build nights lead directly to shipped projects and new opportunities."
+          title="Shipped, not just taught"
+          description="A teen-led code club. Workshops and hackathons that end with something shipped, not just something learned."
         >
           <div className="grid gap-6 md:grid-cols-3">
-            {stats.map((stat) => (
+            {stats.map((stat, idx) => (
               <GlassContainer
                 key={stat.label}
                 className="p-8"
-                glowColor={stat.label === "Projects shipped" ? "pink" : "purple"}
+                glowColor={
+                  stat.label === "Submissions evaluated" ? "pink" : "purple"
+                }
+                delay={idx * 0.15}
+                interactive
               >
                 <div className="space-y-4">
                   <p className="text-5xl font-black text-white tracking-tighter">
@@ -89,8 +92,8 @@ export default function Home() {
 
         <PageSection
           eyebrow="What We Do"
-          title="Our Focus Areas"
-          description="Explore the different ways we help teens build, learn, and grow in tech"
+          title="What we actually do"
+          description="The stuff we run"
           align="center"
         >
           <Features />

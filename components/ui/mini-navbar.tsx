@@ -32,11 +32,11 @@ const AnimatedNavLink = ({
         <Link
             href={href}
             className={cn(
-                "group relative inline-block overflow-hidden h-5 font-medium transition-colors",
+                "group relative inline-block overflow-hidden h-5 font-medium transition-colors duration-200",
                 textSizeClass
             )}
         >
-            <div className="flex flex-col transition-transform duration-500 ease-out transform group-hover:-translate-y-1/2">
+            <div className="flex flex-col transition-transform duration-300 ease-[cubic-bezier(0.23,1,0.32,1)] transform group-hover:-translate-y-1/2">
                 <span className={cn("flex items-center h-5", defaultTextColor)}>
                     {children}
                 </span>
@@ -87,7 +87,7 @@ export function MiniNavbar() {
             href="https://github.com/gobitsnbytes"
             target="_blank"
             rel="noopener noreferrer"
-            className="flex items-center justify-center gap-2 px-4 py-2 text-xs font-bold border border-white/10 bg-white/5 text-white/70 rounded-full hover:border-white/30 hover:text-white transition-transform transition-colors transition-opacity duration-200 w-full md:w-auto"
+            className="flex items-center justify-center gap-2 px-4 py-2 text-xs font-bold border border-white/10 bg-white/5 text-white/70 rounded-full hover:border-white/30 hover:text-white transition-all active:scale-[0.97] duration-150 w-full md:w-auto"
         >
             <Github className="w-3.5 h-3.5" />
             GitHub
@@ -101,12 +101,12 @@ export function MiniNavbar() {
                      hidden md:block
                      bg-[var(--brand-pink)]
                      opacity-20 filter blur-lg pointer-events-none
-                     transition-transform transition-colors transition-opacity duration-300 ease-out
+                     transition-all duration-300 ease-out
                      group-hover:opacity-40 group-hover:blur-xl group-hover:-m-3"
             ></div>
             <Link
                 href="/join"
-                className="relative z-10 flex items-center justify-center gap-1.5 px-5 py-2 text-xs font-black text-white bg-[var(--brand-pink)] rounded-full hover:brightness-110 active:scale-95 transition-transform transition-colors transition-opacity duration-200 w-full md:w-auto"
+                className="relative z-10 flex items-center justify-center gap-1.5 px-5 py-2 text-xs font-black text-white bg-[var(--brand-pink)] rounded-full hover:brightness-110 active:scale-[0.96] transition-all duration-150 w-full md:w-auto"
             >
                 Join Now
                 <ArrowUpRight className="w-3.5 h-3.5" />
@@ -115,7 +115,7 @@ export function MiniNavbar() {
     );
 
     return (
-        <header
+        <header suppressHydrationWarning={true}
             className={cn(
                 "fixed top-6 z-50",
                 "flex flex-col items-center",
@@ -157,11 +157,22 @@ export function MiniNavbar() {
                 </div>
 
                 <button
-                    className="md:hidden flex items-center justify-center w-8 h-8 text-white/70 hover:text-white transition-colors focus:outline-none"
+                    className="md:hidden flex items-center justify-center w-10 h-10 text-white/70 hover:text-white transition-all focus:outline-none active:scale-90 relative overflow-hidden"
                     onClick={toggleMenu}
                     aria-label={isOpen ? "Close Menu" : "Open Menu"}
                 >
-                    {isOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
+                    <AnimatePresence mode="wait">
+                        <motion.div
+                            key={isOpen ? "close" : "open"}
+                            initial={{ opacity: 0, scale: 0.8, filter: "blur(4px)" }}
+                            animate={{ opacity: 1, scale: 1, filter: "blur(0px)" }}
+                            exit={{ opacity: 0, scale: 0.8, filter: "blur(4px)" }}
+                            transition={{ duration: 0.15, ease: "easeOut" }}
+                            className="flex items-center justify-center"
+                        >
+                            {isOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
+                        </motion.div>
+                    </AnimatePresence>
                 </button>
             </div>
 

@@ -1,5 +1,6 @@
 "use client";
 
+import { motion } from "framer-motion";
 import Image from "next/image";
 import dynamic from "next/dynamic";
 import { Suspense } from "react";
@@ -48,7 +49,7 @@ const highlightStats = [
   {
     value: "900/day",
     label: "Evaluation Throughput",
-    description: "High-efficiency review operations with a small team",
+    description: "Reviewing projects fast with a small team.",
     timeframe: "Execution benchmark ↑",
   },
   {
@@ -61,16 +62,16 @@ const highlightStats = [
 
 const culturePillars = [
   {
-    title: "Innovation first",
-    copy: "Every prompt becomes a prototype. We encourage bold experiments and rapid iteration.",
+    title: "Ship or dip",
+    copy: "Talking about your idea is easy. We'd rather have a working prototype by Sunday than a perfect slide deck by next month.",
   },
   {
-    title: "Club power",
-    copy: "Mentors, pods, and accountability partners keep everyone shipping and learning.",
+    title: "Your squad keeps you honest",
+    copy: "Mentors, pods, and the kind of peer pressure that makes you actually finish things. Nobody ghosts a project when their team is waiting on their code.",
   },
   {
-    title: "Real-world impact",
-    copy: "We solve for real audiences, from school ops to civic tech to accessibility.",
+    title: "Built for users, not grades",
+    copy: "School operations, civic tech, accessibility tools. The things we ship get used by real people, not just submitted for a rubric.",
   },
 ];
 
@@ -92,13 +93,17 @@ export default function Impact() {
                 </span>
                 Impact
               </span>
-              <h1 id="impact-hero-title" className="font-display text-4xl sm:text-5xl md:text-6xl lg:text-7xl leading-tight font-extrabold text-white tracking-tighter drop-shadow-2xl">
-                Our impact hits <br className="hidden sm:block" /> beyond the venue walls
+              <h1
+                id="impact-hero-title"
+                className="font-display text-4xl sm:text-5xl md:text-6xl lg:text-7xl leading-tight font-extrabold text-white tracking-tighter drop-shadow-2xl"
+              >
+                Our impact hits <br className="hidden sm:block" /> beyond the
+                venue walls
               </h1>
               <p className="max-w-2xl text-base sm:text-lg md:text-xl text-white/85 font-medium leading-relaxed">
-                From first-high-schooler hackathons to squads embedded inside
-                local schools, we design experiences that get teens
-                building—and ship the outcomes publicly.
+                From first-time hackathons to squads inside local schools, we
+                build experiences that get teens building, and we ship the
+                results publicly.
               </p>
             </div>
           </div>
@@ -107,25 +112,31 @@ export default function Impact() {
 
       <main className="bg-transparent">
         <PageSection
-          title="Building the future with teen-led squads"
-          description="Workshops, hackathons, and labs unlock hands-on practice, industry mentorship, and opportunities to deploy solutions in schools and communities."
+          title="Teen-led squads, shipped outcomes"
+          description="Workshops and hackathons that give you hands-on practice, access to mentors, and a chance to deploy things people actually use."
         >
           <div className="grid grid-cols-1 gap-10 lg:grid-cols-2">
             <div className="order-2 w-full justify-self-center lg:order-1">
-              <GlassContainer className="h-[300px] sm:h-[400px] lg:h-[500px]" animated={false}>
+              <GlassContainer
+                className="h-[300px] sm:h-[400px] lg:h-[500px]"
+                animated={false}
+              >
                 <Suspense fallback={<LoadingInline />}>
                   <TeamGlobe />
                 </Suspense>
               </GlassContainer>
             </div>
             <div className="order-1 lg:order-2">
-              <GlassContainer className="p-8 h-full" glowColor="pink">
+              <GlassContainer className="p-8 h-full" glowColor="pink" interactive>
                 <div className="space-y-6">
                   {highlightStats.map((stat, index) => (
-                    <div
+                    <motion.div
                       key={stat.label}
+                      initial={{ opacity: 0, x: 10, filter: "blur(4px)" }}
+                      whileInView={{ opacity: 1, x: 0, filter: "blur(0px)" }}
+                      viewport={{ once: true }}
+                      transition={{ delay: index * 0.1, type: "spring", bounce: 0 }}
                       className="flex flex-col border-b border-white/10 pb-5 last:border-none last:pb-0"
-                      style={{ animationDelay: `${index * 0.08}s` }}
                     >
                       <div className="flex items-center justify-between">
                         <span className="text-4xl font-black text-white">
@@ -141,7 +152,7 @@ export default function Impact() {
                       <p className="text-sm text-white/60 font-medium">
                         {stat.description}
                       </p>
-                    </div>
+                    </motion.div>
                   ))}
                 </div>
               </GlassContainer>
@@ -149,89 +160,13 @@ export default function Impact() {
           </div>
         </PageSection>
 
-        <PageSection
-          align="center"
-          eyebrow="Event highlight"
-          title="Scrapyard Lucknow 2024"
-          description={
-            <span className="mx-auto block max-w-2xl">
-              Our debut hackathon united 40+ coders, designers, filmmakers, and
-              builders to tackle civic, education, and sustainability problems.
-            </span>
-          }
-        >
-          <div className="grid grid-cols-1 gap-8 lg:grid-cols-3">
-            {[
-              {
-                image:
-                  "/images/b653f79c-fcc9-49bb-a92a-4fc454659b3a-1-105-c.jpeg",
-                title: "Club United",
-                copy: "40+ talented developers united for innovation",
-              },
-              {
-                image: "/images/hero-img.jpeg",
-                title: "Creative Ideation",
-                copy: "Brainstorming solutions to real-world problems",
-              },
-              {
-                image:
-                  "/images/4c59e5bb-c1eb-4e4d-9b69-f29faa693002-1-105-c.jpeg",
-                title: "Project Showcase",
-                copy: "Presenting prototypes to judges and club members",
-              },
-            ].map((card, idx) => (
-              <CardContainer
-                key={card.title}
-                className="inter-var w-full h-full"
-                containerClassName="py-0"
-              >
-                <GlassContainer
-                  className="flex h-full min-h-[440px] flex-col p-6"
-                  containerClassName="h-full"
-                  glowColor={idx % 2 === 0 ? "pink" : "purple"}
-                >
-                  <CardItem
-                    translateZ="100"
-                    className="mb-6 w-full overflow-hidden rounded-2xl border border-white/10 shadow-2xl"
-                  >
-                    <Image
-                      src={card.image}
-                      height={600}
-                      width={600}
-                      className="h-52 w-full object-cover grayscale transition-transform transition-colors transition-opacity duration-500 group-hover:grayscale-0 group-hover:scale-110"
-                      alt={card.title}
-                    />
-                  </CardItem>
-                  <CardItem
-                    translateZ="50"
-                    className="font-display text-2xl font-black text-white"
-                  >
-                    {card.title}
-                  </CardItem>
-                  <CardItem
-                    as="p"
-                    translateZ="60"
-                    className="mt-3 flex-1 text-base text-white/70 font-medium leading-relaxed"
-                  >
-                    {card.copy}
-                  </CardItem>
-                  <CardItem translateZ="40" className="mt-6">
-                    <div className="inline-flex items-center gap-3 text-sm font-black text-(--brand-pink) uppercase tracking-widest">
-                      <span>0{idx + 1}</span>
-                      <div className="h-px w-12 bg-gradient-to-r from-(--brand-pink) to-transparent" />
-                    </div>
-                  </CardItem>
-                </GlassContainer>
-              </CardContainer>
-            ))}
-          </div>
-        </PageSection>
+
 
         <PageSection
           align="center"
           eyebrow="Culture"
           title="What we stand for"
-          description="We’re intentional about the energy in every room—how we collaborate, how we support each other, how we chase impact."
+          description="These aren't wall posters. This is how we actually operate."
         >
           <ul className="grid grid-cols-1 grid-rows-none gap-4 md:grid-cols-12 lg:gap-4">
             {culturePillars.map((pillar, idx) => {
@@ -246,7 +181,9 @@ export default function Impact() {
                   <GlowingCard animationDelay={idx * 0.12}>
                     <div className="space-y-3">
                       <GlowingCardNumber index={idx + 1} />
-                      <GlowingCardTitle className="mt-3">{pillar.title}</GlowingCardTitle>
+                      <GlowingCardTitle className="mt-3">
+                        {pillar.title}
+                      </GlowingCardTitle>
                       <GlowingCardDescription>
                         {pillar.copy}
                       </GlowingCardDescription>

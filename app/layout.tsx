@@ -3,14 +3,10 @@ import type { Metadata, Viewport } from "next";
 import { Anton, JetBrains_Mono } from "next/font/google";
 import { Analytics } from "@vercel/analytics/next";
 import { SpeedInsights } from "@vercel/speed-insights/next";
-import { Suspense } from "react";
 
 import "./globals.css";
 import { ThemeProvider } from "@/components/theme-provider";
-import { PageBackground } from "@/components/page-background";
-import Navigation from "@/components/navigation";
-import Footer from "@/components/footer";
-import { FloatingAiAssistant } from "@/components/client-only-components";
+import { SiteChrome } from "@/components/site-chrome";
 
 const anton = Anton({
   subsets: ["latin"],
@@ -40,11 +36,12 @@ export const metadata: Metadata = {
   metadataBase: new URL("https://gobitsnbytes.org"),
   manifest: "/manifest.webmanifest",
   title: {
-    default: "Bits&Bytes - India's Teen-Led Code Club | Hackathons & Tech Community",
+    default:
+      "Bits&Bytes - India's Teen-Led Code Club | Hackathons & Tech Community",
     template: "%s | Bits&Bytes",
   },
   description:
-    "Join India's boldest teen-led code club. Build real projects, attend hackathons, and grow as a developer. 1500+ active members and 2700+ participant submissions evaluated in 3 days.",
+    "Innovate. Collaborate. Hack. Join India's boldest teen-led code club. Build real projects, attend hackathons, and grow as a developer. 1500+ active members and 2700+ participant submissions evaluated in 3 days.",
   keywords: [
     "Bits and Bytes",
     "bits&bytes",
@@ -95,9 +92,10 @@ export const metadata: Metadata = {
     locale: "en_IN",
     url: "https://gobitsnbytes.org",
     siteName: "Bits&Bytes",
-    title: "Bits&Bytes - India's Teen-Led Code Club | Hackathons & Tech Community",
+    title:
+      "Bits&Bytes - India's Teen-Led Code Club | Hackathons & Tech Community",
     description:
-      "Join India's boldest teen-led code club. Build real projects, attend hackathons, and grow as a developer. 1500+ active members with proven high-velocity execution.",
+      "Join India's boldest teen-led code club. Build real projects, attend hackathons, and grow as a developer. 1500+ active members.",
     images: [
       {
         url: "/og-image.png",
@@ -112,13 +110,14 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Bits&Bytes - India's Teen-Led Code Club",
     description:
-      "Join India's boldest teen-led code club. 1500+ active members building real products with high-velocity execution.",
+      "Join India's boldest teen-led code club. 1500+ active members building and shipping real products.",
     images: ["/og-image.png"],
     creator: "@bitsnbytes_lko",
     site: "@bitsnbytes_lko",
   },
   verification: {
-    google: process.env.GOOGLE_SITE_VERIFICATION || "google-site-verification-code",
+    google:
+      process.env.GOOGLE_SITE_VERIFICATION || "google-site-verification-code",
   },
   category: "education",
   classification: "Nonprofit Teen Code Club",
@@ -155,7 +154,7 @@ export default function RootLayout({
     image: "https://gobitsnbytes.org/og-image.png",
     description:
       "India's boldest teen-led code club. We run hackathons, workshops, and build real projects with 1500+ student developers across India.",
-    foundingDate: "2024",
+    foundingDate: "2025",
     address: {
       "@type": "PostalAddress",
       addressLocality: "Lucknow",
@@ -178,10 +177,6 @@ export default function RootLayout({
       url: "https://gobitsnbytes.org/contact",
       availableLanguage: ["English", "Hindi"],
     },
-    memberOf: {
-      "@type": "Organization",
-      name: "Hack Club",
-    },
     knowsAbout: [
       "Web Development",
       "Mobile App Development",
@@ -199,7 +194,8 @@ export default function RootLayout({
     "@id": "https://gobitsnbytes.org/#website",
     url: "https://gobitsnbytes.org",
     name: "Bits&Bytes",
-    description: "India's teen-led code club for hackathons, workshops, and building real projects",
+    description:
+      "India's teen-led code club for hackathons, workshops, and building real projects",
     publisher: {
       "@id": "https://gobitsnbytes.org/#organization",
     },
@@ -244,7 +240,7 @@ export default function RootLayout({
       {
         "@type": "WebPage",
         name: "Projects",
-        description: "Explore 130+ projects built by teen developers",
+        description: "Explore projects built by teen developers",
         url: "https://gobitsnbytes.org/projects",
       },
       {
@@ -262,7 +258,7 @@ export default function RootLayout({
       {
         "@type": "WebPage",
         name: "Impact",
-        description: "See our community impact - 1500+ students, 130+ projects",
+        description: "See our community impact - 1500+ students, 100% student-led",
         url: "https://gobitsnbytes.org/impact",
       },
       {
@@ -292,7 +288,9 @@ export default function RootLayout({
       <body className="font-sans antialiased bg-background text-foreground selection:bg-accent/30 selection:text-primary overflow-x-hidden">
         <script
           type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationJsonLd) }}
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify(organizationJsonLd),
+          }}
         />
         <script
           type="application/ld+json"
@@ -304,18 +302,12 @@ export default function RootLayout({
         />
         <script
           type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(siteNavigationJsonLd) }}
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify(siteNavigationJsonLd),
+          }}
         />
         <ThemeProvider>
-          <PageBackground />
-          <div className="relative z-10 flex min-h-screen flex-col overflow-x-hidden">
-            <Navigation />
-            <main className="flex-1 w-full overflow-x-hidden">{children}</main>
-            <Footer />
-            <Suspense fallback={null}>
-              <FloatingAiAssistant />
-            </Suspense>
-          </div>
+          <SiteChrome>{children}</SiteChrome>
           <Analytics />
           <SpeedInsights />
         </ThemeProvider>

@@ -4,6 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { useState, useEffect, useCallback } from "react";
 import { ArrowRight, Sparkles } from "lucide-react";
+import { motion, AnimatePresence } from "framer-motion";
 
 import dynamic from "next/dynamic";
 import { heroEvents } from "@/lib/events-data";
@@ -22,8 +23,8 @@ import { GlassContainer } from "@/components/ui/glass-container";
 
 const stats = [
   { value: "1500+", label: "Active members" },
-  { value: "130+", label: "Projects shipped" },
-  { value: "100+", label: "Partner schools" },
+  { value: "2700+", label: "Submissions" },
+  { value: "100%", label: "Student-led" },
 ];
 
 export const HeroFuturistic = () => {
@@ -61,13 +62,19 @@ export const HeroFuturistic = () => {
 
               {/* Main content */}
               <div className="space-y-6">
-                <h1 id="home-hero-title" className="font-display text-2xl font-extrabold leading-tight text-white sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl tracking-tighter drop-shadow-2xl">
-                  India&apos;s boldest <br className="hidden sm:block" />builders club
+                <h1
+                  id="home-hero-title"
+                  className="font-display text-2xl font-extrabold leading-tight text-white sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl tracking-tighter drop-shadow-2xl"
+                >
+                  India&apos;s boldest <br className="hidden sm:block" />
+                  builders club
                 </h1>
+                <p className="text-xs sm:text-sm md:text-base font-black uppercase tracking-[0.25em] sm:tracking-[0.35em] text-(--brand-pink)">
+                  innovate. collaborate. hack.
+                </p>
                 <p className="text-sm text-white/80 sm:text-base md:text-lg lg:text-xl max-w-2xl leading-relaxed">
-                  We host premium hackathons, design/dev squads, and real-world
-                  launches—run entirely by students who want to ship things that
-                  matter.
+                  Hackathons, dev squads, and launches. Fully student-led, fully
+                  independent. No adults in the room.
                 </p>
               </div>
 
@@ -77,7 +84,10 @@ export const HeroFuturistic = () => {
                   asChild
                   className="w-full sm:flex-1 h-12 sm:h-14 px-6 sm:px-8 rounded-full bg-(--brand-pink) text-sm sm:text-base font-bold text-white shadow-[0_0_30px_rgba(228,90,146,0.5)] hover:shadow-[0_0_50px_rgba(228,90,146,0.7)] transition-transform transition-colors transition-opacity hover:scale-[1.02] active:scale-[0.98] focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-black/20"
                 >
-                  <Link href="/join" className="flex items-center justify-center gap-2">
+                  <Link
+                    href="/join"
+                    className="flex items-center justify-center gap-2"
+                  >
                     Join the crew
                     <ArrowRight className="h-5 w-5 shrink-0" />
                   </Link>
@@ -87,22 +97,38 @@ export const HeroFuturistic = () => {
                   variant="outline"
                   className="w-full sm:flex-1 h-12 sm:h-14 px-6 sm:px-8 rounded-full border-white/20 bg-white/5 text-sm sm:text-base font-semibold text-white backdrop-blur-md hover:bg-white/10 transition-transform transition-colors transition-opacity hover:scale-[1.02] focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-black/20"
                 >
-                  <Link href="/impact" className="flex items-center justify-center">See what we&apos;ve built</Link>
+                  <Link
+                    href="/impact"
+                    className="flex items-center justify-center"
+                  >
+                    See what we&apos;ve built
+                  </Link>
                 </Button>
               </div>
 
               {/* Stats Grid */}
-              <GlassContainer className="mt-auto p-4 sm:p-6" glowColor="none" animated={false}>
+              <GlassContainer
+                className="mt-auto p-4 sm:p-6"
+                glowColor="none"
+                animated={false}
+              >
                 <div className="grid grid-cols-3 gap-3 sm:gap-4 md:gap-6">
-                  {stats.map((stat) => (
-                    <div key={stat.label} className="text-center sm:text-left">
+                  {stats.map((stat, idx) => (
+                    <motion.div 
+                      key={stat.label} 
+                      className="text-center sm:text-left"
+                      initial={{ opacity: 0, y: 5 }}
+                      whileInView={{ opacity: 1, y: 0 }}
+                      viewport={{ once: true }}
+                      transition={{ delay: 0.3 + (idx * 0.1) }}
+                    >
                       <p className="text-lg sm:text-xl md:text-3xl font-black text-white">
                         {stat.value}
                       </p>
                       <p className="text-[10px] sm:text-[11px] uppercase tracking-[0.12em] sm:tracking-[0.18em] text-white/60 font-bold">
                         {stat.label}
                       </p>
-                    </div>
+                    </motion.div>
                   ))}
                 </div>
               </GlassContainer>
@@ -113,7 +139,7 @@ export const HeroFuturistic = () => {
         {/* Right — Event Slideshow */}
         <Link
           href={heroEvents[activeSlide].href}
-          className="relative flex-1 min-w-0 block group focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/80 focus-visible:ring-offset-2 focus-visible:ring-offset-black/30 rounded-[1.75rem]"
+          className="relative flex-1 min-w-0 block group focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/80 focus-visible:ring-offset-2 focus-visible:ring-offset-black/30 rounded-[1.75rem] transition-transform duration-300 active:scale-[0.98]"
           aria-label={`View details for ${heroEvents[activeSlide].title}`}
         >
           <GlassContainer
@@ -122,47 +148,53 @@ export const HeroFuturistic = () => {
             glowColor="pink"
           >
             <div className="relative h-full w-full overflow-hidden">
-              {heroEvents.map((event, idx) => (
-                <div
-                  key={event.title}
-                  className={`absolute inset-0 bg-[#0a0a0d] transition-opacity duration-700 ease ${idx === activeSlide ? "opacity-100 z-10" : "opacity-0 z-0"}`}
+              <AnimatePresence mode="wait">
+                <motion.div
+                  key={activeSlide}
+                  initial={{ opacity: 0, x: 20, filter: "blur(4px)" }}
+                  animate={{ opacity: 1, x: 0, filter: "blur(0px)" }}
+                  exit={{ opacity: 0, x: -20, filter: "blur(4px)" }}
+                  transition={{ duration: 0.5, ease: "easeInOut" }}
+                  className="absolute inset-0 bg-[#0a0a0d]"
                 >
                   <Image
-                    src={event.image}
-                    alt={event.alt}
+                    src={heroEvents[activeSlide].image}
+                    alt={heroEvents[activeSlide].alt}
                     fill
                     sizes="(max-width: 639px) 0px, (max-width: 1023px) 100vw, 42vw"
-                    className={`hidden sm:block object-cover transition-transform transition-colors transition-opacity duration-700 ${idx === 0 ? "object-center scale-[1.05]" : "object-center"}`}
-                    priority={idx === 0}
+                    className="hidden sm:block object-cover"
+                    priority
                   />
                   <Image
-                    src={event.imageMobile ?? event.image}
-                    alt={event.alt}
+                    src={heroEvents[activeSlide].imageMobile ?? heroEvents[activeSlide].image}
+                    alt={heroEvents[activeSlide].alt}
                     fill
                     sizes="100vw"
-                    className={`block sm:hidden object-cover transition-transform transition-colors transition-opacity duration-700 ${idx === 0 ? "object-center scale-[1.02]" : "object-center"}`}
-                    priority={idx === 0}
+                    className="block sm:hidden object-cover"
+                    priority
                   />
-                </div>
-              ))}
+                </motion.div>
+              </AnimatePresence>
               <div className="absolute inset-0 bg-gradient-to-t from-black/95 via-black/50 to-black/20 z-20" />
 
               <div className="absolute bottom-8 left-8 right-8 space-y-2 z-30">
                 <span
-                  className={`inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-[0.65rem] font-bold uppercase tracking-widest ${heroEvents[activeSlide].status === "upcoming"
-                    ? "bg-emerald-500/10 border border-emerald-500/30 text-emerald-400"
-                    : heroEvents[activeSlide].status === "closed"
-                      ? "bg-amber-500/10 border border-amber-500/30 text-amber-300"
-                    : "bg-white/10 border border-white/20 text-white/80"
-                    }`}
+                  className={`inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-[0.65rem] font-bold uppercase tracking-widest ${
+                    heroEvents[activeSlide].status === "upcoming"
+                      ? "bg-emerald-500/10 border border-emerald-500/30 text-emerald-400"
+                      : heroEvents[activeSlide].status === "closed"
+                        ? "bg-amber-500/10 border border-amber-500/30 text-amber-300"
+                        : "bg-white/10 border border-white/20 text-white/80"
+                  }`}
                 >
                   <span
-                    className={`h-1.5 w-1.5 rounded-full ${heroEvents[activeSlide].status === "upcoming"
-                      ? "bg-emerald-500 animate-pulse"
-                      : heroEvents[activeSlide].status === "closed"
-                        ? "bg-amber-300"
-                      : "bg-white/70"
-                      }`}
+                    className={`h-1.5 w-1.5 rounded-full ${
+                      heroEvents[activeSlide].status === "upcoming"
+                        ? "bg-emerald-500 animate-pulse"
+                        : heroEvents[activeSlide].status === "closed"
+                          ? "bg-amber-300"
+                          : "bg-white/70"
+                    }`}
                   />
                   {heroEvents[activeSlide].badge}
                 </span>
@@ -171,17 +203,27 @@ export const HeroFuturistic = () => {
                     {heroEvents[activeSlide].title}
                     <ArrowRight className="h-4 w-4 opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
                   </h3>
-                  <p className="text-white/60 text-sm font-medium mt-1">{heroEvents[activeSlide].subtitle}</p>
+                  <p className="text-white/60 text-sm font-medium mt-1">
+                    {heroEvents[activeSlide].subtitle}
+                  </p>
                 </div>
 
                 {/* Dot indicators */}
-                <div className="flex items-center gap-2 pt-2" role="tablist" aria-label="Hero event slides">
+                <div
+                  className="flex items-center gap-2 pt-2"
+                  role="tablist"
+                  aria-label="Hero event slides"
+                >
                   {heroEvents.map((_, idx) => (
                     <button
                       key={idx}
                       type="button"
-                      onClick={(e) => { e.preventDefault(); e.stopPropagation(); setActiveSlide(idx); }}
-                      className={`h-1.5 rounded-full transition-transform transition-colors transition-opacity duration-300 ${idx === activeSlide ? "w-6 bg-(--brand-pink)" : "w-1.5 bg-white/30 hover:bg-white/50"}`}
+                      onClick={(e) => {
+                        e.preventDefault();
+                        e.stopPropagation();
+                        setActiveSlide(idx);
+                      }}
+                      className={`h-1.5 rounded-full transition-all duration-300 ease-[cubic-bezier(0.23,1,0.32,1)] ${idx === activeSlide ? "w-6 bg-(--brand-pink)" : "w-1.5 bg-white/30 hover:bg-white/50"}`}
                       aria-label={`Go to slide ${idx + 1}`}
                       aria-current={idx === activeSlide}
                     />

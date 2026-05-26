@@ -1,9 +1,9 @@
-"use client"
+"use client";
 
-import Link from "next/link"
-import { ArrowRight, Github, Linkedin, Twitter } from "lucide-react"
-import { TextGlitch } from "@/components/ui/text-glitch-effect"
-import { ShaderAnimation } from "@/components/ui/shader-animation"
+import Link from "next/link";
+import { ArrowRight, Github, Linkedin, Twitter } from "lucide-react";
+import { TextGlitch } from "@/components/ui/text-glitch-effect";
+import { ShaderAnimation } from "@/components/ui/shader-animation";
 
 export default function Hero() {
   return (
@@ -13,19 +13,21 @@ export default function Hero() {
           {/* Left Content */}
           <div className="animate-slide-in-up">
             <div className="inline-block px-4 py-2 bg-[var(--brand-coral)]/20 rounded-full mb-6">
-              <span className="text-sm font-medium text-[var(--brand-pink)]">Welcome to Bits&Bytes</span>
+              <span className="text-sm font-medium text-[var(--brand-pink)]">
+                Welcome to Bits&Bytes
+              </span>
             </div>
             <div className="mb-6">
               <TextGlitch
                 text="INNOVATE"
-                hoverText="BUILD THE FUTURE"
+                hoverText="SHIP REAL CODE"
                 className="!text-[4rem] sm:!text-[5rem] lg:!text-[6rem]"
                 delay={0}
               />
             </div>
             <p className="text-lg text-white/80 mb-8 max-w-lg leading-relaxed">
-              Join a vibrant club of teen developers building the future. Learn, create, and transform ideas into
-              reality through code.
+              A club for teen developers who actually ship. Fully student-led,
+              fully independent. No adults in the room.
             </p>
 
             <div className="flex flex-col sm:flex-row gap-4 mb-12">
@@ -34,7 +36,11 @@ export default function Hero() {
                 prefetch={true}
                 className="inline-flex items-center justify-center px-8 py-3 bg-[var(--brand-pink)] text-white rounded-full font-medium hover:bg-[var(--brand-plum)] transition-transform transition-colors transition-opacity hover:shadow-lg hover:shadow-[var(--brand-pink)]/30 group"
               >
-                Join Us Now <ArrowRight className="ml-2 group-hover:translate-x-1 transition-transform" size={20} />
+                Join Us Now{" "}
+                <ArrowRight
+                  className="ml-2 group-hover:translate-x-1 transition-transform"
+                  size={20}
+                />
               </Link>
               <Link
                 href="/about"
@@ -47,14 +53,38 @@ export default function Hero() {
             {/* Social Links */}
             <div className="flex items-center gap-6">
               <span className="text-sm text-white/70">Follow us:</span>
-              <a href="https://github.com/gobitsnbytes" target="_blank" rel="noopener noreferrer" className="p-2 hover:bg-white/10 rounded-full transition-colors group">
-                <Github size={20} className="text-white group-hover:text-[var(--brand-coral)]" />
+              <a
+                href="https://github.com/gobitsnbytes"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="p-2 hover:bg-white/10 rounded-full transition-colors group"
+              >
+                <Github
+                  size={20}
+                  className="text-white group-hover:text-[var(--brand-coral)]"
+                />
               </a>
-              <a href="https://www.linkedin.com/company/gobitsbytes" target="_blank" rel="noopener noreferrer" className="p-2 hover:bg-white/10 rounded-full transition-colors group">
-                <Linkedin size={20} className="text-white group-hover:text-[var(--brand-coral)]" />
+              <a
+                href="https://www.linkedin.com/company/gobitsbytes"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="p-2 hover:bg-white/10 rounded-full transition-colors group"
+              >
+                <Linkedin
+                  size={20}
+                  className="text-white group-hover:text-[var(--brand-coral)]"
+                />
               </a>
-              <a href="https://www.instagram.com/bitsnbytes.lko" target="_blank" rel="noopener noreferrer" className="p-2 hover:bg-white/10 rounded-full transition-colors group">
-                <Twitter size={20} className="text-white group-hover:text-[var(--brand-coral)]" />
+              <a
+                href="https://www.instagram.com/bitsnbytes.lko"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="p-2 hover:bg-white/10 rounded-full transition-colors group"
+              >
+                <Twitter
+                  size={20}
+                  className="text-white group-hover:text-[var(--brand-coral)]"
+                />
               </a>
             </div>
           </div>
@@ -79,16 +109,28 @@ export default function Hero() {
                   </p>
                   <div className="grid grid-cols-3 gap-3">
                     <div>
-                      <p className="text-lg sm:text-xl font-bold text-[var(--brand-coral)]">1500+</p>
-                      <p className="text-[0.65rem] sm:text-xs text-white/60">Members</p>
+                      <p className="text-lg sm:text-xl font-bold text-[var(--brand-coral)]">
+                        1500+
+                      </p>
+                      <p className="text-[0.65rem] sm:text-xs text-white/60">
+                        Members
+                      </p>
                     </div>
                     <div>
-                      <p className="text-lg sm:text-xl font-bold text-[var(--brand-pink)]">130+</p>
-                      <p className="text-[0.65rem] sm:text-xs text-white/60">Projects</p>
+                      <p className="text-lg sm:text-xl font-bold text-[var(--brand-pink)]">
+                        2700+
+                      </p>
+                      <p className="text-[0.65rem] sm:text-xs text-white/60">
+                        Submissions
+                      </p>
                     </div>
                     <div>
-                      <p className="text-lg sm:text-xl font-bold text-[var(--brand-plum)]">100+</p>
-                      <p className="text-[0.65rem] sm:text-xs text-white/60">Schools</p>
+                      <p className="text-lg sm:text-xl font-bold text-[var(--brand-plum)]">
+                        100%
+                      </p>
+                      <p className="text-[0.65rem] sm:text-xs text-white/60">
+                        Student-Led
+                      </p>
                     </div>
                   </div>
                 </div>
@@ -98,5 +140,5 @@ export default function Hero() {
         </div>
       </div>
     </section>
-  )
+  );
 }

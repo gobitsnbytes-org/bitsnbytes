@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 import Link from "next/link";
 import dynamic from "next/dynamic";
 import { ChevronDown, ArrowRight } from "lucide-react";
@@ -30,67 +31,66 @@ const faqs: FAQItem[] = [
   {
     question: "Can I come with a pre-formed team? Do I need to?",
     answer:
-      "You can come to our hackathon with a pre-formed team, or you can form a team once you're on the ground. At the beginning of the event, everyone has the chance to pitch ideas for apps or games they want to make. You can find an idea to work on then. Teams can be made up of anyone you'd like—they don't need to attend your same school or be in your same grade.",
+      "Either way works. You can show up with a team already, or you can form one at the event. At the start, everyone pitches ideas for apps or games they want to build, and you can join any idea that interests you. Your team doesn't have to be from your school or your grade.",
   },
   {
     question: "What if I want to come with a pre-formed team?",
     answer:
-      "That's totally ok! We do encourage pre-formed teams to stay open to adding new teammates—welcoming others can bring fresh ideas and it might even make the experience more fun!",
+      "Totally fine. We do suggest staying open to adding new teammates though. More people often means better ideas, and it's usually more fun.",
   },
   {
     question: "What if I decide not to work with a team at all?",
     answer:
-      "Also totally ok; many students work by themselves. We do find that students have more fun when participating as a team, however.",
+      "Also fine. Plenty of people work solo. That said, most people end up having more fun on a team.",
   },
   {
     question: "What is Bits and Bytes?",
     answer:
-      "Bits and Bytes is a student-led tech club that runs hackathons and other events. Our hackathons follow the usual format but aren't traditional—we have some inspirations from Hack Club style hackathons. Our focus is on creativity; lots of attendees are newer to coding. If that sounds like fun to you, we'd love to have you!",
+      "A student-led tech club that runs hackathons and events. Our hackathons are loosely inspired by Hack Club's format but we do our own thing. We care about creativity, and a lot of attendees are new to coding. If that sounds fun, come through.",
   },
   {
     question: "Can I volunteer for Bits and Bytes?",
     answer:
-      "Absolutely! We're almost always looking for help with the following: organizers, general day-of volunteers, workshops, and mentors. Reach out to us through our contact page to learn more.",
+      "Yes. We're almost always looking for organizers, day-of volunteers, workshop leads, and mentors. Reach out through our contact page.",
   },
   {
     question: "What kind of things can be made at our hackathons?",
     answer:
-      "You can make anything at our hackathons. Anything at all. The only limit is yourself. Well, almost. You can't create anything that violates our Code of Conduct. This is usually a little less strict than \"school appropriate,\" but in general you can't create a project which uses offensive language referring to people's gender, race, sexual orientation, religion, or disabilities; uses sexualized language or imagery; harasses someone; or is unsafe or illegal.",
+      "Anything you want. Well, almost anything. You can't make something that violates our Code of Conduct. It's a bit less strict than 'school appropriate,' but no offensive language targeting people's gender, race, sexual orientation, religion, or disabilities. No sexualized content, no harassment, nothing unsafe or illegal.",
   },
   {
     question: "What do most people make?",
     answer:
-      "Common projects vary, but in general, most attendees create games, a sizable minority create mobile apps, and a small number create websites or electronics projects. You can technically even create non-coding projects; we've seen people present paintings and record albums before. If you're not sure what you want to make, you'll also have the opportunity to join an existing team.",
+      "Most people make games. A good chunk make mobile apps. A smaller number build websites or hardware projects. You can even make non-coding things: people have presented paintings and recorded albums. If you don't know what to make, you can always join an existing team.",
   },
   {
     question: "Can I show existing projects at Bits and Bytes?",
-    answer:
-      "No, you cannot show existing projects at our hackathons. All projects must be created during the event.",
+    answer: "No. All projects have to be built during the event.",
   },
   {
     question: "Can parents attend Bits and Bytes?",
     answer:
-      "For security reasons, parents are generally not allowed on the main premises. However, they can attend the kickoffs and presentation awards. Parents may also attend if they are accepted as a volunteer and pass a background check and training, or are a chaperone for a school group.",
+      "Not on the main floor, for security reasons. They can come to the kickoff and the awards ceremony. Parents can also attend if they volunteer and pass a background check, or if they're chaperoning a school group.",
   },
   {
     question: "Should we bring anything to the hackathon?",
     answer:
-      "Yes. You can bring anything on your device. Generally, you need to bring a laptop with you to the hackathon.",
+      "Bring a laptop. That's the main thing. You can bring whatever else you want on your device.",
   },
   {
     question: "For students staying overnight, what should they bring?",
     answer:
-      "For students staying overnight, it's recommended to bring: a toothbrush and toothpaste, a sleeping bag, a pillow, and a camping pad if you have one.",
+      "Toothbrush, toothpaste, a sleeping bag, a pillow, and a camping pad if you have one.",
   },
   {
     question: "For students with desktop computers, what should they bring?",
     answer:
-      "While desktop computers are welcome, we recommend bringing a laptop instead. If you do bring a desktop, you will need to bring everything, including: a keyboard, mouse, and monitor; headphones (speakers are not allowed); a wifi adapter, since most venues do not allow participants to connect to wired ethernet; and all necessary cables.",
+      "We'd rather you bring a laptop. If you bring a desktop, you need to bring everything: keyboard, mouse, monitor, headphones (no speakers), a wifi adapter (venues don't let you plug into ethernet), and all your cables.",
   },
   {
     question: "Can students leave the hackathon and then come back?",
     answer:
-      "Yes, however students who are minors will need to have a parent present to pick them up, or bring a signed note allowing them to leave early on their own. Students may not be able to return at all times of day. Venues are typically locked down overnight, and depending on building security they may not be able to let you back in until the morning.",
+      "Yes, but minors need a parent to pick them up or a signed note to leave on their own. You might not be able to come back at any hour. Venues lock down overnight, and security may not let you back in until morning.",
   },
 ];
 
@@ -115,7 +115,7 @@ export default function FAQ() {
       <section className="relative min-h-[58vh] sm:min-h-[64vh] flex items-center justify-center overflow-hidden text-white pt-24 md:pt-32">
         <WebGLShader />
         <div className="relative z-10 w-full mx-auto max-w-5xl px-4 sm:px-6 py-8 sm:py-12 md:py-20">
-            <div className="px-6 py-12 md:py-20 sm:px-10 lg:px-16 text-center">
+          <div className="px-6 py-12 md:py-20 sm:px-10 lg:px-16 text-center">
             <div className="flex flex-col items-center gap-6">
               <p className="text-[10px] md:text-xs uppercase tracking-[0.35em] text-white/70 font-bold">
                 FAQ
@@ -124,8 +124,7 @@ export default function FAQ() {
                 Frequently Asked <br className="hidden sm:block" /> Questions
               </h1>
               <p className="text-base sm:text-lg md:text-xl text-white/80 max-w-2xl mx-auto leading-relaxed font-medium">
-                Everything you need to know about Bits and Bytes and how to
-                participate.
+                Questions people actually ask us about Bits and Bytes.
               </p>
             </div>
           </div>
@@ -145,6 +144,8 @@ export default function FAQ() {
                   className="p-0"
                   glowColor="none"
                   containerClassName="rounded-[2rem]"
+                  delay={index * 0.08}
+                  layout
                 >
                   <button
                     onClick={() => toggleItem(index)}
@@ -153,27 +154,33 @@ export default function FAQ() {
                     <h3 className="font-display text-lg md:text-xl font-black text-white pr-4 leading-tight">
                       {faq.question}
                     </h3>
-                    <div className={cn(
-                      "flex h-10 w-10 shrink-0 items-center justify-center rounded-full border border-white/10 bg-white/5 text-(--brand-pink) transition-transform transition-colors transition-opacity duration-300",
-                      isOpen && "rotate-180 bg-(--brand-pink) text-white border-(--brand-pink)/50"
-                    )}>
+                    <div
+                      className={cn(
+                        "flex h-10 w-10 shrink-0 items-center justify-center rounded-full border border-white/10 bg-white/5 text-(--brand-pink) transition-transform transition-colors transition-opacity duration-300",
+                        isOpen &&
+                          "rotate-180 bg-(--brand-pink) text-white border-(--brand-pink)/50",
+                      )}
+                    >
                       <ChevronDown className="h-6 w-6" />
                     </div>
                   </button>
-                  <div
-                    className={cn(
-                      "grid transition-transform transition-colors transition-opacity duration-300 ease",
-                      isOpen ? "grid-rows-[1fr] opacity-100" : "grid-rows-[0fr] opacity-0",
+                  <AnimatePresence>
+                    {isOpen && (
+                      <motion.div
+                        initial={{ height: 0, opacity: 0 }}
+                        animate={{ height: "auto", opacity: 1 }}
+                        exit={{ height: 0, opacity: 0 }}
+                        transition={{ duration: 0.3, ease: "easeInOut" }}
+                        className="overflow-hidden"
+                      >
+                        <div className="px-6 md:px-8 pb-6 md:pb-8 border-t border-white/5 mt-2 pt-6">
+                          <p className="text-base md:text-lg text-white/70 font-medium leading-relaxed">
+                            {faq.answer}
+                          </p>
+                        </div>
+                      </motion.div>
                     )}
-                  >
-                    <div className="overflow-hidden">
-                      <div className="px-6 md:px-8 pb-6 md:pb-8 border-t border-white/5 mt-2 pt-6">
-                        <p className="text-base md:text-lg text-white/70 font-medium leading-relaxed">
-                          {faq.answer}
-                        </p>
-                      </div>
-                    </div>
-                  </div>
+                  </AnimatePresence>
                 </GlassContainer>
               );
             })}
@@ -187,8 +194,7 @@ export default function FAQ() {
               Still have questions?
             </h2>
             <p className="mt-4 text-lg md:text-xl text-white/70 max-w-2xl mx-auto font-medium leading-relaxed">
-              Can't find what you're looking for? Reach out to us directly and
-              we'll get back to you as soon as possible.
+              Can't find what you need? Reach out and we'll get back to you.
             </p>
             <div className="mt-10 flex flex-col sm:flex-row items-center justify-center gap-4">
               <Button

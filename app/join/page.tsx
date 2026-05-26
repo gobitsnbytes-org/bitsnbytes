@@ -1,5 +1,6 @@
 "use client";
 
+import { motion } from "framer-motion";
 import dynamic from "next/dynamic";
 import { PageSection } from "@/components/page-section";
 import { Button } from "@/components/ui/button";
@@ -33,19 +34,19 @@ const benefits = [
     icon: Users,
     title: "Join a tight-knit crew",
     description:
-      "Connect with 1500+ ambitious teen builders across India who share your passion for tech.",
+      "Work alongside 1500+ teen builders across India who are actually building things.",
   },
   {
     icon: Rocket,
     title: "Ship real projects",
     description:
-      "Work on portfolio-ready projects with mentorship at every stage—from idea to deployment.",
+      "Build projects with mentorship at every step, from idea to deployment.",
   },
   {
     icon: Zap,
     title: "Attend exclusive events",
     description:
-      "Get priority access to hackathons, workshops, and networking events with industry pros.",
+      "Get priority access to hackathons, workshops, and events with people who actually work in the industry.",
   },
   {
     icon: Heart,
@@ -56,18 +57,18 @@ const benefits = [
 ];
 
 const expectations = [
-  "Be a student (ages 13-19) passionate about tech",
+  "Be a student (ages 13-19) who cares about tech",
   "Commit 2-4 hours per week for activities",
   "Join our Discord and stay active in discussions",
   "Participate in at least one project or event per quarter",
-  "Support fellow members and maintain a positive attitude",
+  "Support fellow members and don't be a jerk",
 ];
 
 const faqs = [
   {
     question: "Do I need coding experience to join?",
     answer:
-      "Not at all! We welcome beginners and pair them with experienced mentors. What matters most is your enthusiasm to learn and build.",
+      "No. We welcome beginners and pair them with mentors. What matters is that you actually want to build things.",
   },
   {
     question: "How much time do I need to commit?",
@@ -76,8 +77,7 @@ const faqs = [
   },
   {
     question: "Is there a membership fee?",
-    answer:
-      "Bits&Bytes is completely free to join. We believe tech education should be accessible to all students.",
+    answer: "No. Bits&Bytes is free. Tech education shouldn't cost money.",
   },
   {
     question: "I'm not from Lucknow. Can I still join?",
@@ -98,7 +98,7 @@ export default function Join() {
       >
         <WebGLShader />
         <div className="relative z-10 w-full mx-auto max-w-5xl px-4 sm:px-6 py-8 sm:py-12 md:py-24">
-            <div className="px-6 py-12 md:py-20 sm:px-10 lg:px-16 text-center">
+          <div className="px-6 py-12 md:py-20 sm:px-10 lg:px-16 text-center">
             <div className="flex flex-col items-center gap-6">
               <span className="inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/5 px-4 py-1.5 text-xs uppercase tracking-[0.35em] font-semibold text-white/90 backdrop-blur-md shadow-inner">
                 <span className="relative flex h-2 w-2">
@@ -107,12 +107,15 @@ export default function Join() {
                 </span>
                 Applications Open
               </span>
-              <h1 id="join-hero-title" className="font-display text-4xl sm:text-5xl md:text-6xl leading-tight font-black text-white tracking-tighter drop-shadow-2xl">
+              <h1
+                id="join-hero-title"
+                className="font-display text-4xl sm:text-5xl md:text-6xl leading-tight font-black text-white tracking-tighter drop-shadow-2xl"
+              >
                 Join the crew
               </h1>
               <p className="text-base sm:text-lg md:text-xl text-white/80 max-w-2xl mx-auto leading-relaxed font-medium">
-                Tell us how you want to build with the Bits&Bytes club. We'll
-                connect you with squads, mentors, and live projects.
+                Tell us how you want to build with us. We'll connect you with
+                squads, mentors, and real projects.
               </p>
             </div>
           </div>
@@ -123,7 +126,10 @@ export default function Join() {
         {/* Main CTA Section */}
         <PageSection align="center">
           <div className="mx-auto w-full max-w-3xl space-y-6 sm:space-y-8">
-            <GlassContainer className="p-8 md:p-12 text-center" glowColor="both">
+            <GlassContainer
+              className="p-8 md:p-12 text-center"
+              glowColor="both"
+            >
               <div className="flex flex-col items-center gap-6">
                 <div className="inline-flex items-center gap-2 text-xs sm:text-sm text-white/60 font-bold uppercase tracking-widest">
                   <Clock className="h-4 w-4 text-(--brand-pink)" />
@@ -146,11 +152,11 @@ export default function Join() {
                 </Button>
 
                 <p className="text-sm text-white/50 font-medium">
-                  We review applications weekly · You&apos;ll hear back within 7 days
+                  We review applications weekly · You&apos;ll hear back within 7
+                  days
                 </p>
               </div>
             </GlassContainer>
-
           </div>
         </PageSection>
 
@@ -159,7 +165,7 @@ export default function Join() {
           align="center"
           eyebrow="Why Join"
           title="What you'll get as a member"
-          description="Being part of Bits&Bytes means more than just a Discord invite. Here's what awaits you."
+          description="Being part of Bits&Bytes is more than a Discord invite."
         >
           <div className="grid gap-6 md:grid-cols-2">
             {benefits.map((benefit, index) => (
@@ -167,6 +173,7 @@ export default function Join() {
                 key={benefit.title}
                 className="p-6 md:p-8"
                 glowColor={index % 2 === 0 ? "pink" : "purple"}
+                delay={index * 0.1}
               >
                 <div className="flex items-start gap-4 md:gap-6">
                   <div className="flex h-12 w-12 md:h-14 md:w-14 shrink-0 items-center justify-center rounded-2xl bg-white/5 border border-white/10 text-(--brand-pink) shadow-inner">
@@ -197,13 +204,17 @@ export default function Join() {
             <GlassContainer className="p-8 md:p-10" glowColor="purple">
               <ul className="space-y-4 md:space-y-6">
                 {expectations.map((expectation, index) => (
-                  <li
+                  <motion.li
                     key={index}
+                    initial={{ opacity: 0, x: -10 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ delay: index * 0.1 }}
                     className="flex items-start gap-4 text-base md:text-lg text-white font-medium"
                   >
                     <CheckCircle2 className="h-6 w-6 shrink-0 text-(--brand-pink) mt-0.5" />
                     <span>{expectation}</span>
-                  </li>
+                  </motion.li>
                 ))}
               </ul>
             </GlassContainer>
@@ -215,7 +226,7 @@ export default function Join() {
           align="center"
           eyebrow="FAQ"
           title="Common questions"
-          description="Everything you need to know before applying."
+          description="Things people ask before applying."
         >
           <div className="mx-auto max-w-3xl space-y-4 md:space-y-6">
             {faqs.map((faq, index) => (
@@ -223,6 +234,7 @@ export default function Join() {
                 key={index}
                 className="p-6 md:p-8"
                 glowColor="none"
+                delay={index * 0.1}
               >
                 <h3 className="font-display text-lg md:text-xl font-black text-white">
                   {faq.question}
@@ -242,8 +254,7 @@ export default function Join() {
               Ready to start building?
             </h2>
             <p className="text-sm sm:text-base text-white/70 px-4 sm:px-0">
-              Join 1500+ teen builders who are shipping real projects and growing
-              together.
+              Join 1500+ teen builders who ship real projects.
             </p>
             <Button
               asChild

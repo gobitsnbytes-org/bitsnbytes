@@ -1,14 +1,21 @@
-import { createClient } from "@supabase/supabase-js"
 import * as dotenv from "dotenv"
 import * as fs from "fs"
 import * as path from "path"
 
 dotenv.config({ path: ".env" })
 
-const supabase = createClient(
-  process.env.NEXT_PUBLIC_SUPABASE_URL!,
-  process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!
-)
+const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL
+const supabaseServiceRoleKey = process.env.backend_SUPABASE_SERVICE_ROLE_KEY
+const hackclubProxyApiKey = process.env.HACKCLUB_PROXY_API_KEY
+
+if (!supabaseUrl || !supabaseServiceRoleKey || !hackclubProxyApiKey) {
+  console.warn("⚠️ Skipping site embeddings auto-generation: environment variables are missing (NEXT_PUBLIC_SUPABASE_URL, backend_SUPABASE_SERVICE_ROLE_KEY, or HACKCLUB_PROXY_API_KEY).")
+  process.exit(0)
+}
+
+import { createClient } from "@supabase/supabase-js"
+
+const supabase = createClient(supabaseUrl, supabaseServiceRoleKey)
 
 const EMBEDDING_MODEL = "openai/text-embedding-3-small"
 const EMBEDDING_DIMENSIONS = 1536
@@ -120,7 +127,7 @@ async function run() {
 
   const filePaths = [
     { absPath: path.resolve(process.cwd(), "public/llms.txt"), endpoint: "/llms.txt" },
-    { absPath: path.resolve(process.cwd(), "agents.md"), endpoint: "/agents.md" }
+    { absPath: path.resolve(process.cwd(), "AGENTS.md"), endpoint: "/AGENTS.md" }
   ]
 
   let siteContent: SiteChunk[] = []

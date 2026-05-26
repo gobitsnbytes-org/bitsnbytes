@@ -1,82 +1,87 @@
-"use client"
+"use client";
 
-import type React from "react"
+import type React from "react";
 
-import { useState, useEffect, useRef } from "react"
-import { motion, AnimatePresence, useMotionValue, useSpring, useTransform } from "framer-motion"
+import { useState, useEffect, useRef } from "react";
+import {
+  motion,
+  AnimatePresence,
+  useMotionValue,
+  useSpring,
+  useTransform,
+} from "framer-motion";
 
 const testimonials = [
   {
-    quote: "Leading this community has shown me that there's no limit to what ambitious teens can achieve when they have the right ecosystem to build in.",
-    author: "Yash",
-    role: "Co-Founder & Organisation Lead",
+    quote:
+      "Most cities don't have a student tech scene. It’s not a lack of talent, it’s just a lack of people around you who are also building. We got tired of waiting for someone else to fix that, so we built Bits&Bytes. It's just us doing the unglamorous work, showing up, and giving people a place to finally ship their chaotic, half-baked ideas together.",
+    author: "Aadrika Maurya",
+    role: "Chief Creative Officer & Chief Operating Officer",
     company: "Bits&Bytes",
   },
   {
-    quote: "We're crafting a brand that represents the future of Indian tech—bold, creative, and unapologetically teen-led.",
-    author: "Aadrika",
-    role: "Co-Founder & Chief Creative Strategist",
+    quote:
+      "There's a difference between building and shipping, and most people never cross that line. We don't have VC money or fancy decks. We just have a ridiculous amount of conviction that high schoolers should be pushing real projects to real users. Ship first. Panic later. That's the bar.",
+    author: "Yash Vardhan Singh",
+    role: "Chief Executive Officer",
     company: "Bits&Bytes",
   },
   {
-    quote: "Scaling our infrastructure to support hundreds of builders while maintaining a seamless developer experience is my top priority. We're building real tech for real impact.",
+    quote:
+      "Bits&Bytes started as a cope because my school said no to a CS club. Now, we run hackathons where teenagers actually ship code instead of pitching slide decks. You don't need institutional approval or a five-year plan to build something cool. You just need to ignore the gatekeepers and write the code.",
     author: "Akshat Kushwaha",
-    role: "Co-Founder & Technical Lead",
+    role: "Chief Technology Officer",
     company: "Bits&Bytes",
   },
-  {
-    quote: "The systems we're building here aren't just for show—they're the backbone that allows every member to ship their wildest ideas with confidence.",
-    author: "Devansh",
-    role: "Founding Member & Backend Lead",
-    company: "Bits&Bytes",
-  },
-  {
-    quote: "Telling our story isn't just about social media; it's about inspiring every teen in India to stop consuming and start building their own future.",
-    author: "Maryam",
-    role: "Social Media & Promotions Head",
-    company: "Bits&Bytes",
-  },
-]
+];
 
 export function Testimonial() {
-  const [activeIndex, setActiveIndex] = useState(0)
-  const containerRef = useRef<HTMLDivElement>(null)
+  const [activeIndex, setActiveIndex] = useState(0);
+  const containerRef = useRef<HTMLDivElement>(null);
 
   // Mouse position for magnetic effect
-  const mouseX = useMotionValue(0)
-  const mouseY = useMotionValue(0)
+  const mouseX = useMotionValue(0);
+  const mouseY = useMotionValue(0);
 
-  const springConfig = { damping: 25, stiffness: 200 }
-  const x = useSpring(mouseX, springConfig)
-  const y = useSpring(mouseY, springConfig)
+  const springConfig = { damping: 25, stiffness: 200 };
+  const x = useSpring(mouseX, springConfig);
+  const y = useSpring(mouseY, springConfig);
 
   // Transform for parallax on the large number
-  const numberX = useTransform(x, [-200, 200], [-20, 20])
-  const numberY = useTransform(y, [-200, 200], [-10, 10])
+  const numberX = useTransform(x, [-200, 200], [-20, 20]);
+  const numberY = useTransform(y, [-200, 200], [-10, 10]);
 
   const handleMouseMove = (e: React.MouseEvent) => {
-    const rect = containerRef.current?.getBoundingClientRect()
+    const rect = containerRef.current?.getBoundingClientRect();
     if (rect) {
-      const centerX = rect.left + rect.width / 2
-      const centerY = rect.top + rect.height / 2
-      mouseX.set(e.clientX - centerX)
-      mouseY.set(e.clientY - centerY)
+      const centerX = rect.left + rect.width / 2;
+      const centerY = rect.top + rect.height / 2;
+      mouseX.set(e.clientX - centerX);
+      mouseY.set(e.clientY - centerY);
     }
-  }
+  };
 
-  const goNext = () => setActiveIndex((prev) => (prev + 1) % testimonials.length)
-  const goPrev = () => setActiveIndex((prev) => (prev - 1 + testimonials.length) % testimonials.length)
+  const goNext = () =>
+    setActiveIndex((prev) => (prev + 1) % testimonials.length);
+  const goPrev = () =>
+    setActiveIndex(
+      (prev) => (prev - 1 + testimonials.length) % testimonials.length,
+    );
 
   useEffect(() => {
-    const timer = setInterval(goNext, 6000)
-    return () => clearInterval(timer)
-  }, [])
+    const timer = setInterval(goNext, 6000);
+    return () => clearInterval(timer);
+  }, []);
 
-  const current = testimonials[activeIndex]
+  const current = testimonials[activeIndex];
 
   return (
     <div className="flex items-center justify-center py-12 md:py-20 overflow-hidden">
-      <div ref={containerRef} className="relative w-full max-w-5xl px-4 md:px-8" onMouseMove={handleMouseMove}>
+      <div
+        ref={containerRef}
+        className="relative w-full max-w-5xl px-4 md:px-8"
+        onMouseMove={handleMouseMove}
+      >
         {/* Oversized index number - positioned to bleed off left edge */}
         <motion.div
           className="absolute -left-8 top-1/2 -translate-y-1/2 text-[12rem] md:text-[28rem] font-bold text-foreground/[0.03] select-none pointer-events-none leading-none tracking-tighter"
@@ -85,9 +90,21 @@ export function Testimonial() {
           <AnimatePresence mode="wait">
             <motion.span
               key={activeIndex}
-              initial={{ opacity: 0, transform: "scale(0.8)", filter: "blur(10px)" }}
-              animate={{ opacity: 1, transform: "scale(1)", filter: "blur(0px)" }}
-              exit={{ opacity: 0, transform: "scale(1.1)", filter: "blur(10px)" }}
+              initial={{
+                opacity: 0,
+                transform: "scale(0.8)",
+                filter: "blur(10px)",
+              }}
+              animate={{
+                opacity: 1,
+                transform: "scale(1)",
+                filter: "blur(0px)",
+              }}
+              exit={{
+                opacity: 0,
+                transform: "scale(1.1)",
+                filter: "blur(10px)",
+              }}
               transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
               className="block"
             >
@@ -116,7 +133,7 @@ export function Testimonial() {
                 className="absolute top-0 left-0 w-full h-full bg-foreground"
                 style={{ transformOrigin: "top" }}
                 animate={{
-                  transform: `scaleY(${((activeIndex + 1) / testimonials.length)})`,
+                  transform: `scaleY(${(activeIndex + 1) / testimonials.length})`,
                 }}
                 transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
               />
@@ -202,8 +219,12 @@ export function Testimonial() {
                     style={{ transformOrigin: "left" }}
                   />
                   <div>
-                    <p className="text-base font-medium text-foreground">{current.author}</p>
-                    <p className="text-sm text-muted-foreground">{current.role}</p>
+                    <p className="text-base font-medium text-foreground">
+                      {current.author}
+                    </p>
+                    <p className="text-sm text-muted-foreground">
+                      {current.role}
+                    </p>
                   </div>
                 </motion.div>
               </AnimatePresence>
@@ -240,7 +261,9 @@ export function Testimonial() {
 
                 {/* Progress indicator */}
                 <div className="flex items-center gap-1 text-xs font-mono text-muted-foreground">
-                  <span className="text-foreground font-medium">{String(activeIndex + 1).padStart(2, "0")}</span>
+                  <span className="text-foreground font-medium">
+                    {String(activeIndex + 1).padStart(2, "0")}
+                  </span>
                   <span>/</span>
                   <span>{String(testimonials.length).padStart(2, "0")}</span>
                 </div>
@@ -282,7 +305,11 @@ export function Testimonial() {
           <motion.div
             className="flex whitespace-nowrap text-4xl md:text-6xl font-bold tracking-tight"
             animate={{ transform: ["translateX(0px)", "translateX(-1000px)"] }}
-            transition={{ duration: 20, repeat: Number.POSITIVE_INFINITY, ease: "linear" }}
+            transition={{
+              duration: 20,
+              repeat: Number.POSITIVE_INFINITY,
+              ease: "linear",
+            }}
           >
             {[...Array(10)].map((_, i) => (
               <span key={i} className="mx-8">
@@ -293,5 +320,5 @@ export function Testimonial() {
         </div>
       </div>
     </div>
-  )
+  );
 }

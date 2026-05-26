@@ -17,7 +17,8 @@ export const metadata: Metadata = {
   },
   openGraph: {
     title: "QnA Assistant | Bits&Bytes AI Bot",
-    description: "Chat with the official Bits&Bytes AI assistant. Ask anything about our club, events, and tech community.",
+    description:
+      "Chat with the official Bits&Bytes AI assistant. Ask anything about our club, events, and tech community.",
     url: "https://gobitsnbytes.org/qna",
     type: "website",
     images: [
@@ -32,7 +33,8 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary_large_image",
     title: "QnA Assistant | Bits&Bytes AI",
-    description: "Chat with the official Bits&Bytes AI assistant powered by advanced language models.",
+    description:
+      "Chat with the official Bits&Bytes AI assistant. Ask about our club, events, and community.",
     images: ["/og-image.png"],
     creator: "@bitsnbytes_lko",
   },
@@ -58,11 +60,7 @@ const breadcrumbJsonLd = {
   ],
 };
 
-export default function QnALayout({
-  children,
-}: {
-  children: React.ReactNode;
-}) {
+export default function QnALayout({ children }: { children: React.ReactNode }) {
   return (
     <>
       <script

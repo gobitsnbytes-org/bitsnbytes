@@ -10,7 +10,7 @@
 
 **Key Features:** Semantic search over site content, AI-powered Q&A, team member matching, project idea generation, contact/sponsor lead capture, rate limiting, multi-language support (English/Hindi).
 
-**Scale:** 1500+ active members, 130+ shipped projects, served via Vercel with production source maps disabled.
+**Scale:** 1500+ active members, 2700+ evaluated submissions, served via Vercel with production source maps disabled.
 
 ---
 
@@ -32,8 +32,13 @@
 │   │   ├── join/route.ts           # Submit join requests → Supabase
 │   │   ├── contact/                # Contact form submissions
 │   │   └── discord/                # Discord OAuth integration
-│   ├── about/, contact/, events/, etc/  # Content pages + layouts
-│   └── demo/, qna/, projects/       # Feature-specific pages
+│   ├── about/                      # Core Team and 11 Volunteers listing
+│   ├── contact/                    # Supabase + hCaptcha contact form
+│   ├── events/                     # Archived events (Execron, India Innovates)
+│   ├── faq/                        # Comprehensive FAQ accordion
+│   ├── impact/                     # Club metrics and shipped projects
+│   ├── join/, join-cohort/, fork/  # Static Notion application redirects
+│   └── qna/                        # Full-page interactive chat interface
 ├── components/
 │   ├── ui/                         # Shadcn/radix-ui components (40+ files)
 │   ├── qna-chat-interface.tsx      # Chat interface with markdown rendering
@@ -158,7 +163,7 @@ $$;
 
 ### 4.1 AI Assistant (`app/api/assistant/route.ts`)
 
-**Function:** Multi-turn chat engine with tool calling, semantic caching, frustration detection.
+**Function:** Multi-turn chat engine with tool calling, semantic caching, frustration detection, and strict RAG grounding contract to eliminate hallucinations.
 
 **Input:** `{ messages: ClientMessage[], pathname: string, sessionId: string }`
 
@@ -196,7 +201,7 @@ $$;
 | Function | Params | Returns | Purpose |
 |----------|--------|---------|---------|
 | `generateEmbedding(text)` | `text: string` | `number[]` (1536-dim) | Call HackClub Proxy to embed text |
-| `searchSiteContent(query, matchCount)` | `query: string, matchCount?: number` | `string[]` | Search embeddings (default 3 matches) |
+| `searchSiteContent(query, matchCount)` | `query: string, matchCount?: number` | `string[]` | Search embeddings (default 6 matches) |
 
 **Embedding Model:** `openai/text-embedding-3-small` (1536 dimensions).
 
@@ -206,9 +211,9 @@ $$;
 
 ---
 
-### 4.3 Team Data & Role Matching (`lib/team-data.ts`)
+### 4.3 Team Data & Role Matching (`lib/team-data.ts` & `app/about/page.tsx`)
 
-**Team Members:** 6 core roles: Yash Singh (Founder), Aadrika Maurya (Creative), Akshat Kushwaha (Technical Lead), Devaansh Pathak (Backend), Maryam Fatima (Social Media), Sristhi Singh (Operations).
+**Team Members:** The platform features 8 core leads (Yash Singh, Akshat Kushwaha, Aadrika Maurya, Devaansh Pathak, Drishti, Raghav, Maryam Fatima, Srishti Singh) and 11 active contributors categorized by Operations, Outreach, Creative, and Tech.
 
 **Functions:**
 
@@ -311,7 +316,7 @@ User Message
     ↓
 [Cache Latest Response] → Semantic cache (if non-session-specific)
     ↓
-[Save Chat Session] → Supabase: chat_sessions + IP/pathname/timestamp
+[Save Chat Session] → Background execution via Next.js after() API → Supabase: chat_sessions + IP/pathname/timestamp
 ```
 
 ---

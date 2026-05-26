@@ -1,13 +1,13 @@
-import { cn } from "@/lib/utils"
+import { cn } from "@/lib/utils";
 
 type TechShapesProps = {
-  className?: string
-}
+  className?: string;
+};
 
 const cards = [
   {
     title: "Learn",
-    copy: "Master web dev, mobile, and cutting-edge makerspace tech.",
+    copy: "Web dev, mobile, and makerspace tech.",
     bg: "bg-[var(--brand-plum)]",
     text: "text-white",
     graphic: (
@@ -18,7 +18,7 @@ const cards = [
   },
   {
     title: "Collaborate",
-    copy: "Build ambitious projects with passionate peers across schools.",
+    copy: "Build ambitious projects with peers across schools.",
     bg: "bg-[var(--brand-coral)]",
     text: "text-[var(--brand-purple)]",
     graphic: (
@@ -30,7 +30,7 @@ const cards = [
   },
   {
     title: "Hack",
-    copy: "Turn creativity into prototypes, MVPs, and real-world impact.",
+    copy: "Turn creativity into prototypes, MVPs, and things people actually use.",
     bg: "bg-[var(--brand-pink)]",
     text: "text-white",
     graphic: (
@@ -40,7 +40,7 @@ const cards = [
       </svg>
     ),
   },
-]
+];
 
 export default function TechShapes({ className }: TechShapesProps) {
   return (
@@ -57,10 +57,18 @@ export default function TechShapes({ className }: TechShapesProps) {
             )}
           />
           <div className="absolute inset-0 opacity-10">{card.graphic}</div>
-          <div className={cn("relative z-10 flex h-64 flex-col justify-between text-foreground dark:text-white")}>
+          <div
+            className={cn(
+              "relative z-10 flex h-64 flex-col justify-between text-foreground dark:text-white",
+            )}
+          >
             <div>
-              <div className="font-display text-2xl font-bold">{card.title}</div>
-              <p className="mt-3 text-sm text-foreground/80 dark:text-white/80">{card.copy}</p>
+              <div className="font-display text-2xl font-bold">
+                {card.title}
+              </div>
+              <p className="mt-3 text-sm text-foreground/80 dark:text-white/80">
+                {card.copy}
+              </p>
             </div>
             <span className="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.3em] text-[var(--brand-pink)]">
               Explore
@@ -70,5 +78,5 @@ export default function TechShapes({ className }: TechShapesProps) {
         </div>
       ))}
     </div>
-  )
+  );
 }

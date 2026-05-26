@@ -9,10 +9,7 @@ import {
   GlowingCardTitle,
   GlowingCardDescription,
 } from "@/components/ui/glowing-card";
-import type {
-  CoreTeamMember,
-  Volunteer,
-} from "@/components/team-case-study";
+import type { CoreTeamMember, Volunteer } from "@/components/team-case-study";
 
 // Lazy load heavy components
 const TeamCaseStudy = dynamic(() => import("@/components/team-case-study"), {
@@ -23,216 +20,235 @@ const TeamCaseStudy = dynamic(() => import("@/components/team-case-study"), {
 const aboutContent = {
   title: "About Bits&Bytes",
   description:
-    "We are a teen-led code club dedicated to empowering high-agency individuals to ship production-grade technology through real-world product launches.",
+    "We are a student led code club building the alternative to rigid, beginner locked tech events. Run entirely by teenagers, built from scratch.",
   sections: [
     {
       title: "The Origin Story",
       description:
-        "Originally hosting Daydream Lucknow under Hack Club, we faced a last-minute venue withdrawal. We decided to go fully independent to bypass rigid formats and deliver actual value to builders.",
+        "In July 2025, our team was organizing a major regional student hackathon under an external partner organization. When they cancelled the event at the last minute, we refused to quit. To build something independent and reliable, we founded Bits&Bytes in November 2025. Originally planning a single cope hackathon, we quickly grew into a sustainable nationwide teen builder network.",
     },
     {
       title: "High Agency Only",
       description:
-        "We move away from 'beginner-friendly' formats that treat participants like they need hand-holding. We build for exceptionally talented individuals who want to ship real products.",
+        "We don't do hand-holding or rigid formats. Bits&Bytes is run entirely by and for teenagers. You'll be surrounded by people who want to write code and launch real projects, not just sit through lectures and collect certificates.",
+    },
+    {
+      title: "Distributed Forks",
+      description:
+        "Forks are a distributed model where local builders run their own nodes without waiting for permission. They are active in Jaipur, Hyderabad, Bangalore, Kolkata, and Noida, where local teams run their own events and dev squads.",
     },
     {
       title: "Ship Real Products",
       description:
-        "Workshops and hack nights must convert into tangible outcomes. We focus on premium hackathons, dev squads, and real-world launches that are fully student-led.",
-    },
-    {
-      title: "Production Grade",
-      description:
-        "We prioritize performance and stability. Our technical infrastructure is built with professional standards, removing barriers for the next generation of builders.",
+        "Our meetups and hack nights have to end with something launched, not just something learned. We don't build throwaway demos that only exist for a presentation slide. We build actual software that people use.",
     },
   ],
 };
 
-// Core Team - Top tier
+// Executive Leadership & Department Leads
 const coreTeam: CoreTeamMember[] = [
   {
     id: 1,
     name: "Yash Singh",
-    role: "Co-Founder & Organisation Lead",
+    role: "Chief Executive Officer (CEO)",
     image: "/team/yash.jpeg",
     mobileImagePosition: "center 18%",
-    bio: "High school student who builds things that matter—from VS Code extensions with thousands of users to hackathons with 400+ participants. IOQM National Qualifier and Educator at STEMist Lucknow, teaching underrepresented talent.",
-    expertise: [
-      "Mathematics (IOQM)",
-      "Full-Stack Dev",
-      "Three.js / Three.js",
-      "AI / ML Scaling",
-      "GoDOT Game Dev",
-    ],
     socials: {
-      linkedin: "https://www.linkedin.com/in/yash-vardhan-singh-a41540270/",
+      linkedin: "https://www.linkedin.com/in/yashvardhansinghbnb/",
       github: "https://github.com/yashclouded",
       website: "https://yashvibe.codes/",
     },
-    accentColor: "var(--brand-purple)", // Deep Purple
+    accentColor: "var(--brand-purple)",
     isFounder: true,
   },
   {
     id: 2,
     name: "Aadrika Maurya",
-    role: "Co-Founder & Chief Creative Strategist",
+    role: "Chief Creative Officer (CCO) & Chief Operating Officer (COO)",
     image: "/team/aadrika.png",
     mobileImagePosition: "center 20%",
     isFeatured: true,
-    bio: "RSI India Alumni who conducted neuroscience research on EEG signals and attention pattern modeling. Regional Manager for CodeDay Kanpur and a creative strategist for student-led initiatives.",
-    expertise: [
-      "Neuroscience (EEG)",
-      "Creative Strategy",
-      "Regional Management",
-      "Brand Development",
-    ],
     socials: {
       linkedin: "https://www.linkedin.com/in/aadrika-maurya/",
       github: "https://github.com/Aadrika08",
       website: "https://aadrikasportfolio.framer.website/",
     },
-    accentColor: "var(--brand-pink)", // Vibrant Pink
+    accentColor: "var(--brand-pink)",
     isFounder: true,
   },
   {
     id: 3,
     name: "Akshat Kushwaha",
-    role: "Co-Founder & Technical Lead",
+    role: "Chief Technology Officer (CTO)",
     image: "/team/akshat.jpg",
     mobileImagePosition: "center 16%",
     mobileImageScale: 1.03,
-    bio: "AI-native systems engineer who asks what happens when software fails—building production workflows and retrieval architectures that survive real constraints. Lead at STEMist Prayagraj, defining high-performance engineering culture.",
-    expertise: [
-      "LLMOps / RAG",
-      "Agentic Frameworks",
-      "Next.js 16 / React 19",
-      "FastAPI / Python",
-      "System Design",
-    ],
     socials: {
       linkedin: "https://www.linkedin.com/in/akshat-singh-kushwaha/",
       github: "https://github.com/a3ro-dev",
       website: "https://a3ro.dev",
     },
-    accentColor: "var(--brand-plum)", // Rich Plum
+    accentColor: "var(--brand-plum)",
     isFounder: true,
   },
   {
     id: 4,
     name: "Devaansh Pathak",
-    role: "Founding Member & Backend Lead",
+    role: "Chief Financial Officer (CFO)",
     image: "/team/devansh.jpeg",
     mobileImagePosition: "center 18%",
-    bio: "Manages high-performance backend development and partnership economics.",
-    expertise: [
-      "Backend Architecture",
-      "Database Systems",
-      "Partnership Building",
-      "Community Outreach",
-    ],
-    linkedin: "https://www.linkedin.com/in/devaanshpa/",
+    socials: {
+      linkedin: "https://www.linkedin.com/in/devaanshpa/",
+    },
   },
   {
     id: 5,
-    name: "Maryam Fatima",
-    role: "Social Media & Promotions Head",
-    image: "/team/maryam.jpeg",
-    mobileImagePosition: "center 22%",
-    bio: "Leading social strategy and impact storytelling. Generated 10k+ impressions for club events. Spearheads visual campaigns for major independent hackathons.",
-    expertise: [
-      "Impact Storytelling",
-      "Visual Design",
-      "Campaign Planning",
-      "Brand Identity",
-    ],
-    linkedin: "https://www.linkedin.com/in/maryam-fatima-9719aa377/",
+    name: "Drishti Arora",
+    role: "Chief Marketing Officer (CMO)",
+    image: "/team/drishti.jpg",
+    mobileImagePosition: "center 20%",
+    socials: {
+      linkedin: "https://www.linkedin.com/in/drish-arora",
+    },
   },
+  // Department Leads
   {
     id: 6,
-    name: "Sristhi Singh",
-    role: "Operations & Communications Head",
-    image: "/team/srishti.jpeg",
-    mobileImagePosition: "center 16%",
-    bio: "Optimizing internal communication for 100+ members. Ensures smooth collaboration across design/dev squads and city-wide event transitions.",
-    expertise: [
-      "Process Optimization",
-      "Resource Logistics",
-      "Team Communications",
-      "Project Coordination",
-    ],
-    linkedin: "https://www.linkedin.com/in/srishti-singh-ab6a1b391",
-  },
-];
-
-// Volunteers - smaller cards section
-const volunteers: Volunteer[] = [
-  {
-    id: 11,
-    name: "Jaagruti",
-    image: "/team/jaagruti.jpeg",
-    section: "Creatives",
-  },
-  {
-    id: 18,
-    name: "Kavan",
-    image: "/team/kavan.jpg",
-    section: "Creatives",
-  },
-  {
-    id: 16,
-    name: "Vareesha",
-    image: "/team/vareesha.jpg",
-    linkedin: "https://www.linkedin.com/in/vareesha-mehdi-a669203ab/",
-    section: "Creatives",
-  },
-  {
-    id: 13,
-    name: "Aishwary",
-    image: "/team/aishwary.jpeg",
-    linkedin: "https://www.linkedin.com/in/ashlovesnoodle",
-    section: "Creatives",
-  },
-  {
-    id: 5,
-    name: "Saksham",
-    image: "/team/saksham.jpeg",
-    linkedin: "https://www.linkedin.com/in/sakshm/",
-    section: "Tech",
+    name: "Raghwender Vasisth",
+    role: "Head of Operations",
+    image: "/team/raghav.png",
+    mobileImagePosition: "center 20%",
+    socials: {
+      linkedin: "https://www.linkedin.com/in/raghwender-vasisth/",
+    },
   },
   {
     id: 7,
-    name: "Areeb",
-    image: "/team/areeb.png",
-    linkedin: "https://www.linkedin.com/in/areeb-ahmad-066547315/",
-    section: "Tech",
+    name: "Maryam Fatima",
+    role: "Head of Brand & Media",
+    image: "/team/maryam.jpeg",
+    mobileImagePosition: "center 22%",
+    socials: {
+      linkedin: "https://www.linkedin.com/in/maryam-fatima-9719aa377/",
+    },
   },
   {
-    id: 15,
-    name: "Prakhar",
-    image: "/team/prakhar.png",
-    linkedin: "https://www.linkedin.com/in/prakharrdev/",
-    section: "Tech",
+    id: 8,
+    name: "Srishti Singh",
+    role: "Head of Partnerships & Institutional Relations",
+    image: "/team/srishti.jpeg",
+    mobileImagePosition: "center 16%",
+    socials: {
+      linkedin: "https://www.linkedin.com/in/srishti-singh-ab6a1b391",
+    },
   },
+];
+
+// Contributors - organized by track
+const volunteers: Volunteer[] = [
+  // Operations Track
   {
-    id: 14,
-    name: "Adithya",
-    image: "/team/adhitya.png", // Corrected image path and extension
-    linkedin: "https://www.linkedin.com/in/adithya---k/",
-    section: "Outreach",
+    id: 21,
+    name: "Shantanu Joshi",
+    role: "Ground Operations",
+    image: "/team/shantanu.jpeg",
+    linkedin: "https://www.linkedin.com/in/theshantanujoshi/",
+    section: "Operations",
   },
   {
     id: 8,
     name: "Atharva",
+    role: "Fork Operations Support",
     image: "/team/atharva.jpg",
     linkedin: "https://www.linkedin.com/in/atharvaupadhyay/",
+    section: "Operations",
+  },
+  // Outreach Track
+  {
+    id: 14,
+    name: "Adithya",
+    role: "Fork Relations & Sponsor Outreach",
+    image: "/team/adhitya.png",
+    linkedin: "https://www.linkedin.com/in/adithya---k/",
     section: "Outreach",
   },
   {
     id: 17,
     name: "Aanjaneya",
+    role: "Community Outreach",
     image: "/team/aanjaneya.jpg",
     linkedin: "https://www.linkedin.com/in/aanjaneya-tripathi-0700a4346/",
     section: "Outreach",
+  },
+  // Creative Track
+  {
+    id: 11,
+    name: "Jaagruti",
+    role: "Graphic + Video Editing",
+    image: "/team/jaagruti.jpeg",
+    section: "Creative",
+  },
+  {
+    id: 18,
+    name: "Kavan",
+    role: "Graphic + Video Editing",
+    image: "/team/kavan.jpg",
+    section: "Creative",
+  },
+  {
+    id: 16,
+    name: "Vareesha",
+    role: "Graphic + Video Editing",
+    image: "/team/vareesha.jpg",
+    linkedin: "https://www.linkedin.com/in/vareesha-mehdi-a669203ab/",
+    section: "Creative",
+  },
+  {
+    id: 13,
+    name: "Aishwary",
+    role: "Graphic + Video Editing",
+    image: "/team/aishwary.jpeg",
+    linkedin: "https://www.linkedin.com/in/ashlovesnoodle",
+    section: "Creative",
+  },
+  {
+    id: 22,
+    name: "Swastika",
+    role: "Video Editing",
+    image: "/team/swastika.jpg",
+    section: "Creative",
+  },
+  {
+    id: 23,
+    name: "Diaa",
+    role: "Email Writing & Reel Editing",
+    image: "/team/diaa.jpg",
+    section: "Creative",
+  },
+  // Tech Track
+  {
+    id: 5,
+    name: "Hridyansh",
+    role: "Core Platform Engineering",
+    image: "/team/hirdyansh.jpeg",
+    linkedin: "https://www.linkedin.com/in/hridyansh-bhardwaj-739470406/",
+    section: "Tech",
+  },
+  {
+    id: 15,
+    name: "Prakhar",
+    role: "Fork Software Systems",
+    image: "/team/prakhar.png",
+    linkedin: "https://www.linkedin.com/in/prakharrdev/",
+    section: "Tech",
+  },
+  {
+    id: 7,
+    name: "Areeb",
+    role: "Internal Tools & Instrumentation",
+    image: "/team/areeb.png",
+    linkedin: "https://www.linkedin.com/in/areeb-ahmad-066547315/",
+    section: "Tech",
   },
 ];
 
@@ -276,7 +292,7 @@ export default function About() {
           align="center"
           eyebrow="Team"
           title="Meet the Agents"
-          description="A tight crew of designers, engineers, club leads, and storytellers powering India-wide teen-led tech movements."
+          description="Designers, engineers, club leads, and storytellers. The people behind everything."
         >
           <Suspense fallback={<LoadingInline />}>
             <TeamCaseStudy coreTeam={coreTeam} volunteers={volunteers} />

@@ -1,9 +1,9 @@
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Our Impact - 1500+ Students, 130+ Projects Shipped",
+  title: "Our Impact - 1,500+ Students, 100% Student-led",
   description:
-    "See Bits&Bytes impact: 1500+ active student members, 100+ schools represented, 130+ shipped projects. Discover how we're empowering teen developers across India.",
+    "Bits&Bytes impact: 1,500+ active student members, 2,700+ evaluated submissions, 100% student-led. Teen developers across India building and shipping with Bits&Bytes.",
   keywords: [
     "bits and bytes impact",
     "teen coding statistics",
@@ -15,8 +15,9 @@ export const metadata: Metadata = {
     canonical: "https://gobitsnbytes.org/impact",
   },
   openGraph: {
-    title: "Our Impact - 1500+ Students Building the Future | Bits&Bytes",
-    description: "1500+ active members, 130+ shipped projects, 100+ schools. See how Bits&Bytes is empowering teen developers.",
+    title: "Our Impact - 1,500+ Students, 100% Student-led | Bits&Bytes",
+    description:
+      "1,500+ active members, 2,700+ evaluated submissions, 100% student-led.",
     url: "https://gobitsnbytes.org/impact",
     type: "website",
   },

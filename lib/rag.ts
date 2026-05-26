@@ -62,7 +62,7 @@ export async function generateEmbedding(text: string): Promise<number[]> {
   return embedding
 }
 
-export async function searchSiteContent(query: string, matchCount = 3): Promise<string[]> {
+export async function searchSiteContent(query: string, matchCount = 6): Promise<string[]> {
   let queryEmbedding: number[]
   try {
     queryEmbedding = await generateEmbedding(query)
@@ -102,8 +102,8 @@ export async function searchSiteContent(query: string, matchCount = 3): Promise<
 
   const { data, error } = await supabase.rpc("match_site_sections", {
     query_embedding: queryEmbedding,
-    match_threshold: 0.5,
-    match_count: matchCount,
+    match_threshold: 0.25, // lowered to 0.25 to prevent empty results on shorter queries
+    match_count: matchCount, // was 3 — too few for multi-part questions
   })
 
   if (error) {
