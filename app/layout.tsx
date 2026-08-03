@@ -7,6 +7,7 @@ import { SpeedInsights } from "@vercel/speed-insights/next";
 import "./globals.css";
 import { ThemeProvider } from "@/components/theme-provider";
 import { SiteChrome } from "@/components/site-chrome";
+import { SmoothCursor } from "@/components/ui/smooth-cursor";
 
 const anton = Anton({
   subsets: ["latin"],
@@ -24,8 +25,8 @@ const jetBrainsMono = JetBrains_Mono({
 // SEO-optimized viewport configuration
 export const viewport: Viewport = {
   themeColor: [
-    { media: "(prefers-color-scheme: light)", color: "#3E1E68" },
-    { media: "(prefers-color-scheme: dark)", color: "#0a0a0a" },
+    { media: "(prefers-color-scheme: light)", color: "#97192C" },
+    { media: "(prefers-color-scheme: dark)", color: "#1E0509" },
   ],
   width: "device-width",
   initialScale: 1,
@@ -36,33 +37,30 @@ export const metadata: Metadata = {
   metadataBase: new URL("https://gobitsnbytes.org"),
   manifest: "/manifest.webmanifest",
   title: {
-    default:
-      "Bits&Bytes - India's Teen-Led Code Club | Hackathons & Tech Community",
-    template: "%s | Bits&Bytes",
+    default: "bits&bytes™ | India's Boldest Youth Builder Network & Hackathons",
+    template: "%s | bits&bytes™",
   },
   description:
-    "Innovate. Collaborate. Hack. Join India's boldest teen-led code club. Build real projects, attend hackathons, and grow as a developer. 1500+ active members and 2700+ participant submissions evaluated in 3 days.",
+    "Join India's boldest pan-India youth-led builder network. Build real software, attend hackathons, and grow with 1400+ teen developers nationwide.",
   keywords: [
-    "Bits and Bytes",
+    "bits&bytes™",
     "bits&bytes",
-    "teen code club india",
-    "india hackathons for students",
-    "student developers india",
-    "coding club lucknow",
-    "tech events india",
-    "learn coding for teens",
-    "teen programmers community",
-    "hackathons in india 2025",
-    "coding classes for teens india",
-    "high school coding club",
-    "teen tech community",
-    "youth coding programs india",
-    "student hackathon india",
-    "free coding club india",
+    "bitsnbytes",
+    "GOBITSNBYTES FOUNDATION",
+    "pan india youth builder network",
+    "pan india student hackathons",
+    "nationwide teen developers india",
+    "youth hackathons lucknow",
+    "youth hackathons delhi",
+    "youth hackathons hyderabad",
+    "youth hackathons bangalore",
+    "agentic ai hackathons india",
+    "free tech events for teens",
+    "section 8 non profit youth tech",
   ],
-  authors: [{ name: "Bits&Bytes Team", url: "https://gobitsnbytes.org/about" }],
-  creator: "Bits&Bytes",
-  publisher: "Bits&Bytes",
+  authors: [{ name: "bits&bytes™ Team", url: "https://gobitsnbytes.org/about" }],
+  creator: "GOBITSNBYTES FOUNDATION",
+  publisher: "GOBITSNBYTES FOUNDATION",
   formatDetection: {
     email: true,
     address: true,
@@ -91,44 +89,50 @@ export const metadata: Metadata = {
     type: "website",
     locale: "en_IN",
     url: "https://gobitsnbytes.org",
-    siteName: "Bits&Bytes",
-    title:
-      "Bits&Bytes - India's Teen-Led Code Club | Hackathons & Tech Community",
+    siteName: "bits&bytes™",
+    title: "bits&bytes™ | Pan-India Youth-Led Builder Network & Hackathons",
     description:
-      "Join India's boldest teen-led code club. Build real projects, attend hackathons, and grow as a developer. 1500+ active members.",
+      "Join India's boldest pan-India youth-led builder network. Build real software, attend hackathons, and grow with 1400+ teen developers nationwide.",
     images: [
       {
         url: "/og-image.png",
         width: 1200,
         height: 630,
-        alt: "Bits&Bytes - India's Teen-Led Code Club",
+        alt: "bits&bytes™ - Pan-India Youth-Led Builder Network",
         type: "image/png",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Bits&Bytes - India's Teen-Led Code Club",
+    title: "bits&bytes™ | Pan-India Youth-Led Builder Network & Hackathons",
     description:
-      "Join India's boldest teen-led code club. 1500+ active members building and shipping real products.",
+      "Join India's boldest pan-India youth-led builder network. Build real software, attend hackathons, and grow with 1400+ teen developers nationwide.",
     images: ["/og-image.png"],
-    creator: "@bitsnbytes_lko",
-    site: "@bitsnbytes_lko",
+    creator: "@gobitsnbytes",
+    site: "@gobitsnbytes",
   },
   verification: {
     google:
       process.env.GOOGLE_SITE_VERIFICATION || "google-site-verification-code",
   },
   category: "education",
-  classification: "Nonprofit Teen Code Club",
+  classification: "Nonprofit Pan-India Youth Builder Network",
   other: {
-    "msapplication-TileColor": "#3E1E68",
+    "msapplication-TileColor": "#97192C",
     "apple-mobile-web-app-capable": "yes",
     "apple-mobile-web-app-status-bar-style": "black-translucent",
   },
   icons: {
-    icon: [{ url: "/logo.svg", type: "image/svg+xml" }],
-    shortcut: [{ url: "/logo.svg", type: "image/svg+xml" }],
+    icon: [
+      { url: "/favicon.ico", sizes: "any" },
+      { url: "/favicon-16x16.png", sizes: "16x16", type: "image/png" },
+      { url: "/favicon-32x32.png", sizes: "32x32", type: "image/png" },
+      { url: "/logo.svg", type: "image/svg+xml" },
+    ],
+    apple: [
+      { url: "/apple-touch-icon.png", sizes: "180x180", type: "image/png" },
+    ],
   },
 };
 
@@ -137,53 +141,122 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  // Organization structured data for Google Knowledge Panel
+  // Organization + NGO + Pan-India LocalBusiness structured data for Knowledge Panel & Local SEO
   const organizationJsonLd = {
     "@context": "https://schema.org",
-    "@type": "EducationalOrganization",
-    "@id": "https://gobitsnbytes.org/#organization",
-    name: "Bits&Bytes",
-    alternateName: ["Bits and Bytes", "BitsNBytes", "Bits & Bytes"],
-    url: "https://gobitsnbytes.org",
-    logo: {
-      "@type": "ImageObject",
-      url: "https://gobitsnbytes.org/logo.svg",
-      width: 512,
-      height: 512,
-    },
-    image: "https://gobitsnbytes.org/og-image.png",
-    description:
-      "India's boldest teen-led code club. We run hackathons, workshops, and build real projects with 1500+ student developers across India.",
-    foundingDate: "2025",
-    address: {
-      "@type": "PostalAddress",
-      addressLocality: "Lucknow",
-      addressRegion: "Uttar Pradesh",
-      addressCountry: "IN",
-    },
-    areaServed: {
-      "@type": "Country",
-      name: "India",
-    },
-    sameAs: [
-      "https://www.linkedin.com/company/gobitsbytes",
-      "https://github.com/gobitsnbytes",
-      "https://twitter.com/bitsnbytes_lko",
-      "https://www.instagram.com/gobitsnbytes",
-    ],
-    contactPoint: {
-      "@type": "ContactPoint",
-      contactType: "customer service",
-      url: "https://gobitsnbytes.org/contact",
-      availableLanguage: ["English", "Hindi"],
-    },
-    knowsAbout: [
-      "Web Development",
-      "Mobile App Development",
-      "Artificial Intelligence",
-      "Machine Learning",
-      "Hackathons",
-      "Youth Coding Education",
+    "@graph": [
+      {
+        "@type": ["EducationalOrganization", "NGO", "EducationalOccupationalProgram"],
+        "@id": "https://gobitsnbytes.org/#organization",
+        name: "bits&bytes™",
+        legalName: "GOBITSNBYTES FOUNDATION",
+        alternateName: ["bits&bytes", "bitsnbytes", "GOBITSNBYTES FOUNDATION", "bits&bytes India", "bits&bytes Builder Network"],
+        url: "https://gobitsnbytes.org",
+        logo: {
+          "@type": "ImageObject",
+          url: "https://gobitsnbytes.org/logo.svg",
+          width: 512,
+          height: 512,
+        },
+        image: "https://gobitsnbytes.org/og-image.png",
+        description:
+          "India's premier pan-India youth-led builder network operated by GOBITSNBYTES FOUNDATION (Section 8 non-profit). Organizing student hackathons, hardware meetups, AI sprints, and local builder hubs across India.",
+        disambiguatingDescription:
+          "Pan-India youth builder network and Section 8 non-profit organisation (GOBITSNBYTES FOUNDATION). Not affiliated with the PyTorch Python library bitsandbytes, BNB cryptocurrency/Binance, or Airbnb.",
+        foundingDate: "2025-11-01",
+        nonprofitStatus: "NonprofitSection8",
+        email: "hello@gobitsnbytes.org",
+        address: {
+          "@type": "PostalAddress",
+          addressLocality: "Lucknow",
+          addressRegion: "Uttar Pradesh",
+          addressCountry: "IN",
+        },
+        geo: {
+          "@type": "GeoCoordinates",
+          latitude: 26.8467,
+          longitude: 80.9462,
+        },
+        areaServed: [
+          {
+            "@type": "Country",
+            name: "India",
+          },
+          {
+            "@type": "City",
+            name: "Jaipur",
+          },
+          {
+            "@type": "City",
+            name: "Hyderabad",
+          },
+          {
+            "@type": "City",
+            name: "Bengaluru",
+          },
+          {
+            "@type": "City",
+            name: "Kolkata",
+          },
+          {
+            "@type": "City",
+            name: "Noida",
+          },
+          {
+            "@type": "City",
+            name: "Lucknow",
+          },
+        ],
+        sameAs: [
+          "https://www.linkedin.com/company/gobitsbytes",
+          "https://github.com/gobitsnbytes",
+          "https://x.com/gobitsnbytes",
+          "https://www.instagram.com/gobitsnbytes",
+          "https://discord.gg/rjqPfwKKTE",
+        ],
+        contactPoint: [
+          {
+            "@type": "ContactPoint",
+            contactType: "customer support",
+            email: "hello@gobitsnbytes.org",
+            url: "https://gobitsnbytes.org/contact",
+            availableLanguage: ["English", "Hindi"],
+          },
+        ],
+        knowsAbout: [
+          "Web Development",
+          "Mobile App Development",
+          "Artificial Intelligence",
+          "Agentic AI",
+          "Hackathons",
+          "Youth Coding Education",
+          "Open Source",
+        ],
+      },
+      {
+        "@type": "LocalBusiness",
+        "@id": "https://gobitsnbytes.org/#localbusiness",
+        name: "bits&bytes™ HQ (GOBITSNBYTES FOUNDATION)",
+        image: "https://gobitsnbytes.org/og-image.png",
+        url: "https://gobitsnbytes.org",
+        email: "hello@gobitsnbytes.org",
+        priceRange: "Free",
+        address: {
+          "@type": "PostalAddress",
+          addressLocality: "Lucknow",
+          addressRegion: "Uttar Pradesh",
+          addressCountry: "IN",
+        },
+        geo: {
+          "@type": "GeoCoordinates",
+          latitude: 26.8467,
+          longitude: 80.9462,
+        },
+        areaServed: {
+          "@type": "Country",
+          name: "India",
+        },
+      },
     ],
   };
 
@@ -193,9 +266,9 @@ export default function RootLayout({
     "@type": "WebSite",
     "@id": "https://gobitsnbytes.org/#website",
     url: "https://gobitsnbytes.org",
-    name: "Bits&Bytes",
+    name: "bits&bytes™",
     description:
-      "India's teen-led code club for hackathons, workshops, and building real projects",
+      "India's youth-led builder network for hackathons, workshops, and building real projects",
     publisher: {
       "@id": "https://gobitsnbytes.org/#organization",
     },
@@ -234,14 +307,8 @@ export default function RootLayout({
       {
         "@type": "WebPage",
         name: "About Us",
-        description: "Learn about Bits&Bytes - India's teen-led code club",
+        description: "Learn about bits&bytes™ - India's youth-led builder network",
         url: "https://gobitsnbytes.org/about",
-      },
-      {
-        "@type": "WebPage",
-        name: "Projects",
-        description: "Explore projects built by teen developers",
-        url: "https://gobitsnbytes.org/projects",
       },
       {
         "@type": "WebPage",
@@ -251,30 +318,43 @@ export default function RootLayout({
       },
       {
         "@type": "WebPage",
-        name: "Join Us",
-        description: "Join India's boldest teen code club - free membership",
-        url: "https://gobitsnbytes.org/join",
-      },
-      {
-        "@type": "WebPage",
         name: "Impact",
-        description: "See our community impact - 1500+ students, 100% student-led",
+        description: "See our community impact - 1400+ students, 100% student-led",
         url: "https://gobitsnbytes.org/impact",
       },
       {
         "@type": "WebPage",
+        name: "Fork Network",
+        description: "Local chapters and builder hubs across India",
+        url: "https://gobitsnbytes.org/fork",
+      },
+      {
+        "@type": "WebPage",
+        name: "Press & Media Kit",
+        description: "Official logos, brand kit, facts, and press releases",
+        url: "https://gobitsnbytes.org/press",
+      },
+      {
+        "@type": "WebPage",
+        name: "Join Us",
+        description: "Join India's boldest youth-led builder network - free membership",
+        url: "https://gobitsnbytes.org/join",
+      },
+      {
+        "@type": "WebPage",
         name: "Contact",
-        description: "Get in touch with Bits&Bytes team",
+        description: "Get in touch with bits&bytes™ team in Lucknow",
         url: "https://gobitsnbytes.org/contact",
       },
       {
         "@type": "WebPage",
         name: "FAQ",
-        description: "Frequently asked questions about Bits&Bytes",
+        description: "Frequently asked questions about bits&bytes™",
         url: "https://gobitsnbytes.org/faq",
       },
     ],
   };
+
 
   return (
     <html
@@ -307,6 +387,7 @@ export default function RootLayout({
           }}
         />
         <ThemeProvider>
+          <SmoothCursor />
           <SiteChrome>{children}</SiteChrome>
           <Analytics />
           <SpeedInsights />

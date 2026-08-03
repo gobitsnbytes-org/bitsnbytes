@@ -1,9 +1,9 @@
-# Bits&Bytes Team – Agents Handbook
+# bits&bytes™ Team – Agents Handbook
 
 > **Mission:** Getting ambitious teenagers to ship meaningful tech through hackathons, design/dev squads, and product launches. Fully student-led.
-> **Org Type:** Nonprofit · Independent Teen-Led Code Club · Based in Lucknow, India · Serving builders nationwide
+> **Org Type:** Nonprofit Section 8 Company (GOBITSNBYTES FOUNDATION) · Independent Teen-Led Builder Network · Based in Lucknow, India · Serving builders nationwide
 
-This handbook describes the core Bits&Bytes "agents" (team members), what each person does, and how we collaborate.
+This handbook describes the core bits&bytes™ "agents" (team members), what each person does, how we collaborate, and our legal governance framework.
 
 ---
 
@@ -15,14 +15,26 @@ We're not a branch of any external student group. We're fully independent, fully
 ### 1.2 The Origin Story
 In July 2025, our team was organizing a major regional student hackathon under an external partner organization. By mid-August, the partner organization cancelled the event, which was a significant setback.
 
-To overcome this uncertainty and avoid relying on external groups, we founded Bits&Bytes in November 2025. Originally, our goal was simply to gather everyone together and host a 24-hour independent hackathon to make up for the cancelled event. However, we quickly realized we could build something far more impactful and sustainable.
+To overcome this uncertainty and avoid relying on external groups, we founded bits&bytes™ as a student-led network in November 2025. Originally, our goal was simply to gather everyone together and host a 24-hour independent hackathon to make up for the cancelled event. However, we quickly realized we could build something far more impactful and sustainable.
 
-Since then, our team has gone through major revamps, but our core mission has remained clear. We have since launched cohort-based programs, executed the India Innovates partner sprint, and grown into a nationwide teen builder network.
+To establish a permanent, legally protected, and independent home for the network, **GOBITSNBYTES FOUNDATION** was incorporated as a Section 8 non-profit company on 2 June 2026. The Foundation is legally governed by its Board of Directors, which holds ultimate fiduciary, constitutional, and safeguarding authority over the Network.
 
 ### 1.3 Brand Kit
-Bits&Bytes uses a compact, production-friendly visual identity. Key elements:
+bits&bytes™ uses a compact, production-friendly visual identity. Key elements:
 
-- **Brand Mark:** A 3D cube monogram (the cube contains a stylized 'BB' and a small star accent). Use the full wordmark for large headings and the cube mark for constrained spaces (avatars, favicons). Prefer a white reversed mark on dark backgrounds; use single-color marks on light backgrounds. Always maintain clear space around the mark.
+- **Brand Mark:** A geometric cube rendered in a bold isometric style with stylized B letterforms on its face and a four-pointed star on top. Use the full wordmark for large headings and the cube mark for constrained spaces such as avatars and favicons. `public/logo.svg` is the white mark and should sit on dark, burgundy, or orange surfaces; use the PNG or monochrome variants only when the surface requires it. Always maintain clear space around the mark.
+
+- **Logo Variations:**
+  - White background: primary/default lockup.
+  - Black background: dark-background contexts.
+  - Burgundy `#97192c`: brand-colored environments.
+  - Orange `#fc920d`: accent/campaign usage.
+
+- **Embedding:** use `![logo](https://gobitsnbytes.org/logo)` in Markdown or `<img src="https://gobitsnbytes.org/logo" alt="bits&bytes™ logo">` in HTML.
+
+- **Name Usage**: The primary brand spelling is "bits&bytes™". In contexts or environments where the ampersand character ("&") is unavailable, unsupported, or restricted (such as domains, email handles, code package repositories, or file system directories), "bitsnbytes" is the official, approved, and equivalent alternative. Both "bits&bytes" and "bitsnbytes" are approved brand descriptors.
+
+  Never write "bits & bytes™", "Bits & Bytes", "bits and bytes", "B&B", "gobitsnbytes", or other public-facing variants. The registered legal entity name is **GOBITSNBYTES FOUNDATION** and should appear only in legal, regulatory, banking, invoice, contract, and official correspondence contexts.
 
 - **Typography:**
   - Primary: Helvetica Now — headings and display (use heavier weights for emphasis).
@@ -35,13 +47,12 @@ Bits&Bytes uses a compact, production-friendly visual identity. Key elements:
   - **Neutrals:** #120F0A, #413F3B, #716F6C, #A09F9D, #D0CFCE
   - **Accent / Orange (pop gradient):** #FC920D → #FDA83D → #FDBE6E → #FED39E → #FEE9CF
   - **Warm Accent Range:** #C94218, #D46846, #DF8E74, #E9B3A3, #F4D9D1
-  - **Utility / Interaction:** Vibrant Pink #E45A92, Rich Plum #5D2F77, Deep Purple #3E1E68
 
   Design guidance: treat burgundy/plum as the core voice (serious and composed); use the orange gradient for emphasis and pops; prefer layered gradients for depth; and use the neutral scale to keep layouts clean.
 
 - **Visual Elements:**
-  - Use gradients (Vibrant Pink → Rich Plum → Deep Purple) for hero backgrounds.
-  - Halftone/stipple textures, geometric checks, and a small star/sparkle motif are approved decorative elements. Apply as subtle overlays to add texture without reducing legibility.
+  - Use gradients from burgundy/plum into orange warmth for hero and campaign surfaces.
+  - Dither, halftone dots, stipple textures, geometric checks, burst/starburst shapes, and small star/sparkle motifs are approved decorative elements. Apply as subtle overlays with generous white space so they add motion without reducing legibility.
 
 - **Logo usage & assets:** keep vector SVGs for web/print, provide monochrome variants, and do not distort, rotate, or apply unapproved color treatments.
 
@@ -59,24 +70,56 @@ Quick reference for "who to ping for what".
 | **Akshat Kushwaha** | Chief Technology Officer (CTO) | Production Infrastructure, AI/LLMOps, System Reliability, Operations |
 | **Aadrika Maurya** | Chief Creative Officer (CCO) & Chief Operating Officer (COO) | Neuroscience Research (EEG), Brand Strategy, Creative Direction |
 | **Devaansh Pathak** | Chief Financial Officer (CFO) | Backend Architecture, Partnership Economics |
-| **Drishti Arora** | Chief Marketing Officer (CMO) | Marketing Strategy, Brand Growth, Campaign Management |
+| **Drishti Arora** | Chief Growth Officer (CGO) | Growth Strategy, Brand Growth, Campaign Management |
 | **Raghwender Vasisth** | Head of Operations | Operations Management, Process Optimization, Resource Logistics |
 | **Maryam Fatima** | Head of Brand & Media | Visual Design, Campaign Strategy, Social |
 | **Srishti Singh** | Head of Partnerships & Institutional Relations | Logistics, Internal Comms, Coordination |
+| **Angel** | Head of Research & Strategy | Research & Analysis, Strategic Planning, Community Development |
 
 ### Volunteers (Operations, Outreach, Creative, Tech)
 
-Bits&Bytes is supported by a volunteer network:
+bits&bytes™ is supported by a volunteer network:
 - **Operations:** Shantanu Joshi and Atharva
 - **Outreach:** Adithya and Aanjaneya
-- **Creatives (Graphic + Video Editing):** Jaagruti, Kavan, Vareesha, and Aishwary
+- **Creatives (Graphic + Video Editing):** Jaagruti, Vareesha, and Aishwary
 - **Tech:** Hridyansh, Areeb, and Prakhar
+
+### Early Contributors
+We are grateful to our early team members and contributors who helped build and shape the network during its initial sprints before moving on to new chapters:
+- Kavan, Saksham, Kaustubh, Oviya
 
 ---
 
-## 3. Agent Profiles
+## 3. Executive & Governance Framework
 
-### 3.1 Leadership
+To protect our community and maintain Section 8 compliance, bits&bytes™ operates under a structured legal division of authority between Upstream governance and operational teams.
+
+### 3.1 The Board of Directors
+The Board of Directors holds ultimate legal, fiduciary, financial, and safeguarding authority over GOBITSNBYTES FOUNDATION.
+- **Powers:** Approving strategic plans, managing formal banking/accounts, entering into legal contracts/leases, setting the Authority Matrix, and deciding on Fork Recognition, Suspension, or Revocation.
+- **Privacy Notice:** In accordance with internal security and operational protocols, the names of the individual directors are kept private from public-facing marketing and community documentation. They are referenced collectively as the **Board of Directors**.
+
+### 3.2 Executive Officers (Operational Team)
+Executive Officers are appointed by the Board under Article 28 of the e-Articles of Association (e-AOA) for day-to-day operations.
+- **Operational Status:** Titles like CEO, CTO, COO, CFO, and CGO represent specific operational management domains.
+- **Signing & Fiduciary Limits:** Because bits&bytes™ is intentionally youth-led and includes minors, the designation of an Executive Officer **does not** automatically confer statutory directorship, legal membership, signature authority, banking access, or the power to bind the Foundation. All formal commitments, contracts, and bank operations must be routed through written Board authorizations.
+
+### 3.3 Fork Network Model
+A **Fork** is a recognized local, institutional, or thematic operating unit of the bits&bytes™ Network recognized under authority of the Board.
+- **Participation Only:** Fork Recognition is an operational, brand-use, and community permission only. 
+- **No Independent Agency:** A Fork does not constitute a separate legal entity, franchise, branch office, joint venture, partnership, or subsidiary. A Fork has no authority to bind, contract, represent, or collect funds on behalf of GOBITSNBYTES FOUNDATION. All local fundraising, sponsor deals, and venue contracts must be routed to Upstream for written legal execution.
+
+### 3.4 Minor Safeguarding & Data Rules
+Because many participants are minors, the Foundation enforces rigorous safety protocols:
+- **Statutory Compliance:** All activities, data processing, and communications involving minors are governed by the **Protection of Children from Sexual Offences Act, 2012 (POCSO)** and the **Digital Personal Data Protection Act, 2023 (DPDP Act)**.
+- **Parental Consent:** Verified parent or guardian consent is mandatory for minor participation in events, travel, photography, or public showcases.
+- **Safety Records:** Safeguarding reports and incident files are kept strictly confidential, secure, and shared only on a strict need-to-know basis. Safeguarding decisions override any concepts of local autonomy.
+
+---
+
+## 4. Agent Profiles
+
+### 4.1 Leadership
 
 #### Yash Singh – Chief Executive Officer
 - **Expertise:** Mathematics (IOQM), AI Prototyping, Full-Stack Dev, Hardware Experiments
@@ -101,32 +144,39 @@ Bits&Bytes is supported by a volunteer network:
   - GitHub: https://github.com/Aadrika08
 - **Owns:** Creative direction, brand strategy, visual identity, and the vision for what the network becomes.
 
-#### Akshat Kushwaha – Chief Technology Officer
-- **Expertise:** AI-Native Engineering, Retrieval Systems, System Reliability, LLMOps
-- **Achievements:**
-  - Ex Jr. Research Engineer at jhana.ai at 17, where he built production AI systems including a Steno dictation plugin and AI-era IVRS.
-  - Builds production workflows and retrieval architectures that survive real constraints.
-  - Built the entire Bits&Bytes tech infrastructure from scratch.
+#### Akshat Kushwaha - Chief Technology Officer
+- **Expertise:** Systems Engineering, AI-Native Architecture, LLMOps, Retrieval Systems, Product Engineering.
+- **Role at bits&bytes:** The primary technical lead. Built and owns the entire stack from scratch. First point of contact for anything technical.
+- **Production background:**
+  - Jr. Research Engineer at jhana.ai (India's leading legal AI lab, 10k+ lawyers): replaced GPT-4o-mini with a self-hosted model cutting TTFT by 60% without accuracy loss; built a context-window manager for long dictations; shipped automated WhatsApp IVRS case onboarding.
+  - Contributed to AI systems handling 1.6M+ quarterly requests across real government and legal infrastructure.
+  - Built Lexana: multi-agent legal intelligence platform (semantic caching cutting LLM costs by 60%, real-time WebSocket editing, RAG pipeline); expanded to Nepal.
+  - Built HybridMind: custom hybrid retrieval engine combining FAISS vector search, GraphSAGE-style graph relationships, and SQLite WAL persistence.
+  - Started a design studio at 12, scaled to 30 people and 500+ orders in one year.
+- **Core stack:** Next.js, React, TypeScript, Python, FastAPI, Docker, PostgreSQL, Redis, Prisma, Tailwind CSS, Framer Motion.
+- **Interests:** Agents, LLMOps, Retrieval, System Design, NLP, Product Thinking, DX, Agentic Workflows, Machine Learning.
 - **Profiles:**
   - LinkedIn: https://www.linkedin.com/in/akshat-singh-kushwaha
   - Website: https://a3ro.dev
   - GitHub: https://github.com/a3ro-dev
-- **Owns:** The entire tech stack, the infra, operations, and anything that needs to actually work under pressure.
+  - Calendar: https://calendly.com/a3ro-dev
+  - Email: akshatsingh14372@outlook.com
+- **Owns:** The entire tech stack and infrastructure. Any question about how bits&bytes works technically starts with Akshat.
 
 #### Devaansh Pathak – Chief Financial Officer
 - **Expertise:** Backend Architecture, Database Systems, Partnership Economics
 - **Achievements:**
-  - Co-Architected the high-performance backend systems for the Bits&Bytes platform.
+  - Co-Architected the high-performance backend systems for the bits&bytes™ platform.
   - Executed partnerships that delivered genuine ROI for sponsors across multiple cities.
 - **Profiles:**
   - LinkedIn: https://www.linkedin.com/in/devaanshpa/
 - **Owns:** Financial operations, partnership economics, and backend architecture.
 
-#### Drishti Arora – Chief Marketing Officer
-- **Expertise:** Marketing Strategy, Brand Growth, Campaign Management, Audience Development
+#### Drishti Arora – Chief Growth Officer
+- **Expertise:** Growth Strategy, Brand Growth, Campaign Management, Audience Development
 - **Profiles:**
   - LinkedIn: https://www.linkedin.com/in/drish-arora
-- **Owns:** Marketing strategy, brand growth, and audience development across all channels.
+- **Owns:** Growth strategy, brand growth, and audience development across all channels.
 
 #### Raghwender Vasisth – Head of Operations
 - **Expertise:** Operations Management, Process Optimization, Resource Logistics, Team Coordination
@@ -134,34 +184,42 @@ Bits&Bytes is supported by a volunteer network:
   - LinkedIn: https://www.linkedin.com/in/raghwender-vasisth/
 - **Owns:** Operational excellence, process optimization, and keeping the organization running at scale.
 
+#### Angel – Head of Research & Strategy
+- **Expertise:** Research & Analysis, Strategic Planning, Community Development
+- **Profiles:**
+  - LinkedIn: https://www.linkedin.com/in/angelp-online/
+  - Instagram: https://www.instagram.com/rightangeled/
+- **Owns:** Strategic research, community insights, and organizational growth frameworks.
+
 ---
 
-## 4. Track Record
+## 5. Track Record
 
 - **India Innovates 2026:** Official Executive Partner for the World's Largest Civic Tech Hackathon with 1.26 crore+ applicants.
+- **Hack4Good v0:** Archived 24-hour Agentic AI hackathon in Lucknow with 425 registrations, 110 on-ground attendees, and a ₹35,000 prize pool.
 - **Execron 1.0:** Co-hosted AI Hackathon & Workshop at IIT Kanpur for students in Classes 9–12.
 - **GitHub Copilot Dev Days:** Hosted community developer event focused on AI-assisted coding in Lucknow.
 - **Lucknow Build Guild:** Free hardware workshop and meetup for local tech people.
 - **Regional Space Apps Hackathon:** 300+ participants.
-- **Web Presence:** gobitsnbytes.org serves thousands of monthly visitors with 1,500+ active members.
+- **Web Presence:** gobitsnbytes.org serves thousands of monthly visitors with 1,400+ active members.
 - **Evaluation Throughput:** 2,700+ project submissions reviewed in 3-day sprints.
 
 ---
 
-## 5. How We Work
+## 6. How We Work
 
-### 5.1 Core Principles
+### 6.1 Core Principles
 1. **High Agency ONLY** – We don't do hand-holding. We build for people who want to ship.
 2. **Ship Real Products** – Workshops and hack nights must end with something shipped, not just something learned.
 3. **Collaboration First** – We default to pairing and sharing context.
 4. **Resilience** – We don't make excuses; we ship regardless of obstacles.
 
-### 5.2 Technical Guidelines
+### 6.2 Technical Guidelines
 1. **Performance First** – Optimized for speed (TTFB, LCP, INP).
 2. **Always Optimized** – Production-grade code is mandatory; no "just for fun" hacks on core infra.
 3. **Use PNPM** – Always use `pnpm` for speed and consistency.
 
-## 6. AI Assistant & RAG Maintenance
+## 7. AI Assistant & RAG Maintenance
 
 - The repository includes an on-page AI assistant that answers from two sources:
   - live page context (client `pathname` and optional page snippets sent by the client), and
@@ -179,4 +237,4 @@ npx tsx scripts/embed-site.ts
 
 ---
 
-*Last updated: May 2026*
+*Last updated: June 2026*

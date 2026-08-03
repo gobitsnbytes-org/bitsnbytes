@@ -4,11 +4,25 @@ import React from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { PageSection } from "@/components/page-section";
-import { Sparkles, Cpu, Zap, Globe, GitBranch } from "lucide-react";
-import { CardContainer, CardBody, CardItem } from "@/components/ui/3d-card";
+import { Sparkles, Cpu, Zap, Globe, GitBranch, Cloud } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 const strategicPartners = [
+  {
+    name: "SparkCloud",
+    logo: "https://cloud.sparkden.org/sparkcloud-logo.png",
+    url: "/cloud",
+    learnMoreUrl: "/cloud",
+    learnMoreLabel: "Explore SparkCloud",
+    role: "Cloud Partner",
+    description:
+      "Free cloud development spaces for teen builders — code, build, and host applications from any browser with zero setup.",
+    features: ["Cloud IDE", "Browser Hosting", "Spark Account"],
+    color: "orange",
+    icon: <Cloud className="w-4 h-4 text-current" />,
+    logoWrapClass: "w-36",
+    logoImageClass: "scale-[1.02]",
+  },
   {
     name: "osmAPI",
     logo: "/partners/OSM-API-Light-BBO_4Eff.png",
@@ -18,7 +32,7 @@ const strategicPartners = [
       "One Awesome API for everything AI. Route to OpenAI, Anthropic, Google & 14+ LLM providers.",
     features: ["Universal Router", "Multi-model", "Fast Inference"],
     color: "blue",
-    icon: <Cpu className="w-5 h-5 text-blue-500" />,
+    icon: <Cpu className="w-4 h-4 text-current" />,
     logoWrapClass: "w-36",
     logoImageClass: "scale-[0.98]",
   },
@@ -31,7 +45,7 @@ const strategicPartners = [
       "Supporting scientific research and early-career researchers through fellowships.",
     features: ["Research Hub", "Fellowships", "Open Science"],
     color: "purple",
-    icon: <Sparkles className="w-5 h-5 text-(--brand-purple)" />,
+    icon: <Sparkles className="w-4 h-4 text-current" />,
     logoWrapClass: "w-32",
     logoImageClass: "scale-105",
   },
@@ -44,10 +58,9 @@ const strategicPartners = [
       "Chat experiences and language model integrations for developers.",
     features: ["Neural Chat", "LLM Native", "Agentic IC"],
     color: "pink",
-    icon: <Zap className="w-5 h-5 text-(--brand-pink)" />,
+    icon: <Zap className="w-4 h-4 text-current" />,
     logoWrapClass: "w-24",
     logoImageClass: "scale-[1.08]",
-    logoToneClass: "invert",
   },
   {
     name: "GitLab",
@@ -61,10 +74,9 @@ const strategicPartners = [
       "A DevSecOps platform for planning, coding, securing, and shipping software.",
     features: ["CI/CD Pipelines", "DevSecOps", "Open Source"],
     color: "purple",
-    icon: <GitBranch className="w-5 h-5 text-orange-400" />,
+    icon: <GitBranch className="w-4 h-4 text-current" />,
     logoWrapClass: "w-28",
     logoImageClass: "scale-[1.04]",
-    logoToneClass: "invert",
   },
 ];
 
@@ -77,144 +89,112 @@ export function Partners() {
       align="center"
       className="pb-24 relative overflow-hidden"
     >
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mt-4 max-w-7xl mx-auto px-4 relative z-10">
-        {strategicPartners.map((partner) => (
-          <CardContainer key={partner.name} className="inter-var w-full">
-            <CardBody className="bg-black/40 relative group/card dark:hover:shadow-2xl dark:hover:shadow-emerald-500/[0.1] border-white/[0.1] w-full min-h-[540px] rounded-3xl p-8 border glass-card transition-transform transition-colors transition-opacity duration-300 flex flex-col">
-              <CardItem translateZ="50" className="mb-8 h-12">
-                <div
-                  className={`h-12 relative ${partner.logoWrapClass ?? "w-40"} filter brightness-200 contrast-150 ${partner.logoToneClass ?? ""}`}
-                >
-                  {partner.mobileLogo ? (
-                    <>
-                      <Image
-                        src={partner.logo}
-                        alt={partner.name}
-                        fill
-                        className={`hidden sm:block object-contain object-left grayscale group-hover/card:grayscale-0 transition-transform transition-colors transition-opacity duration-500 ${partner.logoImageClass ?? ""}`}
-                      />
-                      <Image
-                        src={partner.mobileLogo}
-                        alt={partner.name}
-                        fill
-                        className={`sm:hidden object-contain object-left grayscale group-hover/card:grayscale-0 transition-transform transition-colors transition-opacity duration-500 ${partner.logoImageClass ?? ""}`}
-                      />
-                    </>
-                  ) : (
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6 sm:gap-6 mt-4 max-w-[1400px] mx-auto px-4 relative z-10">
+        {strategicPartners.map((partner, idx) => (
+          <div
+            key={partner.name}
+            className="bg-[#faf8f5] dark:bg-[#120f0a] border border-[#120f0a]/15 dark:border-[#faf8f5]/15 p-6 sm:p-8 flex flex-col min-h-[420px] sm:min-h-[500px] hover:border-[#120f0a] dark:hover:border-[#faf8f5] transition-colors duration-200 text-[#120f0a] dark:text-[#faf8f5] relative select-none"
+          >
+            {/* Technical coordinate marker */}
+            <span className="absolute top-2 right-3 text-[7px] font-mono text-[#120f0a]/30 dark:text-[#faf8f5]/30">
+              [REF_PARTNER_0{idx + 1}]
+            </span>
+
+            <div className="mb-6 h-12 relative flex items-center mt-2">
+              <div className={`h-12 relative ${partner.logoWrapClass ?? "w-40"}`}>
+                {partner.mobileLogo ? (
+                  <>
                     <Image
                       src={partner.logo}
                       alt={partner.name}
                       fill
-                      className={`object-contain object-left grayscale group-hover/card:grayscale-0 transition-transform transition-colors transition-opacity duration-500 ${partner.logoImageClass ?? ""}`}
+                      className={`hidden sm:block object-contain object-left dark:brightness-125 dark:contrast-125 ${partner.logoImageClass ?? ""}`}
                     />
-                  )}
-                </div>
-              </CardItem>
-
-              <CardItem
-                as="p"
-                translateZ="60"
-                className="text-[10px] font-black uppercase tracking-[0.2em] text-(--brand-pink)"
-              >
-                {partner.role}
-              </CardItem>
-
-              <CardItem
-                translateZ="70"
-                className="text-3xl font-black text-white tracking-tighter mt-2 min-h-[80px] leading-[1.05]"
-              >
-                {partner.name}
-              </CardItem>
-
-              <CardItem
-                as="p"
-                translateZ="80"
-                className="text-sm text-white/50 leading-relaxed font-medium min-h-[140px] line-clamp-6"
-              >
-                {partner.description}
-              </CardItem>
-
-              <CardItem
-                translateZ="90"
-                className="flex flex-wrap gap-2 mt-8 min-h-[104px] content-start"
-              >
-                {partner.features.map((feat) => (
-                  <span
-                    key={feat}
-                    className="text-[10px] px-3 py-1.5 rounded-full bg-white/[0.05] border border-white/10 text-white/40 font-bold uppercase tracking-wider group-hover/card:text-white/60 transition-colors"
-                  >
-                    {feat}
-                  </span>
-                ))}
-              </CardItem>
-
-              <CardItem as="div" translateZ="95" className="mt-6 min-h-5">
-                {partner.learnMoreUrl ? (
-                  <Link
-                    href={partner.learnMoreUrl}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-xs font-bold uppercase tracking-[0.18em] text-white/60 hover:text-white transition-colors"
-                  >
-                    {partner.learnMoreLabel}
-                  </Link>
+                    <Image
+                      src={partner.mobileLogo}
+                      alt={partner.name}
+                      fill
+                      className={`sm:hidden object-contain object-left dark:brightness-125 dark:contrast-125 ${partner.logoImageClass ?? ""}`}
+                    />
+                  </>
                 ) : (
-                  <span
-                    className="text-xs font-bold uppercase tracking-[0.18em] opacity-0 select-none pointer-events-none"
-                    aria-hidden="true"
-                  >
-                    Explore DevSecOps
-                  </span>
+                  <Image
+                    src={partner.logo}
+                    alt={partner.name}
+                    fill
+                    className={`object-contain object-left dark:brightness-125 dark:contrast-125 ${partner.logoImageClass ?? ""}`}
+                  />
                 )}
-              </CardItem>
-
-              <div className="flex justify-between items-center mt-auto pt-6 border-t border-white/5">
-                <CardItem translateZ={100}>
-                  <Button
-                    variant="outline"
-                    size="sm"
-                    className="min-w-[160px] justify-center rounded-xl border-white/10 bg-white/5 text-white font-black hover:bg-(--brand-pink) hover:border-(--brand-pink) hover:text-white transition-transform transition-colors transition-opacity group-hover/card:translate-x-1"
-                    asChild
-                  >
-                    <Link
-                      href={partner.url}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                    >
-                      Visit Platform
-                      <Globe className="w-3.5 h-3.5 ml-2 opacity-50" />
-                    </Link>
-                  </Button>
-                </CardItem>
-                <CardItem
-                  translateZ={100}
-                  className="p-3 rounded-full bg-white/[0.03] border border-white/5 text-white/20 group-hover/card:bg-white/[0.08] group-hover/card:border-white/10 group-hover/card:text-white transition-transform transition-colors transition-opacity shadow-inner"
-                >
-                  {partner.icon}
-                </CardItem>
               </div>
+            </div>
 
-              {/* Decorative Corner Glow */}
-              <div
-                className={`absolute -bottom-10 -right-10 w-48 h-48 rounded-full opacity-0 filter blur-3xl pointer-events-none group-hover/card:opacity-20 transition-opacity duration-1000 ${
-                  partner.color === "pink"
-                    ? "bg-(--brand-pink)"
-                    : "bg-(--brand-purple)"
-                }`}
-              />
-            </CardBody>
-          </CardContainer>
+            <p className="font-mono text-[9px] uppercase tracking-widest text-[#97192c] dark:text-[#fc920d] font-bold">
+              {partner.role}
+            </p>
+
+            <h3 className="font-accent-sans text-2xl sm:text-[28px] lg:text-[22px] xl:text-3xl font-normal tracking-tight mt-2 min-h-[60px] lg:min-h-[66px] leading-[1.05] uppercase">
+              {partner.name}
+            </h3>
+
+            <p className="font-serif-brand text-sm text-[#120f0a]/80 dark:text-[#faf8f5]/80 leading-relaxed min-h-[120px] line-clamp-6">
+              {partner.description}
+            </p>
+
+            <div className="flex flex-wrap gap-2 mt-6 min-h-[80px] content-start">
+              {partner.features.map((feat) => (
+                <span
+                  key={feat}
+                  className="text-[9px] px-2.5 py-1 border border-[#120f0a]/20 dark:border-[#faf8f5]/20 bg-[#faf8f5] dark:bg-[#120f0a] text-[#120f0a] dark:text-[#faf8f5] font-mono tracking-widest uppercase select-none"
+                >
+                  {feat}
+                </span>
+              ))}
+            </div>
+
+            <div className="mt-2 min-h-5 mb-4">
+              {partner.learnMoreUrl ? (
+                <Link
+                  href={partner.learnMoreUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-[10px] font-mono font-bold uppercase tracking-wider text-[#97192c] dark:text-[#fc920d] hover:underline"
+                >
+                  {partner.learnMoreLabel}
+                </Link>
+              ) : (
+                <span
+                  className="text-xs font-bold uppercase tracking-[0.18em] opacity-0 select-none pointer-events-none"
+                  aria-hidden="true"
+                >
+                  Explore DevSecOps
+                </span>
+              )}
+            </div>
+
+            <div className="flex justify-between items-center mt-auto pt-6 border-t border-[#120f0a]/15 dark:border-[#faf8f5]/15">
+              <Button
+                variant="outline"
+                className="min-w-[140px] h-11 justify-center rounded-none border border-[#120f0a] dark:border-[#faf8f5] bg-[#faf8f5] dark:bg-[#120f0a] text-[#120f0a] dark:text-[#faf8f5] hover:bg-[#120f0a] dark:hover:bg-[#faf8f5] hover:text-[#faf8f5] dark:hover:text-[#120f0a] font-black uppercase tracking-wider shadow-none hover:shadow-none hover:-translate-x-0 hover:-translate-y-0 active:scale-[0.97] transition-movement cursor-pointer"
+                asChild
+              >
+                <Link
+                  href={partner.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  Visit site
+                  <Globe className="w-3.5 h-3.5 ml-2" />
+                </Link>
+              </Button>
+              <div className="p-2 border border-[#120f0a] dark:border-[#faf8f5] bg-[#faf8f5] dark:bg-[#120f0a] text-[#120f0a] dark:text-[#faf8f5] select-none">
+                {partner.icon}
+              </div>
+            </div>
+          </div>
         ))}
-      </div>
-
-      {/* Background Section Ambient Elements */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 -z-0 w-full h-[120%] opacity-20 pointer-events-none select-none">
-        <div className="absolute top-0 left-1/4 w-[600px] h-[600px] bg-(--brand-pink) rounded-full filter blur-[200px] opacity-10 animate-pulse" />
-        <div
-          className="absolute bottom-0 right-1/4 w-[600px] h-[600px] bg-(--brand-purple) rounded-full filter blur-[200px] opacity-10 animate-pulse"
-          style={{ animationDelay: "2s" }}
-        />
       </div>
     </PageSection>
   );
 }
+
+export default Partners;

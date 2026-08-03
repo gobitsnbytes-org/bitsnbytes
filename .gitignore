@@ -29,3 +29,9 @@ next-env.d.ts
 comic/
 stickers/
 stickers_nobg/
+agreements/
+# Notion wiki backup
+notion-wiki/
+
+scratch/
+agreements/*

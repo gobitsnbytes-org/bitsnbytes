@@ -20,7 +20,7 @@ const DialogPortal = DialogPrimitive.Portal;
 const DialogTrigger = DialogPrimitive.Trigger;
 const DialogOverlay = React.forwardRef<React.ElementRef<typeof DialogPrimitive.Overlay>, React.ComponentPropsWithoutRef<typeof DialogPrimitive.Overlay>>(({ className, ...props }, ref) => (<DialogPrimitive.Overlay ref={ref} className={cn("fixed inset-0 z-50 bg-black/60 backdrop-blur-sm data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0", className)} {...props} />));
 DialogOverlay.displayName = DialogPrimitive.Overlay.displayName;
-const DialogContent = React.forwardRef<React.ElementRef<typeof DialogPrimitive.Content>, React.ComponentPropsWithoutRef<typeof DialogPrimitive.Content>>(({ className, children, ...props }, ref) => (<DialogPortal><DialogOverlay /><DialogPrimitive.Content ref={ref} className={cn("fixed left-[50%] top-[50%] z-50 grid w-full max-w-[90vw] md:max-w-[800px] translate-x-[-50%] translate-y-[-50%] gap-4 border-none bg-transparent p-0 shadow-none duration-300 data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95", className)} {...props}><div className="relative bg-card dark:bg-[#303030] rounded-[28px] overflow-hidden shadow-2xl p-1">{children}<DialogPrimitive.Close className="absolute right-3 top-3 z-10 rounded-full bg-background/50 dark:bg-[#303030] p-1 hover:bg-accent dark:hover:bg-[#515151] transition-transform transition-colors transition-opacity"><XIcon className="h-5 w-5 text-muted-foreground dark:text-gray-200 hover:text-foreground dark:hover:text-white" /><span className="sr-only">Close</span></DialogPrimitive.Close></div></DialogPrimitive.Content></DialogPortal>));
+const DialogContent = React.forwardRef<React.ElementRef<typeof DialogPrimitive.Content>, React.ComponentPropsWithoutRef<typeof DialogPrimitive.Content>>(({ className, children, ...props }, ref) => (<DialogPortal><DialogOverlay /><DialogPrimitive.Content ref={ref} className={cn("fixed left-[50%] top-[50%] z-50 grid w-full max-w-[90vw] md:max-w-[800px] translate-x-[-50%] translate-y-[-50%] gap-4 border-none bg-transparent p-0 shadow-none duration-300 data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95", className)} {...props}><div className="relative bg-card dark:bg-[#303030] rounded-[28px] overflow-hidden shadow-2xl p-1">{children}<DialogPrimitive.Close className="absolute right-3 top-3 z-10 rounded-none border-2 border-border bg-background p-1.5 hover:bg-accent hover:text-accent-foreground shadow-[2px_2px_0px_0px_var(--border)] active:scale-95 transition-all duration-100 ease-out"><XIcon className="h-5 w-5 text-foreground hover:text-accent-foreground" /><span className="sr-only">Close</span></DialogPrimitive.Close></div></DialogPrimitive.Content></DialogPortal>));
 DialogContent.displayName = DialogPrimitive.Content.displayName;
 
 // --- SVG Icon Components ---
@@ -113,7 +113,7 @@ export const PromptBox = React.forwardRef<PromptBoxRef, PromptBoxProps>(
         }
 
         return (
-            <div className={cn("flex flex-col rounded-3xl p-2.5 shadow-md transition-colors bg-zinc-900 border border-zinc-700/60 focus-within:border-[var(--brand-pink)] focus-within:ring-1 focus-within:ring-[var(--brand-pink)] shadow-xl w-full", className)}>
+            <div className={cn("flex flex-col rounded-none p-2 transition-colors bg-[#faf8f5] dark:bg-[#120f0a] border border-[#120f0a]/15 dark:border-[#faf8f5]/15 w-full", className)}>
                 <textarea
                     ref={internalTextareaRef}
                     rows={1}
@@ -121,7 +121,7 @@ export const PromptBox = React.forwardRef<PromptBoxRef, PromptBoxProps>(
                     onChange={handleInputChange}
                     onKeyDown={handleKeyDown}
                     placeholder="Type your message here..."
-                    className="custom-scrollbar w-full resize-none border-0 bg-transparent px-3 py-2 text-zinc-100 placeholder:text-zinc-500 focus:ring-0 focus-visible:outline-none min-h-[44px] max-h-32 text-base sm:text-sm"
+                    className="custom-scrollbar w-full resize-none border-0 bg-transparent px-3 py-2 text-[#120f0a] dark:text-[#faf8f5] placeholder:text-[#120f0a]/40 dark:placeholder:text-[#faf8f5]/40 focus:ring-0 focus-visible:outline-none min-h-[44px] max-h-32 text-base sm:text-sm font-semibold"
                     {...props}
                 />
 
@@ -135,16 +135,16 @@ export const PromptBox = React.forwardRef<PromptBoxRef, PromptBoxProps>(
                                             type="button"
                                             onClick={() => handleSubmit()}
                                             disabled={!hasValue}
-                                            className="flex h-9 w-9 md:h-10 md:w-10 md:px-3 md:rounded-xl md:w-auto items-center justify-center rounded-full text-sm font-semibold transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring disabled:pointer-events-none bg-[var(--brand-pink)] text-white hover:bg-[#d44c84] disabled:opacity-50"
+                                            className="flex h-9 w-9 md:h-9 md:w-auto md:px-4 md:rounded-none items-center justify-center rounded-none text-xs font-mono font-bold uppercase tracking-wider transition-all focus-visible:outline-none disabled:pointer-events-none bg-[#97192c] text-white border border-[#120f0a] dark:border-[#faf8f5] hover:bg-[#fc920d] hover:text-[#120f0a] dark:hover:text-[#120f0a] active:scale-[0.98] disabled:opacity-50 cursor-pointer"
                                         >
-                                            <SendIcon className="h-5 w-5 md:mr-1.5" />
+                                            <SendIcon className="h-4 w-4 md:mr-1.5" />
                                             <span className="hidden md:inline">Ask</span>
                                             <span className="sr-only">Send message</span>
                                         </button>
                                     </TooltipTrigger>
-                                    <TooltipContent side="top" showArrow={true}><p>Send</p></TooltipContent>
+                                    <TooltipContent side="top" showArrow={true} className="bg-[#faf8f5] dark:bg-[#120f0a] border border-[#120f0a]/15 dark:border-[#faf8f5]/15 text-[#120f0a] dark:text-[#faf8f5] font-bold uppercase font-mono"><p>Send</p></TooltipContent>
                                 </Tooltip>
-                            </div>
+                             </div>
                         </div>
                     </TooltipProvider>
                 </div>

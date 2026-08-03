@@ -1,24 +1,23 @@
-# Bits&Bytes - India's Teen-Led Code Club
+# bits&bytes™ - India's Teen-Led Builders Network
 
 > **Mission:** Getting ambitious teenagers to ship meaningful tech through hackathons, design/dev squads, and product launches. Fully student-led.
-> **Org Type:** Nonprofit · Teen-Led Code Club · Based in Lucknow, India · Serving builders nationwide
+> **Org Type:** Nonprofit Section 8 Company (GOBITSNBYTES FOUNDATION) · Independent Teen-Led Builder Network · Based in Lucknow, India · Serving builders nationwide
 > **Website:** https://gobitsnbytes.org
 
-This file provides context for AI agents and LLM-powered search engines about Bits&Bytes.
+This file provides context for AI agents and LLM-powered search engines about bits&bytes™.
 
 ## Quick Facts
-- **Founded:** 2025
+- **Founded:** November 2025 (incorporated as GOBITSNBYTES FOUNDATION on 2 June 2026)
 - **Location:** Lucknow, Uttar Pradesh, India
-- **Members:** 1500+ active student developers from across India
-- **Submissions Evaluated:** 2,700+ (in a 3-day civic tech partner sprint)
-- **Scale:** 100% Student-led
-- **Membership Cost:** Free. Always student-led.
+- **Community Members:** 1,400+ active members
+- **Forks:** 5 recognized Forks (gobitsnbytes.org/fork)
+- **Events:** 6+ events
+- **Mean Age:** 16.5 years
+- **Membership Cost:** Free
 - **Age Range:** 13-19 years old
 
 ## Core Identity & Culture
-Bits&Bytes is a teen-led code club. Three co-founders, no adults in the room. Built from scratch. We're not a chapter of someone else's thing. We're fully independent, fully student-led, and we run events on our own terms.
-
-In July 2025, our team was organizing a major regional student hackathon under an external partner organization. By mid-August, the partner organization cancelled the event, which was a significant setback. To overcome this uncertainty and avoid relying on external groups, we founded Bits&Bytes in November 2025. Originally, our goal was simply to gather everyone together and host a 24-hour independent hackathon to make up for the cancelled event. However, we quickly realized we could build something far more impactful and sustainable. Since then, we have launched cohort-based programs, executed the India Innovates partner sprint, and grown into a nationwide teen builder network.
+bits&bytes™ is a teen-led builders network founded in November 2025. GOBITSNBYTES FOUNDATION was legally incorporated as a Section 8 non-profit company on 2 June 2026. The Foundation is legally governed by its Board of Directors, which holds ultimate legal, fiduciary, financial, and safeguarding authority over the Network. To protect the privacy and security of our leadership, the names of the individual directors are kept private from public documentation and referenced collectively as the **Board of Directors**.
 
 - **Ship or dip:** Talking about your idea is easy. We'd rather have a working prototype by Sunday than a perfect slide deck by next month.
 - **Your squad keeps you honest:** Mentors, pods, and the kind of peer pressure that makes you actually finish things. Nobody ghosts a project when their team is waiting on their code.
@@ -30,36 +29,89 @@ In July 2025, our team was organizing a major regional student hackathon under a
 3. **Projects**: Members ship real products with mentorship at every step, from idea to deployment.
 4. **Community**: A safe, inclusive community where people can actually build things without garbage getting in the way.
 
-## Current & Upcoming Events
-- **India Innovates 2026** [ARCHIVED] — Held on March 28, 2026 at Bharat Mandapam, New Delhi (9 AM to 7 PM). Verified scale: 1.26 crore+ applicants, narrowed to 28,000+, then 5,000+, and finally 15 teams. Domains: Urban Solutions, Digital Democracy, and Open Innovation. Prize pool: ₹10 Lakh+ with ₹1L/₹75K/₹50K/₹25K per domain. Bits&Bytes served as the Official Executive Partner. Attended by Delhi CM Rekha Gupta, Bihar Assembly Speaker, and MP Manoj Tiwari. Post-event flow included ministry-level presentation stage. Press coverage: #IndiaInnovates2026 trended on X. Details: https://indiainnovates.org
+## Events & Track Record
+- **Hack4Good v0** [ARCHIVED] — 24-hour Agentic AI hackathon held in Lucknow from April 2, 2026 to May 3, 2026, with the in-person hackathon at Cubispace, Lucknow. Theme: Architect Your Autonomy. Format: teams of 1–4, AI agents and autonomous workflows, ₹35,000 prize pool. Public metrics: 4,117 impressions, 425 registrations, and 110 on-ground attendees.
 
-- **Execron 1.0** [ARCHIVED] — AI Hackathon & Workshop for Classes 9–12, held March 19–22, 2026 at IIT Kanpur. In collaboration with TechKriti '26. A 4-hour hands-on workshop followed by a 24-hour hackathon sprint. Topics: AI & ML, Web Development, App Development, Cybersecurity, Cloud Computing. Team sizes 1–4 members. Partners: ByteForge, Bits&Bytes. Details: https://byteforge.paxus.in/
+- **India Innovates 2026** [ARCHIVED] — Held on March 28, 2026 at Bharat Mandapam, New Delhi (9 AM to 7 PM). Verified scale: 1.26 crore+ applicants, narrowed to 28,000+, then 5,000+, and finally 15 teams. Domains: Urban Solutions, Digital Democracy, and Open Innovation. Prize pool: ₹10 Lakh+ with ₹1L/₹75K/₹50K/₹25K per domain. bits&bytes™ served as the Official Executive Partner. Attended by Delhi CM Rekha Gupta, Bihar Assembly Speaker, and MP Manoj Tiwari. Post-event flow included ministry-level presentation stage. Press coverage: #IndiaInnovates2026 trended on X. Details: https://indiainnovates.org
 
-- **GitHub Copilot Dev Days | Lucknow** [ARCHIVED] — Community developer event on April 19, 2026 at Cubispace, Jankipuram, Lucknow. Hosted by Bits&Bytes with community partners Coding Connoisseurs, Aryan Singh, and Notion Lucknow. Topics: how GitHub Copilot works, integrating AI into dev workflows, prompt techniques, and using AI responsibly. Archive link: https://luma.com/xtxua1jl.
+- **Execron 1.0** [ARCHIVED] — AI Hackathon & Workshop for Classes 9–12, held March 19–22, 2026 at IIT Kanpur. In collaboration with TechKriti '26. A 4-hour hands-on workshop followed by a 24-hour hackathon sprint. Topics: AI & ML, Web Development, App Development, Cybersecurity, Cloud Computing. Team sizes 1–4 members. Partners: ByteForge and bits&bytes™. Details: https://byteforge.paxus.in/
+
+- **GitHub Copilot Dev Days | Lucknow** [ARCHIVED] — Community developer event on April 19, 2026 at Cubispace, Jankipuram, Lucknow. Hosted by bits&bytes™ with community partners Coding Connoisseurs, Aryan Singh, and Notion Lucknow. Topics: how GitHub Copilot works, integrating AI into dev workflows, prompt techniques, and using AI responsibly. Archive link: https://luma.com/xtxua1jl.
 
 - **Lucknow Build Guild** [ARCHIVED] — Free hardware workshop and meetup held on April 19, 2026 at SureStay by Best Western, Lucknow. Hosted by Shaurya. Event site: https://www.lucknow-build-guild.xyz/, Host: https://linktr.ee/shauryaashu and https://github.com/Shaurya-Ashu.
 
-## Leadership Team (Core Team)
-- **Yash Singh** — Co-Founder & Chief Executive Officer (CEO). Builds things that matter: a VS Code extension with thousands of users, hackathons with 400+ participants. IOQM National Qualifier. Built AI projects including laser pushup detection systems and PDF scrapers. Organized local developer meetups and GDS MUN. Educator at STEMist Lucknow. LinkedIn: https://www.linkedin.com/in/yashvardhansinghbnb/, GitHub: https://github.com/yashclouded, Website: https://yashvibe.codes/
+- **Regional Space Apps Hackathon** [ARCHIVED] — Regional hackathon with 300+ participants.
 
-- **Aadrika Maurya** — Co-Founder, Chief Creative Officer (CCO) & Chief Operating Officer (COO). RSI India Alumni who conducted neuroscience research on EEG signals and attention modeling, the kind of work most people don't touch until grad school. Owns the creative direction, operations, and the strategy for what the network becomes. LinkedIn: https://www.linkedin.com/in/aadrika-maurya/, GitHub: https://github.com/Aadrika08, Website: https://aadrikasportfolio.framer.website/
+## Governance & Executive Team
 
-- **Akshat Kushwaha** — Co-Founder & Chief Technology Officer (CTO). AI-native systems engineer who asks what happens when software fails. Ex Jr. Research Engineer at jhana.ai at 17, where he built production AI systems including a Steno dictation plugin and AI-era IVRS. Owns the entire tech stack and anything that needs to work under pressure. LinkedIn: https://www.linkedin.com/in/akshat-singh-kushwaha/, GitHub: https://github.com/a3ro-dev, Website: https://a3ro.dev
+### Board of Directors (Constitutional Authority)
+Ultimate legal, financial, and safeguarding authority over GOBITSNBYTES FOUNDATION sits with the Board of Directors. The names of the directors are kept private from public-facing profiles to preserve operational privacy.
 
-- **Devaansh Pathak** — Chief Financial Officer (CFO). Handles backend architecture and the economics of partnerships. LinkedIn: https://www.linkedin.com/in/devaanshpa/
+### Executive Officers (Delegated Operations)
+Appointed by the Board under Article 28 of the e-Articles of Association (e-AOA) for Network operations. Because bits&bytes™ is youth-led and includes minors, these designations represent operational accountability only. They **do not** automatically confer statutory directorship, legal membership, signature authority, bank control, or the power to bind the Foundation except where explicitly authorized in writing by the Board.
 
-- **Drishti Arora** — Chief Marketing Officer (CMO). Leads marketing strategy, brand growth, and audience development across all Bits&Bytes channels. LinkedIn: https://www.linkedin.com/in/drish-arora
+- **Yash Singh** — Chief Executive Officer (CEO). Builds things that matter: a VS Code extension, hackathons with 400+ participants. IOQM National Qualifier. Built AI projects including laser pushup detection systems and PDF scrapers. Organized local developer meetups and GDS MUN. Educator at STEMist Lucknow. LinkedIn: https://www.linkedin.com/in/yashvardhansinghbnb/, GitHub: https://github.com/yashclouded, Website: https://yashvibe.codes/
+
+- **Aadrika Maurya** — Chief Creative Officer (CCO) & Chief Operating Officer (COO). RSI India Alumni who conducted neuroscience research on EEG signals and attention modeling, the kind of work most people don't touch until grad school. Owns the creative direction, operations, and the strategy for what the network becomes. LinkedIn: https://www.linkedin.com/in/aadrika-maurya/, GitHub: https://github.com/Aadrika08, Website: https://aadrikasportfolio.framer.website/
+
+- **Akshat Kushwaha** — Chief Technology Officer (CTO). The primary technical lead for everything at bits&bytes™ — he built the entire stack from scratch. Systems engineer and AI architect with production experience most engineers don't see until much later: contributed to AI systems handling 1.6M+ quarterly requests in real government and legal infrastructure. At jhana.ai, replaced GPT-4o-mini with a self-hosted model that cut time-to-first-token by 60% without accuracy loss. Built Lexana (multi-agent legal AI, now operational in Nepal) and HybridMind (custom hybrid retrieval engine). The answer to any technical question about bits&bytes™ — infra, AI, product, architecture — starts with Akshat. LinkedIn: https://www.linkedin.com/in/akshat-singh-kushwaha, GitHub: https://github.com/a3ro-dev, Website: https://a3ro.dev
+
+- **Devaansh Pathak** — Chief Financial Officer (CFO). Manages financial operations and the economics of partnerships. LinkedIn: https://www.linkedin.com/in/devaanshpa/
+
+- **Drishti Arora** — Chief Growth Officer (CGO). Leads growth strategy, brand growth, and audience development across all bits&bytes™ channels. LinkedIn: https://www.linkedin.com/in/drish-arora
 
 - **Raghwender Vasisth** — Head of Operations. Drives operational excellence and keeps the organization running at scale across city-wide events. LinkedIn: https://www.linkedin.com/in/raghwender-vasisth/
 
-- **Maryam Fatima** — Head of Brand & Media. Runs social strategy. 10k+ impressions on club events. Designs visual campaigns for independent hackathons. LinkedIn: https://www.linkedin.com/in/maryam-fatima-9719aa377/
+- **Maryam Fatima** — Head of Brand & Media. Runs social strategy. 10k+ impressions on network events. Designs visual campaigns for independent hackathons. LinkedIn: https://www.linkedin.com/in/maryam-fatima-9719aa377/
 
 - **Srishti Singh** — Head of Partnerships & Institutional Relations. Keeps 100+ members on the same page. Coordinates between design/dev squads and handles logistics for city-wide events. LinkedIn: https://www.linkedin.com/in/srishti-singh-ab6a1b391
+
+- **Angel** — Head of Research & Strategy. Leads strategic research initiatives, community analysis, and organizational growth frameworks. LinkedIn: https://www.linkedin.com/in/angelp-online/, Instagram: https://www.instagram.com/rightangeled/
+
+### Volunteer Network
+bits&bytes™ is supported by an active volunteer network:
+- **Operations:** Shantanu Joshi and Atharva
+- **Outreach:** Adithya and Aanjaneya
+- **Creatives (Graphic + Video Editing):** Jaagruti, Vareesha, and Aishwary
+- **Tech:** Hridyansh, Areeb, and Prakhar
+
+### Early Contributors
+- **Kavan**, **Saksham**, **Kaustubh**, and **Oviya** — Helped build and shape the network in its initial stages and early sprints before moving on to new chapters.
+
+## Fork Network Model
+A **Fork** is a recognized local, institutional, or thematic operating unit of the Network. It does not constitute a separate legal entity, franchise, branch office, joint venture, partnership, or subsidiary. A Fork has no authority to bind, contract, represent, or collect funds on behalf of GOBITSNBYTES FOUNDATION. All financial transactions and sponsorship agreements must be routed through Upstream.
+
+## Minecraft Server (mc.gobitsnbytes.org)
+- **Host Address:** `mc.gobitsnbytes.org`
+- **Ports:** Java: 25565, Bedrock: 19132
+- **Sponsor:** Infrastructure sponsored by [Misbah Khursheed](https://misbahkhursheed.vercel.app/)
+- **Source Code:** [github.com/gobitsnbytes/minecraft-server](https://github.com/gobitsnbytes/minecraft-server)
+- **Runtime specs:** Purpur 1.21.1, Java 21, G1GC tuned garbage collection, 3000-radius pre-generated chunks, 0 mods required.
+- **Infrastructure specs:** Azure B2s (4 vCPU, 8 GB RAM) with daily snapshot backups.
+- **Protection & Audit:** CoreProtect engine (1.4M+ event database) with 48-hour rollback window, DiscordSRV chat bridge, and local JSON audit logging.
+- **Live Telemetry APIs:** TPS, MSPT, and active players are fetched dynamically via `/api/tps`, `/api/players`, and `/api/world`.
 
 ## Technology Stack
 - **Frontend**: Next.js, React, TypeScript, Tailwind CSS, Framer Motion, Three.js / WebGL
 - **Backend**: Node.js, Python, PostgreSQL, cloud infrastructure
-- **Tools**: GitHub, Discord, Vercel, Notion
+- **Tools**: GitHub, Discord, Vercel, Notion, Upstash Vector
+
+## SparkCloud x bits&bytes™ Partnership
+- **Organization & Mission**: Sparkden is an educational program owned and operated by **The Spark Forward Foundation, Inc.**, a US 501(c)(3) tax-exempt nonprofit corporation organized in New Jersey, USA in 2026 (EIN: **42-2930302**, contact: `hello@sparkden.org`). Their mission is to remove cloud deployment friction (credit card requirements, complex IAM, corporate billing) for teen builders (~13+) so they can ship real projects to the internet. Core philosophy: *"Learn by building — Deploy. Break it. Fix it. Repeat. Every teenager should be able to deploy something real."*
+- **Platform Architecture (SparkCloud)**: A student-tailored PaaS (at https://cloud.sparkden.org/) providing containerized application compute, managed databases (PostgreSQL, data stores), public URLs, and deployment environments for Discord bots, REST APIs, web apps, and hackathon projects — serving as an accessible alternative to Render, Railway, Fly.io, Vercel, and complex AWS/Azure setups.
+- **Token Grant Billing Model**: Uses a transparent token & voucher system for hourly container and database accounting. Vouchers and student grants fund token balances, ensuring free access stays real without expiring or requiring personal credit cards.
+- **What Members Get**:
+  - **SparkCloud**: Free cloud development spaces — code, build, and host applications straight from any browser with zero local setup.
+  - **One Verified Account**: A single Spark Account signs members into every Sparkden service and tool.
+- **Platforms & FAQs**:
+  - Main platform: https://sparkden.org/
+  - Philosophy: https://sparkden.org/philosophy
+  - SparkCloud app: https://cloud.sparkden.org/
+  - FAQ: https://cloud.sparkden.org/faq
+- **Organization Signup Link**: https://sparkden.org/org/join/HJ6POGpRWhZRvT8jtEYqmMpMhmLiMOEo (valid exclusively for Indian residents/citizens).
+- **Eligibility**: Reserved strictly for teenagers aged **13 to 19** residing in India.
+- **Legal Precedence**: Sparkden's Code of Conduct (https://sparkden.org/conduct), Terms of Service (https://sparkden.org/terms), Privacy Policy (https://sparkden.org/privacy), and Acceptable Use Policy (https://sparkden.org/acceptable-use) take legal precedence and strictly govern all activities, services, accounts, and infrastructure on SparkCloud. The bits&bytes™ Code of Conduct applies concurrently to network interactions, but Sparkden's legal terms supersede ours regarding their cloud platform.
+- **Strict Anti-Abuse Enforcement & Legal Notice**: Misuse, abuse, fraudulent registration, multi-accounting, VPN proxying, or attempting to bypass eligibility criteria (age 13-19 or geographic restriction) will result in immediate service termination, permanent blacklisting across networks, legal notice issuance, and formal prosecution under applicable Indian civil and criminal laws. Legal notices will be sent and strict legal action will be taken against anyone found to be abusing or misusing the service or offering.
 
 ## How to Join & General FAQ
 - **Applying**: Visit https://gobitsnbytes.org/join. Free to join. Tech education shouldn't cost money.
@@ -75,22 +127,32 @@ In July 2025, our team was organizing a major regional student hackathon under a
   2. Temporary ban
   3. Permanent removal
 - **Reporting**: email `hello@gobitsnbytes.org` or message a team member. 100% confidential. Applies to all events, online spaces, projects, and social media.
+- **Minor Protections**: All youth and minor participation is protected under the **Protection of Children from Sexual Offences Act, 2012 (POCSO)** and the **Digital Personal Data Protection Act, 2023 (DPDP Act)**. Parental consent is mandatory.
 
 ## Website Structure
 - **/** - Homepage with overview and impact stats
 - **/about** - Team profiles and mission details
 - **/events** - Upcoming and archived hackathons and workshops
+- **/cloud** - SparkCloud partnership, free cloud development spaces, and policy verification portal
 - **/impact** - Community statistics and success stories
 - **/join** - Free membership application
+- **/join-cohort** - Redirect to cohort application/details
+- **/fork** - Interactive Fork network explorer / details to lead a fork
+- **/press** - Brand assets, media guidelines, and public record
 - **/contact** - Get in touch with the team
 - **/faq** - Frequently asked questions
 - **/coc** - Code of conduct and community guidelines
+- **/terms** - Terms of Service and legal governance framework
+- **/privacy** - Privacy Policy and DPDPA compliance details
+- **/ip** - Intellectual Property and copyright policy
 - **/qna** - AI-powered Q&A assistant
+- **/logo** - Serves the white SVG logo mark
 
 ## Contact Information
 - **Website**: https://gobitsnbytes.org
 - **Email**: hello@gobitsnbytes.org
 - **Contact Page**: https://gobitsnbytes.org/contact
+- **WhatsApp Community**: https://chat.whatsapp.com/DvAIRLgEEBxISR8bsb9kVg
 - **LinkedIn**: https://www.linkedin.com/company/gobitsbytes
 - **GitHub**: https://github.com/gobitsnbytes
 - **Instagram**: https://www.instagram.com/bitsnbytes.lko
@@ -99,7 +161,9 @@ In July 2025, our team was organizing a major regional student hackathon under a
 ## Brand Kit
 
 ### Brand Mark
-- The Bits&Bytes brand mark is a compact 3D cube monogram with a small star accent. Use the full wordmark for hero headings and the cube mark (square) for avatars, favicons, and constrained spaces. Prefer the reversed white mark on dark backgrounds and the single-color mark on light backgrounds. Maintain clear space around the mark equal to the cube's height.
+- The bits&bytes™ brand mark is a geometric cube rendered in a bold isometric style with stylized B letterforms on its face and a four-pointed star on top. Use the full wordmark for hero headings and the cube mark for avatars, favicons, and constrained spaces. `public/logo.svg` is the white mark; use it on dark, burgundy, orange, and high-contrast surfaces. Maintain clear space around the mark equal to the cube's height.
+- Public embeds: `![logo](https://gobitsnbytes.org/logo)` in Markdown or `<img src="https://gobitsnbytes.org/logo" alt="bits&bytes™ logo">` in HTML.
+- Name rules: public name is exactly **bits&bytes™**. Use **bitsnbytes** only where `&` is unavailable or impractical. Use **GOBITSNBYTES FOUNDATION** only for legal, regulatory, banking, contract, invoice, or official correspondence contexts. Never use "bits & bytes™", "Bits & Bytes", "bits and bytes", "B&B", or "gobitsnbytes" as public brand names.
 
 ### Fonts & Typography
 - **Primary:** Helvetica Now — headings and display; bold weights for impact.
@@ -120,10 +184,6 @@ In July 2025, our team was organizing a major regional student hackathon under a
   - #FC920D, #FDA83D, #FDBE6E, #FED39E, #FEE9CF
 - **Warm Accent Range (supporting):**
   - #C94218, #D46846, #DF8E74, #E9B3A3, #F4D9D1
-- **Utility / Interaction colors:**
-  - Vibrant Pink (Interactive): #E45A92
-  - Rich Plum (Secondary): #5D2F77
-  - Deep Purple (Brand accent): #3E1E68
 
 Design guidance:
 - **Burgundy / Core:** the voice of the brand — serious and composed; use as the structural anchor for hero surfaces and heavy weights.
@@ -132,8 +192,8 @@ Design guidance:
 - **Neutrals:** use the neutral scale to layer content and preserve legibility; prefer warm neutrals when overlaying textures.
 
 ### Visual Elements
-- Use rich gradients that blend Vibrant Pink → Rich Plum → Deep Purple for hero backgrounds and promotional graphics.
-- Halftone and stipple textures, geometric checks, and a small star/sparkle motif are approved decorative elements. Apply these as subtle overlays or masks (low opacity) to add tactile texture.
+- Use rich gradients that blend burgundy/plum into orange warmth for hero backgrounds and promotional graphics.
+- Dither, halftone dots, stipple textures, geometric checks, burst/starburst shapes, and small star/sparkle motifs are approved decorative elements. Apply these as subtle overlays or masks at low opacity to add tactile texture without harming legibility.
 - Maintain restrained use of script accents; keep body copy in Georgia Pro for legibility.
 
 ### Logo files & usage
@@ -145,22 +205,29 @@ Design guidance:
 - **Primary chat model (server):** google/gemini-3-flash-preview (used via Hack Club proxy)
 - **Fallback chat model:** google/gemini-2.5-flash
 - **Embedding model (RAG):** openai/text-embedding-3-small (used by `scripts/embed-site.ts` and `lib/rag.ts`)
-- **Image generation:** google/gemini-3.1-flash-image-preview (proxy); optional `stable-diffusion-3` via NVIDIA when `NVIDIA_KEY` is configured
+- **Image generation:** google/gemini-2.5-flash-image (proxy); optional `flux.1-dev` via NVIDIA when `NVIDIA_KEY` is configured
 
 Notes:
 - All AI API calls use the `HACKCLUB_PROXY_API_KEY` environment variable and the Hack Club proxy endpoints.
-- The assistant also relies on Supabase environment variables (`NEXT_PUBLIC_SUPABASE_URL` and `NEXT_PUBLIC_SUPABASE_ANON_KEY`) for session persistence.
+- The assistant also relies on Supabase environment variables (`NEXT_PUBLIC_SUPABASE_URL` and `NEXT_PUBLIC_SUPABASE_ANON_KEY`) for session persistence and database operations.
+- Semantic search RAG relies on `UPSTASH_VECTOR_REST_URL` and `UPSTASH_VECTOR_REST_TOKEN` environment variables.
 
 ## RAG / Indexing (maintenance)
-- The site uses `scripts/embed-site.ts` to generate embeddings and populate the `site_embeddings` table in Supabase.
+- The site uses `scripts/embed-site.ts` to generate embeddings and populate the Upstash Vector DB index.
 - By default the script currently indexes `public/llms.txt` and `AGENTS.md`. If you update these files, re-run:
 
 ```bash
-npx tsx scripts/embed-site.ts
+pnpm tsx scripts/embed-site.ts
 ```
 
 - A Husky `pre-push` hook is configured to run the embedding step automatically when tracked source files change; see `.husky/pre-push` for `EMBED_PATHS`.
 - To include additional pages in the RAG index, add them to `scripts/embed-site.ts` `filePaths` and update `.husky/pre-push` `EMBED_PATHS`.
 
+## SEO & Schema.org Metadata
+- **Structured Data Formats:** JSON-LD (`EducationalOrganization`, `NGO`, `LocalBusiness`, `FAQPage`, `Dataset`, `Event`, `Person`, `AboutPage`, `NewsArticle`, `BreadcrumbList`, `WebSite`, `SiteNavigationElement`)
+- **Primary Keywords:** bits&bytes™, teen builder network india, youth hackathons lucknow, student developer community, GOBITSNBYTES FOUNDATION, Section 8 non-profit, agentic AI hackathons
+- **Community Metrics & Research (2026):** 1,400+ active teen builders, 2,700+ project evaluations in 3-day sprints, 84% AI tool adoption, 38% female builder participation, 5+ regional forks.
+
 ---
-Last updated: May 2026
+Last updated: July 2026
+

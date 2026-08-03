@@ -30,7 +30,7 @@ export function PageSection({
   return (
     <Component
       className={cn(
-        "section-shell py-8 sm:py-12 md:py-16 px-4 sm:px-6 lg:px-8 overflow-x-hidden",
+        "section-shell py-6 sm:py-10 md:py-14 px-4 sm:px-6 lg:px-8 overflow-x-hidden",
         bleed && "max-w-none px-0 sm:px-6",
         className,
       )}
@@ -47,17 +47,18 @@ export function PageSection({
           )}
         >
           {eyebrow && (
-            <span className="section-eyebrow text-[0.6rem] sm:text-[0.7rem] px-3 sm:px-4">
+            <span className="inline-flex items-center gap-1.5 border border-[#120f0a] dark:border-[#faf8f5] bg-[#faf8f5] dark:bg-[#120f0a] text-[9px] font-mono tracking-widest text-[#120f0a] dark:text-[#faf8f5] px-2.5 py-1.5 select-none mb-2">
+              <span className="h-1.5 w-1.5 bg-[#97192c] block animate-pulse" />
               {eyebrow}
             </span>
           )}
           {title && (
-            <h2 className="font-display text-2xl sm:text-3xl md:text-4xl font-semibold tracking-tight text-foreground">
+            <h2 className="font-accent-sans text-3xl sm:text-4xl md:text-5xl font-normal uppercase tracking-tight text-[#120f0a] dark:text-[#faf8f5] select-none">
               {title}
             </h2>
           )}
           {description && (
-            <p className="max-w-3xl text-sm sm:text-base md:text-lg text-foreground/90 font-medium px-2 sm:px-0">
+            <p className="max-w-3xl text-sm sm:text-base md:text-lg text-[#120f0a]/80 dark:text-[#faf8f5]/80 font-serif-brand leading-relaxed px-2 sm:px-0 mt-1">
               {description}
             </p>
           )}
